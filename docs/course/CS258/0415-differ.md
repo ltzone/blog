@@ -24,7 +24,7 @@ Week 7 of 2020 Spring
 
 概率论中的一些概念
 
-- Let $X$ be a random variable with **cumulative distribution function** $F(x)=\operatorname{Pr}(X \leq x)$
+- Let $X$ be a random variable with **cumulative distribution function** $F(x)=\Pr(X \leq x)$
 - If $F(x)$ is continuous, the random variable is said to be **continuous**.
 - Let $f(x)=F^{\prime}(x)$ when the derivative is defined. If $\int_{-\infty}^{\infty} f(x)=1, f(x)$ is called the **probability density function** for X.
 - The set where $f(x)>0$ is called the **support set** of $X .$
@@ -166,7 +166,7 @@ $$
 在这里, $2^{n h(X)}$ is the volume
 
 The typical set $A_{\epsilon}^{(n)}$ has the following properties:
-1. $\operatorname{Pr}\left(A_{\epsilon}^{(n)}\right)>1-\epsilon$ for $n$ sufficiently large.
+1. $\Pr\left(A_{\epsilon}^{(n)}\right)>1-\epsilon$ for $n$ sufficiently large.
 2. Vol $\left(A_{\epsilon}^{(n)}\right) \leq 2^{n(h(X)+\epsilon)}$ for all $n$
 3. Vol $\left(A_{\epsilon}^{(n)}\right) \geq(1-\epsilon) 2^{n(h(X)-\epsilon)}$ for $n$ sufficiently large.
 
@@ -299,7 +299,7 @@ $$
 > 这里, $X$ 和 $Y$ 既可以是离散的也可以是连续的(4种情况), 但定义是通用的.
 
 - Let $\mathcal{X}$ be the range of a random variable $X .$ A partition $\mathcal{P}$ of $\mathcal{X}$ is a finite collection of disjoint sets $P_{i}$ such that $U_{i} P_{i}=\mathcal{X}$. The quantization of $X$ by $\mathcal{P}$ (denoted $[X]_{\mathcal{P}}$ ) is the discrete random variable defined by
-  $$\operatorname{Pr}\left([X]_{P}=i\right)=\operatorname{Pr}\left(X \in P_{i}\right)=\int_{P_{i}} d F(x)$$
+  $$\Pr\left([X]_{P}=i\right)=\Pr\left(X \in P_{i}\right)=\int_{P_{i}} d F(x)$$
 - For two random variables $X$ and $Y$ with partitions $\mathcal{P}$ and $Q,$ we can calculate the mutual information between the quantized versions of $X$ and $Y$
 
 > This is the master definition of mutual information that always applies, even to joint distributions with atoms, densities, and singular parts.

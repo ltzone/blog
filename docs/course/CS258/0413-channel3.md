@@ -85,10 +85,10 @@ $$
 p\left(x^{n}\right)=\prod_{i=1}^{n} p\left(x_{i}\right)
 $$
 
-The probability the we generate a particular code $C$ is 对任意编码，生成该编码（码本）的概率是 $\operatorname{Pr}(C)=\prod_{w=1}^{2^{n R}} \prod_{i=1}^{n} p\left(x_{i}(w)\right)$
+The probability the we generate a particular code $C$ is 对任意编码，生成该编码（码本）的概率是 $\Pr(C)=\prod_{w=1}^{2^{n R}} \prod_{i=1}^{n} p\left(x_{i}(w)\right)$
 The code $C$ will be shared both by the sender and receiver, both know $p(y|x)$.
 
-A message $W$ is chosen according to a uniform distribution暂时忽略$nR$不是整数的问题。 $\operatorname{Pr}(W=w)=2^{-n R}, w=1,2, \ldots, 2^{n R}$
+A message $W$ is chosen according to a uniform distribution暂时忽略$nR$不是整数的问题。 $\Pr(W=w)=2^{-n R}, w=1,2, \ldots, 2^{n R}$
 The $w$ th codeword $X^{n}(w)$ is sent over the channel The receiver receives a sequence $Y^{n}$ according to the distribution
 $$
 P\left(y^{n} | x^{n}(w)\right)=\prod_{i=1}^{N} p\left(y_{i} | x_{i}(w)\right)
@@ -106,12 +106,12 @@ Let $\mathcal{E}$ be the event $\{\widehat{W} \neq W\}$
 
 **We need to show that**
 $$
-\operatorname{Pr}(\mathcal{E}) \rightarrow \mathbf{0}
+\Pr(\mathcal{E}) \rightarrow \mathbf{0}
 $$
 
-## $\operatorname{Pr}(\mathcal{E}) \rightarrow 0$
+## $\Pr(\mathcal{E}) \rightarrow 0$
 
-> Main idea: If we could prove that for all the codebook (all the possible $C$ ), the average $\operatorname{Pr}(\varepsilon) \leq \epsilon_{i}$  **then the error probability of the best code** (one of $C^{\prime}$s $\leq \epsilon$）
+> Main idea: If we could prove that for all the codebook (all the possible $C$ ), the average $\Pr(\varepsilon) \leq \epsilon_{i}$  **then the error probability of the best code** (one of $C^{\prime}$s $\leq \epsilon$）
 
 We let $W$ be drawn according to a uniform distribution over $\left\{1,2, \ldots, 2^{n R}\right\}$ and use jointly typical decoding $\hat{W}\left(y^{n}\right)$
 
@@ -120,16 +120,16 @@ Let $\mathcal{E}=\left\{\hat{W}\left(y^{n}\right) \neq W\right\}$ denote the err
 We will calculate the average probability of error, averaged over all codewords in the codebook, and averaged over all codebooks 每一个码本、每一个码制上的平均错误率。
 $$
 \begin{aligned}
-&\operatorname{Pr}(\varepsilon)=\sum_{c} \operatorname{Pr}(C) P_{e}^{(n)}(C) \text{\quad 定义展开} \\
-&=\sum_{c} \operatorname{Pr}(C) \frac{1}{2^{n R}} \sum_{w=1}^{2^{n R}} \lambda_{w}(C) \text{\quad 码制均匀分布}\\
-&=\frac{1}{2^{n R}} \sum_{w=1}^{2^{n R}} \sum_{c} \operatorname{Pr}(C) \lambda_{w}(C) \text{\quad 求和交换位置}
+&\Pr(\varepsilon)=\sum_{c} \Pr(C) P_{e}^{(n)}(C) \text{\quad 定义展开} \\
+&=\sum_{c} \Pr(C) \frac{1}{2^{n R}} \sum_{w=1}^{2^{n R}} \lambda_{w}(C) \text{\quad 码制均匀分布}\\
+&=\frac{1}{2^{n R}} \sum_{w=1}^{2^{n R}} \sum_{c} \Pr(C) \lambda_{w}(C) \text{\quad 求和交换位置}
 \end{aligned}
 $$
 
 我们分析第二个求和表达式。
-$$\sum_{C} \operatorname{Pr}(C) \lambda_{1}(C)=\operatorname{Pr}(\mathcal{E} | W=1)$$
+$$\sum_{C} \Pr(C) \lambda_{1}(C)=\Pr(\mathcal{E} | W=1)$$
 是在传递信息1的情况下的平均错误概率，也即
-$$\operatorname{Pr}(\mathcal{E})=\frac{1}{2^{n R}} \sum_{w=1}^{2^{n R}} \operatorname{Pr}(\mathcal{E} | W=w)$$
+$$\Pr(\mathcal{E})=\frac{1}{2^{n R}} \sum_{w=1}^{2^{n R}} \Pr(\mathcal{E} | W=w)$$
 
 由对称性，我们以证明信息为1时的结论为例。
 
@@ -138,7 +138,7 @@ $$E_{i}=\left\{\left(\left(X^{n}(i), Y^{n}\right) \text { is in } A_{\epsilon}^{
 定义集合$E_{i}$，那么解码错误的概率可以形式化地表达为
 
 $$\begin{aligned}
-\operatorname{Pr}(\mathcal{E} | W=1) &=P\left(E_{1}^{c} \cup E_{2} \cup E_{3} \cup \ldots \cup E_{2^{n} R} | W=1\right) \\
+\Pr(\mathcal{E} | W=1) &=P\left(E_{1}^{c} \cup E_{2} \cup E_{3} \cup \ldots \cup E_{2^{n} R} | W=1\right) \\
 & \leq P\left(E_{1}^{c} | W=1\right)+\sum_{i=2}^{2^{n R}} P\left(E_{i} | W=1\right)
 \end{aligned}$$
 
@@ -152,7 +152,7 @@ $$\begin{aligned}
   - Hence, the probability that $X^{n}(i)$ and $Y^{n}$ are jointly typical is $\leq 2^{-n(I(X ; Y)-3 \epsilon)}$ by the joint AEP
 
 $$\begin{aligned}
-\operatorname{Pr}(\mathcal{E} | W=1) & \leq \epsilon+\sum_{i=2}^{2^{n R}} 2^{-n(I(X ; Y)-3 \epsilon)} \\
+\Pr(\mathcal{E} | W=1) & \leq \epsilon+\sum_{i=2}^{2^{n R}} 2^{-n(I(X ; Y)-3 \epsilon)} \\
 &=\epsilon+\left(2^{n R}-1\right) 2^{-n(I(X ; Y)-3 \epsilon)} \\
 & \leq \epsilon+2^{n R} 2^{-n(I(X ; Y)-3 \epsilon)} \\
 &=\epsilon+2^{-n(I(X ; Y)-R-3 \epsilon)}
@@ -161,8 +161,8 @@ $$\begin{aligned}
 If $n$ is sufficiently large and $R<I(X ; Y)-3 \epsilon$
 $$
 \begin{aligned}
-\operatorname{Pr}(&\varepsilon | W=1) \leq 2 \epsilon \\
-& \operatorname{Pr}(\mathcal{E}) \leq 2 \epsilon
+\Pr(&\varepsilon | W=1) \leq 2 \epsilon \\
+& \Pr(\mathcal{E}) \leq 2 \epsilon
 \end{aligned}
 $$
 
@@ -176,12 +176,12 @@ R \leq I\left(X^{*} ; Y\right) &=C \\
 \end{aligned}
 $$
 
-### $\operatorname{Pr}(\mathcal{E}) \rightarrow 0 \Rightarrow \lambda^{(n)} \rightarrow 0$
+### $\Pr(\mathcal{E}) \rightarrow 0 \Rightarrow \lambda^{(n)} \rightarrow 0$
 从平均概率为0到最大错误概率为0.
 
 在前面的证明中，我们说明了There exists a best codebook $C^{*}$ such that
 $$
-\operatorname{Pr}\left(\varepsilon | C^{*}\right)=\frac{1}{2^{n R}} \sum_{i=1}^{2^{n R}} \lambda_{i}\left(C^{*}\right) \leq 2 \epsilon
+\Pr\left(\varepsilon | C^{*}\right)=\frac{1}{2^{n R}} \sum_{i=1}^{2^{n R}} \lambda_{i}\left(C^{*}\right) \leq 2 \epsilon
 $$
 
 根据上一节的定义，By the definition of $\left(n, 2^{n R}\right)$ code, we need to further show that
@@ -190,7 +190,7 @@ $$
 $$
 
 Without loss of generality, assume $\lambda_{1} \leq \lambda_{2} \leq \cdots \leq \lambda_{2} n_{R}$
-By $\operatorname{Pr}\left(\varepsilon | C^{*}\right) \leq 2 \epsilon,$ we have 我们知道前一半一定足够小
+By $\Pr\left(\varepsilon | C^{*}\right) \leq 2 \epsilon,$ we have 我们知道前一半一定足够小
 $$\lambda_{1} \leq \lambda_{2} \leq \cdots \leq \lambda_{2} n_{R-1} \leq 4 \epsilon$$
 反证法： $\left(\text { Or } \lambda_{2^{n R-1}}>4 \epsilon, \frac{1}{2^{n R}} \sum_{i=1+2^{n R-1}}^{2^{n R}} \lambda_{i}\left(C^{*}\right)>\frac{1}{2} 4 \epsilon=2 \epsilon, \text { contradiction! }\right)$
 
@@ -208,7 +208,7 @@ Recall，DMC中，收到的信息是什么情况我们是不知情的。信号�
 - We assume that **all the received symbols are sent back immediately and noiselessly** to the transmitter, which can then use them to decide **which symbol to send next** 即，在有反馈的情况下，我们有更高的灵活性生成码制。这里我们假设输出的信号马上会发到输入端，输入端可以根据该反馈生成下一个信号。
 - We define $a\left(2^{n R}, n\right)$ *feedback code* as a sequence of mappings $x_{i}\left(W, Y^{i-1}\right),$ where each $x_{i}$ is **a function only of** the message $W \in 2^{n R}$ and the previous received values, $Y_{1}, Y_{2}, \ldots, Y_{i-1},$ and a sequence of decoding functions $g: \mathcal{Y}^{n} \rightarrow\left\{1,2, \ldots, 2^{n R}\right\} .$ Thus, 定义解码器没有得到正确结果的概率
 $$
-P_{e}^{(n)}=\operatorname{Pr}\left(g\left(Y^{n}\right) \neq W\right)
+P_{e}^{(n)}=\Pr\left(g\left(Y^{n}\right) \neq W\right)
 $$
 when $W$ is uniformly distributed over $\left\{1,2, \ldots, 2^{n R}\right\}$
 
@@ -242,13 +242,13 @@ Recall，我们学习了数据的压缩与数据的传输
 - To do this, we map the sequence onto a codeword $X^{n}\left(V^{n}\right)$ and send the codeword over the channel
 - The receiver looks at his received sequence $Y^{n}$ and makes an estimate $\hat{V}^{n}$ of the sequence $V^{n}$ that was sent. The receiver makes an error if $V^{n} \neq \hat{V}^{n} .$ We define the probability of error as
   $$
-  \operatorname{Pr}\left(V^{n} \neq \hat{V}^{n}\right)=\sum_{y^{n}} \sum_{v^{n}} p\left(v^{n}\right) p\left(y^{n} | x^{n}\left(v^{n}\right)\right) I\left(g\left(y^{n}\right) \neq v^{n}\right)
+  \Pr\left(V^{n} \neq \hat{V}^{n}\right)=\sum_{y^{n}} \sum_{v^{n}} p\left(v^{n}\right) p\left(y^{n} | x^{n}\left(v^{n}\right)\right) I\left(g\left(y^{n}\right) \neq v^{n}\right)
   $$
   Where $I$ is the indicator function and $g\left(y^{n}\right)$ is the decoding function
 
 ### TODO: Theorem
 
-**Theorem (Source-channel coding theorem).** If $V_{1}, V_{2}, \ldots, V_{n}$ is a finite alphabet stochastic process that satisfies the AEP and $H(\mathcal{V})<C,$ there exists a source-channel code with probability of error $\operatorname{Pr}\left(\hat{V}^{n} \neq V^{n}\right) \rightarrow 0 .$ Conversely, for any stationary stochastic process, if $H(v)>C,$ the probability of error is bounded away from zero, and it is not possible to send the process over the channel with arbitrarily low probability of error.
+**Theorem (Source-channel coding theorem).** If $V_{1}, V_{2}, \ldots, V_{n}$ is a finite alphabet stochastic process that satisfies the AEP and $H(\mathcal{V})<C,$ there exists a source-channel code with probability of error $\Pr\left(\hat{V}^{n} \neq V^{n}\right) \rightarrow 0 .$ Conversely, for any stationary stochastic process, if $H(v)>C,$ the probability of error is bounded away from zero, and it is not possible to send the process over the channel with arbitrarily low probability of error.
 
 ## Error Correction Code
 

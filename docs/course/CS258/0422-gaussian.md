@@ -150,7 +150,7 @@ $$E_{0}=\left\{\frac{1}{n} \sum_{j=1}^{n} X_{j}^{2}(1)>P\right\}$$
 and
 $$E_{i}=\left\{\left(X^{n}(i), Y^{n}\right) \text { is in } A_{\epsilon}^{(n)}\right\}$$
 
-$$\operatorname{Pr}(\mathcal{E} | W=1)=P\left(E_{0} \cup E_{1}^{c} \cup E_{2} \cup E_{3} \ldots \cup E_{2^{n R}}\right) \leq P\left(E_{0}\right)+P\left(E_{1}^{c}\right)+\sum_{i=2}^{2^{n R}} P\left(E_{i}\right)$$
+$$\Pr(\mathcal{E} | W=1)=P\left(E_{0} \cup E_{1}^{c} \cup E_{2} \cup E_{3} \ldots \cup E_{2^{n R}}\right) \leq P\left(E_{0}\right)+P\left(E_{1}^{c}\right)+\sum_{i=2}^{2^{n R}} P\left(E_{i}\right)$$
 
 $E_0$表示违背了能量约束。
 

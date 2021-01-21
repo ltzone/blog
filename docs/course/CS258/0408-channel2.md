@@ -134,7 +134,7 @@ $M$可以看做一个随机过程.
 
 > - Definition (Conditional probability of error) 条件错误概率 Let
 >   $$
->   \lambda_{i}=\operatorname{Pr}\left(g\left(Y^{n}\right) \neq i | X^{n}=x^{n}(i)\right):=\sum_{y^{n}} p\left(y^{n} | x^{n}(i)\right) I\left(g\left(y^{n}\right) \neq i\right)
+>   \lambda_{i}=\Pr\left(g\left(Y^{n}\right) \neq i | X^{n}=x^{n}(i)\right):=\sum_{y^{n}} p\left(y^{n} | x^{n}(i)\right) I\left(g\left(y^{n}\right) \neq i\right)
 >   $$
 >   be the conditional probability of error given that index $i$ was sent, where $I(\cdot)$ is the indicator function.
 >   $x^{n}(i)$ 表示信息i对应的码制. 根据定义式,按照所有y的可能性展开, 我们可以得到计算式.
@@ -154,7 +154,7 @@ $M$可以看做一个随机过程.
 1. 平均错误概率不大于最大错误概率, $P_{e}^{(n)} \leq \lambda^{(n)}$
 2. If $M$ is uniformly distributed,
     $$
-    \operatorname{Pr}\left(W \neq g\left(Y^{n}\right)\right)=\sum_{i=1}^{m} \operatorname{Pr}\left(X^{n}=x^{n}(i)\right) \operatorname{Pr}\left(g\left(Y^{n} \neq i | X^{n}=x^{n}(i)\right)\right)=P_{e}^{(n)}
+    \Pr\left(W \neq g\left(Y^{n}\right)\right)=\sum_{i=1}^{m} \Pr\left(X^{n}=x^{n}(i)\right) \Pr\left(g\left(Y^{n} \neq i | X^{n}=x^{n}(i)\right)\right)=P_{e}^{(n)}
     $$
 
 ### Rate and Capacity
@@ -196,26 +196,26 @@ $$
 
 有了典型集, 顺理成章我们要证明联合AEP.
 
-- $\operatorname{Pr}\left(\left(X^{n}, Y^{n}\right) \in A_{\epsilon}^{(n)}\right) \rightarrow 1 \text { as } n \rightarrow \infty$
+- $\Pr\left(\left(X^{n}, Y^{n}\right) \in A_{\epsilon}^{(n)}\right) \rightarrow 1 \text { as } n \rightarrow \infty$
 - $\left|A_{\epsilon}^{(n)}\right| \leq 2^{n(H(X, Y)+\epsilon)}$ 证明类似单个随机变量的AEP
 - $\left|A_{\epsilon}^{(n)}\right| \geq (1-\epsilon) 2^{n(H(X, Y)-\epsilon)}$ 证明类似单个随机变量的AEP
 - $\text { If }\left(\tilde{X}^{n}, \tilde{Y}^{n}\right) \sim p\left(x^{n}\right) p\left(y^{n}\right), \text { then }$ 
-  $$(1-\epsilon) 2^{-n(I(X, Y)+3 \epsilon)} \leq \operatorname{Pr}\left(\left(\tilde{X}^{n}, \tilde{Y}^{n}\right) \in A_{\epsilon}^{(n)}\right) \leq 2^{-n(I(X, Y)-3 \epsilon)}$$
+  $$(1-\epsilon) 2^{-n(I(X, Y)+3 \epsilon)} \leq \Pr\left(\left(\tilde{X}^{n}, \tilde{Y}^{n}\right) \in A_{\epsilon}^{(n)}\right) \leq 2^{-n(I(X, Y)-3 \epsilon)}$$
   (即对典型集中特殊的$X_n,Y_n$, 上下界用互信息衡量, 而不是熵)
 
 我们主要证明第三个性质.
 定义展开, 根据典型集大小放缩. 右侧得证
 $$\begin{aligned}
-\operatorname{Pr}\left(\left(\tilde{X}^{n}, \tilde{Y}^{n}\right) \in A_{\epsilon}^{(n)}\right)=& \sum_{\left(x^{n}, y^{n}\right) \in A_{\varepsilon}^{(n)}} p\left(x^{n}\right) p\left(y^{n}\right) \\
+\Pr\left(\left(\tilde{X}^{n}, \tilde{Y}^{n}\right) \in A_{\epsilon}^{(n)}\right)=& \sum_{\left(x^{n}, y^{n}\right) \in A_{\varepsilon}^{(n)}} p\left(x^{n}\right) p\left(y^{n}\right) \\
 \leq & 2^{n(H(X, Y)+\epsilon)} 2^{-n(H(X)-\epsilon)} 2^{-n(H(Y)-\epsilon)}=2^{-n(I(X, Y)+3 \epsilon)}
 \end{aligned}$$
 
 左侧, 先证性质3
-$$1-\epsilon \leq \operatorname{Pr}\left(A_{\epsilon}^{(n)}\right)=\sum_{\left(x^{n}, y^{n}\right) \in A_{\epsilon}^{(n)}} p\left(x^{n}, y^{n}\right) \leq\left|A_{\epsilon}^{(n)}\right| 2^{-n(H(X, Y)-\epsilon)}$$
+$$1-\epsilon \leq \Pr\left(A_{\epsilon}^{(n)}\right)=\sum_{\left(x^{n}, y^{n}\right) \in A_{\epsilon}^{(n)}} p\left(x^{n}, y^{n}\right) \leq\left|A_{\epsilon}^{(n)}\right| 2^{-n(H(X, Y)-\epsilon)}$$
 
 用类似的方法, 
 $$\begin{array}{c}
-\operatorname{Pr}\left(\left(\tilde{X}^{n}, \tilde{Y}^{n}\right) \in A_{\epsilon}^{(n)}\right)=\sum_{\left(x^{n}, y^{n}\right) \in A_{\varepsilon}^{(n)}} p\left(x^{n}\right) p\left(y^{n}\right) \\
+\Pr\left(\left(\tilde{X}^{n}, \tilde{Y}^{n}\right) \in A_{\epsilon}^{(n)}\right)=\sum_{\left(x^{n}, y^{n}\right) \in A_{\varepsilon}^{(n)}} p\left(x^{n}\right) p\left(y^{n}\right) \\
 \geq(1-\epsilon) 2^{n(H(X, Y)-\epsilon)} 2^{-n(H(X)+\epsilon)} 2^{-n(H(Y)+\epsilon)}=(1-\epsilon) 2^{-n(I(X ; Y)+3 \epsilon)}
 \end{array}$$
 

@@ -131,7 +131,7 @@ $$
 
 $$\begin{array}{c}
 X, Y, Z \in\{0,1\} \\
-\operatorname{Pr}(Z=0)=1-p \\
+\Pr(Z=0)=1-p \\
 Y=X+Z(\bmod 2) \\
 H(Y | X=x)=H(p)
 \end{array}$$
@@ -164,7 +164,7 @@ C &=\max _{p(x)} I(X ; Y) \\
 \end{aligned}$$
 
 $$\begin{aligned}
-&\text { By letting } \operatorname{Pr}(X=1)=\pi\\
+&\text { By letting } \Pr(X=1)=\pi\\
 &\begin{array}{l}
 H(Y)=H((1-\pi)(1-\alpha), \alpha, \pi(1-\alpha)) \\
 \quad=H(\alpha)+(1-\alpha) H(\pi) \\

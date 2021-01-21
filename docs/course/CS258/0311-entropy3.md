@@ -158,11 +158,11 @@ H(E, X | \hat{X}) &=H(X | \hat{X})+H(E | X, \bar{X}) \\
 - 第二步,  $H(X|\hat{X},E=1)<=H(x)=H(P_e)$, 熵永远小于字母表的对数值
 - 此外, $H(X | E, \hat{X}) \leq P_{e} \log |x|$ 因为
 $$\begin{aligned}
-H(X | E, \hat{X}) &=\operatorname{Pr}(E=0) H(X | \hat{X}, E=0)+\operatorname{Pr}(E=1) H(X | \hat{X}, E=1) \\
+H(X | E, \hat{X}) &=\Pr(E=0) H(X | \hat{X}, E=0)+\Pr(E=1) H(X | \hat{X}, E=1) \\
 & \leq\left(1-P_{e}\right) 0+P_{e} \log |\mathcal{X}|
 \end{aligned}$$
 
-**Corollary** Let $P_{e}=\operatorname{Pr}(X \neq \hat{X})$, and let $\hat{X}: y \rightarrow x$; then $H\left(P_{e}\right)+P_{e} \log (|x|-1) \geq H(X | Y)$, 由于已知$X$和$\hat{X}$不等, 在估计时, 熵的上界可以调小 (corollary)
+**Corollary** Let $P_{e}=\Pr(X \neq \hat{X})$, and let $\hat{X}: y \rightarrow x$; then $H\left(P_{e}\right)+P_{e} \log (|x|-1) \geq H(X | Y)$, 由于已知$X$和$\hat{X}$不等, 在估计时, 熵的上界可以调小 (corollary)
 
 直观理解:
 $P_e \rightarrow 0$ implies $H(P_e) \rightarrow 0$ implies $H(X|Y)\rightarrow 0$ 错误率趋向于0时, X和Y的关系趋向确定.

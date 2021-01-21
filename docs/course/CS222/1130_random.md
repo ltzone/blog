@@ -56,13 +56,13 @@ categories:
 **Protocol**. Each process requests access to the database at time $t$ with
 probability $p=1 / n$
 
-**Claim**. Let $S[i, t]=$ event that process $i$ succeeds in accessing the database at time $t$. Then $1 /(e \cdot n) \leq \operatorname{Pr}[S(i, t)] \leq 1 /(2 n)$
+**Claim**. Let $S[i, t]=$ event that process $i$ succeeds in accessing the database at time $t$. Then $1 /(e \cdot n) \leq \Pr[S(i, t)] \leq 1 /(2 n)$
 
-**Pf**. By independence, $\operatorname{Pr}[S(i, t)]=p(1-p)^{n-1}$
+**Pf**. By independence, $\Pr[S(i, t)]=p(1-p)^{n-1}$
 - p: process i requests access 
 - ${(1-p)^{n-1}}$ none of remaining $\mathrm{n}-1$ processes request access
-Setting $p=1 / n,$ we have $\operatorname{Pr}[S(i, t)]=1 / n(1-1 / n)^{n-1}$
-- $1/n:$value that maximizes $\operatorname{Pr}[S(\mathrm{i}, \mathrm{t})] \quad$ 
+Setting $p=1 / n,$ we have $\Pr[S(i, t)]=1 / n(1-1 / n)^{n-1}$
+- $1/n:$value that maximizes $\Pr[S(\mathrm{i}, \mathrm{t})] \quad$ 
 - $RHS:$ between $1 / \mathrm{e}$ and $1 / 2$
   
 **Useful facts from calculus**. As $n$ increases from $2,$ the function:
@@ -73,21 +73,21 @@ Setting $p=1 / n,$ we have $\operatorname{Pr}[S(i, t)]=1 / n(1-1 / n)^{n-1}$
 **Claim**. The probability that process $i$ fails to access the database in
 en rounds is at most $1 / e .$ After $e \cdot n(c \ln n)$ rounds, the probability $\leq n^{-c} .$
 
-**Pf**. Let $F[i, t]=$ event that process $i$ fails to access database in rounds 1 through t. By independence and previous claim, we have $\operatorname{Pr}[F[i, t]] \leq(1-1 /(e n))^{t}$
-- Choose $t=[e \cdot n]: \quad \operatorname{Pr}[F(i, t)] \leq\left(1-\frac{1}{e n}\right)^{[e n]} \leq\left(1-\frac{1}{e n}\right)^{e n} \leq \frac{1}{e}$
-- Choose $t=\lceil e \cdot n\rceil\left\lceil_{c} \ln n\right\rceil: \quad \operatorname{Pr}[F(i, t)] \leq\left(\frac{1}{e}\right)^{c \ln n}=n^{-c}$
+**Pf**. Let $F[i, t]=$ event that process $i$ fails to access database in rounds 1 through t. By independence and previous claim, we have $\Pr[F[i, t]] \leq(1-1 /(e n))^{t}$
+- Choose $t=[e \cdot n]: \quad \Pr[F(i, t)] \leq\left(1-\frac{1}{e n}\right)^{[e n]} \leq\left(1-\frac{1}{e n}\right)^{e n} \leq \frac{1}{e}$
+- Choose $t=\lceil e \cdot n\rceil\left\lceil_{c} \ln n\right\rceil: \quad \Pr[F(i, t)] \leq\left(\frac{1}{e}\right)^{c \ln n}=n^{-c}$
 
 
 **Claim**. The probability that all processes succeed within $2 \mathrm{e} \cdot \mathrm{n}$ ln n rounds is $\geq 1-1 / n$
 
 **Pf**. Let $F[t]=$ event that at least one of the $n$ processes fails to access database in any of the rounds 1 through $t$
 $$
-\operatorname{Pr}[F[t]]=\operatorname{Pr}\left[\bigcup_{i=1}^{n} F[i, t]\right] \leq \sum_{i=1}^{n} \operatorname{Pr}[F[i, t]] \leq n\left(1-\frac{1}{e n}\right)^{t}
+\Pr[F[t]]=\Pr\left[\bigcup_{i=1}^{n} F[i, t]\right] \leq \sum_{i=1}^{n} \Pr[F[i, t]] \leq n\left(1-\frac{1}{e n}\right)^{t}
 $$
 - $\le_1$union bound
 - $\le_2$previous slide
 
-Choosing $t=2 \left\lceil en \cdot {c \ln n}\right\rceil$ yields $\operatorname{Pr}[F[t]] \leq n \cdot n^{-2}=1 / n$
+Choosing $t=2 \left\lceil en \cdot {c \ln n}\right\rceil$ yields $\Pr[F[t]] \leq n \cdot n^{-2}=1 / n$
 
 ## global min cut
 
@@ -126,7 +126,7 @@ Choosing $t=2 \left\lceil en \cdot {c \ln n}\right\rceil$ yields $\operatorname{
 
 $$
 \begin{aligned}
-\operatorname{Pr}\left[E_{1} \cap E_{2} \cdots \cap E_{n-2}\right] &=\operatorname{Pr}\left[E_{1}\right] \times \operatorname{Pr}\left[E_{2} \mid E_{1}\right] \times \cdots \times \operatorname{Pr}\left[E_{n-2} \mid E_{1} \cap E_{2} \cdots \cap E_{n-3}\right] \\
+\Pr\left[E_{1} \cap E_{2} \cdots \cap E_{n-2}\right] &=\Pr\left[E_{1}\right] \times \Pr\left[E_{2} \mid E_{1}\right] \times \cdots \times \Pr\left[E_{n-2} \mid E_{1} \cap E_{2} \cdots \cap E_{n-3}\right] \\
 & \geq\left(1-\frac{2}{n}\right)\left(1-\frac{2}{n-1}\right) \cdots\left(1-\frac{2}{4}\right)\left(1-\frac{2}{3}\right) \\
 &=\left(\frac{n-2}{n}\right)\left(\frac{n-3}{n-1}\right) \cdots\left(\frac{2}{4}\right)\left(\frac{1}{3}\right) \\
 &=\frac{2}{n(n-1)} \\
@@ -168,19 +168,19 @@ $$
 **Expectation**. Given a discrete random variables $X,$ its expectation $E[X]$
 is defined by:
 $$
-E[X]=\sum_{j=0}^{\infty} j \operatorname{Pr}[X=j]
+E[X]=\sum_{j=0}^{\infty} j \Pr[X=j]
 $$
 
 **Waiting for a first success**. Coin is heads with probability $p$ and tails with
 probability $1-p .$ How many independent flips $X$ until first heads?
 $$
-E[X]=\sum_{j=0}^{\infty} j \cdot \operatorname{Pr}[X=j]=\sum_{j=0}^{\infty} j(1-p)^{j-1} p=\frac{p}{1-p} \sum_{j=0}^{\infty} j(1-p)^{j}=\frac{p}{1-p} \cdot \frac{1-p}{p^{2}}=\frac{1}{p}
+E[X]=\sum_{j=0}^{\infty} j \cdot \Pr[X=j]=\sum_{j=0}^{\infty} j(1-p)^{j-1} p=\frac{p}{1-p} \sum_{j=0}^{\infty} j(1-p)^{j}=\frac{p}{1-p} \cdot \frac{1-p}{p^{2}}=\frac{1}{p}
 $$
 
 ### Two properties
 
-**Useful property**. If $X$ is a $0 / 1$ random variable, $E[X]=\operatorname{Pr}[X=1]$
-**Pf**. $\quad E[X]=\sum_{j=0}^{\infty} j \cdot \operatorname{Pr}[X=j]=\sum_{j-0}^{1} j \cdot \operatorname{Pr}[X=j]=\operatorname{Pr}[X=1]$
+**Useful property**. If $X$ is a $0 / 1$ random variable, $E[X]=\Pr[X=1]$
+**Pf**. $\quad E[X]=\sum_{j=0}^{\infty} j \cdot \Pr[X=j]=\sum_{j-0}^{1} j \cdot \Pr[X=j]=\Pr[X=1]$
 
 **Linearity of expectation**. Given two random variables $X$ and $Y$ defined over the same probability space, $E[X+Y]=E[X]+E[Y]$
 > X Y not necessarily independent
@@ -201,7 +201,7 @@ been turned over already. Guess a card from full deck uniformly at random.
 **Pf**. [ surprisingly effortless using linearity of expectation ]
 - Let $X_{i}=1$ if $i^{t h}$ prediction is correct and 0 otherwise.
 - Let $X=$ number of correct guesses $=X_{1}+\ldots+X_{n}$
-- $E\left[X_{i}\right]=\operatorname{Pr}\left[X_{i}=1\right]=1 / n$
+- $E\left[X_{i}\right]=\Pr\left[X_{i}=1\right]=1 / n$
 $\bullet$
 - $E[X]=E\left[X_{1}\right]+\ldots+E\left[X_{n}\right]=1 / n+\ldots+1 / n=1$
 > Make use of lineraity of Expectation !!
@@ -217,7 +217,7 @@ not yet seen.
 **Pf**.
 - Let $X_{i}=1$ if $i^{t h}$ prediction is correct and 0 otherwise.
 - Let $X=$ number of correct guesses $=X_{1}+\ldots+X_{n}$
-- $E\left[X_{i}\right]=\operatorname{Pr}\left[X_{i}=1\right]=1 /(n-i-1)$
+- $E\left[X_{i}\right]=\Pr\left[X_{i}=1\right]=1 /(n-i-1)$
 - $E[X]=E\left[X_{1}\right]+\ldots+E\left[X_{n}\right]=1 / n+\ldots+1 / 2+1 / 1=H(n)$
   - linearity of expectation
   - $\ln (n+1)<H(n)<1+\ln n$
