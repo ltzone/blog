@@ -19,7 +19,7 @@ Problem: the effect of an action exists uncertainty. (i.e. the agent may not fun
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Introduction and Definition
 

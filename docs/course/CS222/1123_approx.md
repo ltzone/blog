@@ -15,7 +15,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 
 ## Coping with NP-completeness

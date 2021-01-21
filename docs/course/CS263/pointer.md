@@ -17,7 +17,7 @@ Week 13 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## A Language With Addresses And Pointers
 

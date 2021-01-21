@@ -16,7 +16,7 @@ Week 8 of 2020 Spring.
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 
 过程、函数、子程序的实现步骤

@@ -15,7 +15,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## P vs NP
 

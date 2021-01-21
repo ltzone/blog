@@ -16,7 +16,7 @@ Week 6 of 2020 Spring. Channel Coding Theorem: Achievability and Reverse
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Recall: Channel Model for Telegraph
 

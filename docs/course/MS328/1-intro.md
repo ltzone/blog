@@ -18,7 +18,7 @@ Week 1 of 2020 Spring. Intro to Big Data Analysis.
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## 关于统计
 

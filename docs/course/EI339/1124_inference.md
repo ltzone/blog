@@ -15,7 +15,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 Idea: Make use of conditional independence
 

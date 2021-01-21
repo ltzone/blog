@@ -20,7 +20,7 @@ Worst-Case vs. Average Case
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Expectimax Search
 

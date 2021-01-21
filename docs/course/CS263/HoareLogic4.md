@@ -18,7 +18,7 @@ Week 2 of 2020 Spring. Use Hoare Logic to Prove Programs
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Program correctness proof in Coq
 

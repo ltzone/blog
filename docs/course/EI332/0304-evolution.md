@@ -18,7 +18,7 @@ Week1 of 2020 Spring. Evolution of Computers
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 
 ## Traditional Computers

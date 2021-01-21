@@ -18,7 +18,7 @@ Week 2 of 2020 Spring. Performance of Computers
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 
 ## 提高性能

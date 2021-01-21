@@ -20,7 +20,7 @@ $$
 $$
 
 <!--more-->
-[toc]
+[[toc]]
 
 
 ## Reminder: Linear Classifiers

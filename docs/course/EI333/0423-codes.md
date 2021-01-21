@@ -18,7 +18,7 @@ Week 8 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 In this lecture, we describe a selection of transformations to illustrate **a disciplined approach** to implementation to avoid system degradation(避免degradation，降低原有系统的性能表现). 
 1. Operations on the object model: 

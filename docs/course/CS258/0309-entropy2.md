@@ -17,7 +17,7 @@ Week 2 of 2020 Spring. More about Entropy
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Relative Entropy
 

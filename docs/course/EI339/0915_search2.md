@@ -17,7 +17,7 @@ categories:
 A further discussion on Search Algorithms, (depth-limited/iterative depth first/uniform cost) and search summary.
 
 
-[toc]
+[[toc]]
 
 
 ## Uninformed Search Problems (cont'd)

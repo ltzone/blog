@@ -18,7 +18,7 @@ Week 2 of 2020 Spring. More about Hoare Logic
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 Recall: 此前证明中的问题
 1. 我们还没有对赋值的行为做出规定. 都是以单独声明的形式呈现的

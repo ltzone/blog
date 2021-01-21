@@ -18,7 +18,7 @@ Week 1 of 2020 Spring. An Introduction to Hoare Logic.
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Assertions
 

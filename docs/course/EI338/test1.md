@@ -13,7 +13,7 @@ categories:
 ----->
 
 
-[toc]
+[[toc]]
 
 <!--more-->
 

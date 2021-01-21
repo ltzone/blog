@@ -17,7 +17,7 @@ categories:
 
 Last Updated Dec 26, 10:00 PM
 
-[toc]
+[[toc]]
 
 
 <!--more-->

@@ -16,7 +16,7 @@ Week 9 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## 流水线
 

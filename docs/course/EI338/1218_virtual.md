@@ -23,7 +23,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Background
 

@@ -16,7 +16,7 @@ Week 6 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## An Overview of Object Design
 

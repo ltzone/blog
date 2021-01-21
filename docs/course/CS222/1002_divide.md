@@ -27,7 +27,7 @@ Consequence.
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 
 

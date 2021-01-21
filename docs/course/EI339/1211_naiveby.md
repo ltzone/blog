@@ -14,7 +14,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 
 ## Machine Learning

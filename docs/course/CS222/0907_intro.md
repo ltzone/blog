@@ -16,7 +16,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Euclid’s Algorithm
 $$gcd(m,n) = gcd(n, m \space \text{mod} \space n)$$

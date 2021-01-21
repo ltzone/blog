@@ -32,4 +32,4 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]

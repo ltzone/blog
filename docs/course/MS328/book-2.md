@@ -19,7 +19,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## 经验误差与过拟合
 

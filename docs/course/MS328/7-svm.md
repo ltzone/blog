@@ -16,7 +16,7 @@ Week 7 of 2020 Spring.
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## 引子
 

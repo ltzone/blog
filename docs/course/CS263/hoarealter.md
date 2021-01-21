@@ -16,7 +16,7 @@ Week 8 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 我们能否选择一组不同的霍尔逻辑推理规则（如Assignment Rule），我们已经证明了选用backward rule的霍尔逻辑是可靠且完全的。
 

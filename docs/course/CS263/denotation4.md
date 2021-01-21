@@ -16,7 +16,7 @@ Week 5 of 2020 Spring.
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Inductively Defined Denotational Semantics
 

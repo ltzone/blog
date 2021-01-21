@@ -16,7 +16,7 @@ Week 3 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 (乱涂公式警告)
 

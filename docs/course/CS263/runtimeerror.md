@@ -16,7 +16,7 @@ Week 12 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Review: Control Flow
 

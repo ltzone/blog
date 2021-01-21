@@ -18,7 +18,7 @@ Week 1 of 2020 Spring. An Introduction to Computer Composition.
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Programs
 

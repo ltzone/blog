@@ -16,7 +16,7 @@ Week 6 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## 理论分类器
 

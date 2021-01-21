@@ -17,7 +17,7 @@ Week 5 of 2020 Spring.
 <!--more-->
 
 
-[toc]
+[[toc]]
 
 > The problem of predicting a discrete random variable $Y$ from another random variable $X$ is called
 > - classification(分类);

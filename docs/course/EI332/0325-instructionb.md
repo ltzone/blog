@@ -16,7 +16,7 @@ Week 5 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 设计目标:
 To find a language that makes it easy to build the hardware and the **compiler**(software) while maximizing performance and minimizing cost and power.

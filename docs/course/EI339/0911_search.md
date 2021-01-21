@@ -14,7 +14,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Agents(智能体)
 

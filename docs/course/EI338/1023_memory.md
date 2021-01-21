@@ -15,7 +15,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Introduction
 1. Programmers want unlimited amounts of memory with low latency

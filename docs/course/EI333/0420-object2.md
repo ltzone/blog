@@ -16,7 +16,7 @@ Week 8 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 增加细节，决策实现。
 

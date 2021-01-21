@@ -16,7 +16,7 @@ Week 8 of 2020 Spring
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 Recall:
 - 可证：可以由推理规则推出

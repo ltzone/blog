@@ -18,7 +18,7 @@ Week 1 of 2020 Spring. Entropy
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Entropy: Definition
 

@@ -18,7 +18,7 @@ Week 2 of 2020 Spring. More about entropy
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## Independence Bound on Entropy
 

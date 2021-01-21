@@ -14,7 +14,7 @@ categories:
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 ## What is intelligence
 

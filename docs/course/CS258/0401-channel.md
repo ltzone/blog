@@ -16,7 +16,7 @@ Week 5 of 2020 Spring.
 
 <!--more-->
 
-[toc]
+[[toc]]
 
 Noise cannot be eliminated from our life. We should learn how to cope with it.
 

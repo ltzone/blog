@@ -7,9 +7,12 @@ module.exports = {
         ['link', { rel: "stylesheet", href: "https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css" }]
     ],
     markdown: {
-        toc: { includeLevel: [1, 2] },
         extendMarkdown: md => {
-          md.use(require("markdown-it-katex"))
+          md.use(require("markdown-it-katex"));
+          md.use(require('markdown-it-anchor'));
+          md.use(require('markdown-it-table-of-contents'), {
+        	      includeLevel: [2, 3]
+        	    })
         }
     }
 }
