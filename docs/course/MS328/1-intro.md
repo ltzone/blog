@@ -1,4 +1,6 @@
----
+# 1 Introduction
+
+<!-----
 title: 【Big Data】1 Introduction
 url: bd-intro
 date: 2020-03-05 18:03:41
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 1 of 2020 Spring. Intro to Big Data Analysis.
 

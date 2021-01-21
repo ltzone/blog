@@ -1,4 +1,6 @@
----
+# 线性模型：Part I
+
+<!-----
 title: 【大数据分析】线性模型：Part I
 url: bd-linear1
 date: 2020-03-19 18:02:03
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 3 of 2020 Spring
 

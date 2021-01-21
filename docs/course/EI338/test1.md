@@ -1,4 +1,6 @@
----
+# Test Yourself (1)
+
+<!-----
 title: 【System Engineering】Test Yourself (1)
 url: se2-test1
 date: 2020-12-26 23:37:55
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 
 [toc]

@@ -1,4 +1,6 @@
----
+# Mapping Models to Code
+
+<!-----
 title: 【Software Engineering】Mapping Models to Code
 url: se-codes
 date: 2020-04-23 10:00:25
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 8 of 2020 Spring
 

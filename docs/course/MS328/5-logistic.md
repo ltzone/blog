@@ -1,4 +1,6 @@
----
+# 逻辑回归模型
+
+<!-----
 title: 【Big Data Analysis】逻辑回归模型
 url: bd-logistic
 date: 2020-04-02 18:19:57
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 5 of 2020 Spring.
 

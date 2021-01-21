@@ -1,4 +1,6 @@
----
+# Final Review
+
+<!-----
 title: 【System Engineering】Final Review
 url: se2-review
 date: 2020-12-25 12:56:03
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 For CA notes, online notes are not complete, please see slides. OS notes are complete. Happy reviewing!
 

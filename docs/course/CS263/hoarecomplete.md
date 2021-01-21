@@ -1,4 +1,6 @@
----
+# Completeness of Hoare Logic
+
+<!-----
 title: 【Programming Language】Completeness of Hoare Logic
 url: pl-hoarecomplete
 date: 2020-04-21 14:25:10
@@ -131,7 +133,7 @@ IH2: for any assertion `Q`, there is another assertion `P` such that `wp P c2 Q`
 ```Coq
 (st, La) |== P iff for any st', if ceval c1 st st', then (st', La) |== Q0;
 (st, La) |== Q0 iff for any st', if ceval c2 st st', then (st', La) |== Q.
-----------------
+----->-------------
 (st, La) |== P iff for any st' st'',
     if ceval c1 st st' and ceval c2 st' st'', then (st'', La) |== Q.
 ```

@@ -1,4 +1,6 @@
----
+# OS7 - Synchronization Examples
+
+<!-----
 title: 【System Engineering】OS7 - Synchronization Examples
 url: se2-syncexp
 date: 2020-12-04 14:33:25
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 
 - Explain the _bounded-buffer_, _readers-writers_, and _dining philosophers synchronization_ problems.

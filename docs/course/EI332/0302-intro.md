@@ -1,4 +1,6 @@
----
+# 1 Introduction
+
+<!-----
 title: 【Computer Composition】1 Introduction
 url: cc-intro
 date: 2020-03-02 14:04:45
@@ -8,7 +10,7 @@ tags:
 categories:
 - Computer Composition
 - Courses
----
+----->
 
 Week 1 of 2020 Spring. An Introduction to Computer Composition.
 

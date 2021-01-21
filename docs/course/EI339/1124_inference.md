@@ -1,4 +1,6 @@
----
+# Bayes' Nets - Inference
+
+<!-----
 title: 【Artificial Intelligence】Bayes' Nets - Inference
 url: ai-bninference
 date: 2020-11-24 14:09:16
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 
 <!--more-->

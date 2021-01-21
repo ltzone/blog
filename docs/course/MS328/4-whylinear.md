@@ -1,4 +1,6 @@
----
+# 线性模型
+
+<!-----
 title: 【大数据分析】线性模型
 url: bd-whylinear
 date: 2020-03-26 18:03:39
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 4 of 2020 Spring
 

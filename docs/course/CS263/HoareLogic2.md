@@ -1,4 +1,6 @@
----
+# Hoare Logic 2
+
+<!-----
 title: 【Programming Language】Hoare Logic 2
 url: pl-hoare2
 date: 2020-03-05 08:02:32
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 1 of 2020 Spring. More about Hoare Logic
 

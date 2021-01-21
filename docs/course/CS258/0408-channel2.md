@@ -1,4 +1,6 @@
----
+# Channel Capacity Theorems
+
+<!-----
 title: 【Information Theory】Channel Capacity Theorems
 url: it-channel2
 date: 2020-04-08 10:03:57
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 6 of 2020 Spring. Channel Coding Theorem: Achievability and Reverse
 

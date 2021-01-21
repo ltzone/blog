@@ -1,4 +1,6 @@
----
+# 2-2 Heuristics & Constraint Satisfaction Problems
+
+<!-----
 title: 【Artificial Intelligence】2-2 Heuristics & Constraint Satisfaction Problems
 url: ai-informed
 date: 2020-09-18 10:01:20
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 
 <!--more-->

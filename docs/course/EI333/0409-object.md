@@ -1,4 +1,6 @@
----
+# Object Design - Reusing Pattern Solutions
+
+<!-----
 title: 【Software Engineering】Object Design - Reusing Pattern Solutions
 url: se-object
 date: 2020-04-09 10:03:06
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 6 of 2020 Spring
 

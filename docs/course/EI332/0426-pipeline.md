@@ -1,4 +1,6 @@
----
+# The Processor - Pipeline
+
+<!-----
 title: 【Computer Composition】The Processor - Pipeline
 url: cc-pipeline
 date: 2020-04-26 14:12:04
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 9 of 2020 Spring
 

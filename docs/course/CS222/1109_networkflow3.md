@@ -1,4 +1,6 @@
----
+# Network Flow (III)
+
+<!-----
 title: 【Algorithm】Network Flow (III)
 url: al-network3
 date: 2020-11-09 13:02:26
@@ -139,7 +141,7 @@ then $M$ is a min-cost perfect matching.
 
 
 step | $d(v)$ | alternating path | reduced costs
----- | -----  | ---------------- | -------------
+----->- | -----  | ---------------- | -------------
 0 | ![](./img/11-09-16-17-01.png) | | ![](./img/11-09-16-17-11.png)
 1 | ![](./img/11-09-16-17-22.png) | ![](./img/11-09-16-17-30.png) | ![](./img/11-09-16-17-36.png)
 2 | ![](./img/11-09-16-17-45.png) | ![](./img/11-09-16-17-54.png) | ![](./img/11-09-16-18-00.png)

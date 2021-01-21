@@ -1,4 +1,6 @@
----
+# 2 Evolution and Performance (cont'd)
+
+<!-----
 title: 【Computer Composition】2 Evolution and Performance (cont'd)
 url: cc-evolution2
 date: 2020-03-09 13:58:09
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 2 of 2020 Spring. Performance of Computers
 

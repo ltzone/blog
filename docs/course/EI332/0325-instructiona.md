@@ -1,4 +1,6 @@
----
+# Instructions (Part A)
+
+<!-----
 title: 【Computer Composition】Instructions (Part A)
 url: cc-instructiona
 date: 2020-03-25 09:26:55
@@ -147,7 +149,7 @@ add $s1, $s2, $t0 # g = h + A[8]
 如果将一个32位的整数0x_12_(H)3456_78_(L) (or hex文件)存放到一个整型变量（int ）中，这个整型变量采用大端或者小端模式在内存中的存储由下表所示。为简单起见，本文使用OP3表示一个32位数据的最高字节MSB（Most Significant Byte），使用OP0表示一个32位数据最低字节LSB（Least Significant Byte）。
 
 地址偏移| 大端模式 | 小端模式
--------|---------|-------
+----->----|---------|-------
 0x00(L) | 12（OP0）| 78（OP3）
 0x01 | 34（OP1）| 56（OP2）
 0x02 | 56（OP2）| 34（OP1）

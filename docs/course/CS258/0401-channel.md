@@ -1,4 +1,6 @@
----
+# Channel Capacity
+
+<!-----
 title: 【Information Theory】Channel Capacity
 url: it-channel
 date: 2020-04-01 10:01:29
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 5 of 2020 Spring.
 

@@ -1,4 +1,6 @@
----
+# OS5 - CPU Scheduling
+
+<!-----
 title: 【System Engineering】OS5 - CPU Scheduling
 url: se2-schedule2
 date: 2020-11-13 14:28:41
@@ -200,7 +202,7 @@ $P_4$ | 3 | 5
 #### Example with q=4
 
 Process | Burst Time 
------ |  -----
+----->-- |  -----
 $P_1$ | 24 
 $P_2$ | 3
 $P_3$ | 3 

@@ -1,4 +1,6 @@
----
+# 线性分类器
+
+<!-----
 title: 【大数据分析】线性分类器
 url: bd-classify
 date: 2020-04-09 18:03:26
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 6 of 2020 Spring
 

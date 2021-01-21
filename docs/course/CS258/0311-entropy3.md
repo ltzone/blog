@@ -1,4 +1,6 @@
----
+# 2 Entropy (cont'd 2)
+
+<!-----
 title: 【Information Theory】2 Entropy (cont'd 2)
 url: it-entropy3
 date: 2020-03-11 10:01:59
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 2 of 2020 Spring. More about entropy
 

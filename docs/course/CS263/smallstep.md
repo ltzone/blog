@@ -1,4 +1,6 @@
----
+# Small Step Semantics
+
+<!-----
 title: 【Programming Language】Small Step Semantics
 url: pl-smallstep
 date: 2020-04-07 14:01:09
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 6 of 2020 Spring
 

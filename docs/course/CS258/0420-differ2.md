@@ -1,4 +1,6 @@
----
+# Differential Entropy 2
+
+<!-----
 title: 【Information Theory】Differential Entropy 2
 url: it-diff2
 date: 2020-04-20 08:03:26
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 8 of 2020 Spring.
 

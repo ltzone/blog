@@ -1,4 +1,6 @@
----
+# Lambda Calculus 2
+
+<!-----
 title: 【Programming Language】Lambda Calculus 2
 url: pl-lambda2
 date: 2020-06-02 14:14:47
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 14 of 2020 Spring
 

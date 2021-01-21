@@ -1,4 +1,6 @@
----
+# Concurrency
+
+<!-----
 title: 【Programming Language】Concurrency
 url: pl-concurrency
 date: 2020-06-11 09:06:56
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 15 of 2020 Spring
 

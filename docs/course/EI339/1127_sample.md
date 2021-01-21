@@ -1,4 +1,6 @@
----
+# Bayes' Nets - Sampling
+
+<!-----
 title: 【Artificial Intelligence】Bayes' Nets - Sampling
 url: ai-sample
 date: 2020-11-27 10:08:51
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 
 <!--more-->

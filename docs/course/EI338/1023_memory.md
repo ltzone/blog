@@ -1,4 +1,6 @@
----
+# CA3 - Memory Hierarchy Design
+
+<!-----
 title: 【System Engineering】CA3 - Memory Hierarchy Design
 url: se2-memory
 date: 2020-10-23 15:03:59
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 
 <!--more-->

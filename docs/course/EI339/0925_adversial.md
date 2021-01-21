@@ -1,4 +1,6 @@
----
+# 3-2 Adversarial Search
+
+<!-----
 title: 【Artificial Intelligence】3-2 Adversarial Search
 url: ai-adversarial
 date: 2020-09-25 10:01:04
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 <!--more-->
 

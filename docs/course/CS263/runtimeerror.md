@@ -1,4 +1,6 @@
----
+# Run Time Error
+
+<!-----
 title: 【Programming Language】Run Time Error
 url: pl-runtimeerror
 date: 2020-05-14 08:01:38
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 12 of 2020 Spring
 

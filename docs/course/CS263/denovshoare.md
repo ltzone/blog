@@ -1,4 +1,6 @@
----
+#  Denotations VS Triples 1
+
+<!-----
 title: 【Programming Language】 Denotations VS Triples 1
 url: pl-denovshoare
 date: 2020-04-14 14:01:49
@@ -90,7 +92,7 @@ Inductive aexp' : Type :=
 
 ```Coq
 {[Y]} = {[X]} * 2 + 1 |-- EXISTS z, {[(Y + 1) - 2 * z]} = 0
-----------------------
+----->-------------------
 {[Y]} = {[X]} * 2 + 1 |-- {[(Y + 1) - 2 * ({[X]} + 1) ]} = 0
 ```
 

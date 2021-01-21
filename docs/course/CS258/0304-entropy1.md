@@ -1,4 +1,6 @@
----
+#  Entropy (1)
+
+<!-----
 title: 【Information Theory】 Entropy (1)
 url: it-entropy1
 date: 2020-03-04 10:02:39
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 1 of 2020 Spring. Entropy
 

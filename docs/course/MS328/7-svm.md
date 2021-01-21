@@ -1,4 +1,6 @@
----
+# 支持向量机
+
+<!-----
 title: 【Big Data Analysis】支持向量机
 url: bd-svm
 date: 2020-04-16 18:07:57
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 7 of 2020 Spring.
 

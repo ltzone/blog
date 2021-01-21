@@ -1,4 +1,6 @@
----
+# 1-2 Uninformed Search
+
+<!-----
 title: 【Artificial Intelligence】1-2 Uninformed Search
 url: ai-search
 date: 2020-09-11 10:01:41
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 <!--more-->
 

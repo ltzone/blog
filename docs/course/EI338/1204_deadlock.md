@@ -1,4 +1,6 @@
----
+# OS8 - Deadlocks
+
+<!-----
 title: 【System Engineering】OS8 - Deadlocks
 url: se2-deadlocks
 date: 2020-12-04 15:26:45
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 - Illustrate how deadlock can occur when mutex locks are used
 - Define the **four necessary conditions** that characterize deadlock

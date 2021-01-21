@@ -1,4 +1,6 @@
----
+# Approximation Algorithms
+
+<!-----
 title: 【Algorithm】Approximation Algorithms
 url: al-approx
 date: 2020-11-23 13:19:09
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 
 <!--more-->

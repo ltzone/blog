@@ -1,4 +1,6 @@
----
+# Denotational Semantics
+
+<!-----
 title: 【Programming Language】Denotational Semantics
 url: pl-deno
 date: 2020-03-24 14:00:23
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 4 of 2020 Spring. 指称语义
 

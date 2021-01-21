@@ -1,4 +1,6 @@
----
+# First Order Logic
+
+<!-----
 title: 【Programming Language】First Order Logic
 url: pl-forder
 date: 2020-03-17 14:03:56
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 3 of 2020 Spring
 

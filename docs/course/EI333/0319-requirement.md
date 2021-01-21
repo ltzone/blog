@@ -1,4 +1,6 @@
----
+# 4 Requirement Elicitation
+
+<!-----
 title: 【Software Engineering】4 Requirement Elicitation
 url: se-require
 date: 2020-03-19 10:01:11
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 3 of 2020 Spring
 

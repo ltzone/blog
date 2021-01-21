@@ -1,4 +1,6 @@
----
+# Perceptrons and Logistic Regression
+
+<!-----
 title: 【Artificial Intelligence】Perceptrons and Logistic Regression
 url: ai-regression
 date: 2020-12-15 14:09:18
@@ -181,7 +183,7 @@ where k is the dimension of the vector and $\delta$ is related to the distance b
 ### Non-Separable Case: From Deterministic Decision to Probabilistic Decision
 
 Deterministic Decision | Probabilistic Decision
----------------------- | ----------------------
+----->------------------- | ----------------------
 ![](./img/12-15-15-24-37.png) | ![](./img/12-15-15-24-45.png)
 > The distance from the point to the bound is its competitive probability
 

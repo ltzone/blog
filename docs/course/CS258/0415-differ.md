@@ -1,4 +1,6 @@
----
+# Differential Entropy
+
+<!-----
 title: 【Information Theory】Differential Entropy
 url: it-differ
 date: 2020-04-15 10:03:13
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 7 of 2020 Spring
 

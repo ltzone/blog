@@ -1,4 +1,6 @@
----
+# Denotation VS Small-Step
+
+<!-----
 title: 【Programming Language】Denotation VS Small-Step
 url: pl-denovsstep
 date: 2020-04-09 08:06:30
@@ -116,7 +118,7 @@ Proof Idea: 对程序c的结构进行归纳.
 ```Coq
 IH1: forall st1 st2, (c1, st1) (CSkip, st2) -> ceval c2 st1 st2
 IH2: forall st1 st2, (c2, st1) (CSkip, st2) -> ceval c2 st1 st2
--------
+----->----
 (c1;;c2, st1) (CSkip, st2) -> ceval (c1;;c2) st1 st2
 ```
 

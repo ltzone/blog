@@ -1,4 +1,6 @@
----
+# Divide and Conquer (I)
+
+<!-----
 title: 【Algorithm】Divide and Conquer (I)
 url: al-divide
 date: 2020-10-02 15:27:46
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Divide-and-conquer.
 - Divide up problem into several subproblems.

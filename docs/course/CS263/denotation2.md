@@ -1,4 +1,6 @@
----
+#  Denotational Semantics 2
+
+<!-----
 title: 【Programming Language】 Denotational Semantics 2
 url: pl-deno2
 date: 2020-03-26 08:11:48
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 4 of 2020 Spring
 

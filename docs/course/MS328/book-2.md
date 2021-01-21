@@ -1,4 +1,6 @@
----
+# Chapter 2 Notes
+
+<!-----
 title: 【机器学习(西瓜书)】Chapter 2 Notes
 url: ml-ch2
 date: 2020-03-11 23:40:42
@@ -9,7 +11,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 2020 Spring. MS328 Extended Reading. 西瓜书读书笔记, 模型评估与选择 
 

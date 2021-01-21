@@ -1,4 +1,6 @@
----
+# Intractability (II)
+
+<!-----
 title: 【Algorithm】Intractability (II)
 url: al-intract2
 date: 2020-11-16 15:08:57
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 
 <!--more-->

@@ -1,4 +1,6 @@
----
+# Instructions (Part D)：Supporting Procedures in Computer Hardware
+
+<!-----
 title: 【Computer Composition】Instructions (Part D)：Supporting Procedures in Computer Hardware
 url: cc-instructiond
 date: 2020-04-20 14:02:52
@@ -8,7 +10,7 @@ tags:
 categories: 
 - Courses
 
----
+----->
 
 Week 8 of 2020 Spring.
 
