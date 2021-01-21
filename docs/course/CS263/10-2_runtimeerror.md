@@ -313,7 +313,7 @@ Inductive cstep : (com * state) -> (com * state) -> Prop :=
 
 修改霍尔三元组的含义：
 
-Originally, we use a Hoare triple  `{{ P }}  c  {{ Q }}`  to claim: if command `c` is started in a state satisfying assertion `P`, and if `c` eventually terminates, then the ending state will satisfy assertion `Q`. Now, since run-time-error and nondeterminism are taken into consideration, we modify its meaning as follows:
+Originally, we use a Hoare triple  `{ P }  c  { Q }`  to claim: if command `c` is started in a state satisfying assertion `P`, and if `c` eventually terminates, then the ending state will satisfy assertion `Q`. Now, since run-time-error and nondeterminism are taken into consideration, we modify its meaning as follows:
 > If command `c` is started in a state satisfying assertion `P`, its execution is always safe. In addition, if it terminates, the ending state should satisfy `Q`.
 There are two key points in this statement. 
 1. As long as the precondition holds, the execution is run-time-error free, no matter what choices are made at every nondeterministic point. 2. As long as the precondition holds and the execution terminates, the ending state satisfies the postcondition, no matter what choices are made at every nondeterministic point.
@@ -340,7 +340,7 @@ Axiom hoare_consequence : forall (P P' Q Q' : Assertion) c,
 
 ### Changed
 
-如果在不safe的情况下`{{P AND [[b]]}}`，是未定义的，在技术实现上可以evaluate到任意真值。下面的写法可以根据实际需要做格式上的变化。Safe的含义是evaluate的过程中不会产生运行时错误。
+如果在不safe的情况下`{P AND [[b]]}`，是未定义的，在技术实现上可以evaluate到任意真值。下面的写法可以根据实际需要做格式上的变化。Safe的含义是evaluate的过程中不会产生运行时错误。
 
 ```Coq
 Axiom hoare_if : forall P Q b c1 c2,

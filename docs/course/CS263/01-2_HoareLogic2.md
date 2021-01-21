@@ -139,7 +139,7 @@ On the other side,  A loop invariant `P` should not be too weak to _derive meani
 
 Note the above specification is already good enough, it can be checked by the following props.
 1. It ensures the correctness of every loop
-2. By combining `P` with `NOT [[b]]` (`NOT 3<=X`), we can derive that `{{[[X]]=1 AND [[Y]]=3}}`
+2. By combining `P` with `not [[b]]` i.e. `not 3<=X`, we can derive that `{ [[X]]=1 AND [[Y]] = 3 }`
 
 But we should abbreviate the specification a little.
 

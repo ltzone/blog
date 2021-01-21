@@ -229,11 +229,11 @@ This proves the expressiveness lemma.
 
 ## Establishing Triples With Weakest Precondtions
 
-如果P是c,Q的最弱前条件，（最弱前条件必须等价，但不一定唯一），那么`{{P}} c {{Q}}`是可证的。我们现在证明的是所有最弱前条件对应的霍尔三元组可证，而不是我们刚刚构造的最弱前条件。归纳
+如果P是c,Q的最弱前条件，（最弱前条件必须等价，但不一定唯一），那么`{P} c {Q}`是可证的。我们现在证明的是所有最弱前条件对应的霍尔三元组可证，而不是我们刚刚构造的最弱前条件。归纳
 
 ### Skip
 
-If `P` is a weakest precondition of `c` and `Q`, we know that `P` is actually equivalent with `Q`. Q也是最弱前条件， Thus, ` P IMPLY Q ` is a valid first order proposition. 由于Q c Q可证，且P是最弱前条件，By the assertion derivation logic's completeness, we know that `P |-- Q` which is immediately followed by `|-- {{ P }} c {{ Q }}`according to the consequence rule.
+If `P` is a weakest precondition of `c` and `Q`, we know that `P` is actually equivalent with `Q`. Q也是最弱前条件， Thus, ` P IMPLY Q ` is a valid first order proposition. 由于Q c Q可证，且P是最弱前条件，By the assertion derivation logic's completeness, we know that `P |-- Q` which is immediately followed by `|-- { P } c { Q }`according to the consequence rule.
 
 ### Assignment
 
@@ -255,7 +255,7 @@ This is the only interesting case! Suppose `wp P c Q`. We know:
       (st, La) |== P if and only if
       for any st', if (ceval c st st'), then (st', La) |== Q.
 
-1. Goal1: `|-- {{ P AND {[ b ]} }} c1 {{ P }}.`
+1. Goal1: `|-- { P AND {[ b ]} } c1 {{ P }}.`
    Now, consider the weakest precondition of `c1` and `P`. We claim that `P AND {[ b ]}` is stronger than weakest preconditions of `c1` and `P`. 
    我们已知，P是整个循环的最弱前条件，我们现在检查经过一次循环，是不是还是符合b。
 
@@ -288,15 +288,15 @@ is a valid assertion. By the first order logic's completeness,
 
 By induction hypothesis:
 
-    |-- {{ P' }} c1 {{ P }}.
+    |-- { P' } c1 { P }.
 
 Then by the consequence rule:
 
-    |-- {{ P AND {[ b ]} }} c1 {{ P }}.
+    |-- { P AND {[ b ]} } c1 { P }.
 
 Thus,
 
-    |-- {{ P }} c {{ P AND NOT {[ b ]} }}.
+    |-- { P } c { P AND NOT {[ b ]} }.
 
 2. At the same time, due to `wp P c Q`, it is obvious that if `(st, La) |== P AND NOT {[ b ]}` on some interpretation `(st, La)`, then `(st, La) |== Q`. In other words, `(P AND NOT {[ b ]}) IMPLY Q` is valid. 一方面，最弱前条件表明Q必成立，另一方面，非b表明不执行一次循环
  

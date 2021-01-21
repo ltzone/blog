@@ -1,4 +1,4 @@
-# Denotation VS Triples 2
+# Denotations VS Triples 2
 
 <!-----
 title: 【Programming Language】Denotation VS Triples 2
@@ -56,10 +56,10 @@ Week 7 of 2020 Spring
 
 在大多数情况下, 我们会要求前条件下和后条件下的逻辑变量是一致的. 由于我们**问题中的指派是任意的**, 它足以用来描述霍尔三元组的性质. 大部分前后逻辑变量不一致的霍尔三元组都是无效的.
 
-- `{{ {[X]} = m }} X::= X+1 {{ {[X]} = x }}` Fails to be valid because m and x can be arbitrary.
+- `{ {[X]} = m } X::= X+1 { {[X]} = x }` Fails to be valid because m and x can be arbitrary.
 
 当然,对于有效的三元组,我们的定义也足以描述这样的性质.
-- `{{ {[X]} = m }} X::= 0 {{ {[X]} = x - x }}` is valid because it holds for arbitrary m and x.
+- `{ {[X]} = m } X::= 0 { {[X]} = x - x }` is valid because it holds for arbitrary m and x.
 
 
 
@@ -102,8 +102,8 @@ Lemma hoare_if_sound : forall P Q (b: bexp) c1 c2,
   |== {{ P }} If b Then c1 Else c2 EndIf {{ Q }}.
 ```
 **Proof.**
-H1: `|== {{ P AND {[b]} }} c1 {{ Q }}`
-H2: `|== {{ P AND NOT {[b]} }} c2 {{ Q }}`
+H1: `|== { P AND {[b]} } c1 { Q }`
+H2: `|== { P AND NOT {[b]} } c2 { Q }`
 Given `(st1, La) |== P` and `(st1, st2)` is in the denotation of `If b Then c1 Else c2 EndIf`, we should prove `(st2, La) |== Q`.
 
 Recall`ceval (If b Then c1 Else c2 EndIf)` = `union (concat (test_rel (beval b)) c1)  (concat (test_rel (beval (BNot b))) c2)`.
@@ -121,7 +121,7 @@ Lemma hoare_while_sound : forall P (b: bexp) c,
   |== {{P}} While b Do c EndWhile {{ P AND NOT {[b]} }}.
 ```
 **Proof.**
-H: `{{ P AND [[b]] }} c {{P}}`
+H: `{ P AND [[b]] } c {P}`
 Given `(st1, La) |== P`, and `ceval (While b Do c EndWhile) st1 st2`. We should prove `(st2, La) |== P AND NOT [[b]]`
 
 Recall  `ceval (While b Do c EndWhile) st1 st2 = (iter_loop_body b (ceval c) n st1 st2)`. We perform induction on n.
@@ -189,7 +189,7 @@ Lemma hoare_consequence_sound : forall (T: FirstOrderLogic) (P P' Q Q' : Asserti
 
 
 **Proof.**
-Assumption `{{P'}} c {{Q'}}` gives:
+Assumption `{P'}} c {{Q'}` gives:
 - if `(st1, La) |== P'` and `ceval c st1 st2` then `(st2, La) |= Q'`
 
 With `P |-- P'`, `Q' |-- Q` and the soundness of FOL, we can prove

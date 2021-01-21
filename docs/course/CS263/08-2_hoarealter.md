@@ -170,7 +170,7 @@ Lemma hoare_seq_inv: forall P c1 c2 R,
   exists Q, (|-- {{ P }} c1 {{ Q }}) /\ (|-- {{ Q }} c2 {{ R }}).
 ```
 
-证明：考虑`{{ P }} c1 ;; c2 {{ R }}`的最后一步，不仅可能是sequence rule，也可能是consequence rule。对后者，我们总能继续寻找，由于树的高度是有限的，所以必然有sequence rule用到。
+证明：考虑`{ P } c1 ;; c2 { R }`的最后一步，不仅可能是sequence rule，也可能是consequence rule。对后者，我们总能继续寻找，由于树的高度是有限的，所以必然有sequence rule用到。
 思路：对proof tree 做归纳证明。
 
 利用上述引理拆出中间状态满足的条件，我们就可以完成证明。
@@ -189,11 +189,11 @@ Assumption:
 2. `P |-- P'`
 3. `Q' |-- Q`
 IH：
-1. `|-- {{P' AND [[b]]}} c1 {{Q'}}`
-2. `|-- {{P' AND NOT [[b]]}} c2 {{Q'}}`
+1. `|-- {P' AND [[b]]} c1 {Q'}`
+2. `|-- {P' AND NOT [[b]]} c2 {Q'}`
 我们需要证明的是：
-1. `|-- {{P AND [[b]]}} c1 {{Q}}`
-2. `|-- {{P AND NOT [[b]]}} c2 {{Q}}`
+1. `|-- {P AND [[b]]} c1 {{Q}}`
+2. `|-- {P AND NOT [[b]]} c2 {{Q}}`
 显然的。
 
 ```Coq

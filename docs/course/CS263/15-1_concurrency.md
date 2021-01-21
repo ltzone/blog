@@ -324,7 +324,7 @@ For axiomatic semantics, we introduce an extension of Hoare logic here, the logi
 > guarantee：本线程对其他线程的保证
 
 ```Coq
-Reserved Notation "R :; G |-- {{ P }}  c  {{ Q }}"
+Reserved Notation "R :; G |-- { P }  c  { Q }"
   (at level 90, G at next level, P at next level, c at next level, Q at next level).
 ```
 
@@ -355,31 +355,31 @@ Inductive hoare_triple {A: Actions}: Type :=
 ```Coq
 | hoare_skip : forall R G P,
     stable P R ->
-    R :; G |-- {{P}} CSkip {{P}}
+    R :; G |-- {P} CSkip {P}
 ```
 从起始状态到终止状态，其他线程也有可能改变程序状态，由于存在`stable R G`的附加条件，无论环境线程怎么变，当前程序状态都会符合`P`，因此该三元组成立。
 
 利用Rely和Guarantee，我们可以写出如下定义：
 ```Coq
   | hoare_seq : forall R G (P1 P2 P3: Assertion) (c1 c2: com),
-      R :; G |-- {{P1}} c1 {{P2}} ->
-      R :; G |-- {{P2}} c2 {{P3}} ->
-      R :; G |-- {{P1}} (CSeq c1 c2) {{P3}}
+      R :; G |-- {P1} c1 {P2} ->
+      R :; G |-- {P2} c2 {P3} ->
+      R :; G |-- {P1} (CSeq c1 c2) {P3}
   | hoare_if : forall R G P Q (b: bexp) c1 c2,
-      R :; G |-- {{ P AND {[b]} }} c1 {{ Q }} ->
-      R :; G |-- {{ P AND NOT {[b]} }} c2 {{ Q }} ->
-      R :; G |-- {{ P }} CIf b c1 c2 {{ Q }}
+      R :; G |-- { P AND {[b]} } c1 { Q } ->
+      R :; G |-- { P AND NOT {[b]} } c2 { Q } ->
+      R :; G |-- { P } CIf b c1 c2 { Q }
 ```
 - 额外说明：布尔表达式的求值，我们只有默认是在一瞬间完成的，当前规则才成立，不然我们还需要一些其他的额外条件
 - 会不会，b判定完之后，开始c1之前，外部把b改了？
-  - 不影响，因为b判定完后，依然是从符合`R :; G |-- {{ P AND {[b]} }} c1 {{ Q }}`的三元组推出的。
+  - 不影响，因为b判定完后，依然是从符合`R :; G |-- { P AND {[b]} } c1 { Q }`的三元组推出的。
   - 不然，`P AND b`相对于rely的状态是不稳定的，后面会看到这是不可能的。
 
 ```Coq
   | hoare_while : forall R G P (b: bexp) c,
       stable (P AND NOT {[b]}) R ->
-      R :; G |-- {{ P AND {[b]} }} c {{P}} ->
-      R :; G |-- {{P}} CWhile b c {{ P AND NOT {[b]} }}
+      R :; G |-- { P AND {[b]} } c {P} ->
+      R :; G |-- {P} CWhile b c { P AND NOT {[b]} }
 ```
 - 程序执行完一定是一次while判定为False，我们要求环境步骤此时不可以破坏它，所以加上了stable的限制。
 
@@ -390,11 +390,11 @@ Inductive hoare_triple {A: Actions}: Type :=
       stable (P [ X |-> E ]) R ->
       stable P R ->
       permit (P [ X |-> E ]) X E G ->
-      R :; G |-- {{ P [ X |-> E] }} CAss X E {{ P }}
+      R :; G |-- { P [ X |-> E] } CAss X E { P }
   | hoare_par : forall G1 G2 R P c1 c2 Q,
-      action_union G2 R :; G1 |-- {{ P }} c1 {{ Q }} ->
-      action_union G1 R :; G2 |-- {{ P }} c2 {{ Q }} ->
-      R :; action_union G1 G2 |-- {{ P }} CPar c1 c2 {{ Q }}
+      action_union G2 R :; G1 |-- { P } c1 { Q } ->
+      action_union G1 R :; G2 |-- { P } c2 { Q } ->
+      R :; action_union G1 G2 |-- { P } CPar c1 c2 { Q }
 ```
 
 并行程序应符合的性质：
@@ -408,8 +408,8 @@ Inductive hoare_triple {A: Actions}: Type :=
       stable P R ->
       stable Q R ->
       P |-- P' ->
-      R :; G |-- {{P'}} c {{Q'}} ->
+      R :; G |-- {P'} c {Q'} ->
       Q' |-- Q ->
-      R :; G |-- {{P}} c {{Q}}
+      R :; G |-- {P} c {Q}
 ```
 要求，新增加的更强前条件和更弱后条件得是稳定的。
