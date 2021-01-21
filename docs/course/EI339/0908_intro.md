@@ -1,5 +1,3 @@
-# 【Artificial Intelligence】1-1 Introduction
-<!--
 ---
 title: 【Artificial Intelligence】1-1 Introduction
 url: ai-intro
@@ -11,9 +9,8 @@ categories:
 - Courses
 
 ---
--->
-<!--more-->
 
+<!--more-->
 
 [toc]
 
