@@ -1,6 +1,7 @@
 module.exports = {
 	title: "LTZone",
 	description: "Tony's Blog",
+	theme: "reco",
 	plugins: {
 		"vuepress-plugin-auto-sidebar": {
 			titleMode: "titlecase",
@@ -12,7 +13,7 @@ module.exports = {
 				"EI333": "EI333 Software Engineering",
 				"EI338": "EI338 System Engineering",
 				"EI339": "EI339 Artificial Intelligence",
-			}
+			},
 		}
 	},
 	head: [
@@ -32,17 +33,32 @@ module.exports = {
 	themeConfig: {
 		nav: [
 			{
-				"text": "Course",
-				"items": [
-					{"text": "CS222 Algorithm Analysis", "link": "/course/CS222/" },
-					{"text": "CS258 Information Theory", "link": "/course/CS258/" },
-					{"text": "CS263 Programming Language", "link": "/course/CS263/" },
-					{"text": "EI332 Computer Composition", "link": "/course/EI332/" },
-					{"text": "EI333 Software Engineering", "link": "/course/EI333/" },
-					{"text": "EI338 System Engineering", "link": "/course/EI338/" },
-					{"text": "EI339 Artificial Intelligence", "link": "/course/EI339/" },
+				text: "Course",
+				items: [
+					{ "text": "CS222 Algorithm Analysis", "link": "/course/CS222/" },
+					{ "text": "CS258 Information Theory", "link": "/course/CS258/" },
+					{ "text": "CS263 Programming Language", "link": "/course/CS263/" },
+					{ "text": "EI332 Computer Composition", "link": "/course/EI332/" },
+					{ "text": "EI333 Software Engineering", "link": "/course/EI333/" },
+					{ "text": "EI338 System Engineering", "link": "/course/EI338/" },
+					{ "text": "EI339 Artificial Intelligence", "link": "/course/EI339/" },
 				],
-				"link": "/course"
-			}]
+				link: "/course/"
+			},
+			{ text: 'TimeLine', link: '/timeline/', icon: 'reco-date' }
+		],
+		noFoundPageByTencent: false,
+		blogConfig: {
+			category: {
+				location: 2,
+				text: 'Category'
+			},
+			tag: {
+				location: 3,
+				text: 'Tag'
+			},
+		},
+		subSidebar: 'auto',
+		author: 'Tony Zhou'
 	}
 }
