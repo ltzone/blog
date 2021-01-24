@@ -1,7 +1,5 @@
-# Instructions (Part B)
-
-<!-----
-title: 【Computer Compostion】Instructions (Part B)
+---
+title: Instructions (Part B)
 url: cc-instructionb
 date: 2020-04-01 08:27:42
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 5 of 2020 Spring
 

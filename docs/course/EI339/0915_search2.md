@@ -1,7 +1,5 @@
-# 2-1 Uninformed Search (cont'd) & Informed Search
-
-<!-----
-title: 【Artificial Intelligence】2-1 Uninformed Search (cont'd) & Informed Search
+---
+title: 2-1 Uninformed Search (cont'd) & Informed Search
 url: ai-search2
 date: 2020-09-15 13:55:14
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 <!--more-->
 

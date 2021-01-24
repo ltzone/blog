@@ -1,7 +1,5 @@
-# Divide and Conquer (II)
-
-<!-----
-title: 【Algorithm】Divide and Conquer (II)
+---
+title: Divide and Conquer (II)
 url: al-conquer
 date: 2020-10-12 14:05:10
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

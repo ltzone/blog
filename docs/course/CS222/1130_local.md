@@ -1,7 +1,5 @@
-# Local Search
-
-<!-----
-title: 【Algorithm】Local Search
+---
+title: Local Search
 url: al-search
 date: 2020-11-23 15:29:52
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

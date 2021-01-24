@@ -1,7 +1,5 @@
-# Denotations VS Triples 2
-
-<!-----
-title: 【Programming Language】Denotation VS Triples 2
+---
+title: Denotation VS Triples 2
 url: pl-denovshoare2
 date: 2020-04-16 08:15:18
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 7 of 2020 Spring
 

@@ -1,7 +1,5 @@
-# Instructions (Part A)
-
-<!-----
-title: 【Computer Composition】Instructions (Part A)
+---
+title: Instructions (Part A)
 url: cc-instructiona
 date: 2020-03-25 09:26:55
 tags: 
@@ -14,7 +12,7 @@ categories:
 
 Week 4 of 2020 Spring
 
-<!--more-->
+<!--more
 
 [[toc]]
 

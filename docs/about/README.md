@@ -12,7 +12,7 @@ My research interest is **Formal Verification** and **Programming Language**. I 
 
 ## Working Experience
 
-(September 2020 ~ Januray 2021) **Intel Asia Pacific R&D Center**, Visual and Parallel Computing Group – **Intern of Software Engineering**
+(September 2020 ~ January 2021) **Intel Asia Pacific R&D Center**, Visual and Parallel Computing Group – **Intern of Software Engineering**
 
 ## Research Projects
 

@@ -1,7 +1,5 @@
-# 9-2 Probabilistic Reasoning
-
-<!-----
-title: 【Artificial Intelligence】9-2 Probabilistic Reasoning
+---
+title: 9-2 Probabilistic Reasoning
 url: ai-prob
 date: 2020-11-06 10:06:40
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

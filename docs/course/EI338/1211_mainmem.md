@@ -1,7 +1,5 @@
-# OS9 - Main Memory
-
-<!-----
-title: 【System Engineering】OS9 - Main Memory
+---
+title: OS9 - Main Memory
 url: se2-mainmem
 date: 2020-12-11 14:28:30
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 - To provide a detailed description of various ways of organizing memory hardware
 - To discuss various memory-management techniques,

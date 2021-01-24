@@ -1,7 +1,5 @@
-# Denotation VS Small-Step
-
-<!-----
-title: 【Programming Language】Denotation VS Small-Step
+---
+title: Denotation VS Small-Step
 url: pl-denovsstep
 date: 2020-04-09 08:06:30
 tags: 
@@ -14,7 +12,7 @@ categories:
 
 Week 6 of 2020 Spring
 
-<!--more-->
+<!--more
 
 [[toc]]
 

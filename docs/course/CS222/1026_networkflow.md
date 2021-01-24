@@ -1,7 +1,5 @@
-# Network Flow I
-
-<!-----
-title: 【Algorithm】Network Flow I
+---
+title: Network Flow I
 url: al-network
 date: 2020-10-26 14:10:22
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 Augmentation path

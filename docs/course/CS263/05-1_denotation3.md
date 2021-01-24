@@ -1,7 +1,5 @@
-# Denotational Semantics 3
-
-<!-----
-title: 【Programming Language】Denotational Semantics 3
+---
+title: Denotational Semantics 3
 url: pl-deno3
 date: 2020-03-31 14:02:09
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 5 of 2020 Spring.
 

@@ -1,7 +1,5 @@
-# OS3 - Processes
-
-<!-----
-title: 【System Engineering】OS3 - Processes
+---
+title: OS3 - Processes
 url: se2-process
 date: 2020-10-16 15:09:19
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

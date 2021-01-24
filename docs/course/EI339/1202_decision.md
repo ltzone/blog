@@ -1,7 +1,5 @@
-# Decision Networks and Value of Information
-
-<!-----
-title: 【Artificial Intelligence】Decision Networks and Value of Information
+---
+title: Decision Networks and Value of Information
 url: ai-decision
 date: 2020-12-01 14:21:34
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

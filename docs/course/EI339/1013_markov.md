@@ -1,7 +1,5 @@
-# 5-1 Markov Decision Process
-
-<!-----
-title: 【Artificial Intelligence】5-1 Markov Decision Process
+---
+title: 5-1 Markov Decision Process
 url: ai-mdp
 date: 2020-10-13 14:03:10
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 Problem: the effect of an action exists uncertainty. (i.e. the agent may not function as we command)

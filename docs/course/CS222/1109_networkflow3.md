@@ -1,7 +1,5 @@
-# Network Flow (III)
-
-<!-----
-title: 【Algorithm】Network Flow (III)
+---
+title: Network Flow (III)
 url: al-network3
 date: 2020-11-09 13:02:26
 tags: 
@@ -13,7 +11,7 @@ categories:
 ---
 
 
-<!--more-->
+<!--more
 
 [[toc]]
 

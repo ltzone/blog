@@ -1,7 +1,5 @@
-# System Design - Addressing Design Goals
-
-<!-----
-title: 【Software Engineering】System Design - Addressing Design Goals
+---
+title: System Design - Addressing Design Goals
 url: se-system2
 date: 2020-04-02 10:08:22
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 5 of 2020 Spring. Questions to ask yourself when designing a subsystem.
 

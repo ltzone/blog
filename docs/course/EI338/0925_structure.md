@@ -1,7 +1,5 @@
-# OS2 - Structures
-
-<!-----
-title: 【System Engineering】OS2 - Structures
+---
+title: OS2 - Structures
 url: se2-structure
 date: 2020-09-25 14:42:46
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 - Identify **services** provided by an operating system
 - Illustrate how **system calls** are used to provide operating system services

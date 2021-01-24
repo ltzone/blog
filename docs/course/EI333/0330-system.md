@@ -1,7 +1,5 @@
-# System Decomposition
-
-<!-----
-title: 【Software Engineering】System Decomposition
+---
+title: System Decomposition
 url: se-system
 date: 2020-03-30 10:21:27
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 5 of 2020 Spring
 

@@ -1,7 +1,5 @@
-# Hoare Logic
-
-<!-----
-title: 【Programming Language】Hoare Logic
+---
+title: Hoare Logic
 url: pl-hoare4
 date: 2020-03-12 08:02:33
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 2 of 2020 Spring. Use Hoare Logic to Prove Programs
 

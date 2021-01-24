@@ -1,7 +1,5 @@
-# Completeness of FOL
-
-<!-----
-title: 【Programming Language】Completeness of FOL
+---
+title: Completeness of FOL
 url: pl-fol
 date: 2020-04-28 14:04:23
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 9 of 2020 Spring
 

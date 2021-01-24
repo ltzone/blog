@@ -1,7 +1,5 @@
-# Object Design - Specifying Interfaces
-
-<!-----
-title: 【Software Engineering】Object Design - Specifying Interfaces
+---
+title: Object Design - Specifying Interfaces
 url: se-interface
 date: 2020-04-20 09:57:32
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 8 of 2020 Spring
 

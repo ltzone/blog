@@ -1,7 +1,5 @@
-# Gaussian Channel
-
-<!-----
-title: 【Information Theory】Gaussian Channel
+---
+title: Gaussian Channel
 url: it-gaussian
 date: 2020-04-22 10:02:09
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 8 of 2020 Spring
 

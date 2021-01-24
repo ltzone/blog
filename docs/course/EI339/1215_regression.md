@@ -1,7 +1,5 @@
-# Perceptrons and Logistic Regression
-
-<!-----
-title: 【Artificial Intelligence】Perceptrons and Logistic Regression
+---
+title: Perceptrons and Logistic Regression
 url: ai-regression
 date: 2020-12-15 14:09:18
 tags: 
@@ -13,7 +11,7 @@ categories:
 ---
 
 
-<!--more-->
+<!--more
 
 [[toc]]
 

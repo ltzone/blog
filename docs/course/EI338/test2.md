@@ -1,7 +1,5 @@
-# Test Yourself (Part 2)
-
-<!-----
-title: 【System Engineering】Test Yourself (Part 2)
+---
+title: Test Yourself (Part 2)
 url: se2-test
 date: 2020-12-26 18:00:47
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 

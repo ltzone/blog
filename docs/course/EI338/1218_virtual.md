@@ -1,7 +1,5 @@
-# OS10 - Virtual Memory
-
-<!-----
-title: 【System Engineering】OS10 - Virtual Memory
+---
+title: OS10 - Virtual Memory
 url: se2-virtual
 date: 2020-12-18 14:13:15
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 - Define virtual memory and describe its benefits.
   > 简答题

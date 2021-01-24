@@ -1,7 +1,5 @@
-#  Denotations VS Triples 1
-
-<!-----
-title: 【Programming Language】 Denotations VS Triples 1
+---
+title:  Denotations VS Triples 1
 url: pl-denovshoare
 date: 2020-04-14 14:01:49
 tags: 
@@ -14,7 +12,7 @@ categories:
 
 Week 7 of 2020 Spring
 
-<!--more-->
+<!--more
 
 [[toc]]
 

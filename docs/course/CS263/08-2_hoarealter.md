@@ -1,7 +1,5 @@
-# Alternative Hoare Logic
-
-<!-----
-title: 【Programming Language】Alternative Hoare Logic
+---
+title: Alternative Hoare Logic
 url: pl-hoarealter
 date: 2020-04-23 08:07:43
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 8 of 2020 Spring
 

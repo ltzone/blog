@@ -1,7 +1,5 @@
-# The Processor
-
-<!-----
-title: 【Computer Composition】The Processor
+---
+title: The Processor
 url: cc-processor
 date: 2020-04-20 15:18:36
 tags: 
@@ -14,7 +12,7 @@ categories:
 
 Week 8 of 2020 Spring.
 
-<!--more-->
+<!--more
 
 [[toc]]
 

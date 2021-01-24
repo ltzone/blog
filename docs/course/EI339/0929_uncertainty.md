@@ -1,7 +1,5 @@
-# 4 Uncertainty and Utilities
-
-<!-----
-title: 【Artificial Intelligence】4 Uncertainty and Utilities
+---
+title: 4 Uncertainty and Utilities
 url: ai-uncertainty
 date: 2020-09-29 14:34:26
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Worst-Case vs. Average Case
 

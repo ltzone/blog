@@ -1,7 +1,5 @@
-# OS4 - Threads
-
-<!-----
-title: 【System Engineering】OS4 - Threads
+---
+title: OS4 - Threads
 url: se2-threads
 date: 2020-10-30 14:58:10
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

@@ -1,7 +1,5 @@
-# Greedy in Graph
-
-<!-----
-title: 【Algorithm】Greedy in Graph
+---
+title: Greedy in Graph
 url: al-greedy
 date: 2020-09-28 12:56:34
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

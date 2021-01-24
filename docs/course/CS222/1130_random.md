@@ -1,7 +1,5 @@
-# Randomized Algorithms
-
-<!-----
-title: 【Algorithm】Randomized Algorithms
+---
+title: Randomized Algorithms
 url: al-random
 date: 2020-11-30 14:18:37
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

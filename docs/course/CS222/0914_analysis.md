@@ -1,7 +1,5 @@
-# Algorithm Analysis
-
-<!-----
-title: 【Algorithm】Algorithm Analysis
+---
+title: Algorithm Analysis
 url: al-analysis
 date: 2020-09-14 14:11:56
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

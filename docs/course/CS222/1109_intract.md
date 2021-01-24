@@ -1,7 +1,5 @@
-# Intractability (I)
-
-<!-----
-title: 【Algorithm】Intractability (I)
+---
+title: Intractability (I)
 url: al-intract
 date: 2020-11-09 14:44:16
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 if X poly-reduces to Y, then if Y has a poly-solution, X also has. Conversely, if X is proved to have no poly-solution, then Y will also have no poly-solution.
 

@@ -1,7 +1,5 @@
-# Extending Tractability
-
-<!-----
-title: 【Algorithm】Extending Tractability
+---
+title: Extending Tractability
 url: al-extend
 date: 2020-11-23 12:58:23
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

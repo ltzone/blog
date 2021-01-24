@@ -1,7 +1,5 @@
-# Optimization and Neural Nets
-
-<!-----
-title: 【Artificial Intelligence】Optimization and Neural Nets
+---
+title: Optimization and Neural Nets
 url: ai-optimization
 date: 2020-12-18 10:04:24
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 How do we solve

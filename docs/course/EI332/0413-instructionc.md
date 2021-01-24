@@ -1,7 +1,5 @@
-# Instructions (Part C)
-
-<!-----
-title: 【Computer Composition】Instructions (Part C)
+---
+title: Instructions (Part C)
 url: cc-instructionc
 date: 2020-04-13 15:38:36
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 7 of 2020 Spring
 

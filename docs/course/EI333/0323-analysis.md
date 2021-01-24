@@ -1,7 +1,5 @@
-# Analysis
-
-<!-----
-title: 【Software Engineering】Analysis
+---
+title: Analysis
 url: se-analysis
 date: 2020-03-23 10:01:31
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 4 of 2020 Spring
 

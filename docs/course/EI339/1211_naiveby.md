@@ -1,7 +1,5 @@
-# Naive Bayes
-
-<!-----
-title: 【Artificial Intelligence】Naive Bayes
+---
+title: Naive Bayes
 url: ai-naiveby
 date: 2020-12-11 10:14:09
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 <!--more-->
 

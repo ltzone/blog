@@ -1,7 +1,5 @@
-# Introduction
-
-<!-----
-title: 【System Engineering】Introduction
+---
+title: Introduction
 url: se2-intro
 date: 2020-09-11 13:02:05
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 
 <!--more-->

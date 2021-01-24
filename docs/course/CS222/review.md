@@ -1,7 +1,5 @@
-# Final Review
-
-<!-----
-title: 【Algorithm】Final Review
+---
+title: Final Review
 url: al-review
 date: 2020-12-30 00:12:12
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 |  Week    	| Contents                                                                         	| Date     	|
 |----------	|----------------------------------------------------------------------------------	|----------	|

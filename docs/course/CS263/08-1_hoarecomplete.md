@@ -1,7 +1,5 @@
-# Completeness of Hoare Logic
-
-<!-----
-title: 【Programming Language】Completeness of Hoare Logic
+---
+title: Completeness of Hoare Logic
 url: pl-hoarecomplete
 date: 2020-04-21 14:25:10
 tags: 
@@ -14,7 +12,7 @@ categories:
 
 Week 8 of 2020 Spring
 
-<!--more-->
+<!--more
 
 [[toc]]
 

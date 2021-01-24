@@ -1,7 +1,5 @@
-# OS5 - CPU Scheduling
-
-<!-----
-title: 【System Engineering】OS5 - CPU Scheduling
+---
+title: OS5 - CPU Scheduling
 url: se2-schedule2
 date: 2020-11-13 14:28:41
 tags: 
@@ -13,7 +11,7 @@ categories:
 ---
 
 
-<!--more-->
+<!--more
 
 [[toc]]
 

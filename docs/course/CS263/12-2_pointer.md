@@ -1,7 +1,5 @@
-# Pointer And Address
-
-<!-----
-title: 【Programming Language】Pointer And Address
+---
+title: Pointer And Address
 url: pl-pointer
 date: 2020-05-21 08:06:23
 tags: 
@@ -10,7 +8,7 @@ tags:
 categories: 
 - Courses
 
------>
+---
 
 Week 13 of 2020 Spring
 
