@@ -14,7 +14,7 @@ Week 11 of 2020 Spring.
 
 <!--more-->
 
-[[toc]]
+
 
 ## The language
 

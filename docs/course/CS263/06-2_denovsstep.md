@@ -14,7 +14,7 @@ Week 6 of 2020 Spring
 
 <!--more
 
-[[toc]]
+
 
 
 ## Semantic Equavalence: Brief Idea

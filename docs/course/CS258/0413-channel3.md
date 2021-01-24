@@ -14,7 +14,7 @@ Week 7 of 2020 Spring
 
 <!--more-->
 
-[[toc]]
+
 
 ## Coverse Proof Special Case: Zero-Error Codes
 

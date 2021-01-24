@@ -13,7 +13,7 @@ categories:
 
 <!--more-->
 
-[[toc]]
+
 
 
 ## Recap: Reasoning over time

@@ -13,7 +13,7 @@ categories:
 
 <!--more
 
-[[toc]]
+
 
 
 ## 基于Boosting的贝叶斯分类

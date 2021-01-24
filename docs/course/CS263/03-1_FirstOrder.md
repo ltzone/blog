@@ -14,7 +14,7 @@ Week 3 of 2020 Spring
 
 <!--more-->
 
-[[toc]]
+
 
 ## Review
 

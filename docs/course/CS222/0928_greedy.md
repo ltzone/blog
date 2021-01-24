@@ -13,7 +13,7 @@ categories:
 
 <!--more-->
 
-[[toc]]
+
 
 
 ## Dijkstra's algorithm

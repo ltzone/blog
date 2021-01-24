@@ -22,7 +22,7 @@ Week 1 of 2020 Spring. An Introduction to Software Engineering
 
 <!--more-->
 
-[[toc]]
+
 
 ## 0 Cases in this Course
 

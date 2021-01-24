@@ -14,7 +14,7 @@ Week 8 of 2020 Spring
 
 <!--more-->
 
-[[toc]]
+
 
 ## Gaussian Channel
 连续信道中最常见的是高斯信道，背景噪声服从高斯分布。

@@ -11,7 +11,7 @@ categories:
 ---
 
 
-[[toc]]
+
 
 <!--more-->
 

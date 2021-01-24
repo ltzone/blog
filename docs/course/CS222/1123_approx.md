@@ -13,7 +13,7 @@ categories:
 
 <!--more-->
 
-[[toc]]
+
 
 
 ## Coping with NP-completeness

@@ -39,7 +39,7 @@ Optimization Problem
 
 <!--more-->
 
-[[toc]]
+
 
 ## Poly-time reductions
 

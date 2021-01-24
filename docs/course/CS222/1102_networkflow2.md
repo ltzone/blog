@@ -12,7 +12,7 @@ categories:
 
 <!--more-->
 
-[[toc]]
+
 
 
 ## Bipartite matching

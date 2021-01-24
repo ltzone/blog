@@ -21,7 +21,7 @@ categories:
 
 <!--more-->
 
-[[toc]]
+
 
 ## Background
 

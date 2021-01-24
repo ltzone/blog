@@ -16,7 +16,7 @@ Week 1 of 2020 Spring. More about Hoare Logic
 
 <!--more-->
 
-[[toc]]
+
 
 ## Examples about Hoare_if
 

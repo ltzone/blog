@@ -19,7 +19,7 @@ Augmentation path
 
 <!--more-->
 
-[[toc]]
+
 
 ## max-flow and min-cut problems 
 

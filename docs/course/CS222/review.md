@@ -30,4 +30,3 @@ categories:
 
 <!--more-->
 
-[[toc]]

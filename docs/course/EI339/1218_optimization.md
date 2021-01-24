@@ -18,7 +18,7 @@ $$
 $$
 
 <!--more-->
-[[toc]]
+
 
 
 ## Reminder: Linear Classifiers

@@ -20,7 +20,7 @@ categories:
 
 <!--more-->
 
-[[toc]]
+
 
 ## Operating System Services
 

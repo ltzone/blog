@@ -1,5 +1,5 @@
 ---
-title: 【Algorithm】 Stable Matching
+title: Stable Matching
 url: al-matching
 date: 2020-09-07 14:19:52
 tags: 

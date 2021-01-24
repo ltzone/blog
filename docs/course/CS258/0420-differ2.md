@@ -14,7 +14,7 @@ Week 8 of 2020 Spring.
 
 <!--more-->
 
-[[toc]]
+
 
 ## Correlated Gaussian
 我们计算两个随机变量的互信息，这里以联合高斯分布为例。

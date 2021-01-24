@@ -14,7 +14,7 @@ Week 7 of 2020 Spring
 
 <!--more-->
 
-[[toc]]
+
 
 ## Differential Entropy
 

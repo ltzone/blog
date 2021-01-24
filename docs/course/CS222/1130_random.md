@@ -13,7 +13,7 @@ categories:
 
 <!--more-->
 
-[[toc]]
+
 
 ## Randomization
 **Algorithmic design patterns**.

@@ -14,7 +14,7 @@ Week 4 of 2020 Spring
 
 <!--more-->
 
-[[toc]]
+
 
 ## Models for Analysis
 
