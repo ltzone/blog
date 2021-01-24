@@ -1,5 +1,5 @@
 module.exports = {
-	title: "LTZone",
+	title: "LTzone",
 	description: "Tony's Blog",
 	theme: "reco",
 	plugins: {
