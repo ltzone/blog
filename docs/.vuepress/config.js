@@ -47,6 +47,7 @@ module.exports = {
 				],
 				link: "/course/"
 			},
+			{ text: 'About', line: '/about/'},
 			{ text: 'TimeLine', link: '/timeline/', icon: 'reco-date' }
 		],
 		blogConfig:{
