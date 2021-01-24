@@ -1,5 +1,5 @@
 ---
-title: Optimization and Neural Nets
+title: 15-2 Optimization and Neural Nets
 url: ai-optimization
 date: 2020-12-18 10:04:24
 tags: 
@@ -79,7 +79,7 @@ Recall Perceptron:
 How to make the scores into probabilities?
 
 $$
-\underbrace{z_{1}, z_{2}, z_{3}}_{\text {original activations }} \rightarrow \underbrace{\frac{e^{z_{1}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}, \frac{e^{z_{2}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}, \frac{e^{z_{3}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}}_{\text {softmax activations }}
+{z_{1}, z_{2}, z_{3}}_{\text {original activations }} \rightarrow {\frac{e^{z_{1}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}, \frac{e^{z_{2}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}, \frac{e^{z_{3}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}}_{\text {softmax activations }}
 $$
 
 
@@ -179,13 +179,13 @@ $$
 
 - $\alpha$ : learning rate --- tweaking parameter that needs to be chosen carefully
 - How? Try multiple choices
-  - Crude rule of thumb: update changes w about 0.1 – 1 %
+  - Crude rule of thumb: update changes w about 0.1 - 1 %
 
 > Extreme Example: why normalization is necessary: $g_2(w)=10^6g_1(w) \rightarrow \frac{\partial g_2(w)}{\partial w} = 10^6 \frac{\partial g_1(w)}{\partial w}$
 
 > On the log likelihood Objective:
 
-$\max _{w} l l(w)=\max _{w} \underbrace{\sum_{i} \log P\left(y^{(i)} \mid x^{(i)} ; w\right)}_{g(w)}$
+$\max _{w} l l(w)=\max _{w} {\sum_{i} \log P\left(y^{(i)} \mid x^{(i)} ; w\right)}_{g(w)}$
 
 ![](./img/12-18-10-56-48.png)
 

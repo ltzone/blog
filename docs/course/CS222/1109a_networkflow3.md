@@ -11,7 +11,7 @@ categories:
 ---
 
 
-<!--more
+<!--more-->
 
 
 
@@ -32,7 +32,7 @@ categories:
    - Solve assignment problem where $c_{ij}$ is some function of the ranks:
         $$
         c_{i j}=\left\{\begin{array}{ll}
-        f(\operatorname{rank}(i, j)) & \text { if } i \text { ranks } j \\
+        f(\mathrm{rank}(i, j)) & \text { if } i \text { ranks } j \\
         \infty & \text { if } i \text { does not rank } j
         \end{array}\right.
         $$
@@ -139,7 +139,7 @@ then $M$ is a min-cost perfect matching.
 
 
 step | $d(v)$ | alternating path | reduced costs
------>- | -----  | ---------------- | -------------
+------ | -----  | ---------------- | -------------
 0 | ![](./img/11-09-16-17-01.png) | | ![](./img/11-09-16-17-11.png)
 1 | ![](./img/11-09-16-17-22.png) | ![](./img/11-09-16-17-30.png) | ![](./img/11-09-16-17-36.png)
 2 | ![](./img/11-09-16-17-45.png) | ![](./img/11-09-16-17-54.png) | ![](./img/11-09-16-18-00.png)

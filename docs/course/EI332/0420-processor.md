@@ -1,5 +1,5 @@
 ---
-title: The Processor
+title: 5 The Processor
 url: cc-processor
 date: 2020-04-20 15:18:36
 tags: 
@@ -12,7 +12,7 @@ categories:
 
 Week 8 of 2020 Spring.
 
-<!--more
+<!--more-->
 
 
 
@@ -76,7 +76,7 @@ Higher-Order Abstraction
 - 写的动作发生在end of current cycle
 
 具有双读端口的实现原理 | 写入逻辑
------> | ---
+--- | ---
 ![](./img/04-22-08-39-48.png) | ![](./img/04-22-08-40-06.png)
 两个端口结构是一样的 | 只有在被选定的线（1） + write control （1） 才可以写入
 

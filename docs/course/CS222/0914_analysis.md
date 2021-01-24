@@ -72,7 +72,7 @@ We say that an algorithm is efficient if has a polynomial running time.
 
 ### Online Algorithms
 
-- **An offline algorithm** has access to all of its data at the start – it “knows” all of its data in advance
+- **An offline algorithm** has access to all of its data at the start - it “knows” all of its data in advance
 - **An online algorithm** does not have access to all of the data at the start
   - Data is received **serially**, with no knowledge of what comes next
 
@@ -163,7 +163,7 @@ $$
 - **Exponentials and polynomials.** For every $r>1$ and every $d>0, n^{d}$ is $O\left(r^{n}\right)$
   - Pf. $\lim _{n \rightarrow \infty} \frac{n^{d}}{r^{n}}=0$
 - **Note: when comparing two exp algorithms,** Asymptotically speaking, exponential functions are all different.
-  - $$\text { For } r>s>1, r^{d}=\Theta\left(s^{d}\right)$$ this is wrong!
+  - $\text { For } r>s>1, r^{d}=\Theta\left(s^{d}\right)$ this is wrong!
 
 ### Big-Oh notation with multiple variables
 
@@ -230,4 +230,4 @@ $O(n^3)$ triple matching
 ### Sublinear Time
 - **Search in a sorted array.** Given a sorted array A of n numbers, is a given number x in the array?
   - Binary Search
-  - **O(\log n) Solution**
+  - **$O(\log n)$ Solution**

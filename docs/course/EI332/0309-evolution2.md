@@ -250,8 +250,11 @@ e.g. System Performance Evaluation Corporation(SPEC)
   - $f$ 程序支持无限并行处理的部分
   - $1-f$ 不可并行(inherently serial)
   - 增加$N$CPU,对原本$T$execution time的程序:
-  $$ \text{Speedup} &= \frac{\text{time on a single processor}}{\text{time on N parallel processors}} \\
+  $$
+  \begin{aligned}
+  \text{Speedup} &= \frac{\text{time On a Single Processor}}{\text{Time On N Parallel Processors}} \\
   &= \frac{T(1-f)+Tf}{T(1-f)+\frac{Tf}{N}} =  \frac{1}{(1-f)+\frac{f}{N}} \rightarrow \frac{1}{1-f}
+  \end{aligned}
   $$
 > ![](./img/0311-1.png)
 

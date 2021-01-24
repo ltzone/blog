@@ -206,7 +206,7 @@ relationship between use cases, 有且仅有三种
 ![](./img/0319-5.png)
 
 
-#### <Extend>> Association for Use Cases
+#### Extend Association for Use Cases
 Help是额外加的, 没有help, report也能运行. 扩展的方向是从supply指向基用例.
 ![](./img/0319-6.png)
 

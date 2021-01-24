@@ -1,5 +1,5 @@
 ---
-title: Test Yourself (1)
+title: Test Yourself (Part 1)
 url: se2-test1
 date: 2020-12-26 23:37:55
 tags: 
@@ -22,7 +22,7 @@ categories:
 
 
 - Computer system can be divided into four components:
-  - Hardware – provides basic computing resources
+  - Hardware - provides basic computing resources
     - CPU, memory, I/O devices
   - Operating system
     - Controls and coordinates use of hardware among various applications and users
@@ -148,7 +148,7 @@ Functions that ensure the **efficient operation** of the system iteself via *res
 
 ### What is process? difference with program?
 
-Process – a program in execution, must progress in sequential fashion
+Process - a program in execution, must progress in sequential fashion
 
 Program is passive entity stored on disk (executable file); process is active
 
@@ -173,22 +173,22 @@ One program can be several processes
 
 ### Illustrate how processes are represented 
 - Represented by **PCB**(Process Control Block / Task Control Block)
-  - Process state – running, waiting, etc
-  - Program counter – location of instruction to next execute
-  - CPU registers – contents of all process- centric registers
+  - Process state - running, waiting, etc
+  - Program counter - location of instruction to next execute
+  - CPU registers - contents of all process- centric registers
   - CPU scheduling information- priorities, scheduling queue pointers
-  - Memory-management information – memory allocated to the process
+  - Memory-management information - memory allocated to the process
     > No overlap between processes
-  - Accounting information – CPU used, clock time elapsed since start, time limits
-  - I/O status information – I/O devices allocated to process, list of open files
+  - Accounting information - CPU used, clock time elapsed since start, time limits
+  - I/O status information - I/O devices allocated to process, list of open files
 
 
 ### How processes are scheduled in an operating system
 
 - **Process scheduler** selects among available processes for next execution on CPU core
 - Maintains **scheduling queues** of processes
-  - **Ready queue**– set of all processes residing _in main memory, ready and waiting to execute_
-  - **Wait queues** – set of processes waiting for an event (i.e. I/O)
+  - **Ready queue**- set of all processes residing _in main memory, ready and waiting to execute_
+  - **Wait queues** - set of processes waiting for an event (i.e. I/O)
   - Processes migrate among the various queues
 > Implemented in Linked-lists of `struct task_struct`
 
@@ -208,7 +208,7 @@ One program can be several processes
 - Some mobile systems (e.g., early version of iOS) allow only one process to run, others suspended
 - Due to screen real estate, user interface limits iOS provides for 
   - Single foreground process- controlled via user interface
-  - Multiple background processes– in memory, running, but not on the display, and with limits
+  - Multiple background processes- in memory, running, but not on the display, and with limits
   - Limits include single, short task, receiving notification of events, specific long-running tasks like audio playback
 - Android runs foreground and background, with fewer limits
   - Background process uses a service to perform tasks
@@ -282,7 +282,7 @@ One program can be several processes
 
 - Definition
   - Shared Memory: An area of memory shared among the processes that wish to communicate
-  - Message Passing: Message system – processes communicate with each other without resorting to shared variables
+  - Message Passing: Message system - processes communicate with each other without resorting to shared variables
     - If processes P and Q wish to communicate, they need to: 
     - Establish a communication link between them
     - Exchange messages via `send`/`receive`
@@ -326,11 +326,11 @@ One program can be several processes
 ### Describe the benefits and challenges of designing multithreaded applications
 
 Benefits
-- Responsiveness – may allow continued execution if part of process is blocked, especially important for user interfaces
+- Responsiveness - may allow continued execution if part of process is blocked, especially important for user interfaces
   > e.g. for a multi-thread process, it will not easily get stuck
-- Resource Sharing – threads share resources of process, easier than shared memory or message passing
-- Economy – cheaper than process creation, thread switching lower overhead than context switching
-- Scalability – process can take advantage of multicore architectures
+- Resource Sharing - threads share resources of process, easier than shared memory or message passing
+- Economy - cheaper than process creation, thread switching lower overhead than context switching
+- Scalability - process can take advantage of multicore architectures
 
 
 challenges include:
@@ -354,8 +354,8 @@ challenges include:
 ### Classify parallelism into two parts
 > W.r.t. data + task
 
-- Data parallelism – distributes subsets of the same data across multiple cores, same operation on each
-- Task parallelism – distributing threads across cores, each thread performing unique operation
+- Data parallelism - distributes subsets of the same data across multiple cores, same operation on each
+- Task parallelism - distributing threads across cores, each thread performing unique operation
 ![](./img/10-30-15-15-53.png)
 
 
@@ -384,7 +384,7 @@ challenges include:
 - Maximum CPU utilization obtained with multiprogramming
 
 ### What is Burst Cycle
-- CPU–I/O Burst Cycle – Process execution consists of a **cycle** of CPU execution and I/O **wait**
+- CPU-I/O Burst Cycle - Process execution consists of a **cycle** of CPU execution and I/O **wait**
 - **CPU burst** followed by **I/O burst**
 
 
@@ -449,8 +449,8 @@ Histogram of CPU-burst Times(连续使用的时间)
 
 ### What is starvation and solution
 
-- Problem $\equiv$ **Starvation** – low priority processes may never execute
-- Solution $\equiv$ **Aging** – as time progresses increase the priority of the process
+- Problem $\equiv$ **Starvation** - low priority processes may never execute
+- Solution $\equiv$ **Aging** - as time progresses increase the priority of the process
 
 
 

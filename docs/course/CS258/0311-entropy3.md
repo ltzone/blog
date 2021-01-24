@@ -1,5 +1,5 @@
 ---
-title: 2 Entropy (cont'd 2)
+title: Entropy (3)
 url: it-entropy3
 date: 2020-03-11 10:01:59
 tags: 

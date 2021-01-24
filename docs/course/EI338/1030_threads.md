@@ -42,11 +42,11 @@ For web servers, multi-threading is a must
 
 ### Benefits
 
-- Responsiveness – may allow continued execution if part of process is blocked, especially important for user interfaces
+- Responsiveness - may allow continued execution if part of process is blocked, especially important for user interfaces
   > e.g. for a multi-thread process, it will not easily get stuck
-- Resource Sharing – threads share resources of process, easier than shared memory or message passing
-- Economy – cheaper than process creation, thread switching lower overhead than context switching
-- Scalability – process can take advantage of multicore architectures
+- Resource Sharing - threads share resources of process, easier than shared memory or message passing
+- Economy - cheaper than process creation, thread switching lower overhead than context switching
+- Scalability - process can take advantage of multicore architectures
 
 ## Multicore Programming
 
@@ -70,8 +70,8 @@ For web servers, multi-threading is a must
 
 ### Types of Parallelism
 > Remember, the instructions should be similar in parallelism
-- Data parallelism – distributes subsets of the same data across multiple cores, same operation on each
-- Task parallelism – distributing threads across cores, each thread performing unique operation
+- Data parallelism - distributes subsets of the same data across multiple cores, same operation on each
+- Task parallelism - distributing threads across cores, each thread performing unique operation
 ![](./img/10-30-15-15-53.png)
 
 ### Amdahl's Law
@@ -95,7 +95,7 @@ For web servers, multi-threading is a must
   - Windows threads
   - Java threads
 - **Kernel threads** - Supported by the Kernel
-- Examples – virtually all general purpose operating systems, including:
+- Examples - virtually all general purpose operating systems, including:
   - Windows 
   - Linux
   - MacOSX 
@@ -262,7 +262,7 @@ Similar to M:M, except that it allows a user thread to be bound to kernel thread
 > Support Parallelism on compiler(detect parallelism statically) level (in addition to runtime library)
 - Set of **compiler** directives and an API for C, C++, FORTRAN
 - Provides support for parallel programming in shared- memory environments
-- Identifies parallel regions – blocks of code that can run in parallel `#pragma omp parallel`
+- Identifies parallel regions - blocks of code that can run in parallel `#pragma omp parallel`
 - Create as many threads as there are cores
 - Run the for loop in parallel
   ![](./img/11-06-13-31-15.png)
@@ -280,15 +280,15 @@ Similar to M:M, except that it allows a user thread to be bound to kernel thread
   - Assigned to available thread in **thread pool** when removed from queue
 > Pool issues? request >  available pools?
 - Two types of dispatch queues:
-  - **serial** – blocks removed in FIFO order, queue is per process, called **main queue**
+  - **serial** - blocks removed in FIFO order, queue is per process, called **main queue**
     - Programmers can create additional serial queues within program
-  - **concurrent** – removed in FIFO order but _several may be removed_ at a time
+  - **concurrent** - removed in FIFO order but _several may be removed_ at a time
   - Four system wide queues divided by quality of service: 
     - `QOS_CLASS_USER_INTERACTIVE` most timely
     - `QOS_CLASS_USER_INITIATED` long-term interaction with users
     - `QOS_CLASS_USER_UTILITY` less interactive
     - `QOS_CLASS_USER_BACKGROUND` least responsive
-- For the Swift language a task is defined as a closure – similar to a block, minus the caret
+- For the Swift language a task is defined as a closure - similar to a block, minus the caret
 - Closures are submitted to the queue using the `dispatch_async()` function:
 
 ```Swift
@@ -328,7 +328,7 @@ dispatch_async(queue,{print("I am a closure")})
   - Some UNIXes have two versions of fork
     - Duplicate all threads
     - Only duplicate the threads call the `fork()` sys call
-- `exec()` usually works as normal – replace the running process including all threads
+- `exec()` usually works as normal - replace the running process including all threads
   - If call `exec()` immediately after `fork()`, then no necessary to duplication all threads in `fork()`
 
 
@@ -419,7 +419,7 @@ while (!Thread.currentThread().isInterrupted()){
 ### Scheduler Activations
 - Both M:M and Two-level models require communication to maintain the appropriate number of kernel threads allocated to the application
   > Scheduling problem
-- Typically use an **intermediate data structure** between user and kernel threads – **lightweight process (LWP)**
+- Typically use an **intermediate data structure** between user and kernel threads - **lightweight process (LWP)**
   - Apperas to be _a virtual processor_ on which process can schedule user thread to run
   > Works like the scheduler on a processor, provides functions like "process context-switch"
   - **Each** LWP attached to kernel thread
@@ -435,7 +435,7 @@ while (!Thread.currentThread().isInterrupted()){
 
 ### Windows Threads
 
-- Windows API – primary API for Windows applications
+- Windows API - primary API for Windows applications
 - Implements the one-to-one mapping, kernel-level
 - Each thread contains
   - A thread id
@@ -445,10 +445,10 @@ while (!Thread.currentThread().isInterrupted()){
 - The register set, stacks, and private storage area are known as the **context** of the thread
 
 - The primary data structures of a thread include:
-  - ETHREAD (executive thread block) – includes pointer to process to which thread belongs and to KTHREAD, in kernel space
-  - KTHREAD (kernel thread block) – scheduling and synchronization info, kernel-mode stack, pointer to TEB, in kernel space
+  - ETHREAD (executive thread block) - includes pointer to process to which thread belongs and to KTHREAD, in kernel space
+  - KTHREAD (kernel thread block) - scheduling and synchronization info, kernel-mode stack, pointer to TEB, in kernel space
     > sync data, e.g. lock, shared files ...
-  - TEB (thread environment block) – thread id, user-mode stack, thread-local storage, in user space
+  - TEB (thread environment block) - thread id, user-mode stack, thread-local storage, in user space
 
 ![](./img/11-06-14-31-10.png)
 > Information for every thread, three blocks in two separated spaces

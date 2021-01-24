@@ -1,5 +1,5 @@
 ---
-title: Bayes' Nets - Sampling
+title: 12 Bayes' Nets - Sampling
 url: ai-sample
 date: 2020-11-27 10:08:51
 tags: 
@@ -178,7 +178,7 @@ Assume we are sampling $P(C|+s,+w)$, we should calculate the weight(cost) of our
 
 - Sampling distribution if $z$ sampled and e fixed evidence
 $$
-S_{W S}(\mathbf{z}, \mathbf{e})=\prod_{i=1}^{l} P\left(z_{i} \mid \operatorname{Parents}\left(Z_{i}\right)\right)
+S_{W S}(\mathbf{z}, \mathbf{e})=\prod_{i=1}^{l} P\left(z_{i} \mid \mathrm{Parents}\left(Z_{i}\right)\right)
 $$
 - Now, samples have weights
 $$
@@ -187,7 +187,7 @@ $$
 - Together, weighted sampling distribution is consistent
 $$
 \begin{aligned}
-S_{\mathrm{WS}}(z, e) \cdot w(z, e) &=\prod_{i=1}^{l} P\left(z_{i} \mid \operatorname{Parents}\left(z_{i}\right)\right) \prod_{i=1}^{m} P\left(e_{i} \mid \operatorname{Parents}\left(e_{i}\right)\right) \\
+S_{\mathrm{WS}}(z, e) \cdot w(z, e) &=\prod_{i=1}^{l} P\left(z_{i} \mid \mathrm{Parents}\left(z_{i}\right)\right) \prod_{i=1}^{m} P\left(e_{i} \mid \mathrm{Parents}\left(e_{i}\right)\right) \\
 &=P(\mathrm{z}, \mathrm{e})
 \end{aligned}
 $$
@@ -235,7 +235,7 @@ $$
 
 ![](./img/11-27-11-40-20.png)
 
-- Many things cancel out – only CPTs with S remain!
+- Many things cancel out - only CPTs with S remain!
 - More generally: only CPTs that have resampled variable need to be considered, and joined together
 
 

@@ -31,9 +31,11 @@ module.exports = {
 		}
 	},
 	themeConfig: {
+		type: 'blog',
+		authorAvatar: '/id.jpeg',
 		nav: [
 			{
-				text: "Course",
+				text: "Notes",
 				items: [
 					{ "text": "CS222 Algorithm Analysis", "link": "/course/CS222/" },
 					{ "text": "CS258 Information Theory", "link": "/course/CS258/" },
@@ -47,18 +49,20 @@ module.exports = {
 			},
 			{ text: 'TimeLine', link: '/timeline/', icon: 'reco-date' }
 		],
-		noFoundPageByTencent: false,
-		blogConfig: {
-			category: {
-				location: 2,
-				text: 'Category'
-			},
-			tag: {
-				location: 3,
-				text: 'Tag'
-			},
+		blogConfig:{
+			socialLinks: [     // 信息栏展示社交信息
+				{ icon: 'reco-mail', link: "mailto:ltzhou@sjtu.edu.cn"},
+				{ icon: 'reco-github', link: 'https://github.com/ltzone' },
+				{ icon: 'reco-twitter', link: 'https://twitter.com/tonyzhou0608' }
+			  ]
 		},
+		noFoundPageByTencent: false,
 		subSidebar: 'auto',
-		author: 'Tony Zhou'
+		author: 'Tony Zhou',
+		// 备案
+		record: '沪ICP备20004458号',
+		recordLink: 'http://www.beian.miit.gov.cn/',
+		// 项目开始时间，只填写年份
+		startYear: '2020'
 	}
 }

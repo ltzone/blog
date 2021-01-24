@@ -34,7 +34,7 @@ Augmentation path
 Def. A st-cut (cut) is a partition $(A, B)$ of the vertices with $s \in A$ and $t \in B$.
 Def. Its capacity is the sum of the capacities of the edges from $A$ to $B$.
 $$
-\operatorname{cap}(A, B)=\sum_{e \text { out of } A} c(e)
+\mathrm{cap}(A, B)=\sum_{e \text { out of } A} c(e)
 $$
 
 
@@ -50,7 +50,7 @@ Def. An $s t$ -flow (flow) $f$ is a function that satisfies:
 For each $e \in E: \quad 0 \leq f(e) \leq c(e) \quad$ [capacity]
 For each $v \in V-\{s, t\}: \quad \sum_{e \text { in to } v} f(e)=\sum_{e \text { out of } v} f(e)$
 [flow conservation]
-Def. The value of a flow $f$ is: $\operatorname{val}(f)=\sum_{e \text { out of } s} f(e)$
+Def. The value of a flow $f$ is: $\mathrm{val}(f)=\sum_{e \text { out of } s} f(e)$
 
 Max-flow problem. Find a flow of maximum value.
 ![](./img/10-26-14-18-13.png)
@@ -99,7 +99,7 @@ Greedy algorithm.
 **Def**. An augmenting path is a simple $s \sim t$ path $P$ in the residual graph $G_{f}$.
 **Def**. The **bottleneck capacity** of an augmenting $P$ is the minimum residual capacity of any edge in $P$.
 > Note the capacity here is w.r.t. the residual graph
-**Key property.** Let $f$ be a flow and let $P$ be an augmenting path in $G_{f}$. Then $f^{\prime}$ is a flow and $\operatorname{val}\left(f^{\prime}\right)=\operatorname{val}(f)+$ bottleneck $(G_f, P)$
+**Key property.** Let $f$ be a flow and let $P$ be an augmenting path in $G_{f}$. Then $f^{\prime}$ is a flow and $\mathrm{val}\left(f^{\prime}\right)=\mathrm{val}(f)+$ bottleneck $(G_f, P)$
 
 ![](./img/10-26-14-27-03.png)
 
@@ -135,13 +135,13 @@ $$
 
 ![](./img/10-26-14-35-35.png)
 
-**Weak duality**. Let $f$ be any flow and $(A, B)$ be any cut. Then, $v(f) \leq \operatorname{cap}(A, B)$
+**Weak duality**. Let $f$ be any flow and $(A, B)$ be any cut. Then, $v(f) \leq \mathrm{cap}(A, B)$
 **Pf**. $\quad v(f)=\sum_{e \text { out of } A} f(e)-\sum_{e \text { in to } A} f(e)$
 $$
 \begin{aligned}
 \text { flow-value } & \leq \sum_{\text {lemma }} f(e) \\
 & \leq \sum_{\text {e out of } A} c(e) \\
-&=\operatorname{cap}(A, B)
+&=\mathrm{cap}(A, B)
 \end{aligned}
 $$
 > Derived from the flow-value lemma
@@ -152,13 +152,13 @@ $$
 **Max-flow min-cut theorem.** Value of the max-flow = capacity of min-cut.
 
 Pf. The following three conditions are equivalent for any flow $f:$
-i. There exists a cut $(A, B)$ such that $\operatorname{cap}(A, B)=\operatorname{val}(f)$
+i. There exists a cut $(A, B)$ such that $\mathrm{cap}(A, B)=\mathrm{val}(f)$
 ii. $f$ is a max-flow.
 iii. There is no augmenting path with respect to $f$.
 
 - $[\mathrm{i} \Rightarrow \mathrm{ii}]$
-  - Suppose that $(A, B)$ is a cut such that $\operatorname{cap}(A, B)=v a l(f)$
-  - Then, for any flow $f^{\prime},$ val $\left(f^{\prime}\right) \leq \operatorname{cap}(A, B)=\operatorname{val}(f)$
+  - Suppose that $(A, B)$ is a cut such that $\mathrm{cap}(A, B)=v a l(f)$
+  - Then, for any flow $f^{\prime},$ val $\left(f^{\prime}\right) \leq \mathrm{cap}(A, B)=\mathrm{val}(f)$
   > weak duality + by assumption
   - Thus, $f$ is a max-flow.
 - $[\mathrm{ii} \Rightarrow$ iii $]$ We prove contrapositive: $\sim \mathrm{iii} \Rightarrow \sim \mathrm{ii} .$
@@ -247,11 +247,11 @@ Choose augmenting paths with:
 **Pf**. Initially $C / 2<\Delta \leq C ; \Delta$ decreases by a factor of 2 in each iteration.
 
 
-**Lemma** $2 .$ Let $f$ be the flow at the end of a $\Delta$ -scaling phase. Then, the value of the max-flow $\leq \operatorname{val}(f)+m \Delta$ . 
+**Lemma** $2 .$ Let $f$ be the flow at the end of a $\Delta$ -scaling phase. Then, the value of the max-flow $\leq \mathrm{val}(f)+m \Delta$ . 
 > Intuition: $m \Delta$  is the maximum flow in the future, proof on next slides, m is the number of edges
 > Similar to the proof above
 
-$\begin{aligned} \operatorname{val}(f)=& \sum_{e \text { out of } A} f(e)-\sum_{e \text { in to } A} f(e) \\ & \geq \sum_{e \text { out of } A}(c(e)-\Delta)-\sum_{e \text { in to } A} \Delta \\ &=\sum_{e \text { out of } A} c(e)-\sum_{e \text { out of } A} \Delta-\sum_{e \text { in to } A} \Delta \\ & \geq \operatorname{cap}(A, B)-m \Delta \end{aligned}$
+$\begin{aligned} \mathrm{val}(f)=& \sum_{e \text { out of } A} f(e)-\sum_{e \text { in to } A} f(e) \\ & \geq \sum_{e \text { out of } A}(c(e)-\Delta)-\sum_{e \text { in to } A} \Delta \\ &=\sum_{e \text { out of } A} c(e)-\sum_{e \text { out of } A} \Delta-\sum_{e \text { in to } A} \Delta \\ & \geq \mathrm{cap}(A, B)-m \Delta \end{aligned}$
 > Since we have only selected edges with capacity greater than $\Delta$
 
 ![](./img/10-26-15-12-17.png)
@@ -262,7 +262,7 @@ $\begin{aligned} \operatorname{val}(f)=& \sum_{e \text { out of } A} f(e)-\sum_{
 **Lemma** $3 .$ There are at most $2 \mathrm{m}$ augmentations per scaling phase.
 **Pf**.
 - Let $f$ be the flow at the end of the previous scaling phase. 
-- LEMMA $2 \Rightarrow \operatorname{val}\left(f^{*}\right) \leq \operatorname{val}(f)+2 m \Delta^{\prime} \cdot$ (current scaling factor, $\left.\Delta^{\prime}=1 / 2 \Delta\right)$
+- LEMMA $2 \Rightarrow \mathrm{val}\left(f^{*}\right) \leq \mathrm{val}(f)+2 m \Delta^{\prime} \cdot$ (current scaling factor, $\left.\Delta^{\prime}=1 / 2 \Delta\right)$
   > There goes the `2m`
 - Each augmentation in a $\Delta^{\prime}$ -phase increases val $(f)$ by at least $\Delta^{\prime} .$
 
@@ -447,7 +447,7 @@ Phase of normal augmentations.
 ![](./img/10-26-15-40-28.png)
 
 - Let $A=\{v: \ell(v)<h\} \cup\{v: \ell(v)=h$ and $v$ has $\leq 1$ outgoing residual edge $\}$
-- $\operatorname{capf}(A, B) \leq\left|V_{h}\right| \leq n^{1 / 2} \Rightarrow|f| \geq\left|f^{*}\right|-n^{1 / 2}$
+- $\mathrm{capf}(A, B) \leq\left|V_{h}\right| \leq n^{1 / 2} \Rightarrow|f| \geq\left|f^{*}\right|-n^{1 / 2}$
 > Worst Case: $\sqrt{n}$ points for $\sqrt{n}$ levels, otherwise better, saturate soon
 
 ![](./img/10-26-15-40-33.png)

@@ -90,7 +90,7 @@ categories:
     $$
     \begin{aligned}
     h(A) \leq & \cos t(A \text { to } C)+h(C) \\
-    f(A)=g(A)+h(A) & \leq g(A)+\operatorname{cost}(A \text { to } C)+h(C)=f(C)
+    f(A)=g(A)+h(A) & \leq g(A)+\mathrm{cost}(A \text { to } C)+h(C)=f(C)
     \end{aligned}
     $$
 - $\mathrm{A}^{*}$ graph search is optimal
@@ -258,7 +258,7 @@ A simple form of propagation makes sure all arcs are consistent:
 - Runtime: $O(n^2 d^3)$, can be reduced to $O(n^2 d^2)$
   - The `Remove-inconsistent` loop costs $O(d^2)$ 
   - The general `AC-loop` costs $O(n^2)$
-- ... but detecting all possible future problems is NP-hard – why?
+- ... but detecting all possible future problems is NP-hard - why?
 - **Limitation:** 
   1. one/multiple/no solution can happen
   2. backtracking search is still a huge burden in complexity

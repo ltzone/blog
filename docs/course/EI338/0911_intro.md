@@ -26,7 +26,7 @@ categories:
 ## Computer System Structure
 
 - Computer system can be divided into four components:
-  - Hardware – provides basic computing resources
+  - Hardware - provides basic computing resources
     - CPU, memory, I/O devices
   - Operating system
     - Controls and coordinates use of hardware among various applications and users
@@ -70,7 +70,7 @@ categories:
 - Everything else is either
   - a system program (ships *(comes along, e.g. Web Browser, Email Clients...)* with the operating system, but not part of the kernel) , or
   - an application program, all programs not associated with the operating system
-- Today’s OSes for general purpose and mobile computing also include **middleware** – a set of software frameworks that provide addition services to application developers such as databases, multimedia, graphics *(e.g. OpenGL, CUDA, Drivers...)*
+- Today’s OSes for general purpose and mobile computing also include **middleware** - a set of software frameworks that provide addition services to application developers such as databases, multimedia, graphics *(e.g. OpenGL, CUDA, Drivers...)*
 
 ## Computer System Organization
 - Computer-system operation
@@ -132,12 +132,12 @@ After I/O starts, control returns to user program only upon I/O completion
   - **multithread**: when one thread is suspended, you can do something else on the other thread
 (More Efficient) After I/O starts, control returns to user program without waiting for I/O completion **Non-Blocking IO**
 *To achieve that, it is requested that*
-- **System call** – request to the OS to allow user to wait for I/O completion
+- **System call** - request to the OS to allow user to wait for I/O completion
 - **Device-status table** contains entry for each I/O device indicating its type, address, and state
 - OS indexes into I/O device table to determine device status and to modify table entry to include interrupt
 
 ## Storage Structure
-- Main memory – only large storage media that the CPU can access directly
+- Main memory - only large storage media that the CPU can access directly
   - Random access
   - Typically **volatile** (*vanishes when turned off*)
   - Typically **random-access memory** in the form of **Dynamic Random-access Memory (DRAM)** 
@@ -147,13 +147,13 @@ After I/O starts, control returns to user program only upon I/O completion
     > speed: slower vs faster
     > for capacitors, electrons will escape overtime, it needs to be refreshed(read and write back) *which is why it is called Dynamic*
     > function: Main Memory vs. Cache
-- Secondary storage – extension of main memory that provides large nonvolatile storage capacity
-- Hard Disk Drives (HDD) – rigid metal or glass platters covered with magnetic recording material
+- Secondary storage - extension of main memory that provides large nonvolatile storage capacity
+- Hard Disk Drives (HDD) - rigid metal or glass platters covered with magnetic recording material
   - Disk surface is logically divided into tracks, which are subdivided into sectors
   - The disk controller determines the logical interaction between the device and the computer
   - *SSD*
   - *prone to errors, coding algorithms required*
-- Non-volatile memory (NVM) devices– faster than hard disks, nonvolatile
+- Non-volatile memory (NVM) devices- faster than hard disks, nonvolatile
   - Various technologies (*resistors, magnets, Flash, ...*)
   - Becoming more popular as capacity and performance increases, price drops
   - *Multiple uses in modern technologies such as AI processors*
@@ -201,8 +201,8 @@ Solutions
     - 容错率
     - SCALE-UP FRIENDLY
 - Types
-  - Asymmetric Multiprocessing – each processor is assigned a specie task. 设计更为复杂，e.g. 通讯处理器，不同核的硬件目标不同，可维护性差
-  - Symmetric Multiprocessing – each processor performs all tasks，对software有更高要求
+  - Asymmetric Multiprocessing - each processor is assigned a specie task. 设计更为复杂，e.g. 通讯处理器，不同核的硬件目标不同，可维护性差
+  - Symmetric Multiprocessing - each processor performs all tasks，对software有更高要求
 
 ### Example: Symmetric Multiprocessing Architecture
 

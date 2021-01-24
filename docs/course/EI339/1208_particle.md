@@ -1,5 +1,5 @@
 ---
-title: Particle Filtering
+title: 14-1 Particle Filtering
 url: ai-particle
 date: 2020-12-08 14:03:58
 tags: 
@@ -113,7 +113,7 @@ $$
 - Each particle is moved by sampling its next position from the transition model
   $$x'=sample(P(X'|x))$$
   > Works like Gibbs Sampling, take one and calculate the transition probability
-  - This is like prior sampling – samples’ frequencies reflect the transition probabilities
+  - This is like prior sampling - samples’ frequencies reflect the transition probabilities
   - Here, most samples move clockwise, but some move in another direction or stay in place
 - This captures the passage of time
   - If enough samples, close to exact values before and after (consistent)

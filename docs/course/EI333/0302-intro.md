@@ -1,7 +1,5 @@
-
 ---
-
-title: 【Software Engineering】 1 Introduction
+title: 1 Introduction
 
 url: se-intro
 
@@ -12,8 +10,6 @@ tags:
 
 categories:
 - Courses
-- Software Engineering
-
 ---
 
 Week 1 of 2020 Spring. An Introduction to Software Engineering
@@ -51,10 +47,10 @@ Software = Programs + Data + Associated Documentations
 
 - **developed or engineered** 软件的主要成本是设计而不是“制造”
 - **Software doesn't wear out** 
-> ![一般商品的失效曲线](img/0302-1.png)
+> ![一般商品的失效曲线](./img/0302-1.png)
 > Fig 1. 一般商品的失效曲线
 
-> ![软件的失效曲线](img/0302-2.png)
+> ![软件的失效曲线](./img/0302-2.png)
 > Fig 2. 软件的失效曲线
 > 实际软件的失效曲线是绿色曲线，因为在软件使用过程中，存在修正的引入，即更新版本软件产生的扰动。但随着需求的提高，软件将会逐渐失效，也会wear out。
 
@@ -73,7 +69,7 @@ SE expenditure represents a significant fraction of total spends in all develope
 
 ### 3.1 Software Crisis
 
-![软件交付情况](img/0302-3.png)
+![软件交付情况](./img/0302-3.png)
 
 根据美国政府的统计，只有5%的软件成功得到交付。没有成功交付的软件存在undelivered, unusable的问题，需要major rework或者changes。
 
@@ -102,7 +98,7 @@ These problems will become worse because of the pervasive use of software.
     > **Second Law of Software Dynamics** Each implemented change erodes the structure of the system which makes the next change even more expensive.
     + eventually leads to the failure of the software
 - Unrealistic Expectations (不现实的预期)
-    > ![软件开发的铁三角](img/0302-4.png)
+    > ![软件开发的铁三角](./img/0302-4.png)
     > 
     > 软件开发过程中面临的三者互斥因素(cost, time, quality)，是软件工程师需要解决的问题
 
@@ -131,7 +127,7 @@ Software engineers need to understand the **environment** and **systems**, evalu
 
 > Case Study: 股票交易系统
 > Probelm Statement: 每个上市公司以他们的股票为标志
-> ![CASE STUDY](img/0302-5.png)
+> ![CASE STUDY](./img/0302-5.png)
 > StockExchange实体包含Company（以tickerSymbol标识），*表达多对多关系。代码只是模型的派生。
 
 
@@ -150,10 +146,10 @@ Software engineers need to understand the **environment** and **systems**, evalu
     - 该模型在业界正在得到逐渐的重视。开发过程中问题的解决、讨论、决定过程。
     - 由于软件具有生命周期，issues model有助于后期维护时的回顾。
     > Case Study: Issue-Modeling
-    > ![Issue-Modeling](img/0302-6.png)
+    > ![Issue-Modeling](./img/0302-6.png)
     > 有助于理解决策的逻辑
 
-![Models](img/0302-7.png)
+![Models](./img/0302-7.png)
 
 三大类模型有机结合在一起，并且通过互相迭代完成软件的开发。在System Model中，存在两种工程方式。
 

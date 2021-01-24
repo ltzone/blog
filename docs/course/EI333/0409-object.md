@@ -1,5 +1,5 @@
 ---
-title: Object Design - Reusing Pattern Solutions
+title: 7 Object Design - Reusing Pattern Solutions
 url: se-object
 date: 2020-04-09 10:03:06
 tags: 

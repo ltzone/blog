@@ -74,11 +74,11 @@ while (true) {
 - A data set is shared among a number of concurrent processes
   - **Readers** - only read the dataset; they do not perform any updates
     > Reader is read only, they won't cause conflicts, needn't be blocked
-  - Writers – can both read and write
+  - Writers - can both read and write
     > Only one writer is accessible to shared data, when a writer is in use, no more other writers or readers can access
-- Problem – allow multiple readers to read at the same time 
+- Problem - allow multiple readers to read at the same time 
   - Only one single writer can access the shared data at the same time.
-- Several variations of how readers and writers are considered – all involve some form of priorities
+- Several variations of how readers and writers are considered - all involve some form of priorities
 - Shared Data 
   - Dataset
   - Semaphore `rw_mutex` initialized to 1
@@ -255,7 +255,7 @@ Creating and initializing the lock
 ![](./img/12-04-15-11-03.png)
 
 ### POSIX Semaphores
-- POSIX provides two versions – named and unnamed. 
+- POSIX provides two versions - named and unnamed. 
 - Named semaphores can be used by unrelated processes, unnamed cannot.
 
 Named Semaphores

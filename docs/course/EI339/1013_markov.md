@@ -141,7 +141,7 @@ What if the game lasts forever? Do we get infinite rewards?
   - Gives nonstationary policies (p depends on time left)
 - Solution 2: Upper bound on step utility + $0 < \gamma < 1$
   - $U\left(\left[r_{0}, \ldots r_{\infty}\right]\right)=\sum_{t=0}^{\infty} \gamma^{t} r_{t} \leq R_{\max } /(1-\gamma)$
-  - Smaller $\gamma$ means smaller “horizon” – shorter term focus
+  - Smaller $\gamma$ means smaller “horizon” - shorter term focus
 - Solution 3: Absort state: guarantee that for every policy, terminal state will be reached
 
 

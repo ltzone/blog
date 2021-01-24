@@ -172,8 +172,8 @@ $$
    - Pipeline cache access to improve bandwidth
    - Examples:
      - Pentium: 1 cycle
-     - Pentium Pro – Pentium III: 2 cycles 
-     - Pentium 4 – Core i7: 4 cycles
+     - Pentium Pro - Pentium III: 2 cycles 
+     - Pentium 4 - Core i7: 4 cycles
    - Increases branch mis-prediction penalty 
    - Makes it easier to increase associativity
 4. Nonblocking Caches

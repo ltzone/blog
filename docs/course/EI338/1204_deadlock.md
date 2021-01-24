@@ -58,7 +58,7 @@ Deadlock can arise if four conditions hold **simultaneously**.
   > 请求的资源可能被其他process hold住
 - **No preemption**: a resource can be released only voluntarily by the process holding it, after that process has completed its task
   > The resource should be released based on the process's will
-- **Circular wait**: there exists a set {P0, P1, ..., Pn} of waiting processes such that P0 is waiting for a resource that is held by P1, P1 is waiting for a resource that is held by P2, ..., Pn–1 is waiting for a resource that is held by Pn, and Pn is waiting for a resource that is held by P0.
+- **Circular wait**: there exists a set {P0, P1, ..., Pn} of waiting processes such that P0 is waiting for a resource that is held by P1, P1 is waiting for a resource that is held by P2, ..., Pn-1 is waiting for a resource that is held by Pn, and Pn is waiting for a resource that is held by P0.
 
 ### Resource-Allocation Graph
 
@@ -105,22 +105,22 @@ Example 3: Graph With A Cycle But No Deadlock
 ## Deadlock Prevention
 
 Invalidate one of the four necessary conditions for deadlock:
-- **Mutual Exclusion** – not required for sharable resources (e.g., read-only files); must hold for non-sharable resources
+- **Mutual Exclusion** - not required for sharable resources (e.g., read-only files); must hold for non-sharable resources
   > In fact very **difficult** to erase all. But can be done for some special cases
   > Only **partially** resolve the issue
   > Not very practical
-- **Hold and Wait** – must guarantee that whenever a process requests a resource, it does not hold any other resources
+- **Hold and Wait** - must guarantee that whenever a process requests a resource, it does not hold any other resources
   > 任何一个进程请求资源时，必须保证它不能hold住其他资源
   > Two methods: ... or ...
   - Require process to request and be allocated all its resources before it begins execution, or allow process to request resources only when the process has none allocated to it.
   > deficiency:
   - Low resource utilization; starvation possible
 
-- **No Preemption –**
+- **No Preemption -**
   - If a process that is holding some resources requests another resource that cannot be immediately allocated to it, then all resources _currently being held are released_
   - Preempted resources are added to the list of resources for which the process is waiting
   - Process will be restarted only when it can regain its old resources, as well as the new ones that it is requesting
-- **Circular Wait** – _impose a total ordering_ of all resource types, and require that each process requests resources in an increasing order of enumeration
+- **Circular Wait** - _impose a total ordering_ of all resource types, and require that each process requests resources in an increasing order of enumeration
   > Which is fully exploited in later research
   > Since it makes the least effects to scheduling issue
 
@@ -209,11 +209,11 @@ Requires that the system has some additional **a priori** information available
 
 Let $n=$ number of processes, and $m=$ number of resources types.
 - **Available**: Vector of length $m$. If $available [j]=k,$ there are $k$ instances of resource type $R_{j}$ available
-- **Max**: $n \times m$ matrix. If $\operatorname{Max}[i, j]=k,$ then process $P_{i}$ may request at most $k$ instances of resource type $R_{j}$
+- **Max**: $n \times m$ matrix. If $\mathrm{Max}[i, j]=k,$ then process $P_{i}$ may request at most $k$ instances of resource type $R_{j}$
 - **Allocation**: $n \times m$ matrix. If $Allocation [i, j]=k$ then $P_{i}$ is currently allocated $k$ instances of $R_{j}$
-- **Need**: $n \times m$ matrix. If $\operatorname{Need}[i, j]=k,$ then $P_{i}$ may need $k$ more instances of $R_{j}$ to complete its task
+- **Need**: $n \times m$ matrix. If $\mathrm{Need}[i, j]=k,$ then $P_{i}$ may need $k$ more instances of $R_{j}$ to complete its task
 $$
-\text { Need }[i, j]=\operatorname{Max}[i,]]-\text { Allocation }[i, j]
+\text { Need }[i, j]=\mathrm{Max}[i,]]-\text { Allocation }[i, j]
 $$
 
 > Two parts: safety algorithm + resource-request algorithm
@@ -244,9 +244,9 @@ $$
 3. **Pretend** to allocate requested resources to Pi by modifying the state as follows:
    > So that we can check availability
     ```
-    Available = Available – Request[i];
+    Available = Available - Request[i];
     Allocation[i] = Allocation[i] + Request[i];
-    Need[i] = Need[i] – Request[i];
+    Need[i] = Need[i] - Request[i];
     ```
    - If safe $\Rightarrow$ the resources are allocated to $P_i$
    - If unsafe $\Rightarrow$ $P_i$ must wait, and the old resource-allocation state is restored
@@ -260,7 +260,7 @@ $$
 
 ![](./img/12-11-14-02-47.png)
 
-- Assume The content of the matrix Need is defined to be Max – Allocation
+- Assume The content of the matrix Need is defined to be Max - Allocation
   ![](./img/12-11-14-04-40.png)
 
 - The system is in a safe state since the sequence < P1, P3, P4, P2, P0> satisfies safety criteria
@@ -372,7 +372,7 @@ State of system?
 > Rollback (to a safe state!) can be a problem
 
 ### Resource Preemption
-- **Selecting a victim** – minimize cost
-- **Rollback** – return to some safe state, restart process for that state
-- **Starvation** – same process may always be picked as victim, include number of rollback in cost factor
+- **Selecting a victim** - minimize cost
+- **Rollback** - return to some safe state, restart process for that state
+- **Starvation** - same process may always be picked as victim, include number of rollback in cost factor
 

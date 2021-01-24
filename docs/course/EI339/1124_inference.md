@@ -1,5 +1,5 @@
 ---
-title: Bayes' Nets - Inference
+title: 11-2 Bayes' Nets - Inference
 url: ai-bninference
 date: 2020-11-24 14:09:16
 tags: 

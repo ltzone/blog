@@ -88,7 +88,7 @@ S0: producer execute register1 = counter            {register1 = 5}
 S1: producer execute register1 = register1 + 1      
 {register1 = 6, but does not write back to counter cache} 
 S2: consumer execute register2 = counter            {register2 = 5}
-S3: consumer execute register2 = register2 – 1      {register2 = 4}
+S3: consumer execute register2 = register2 - 1      {register2 = 4}
 S4: producer execute counter = register1            {counter = 6 }
 S5: consumer execute counter = register2            {counter = 4}
 ```
@@ -115,8 +115,8 @@ S5: consumer execute counter = register2            {counter = 4}
 ### The General Critical-Section Handling Types in OS (2')
 
 - Two approaches depending on if kernel is preemptive or non- preemptive
-  - Preemptive – allows preemption of process when running in kernel mode
-  - Non-preemptive – runs until exits kernel mode, blocks, or voluntarily yields CPU
+  - Preemptive - allows preemption of process when running in kernel mode
+  - Non-preemptive - runs until exits kernel mode, blocks, or voluntarily yields CPU
     - Essentially free of race conditions in kernel mode
     > Though simple, modern OS won't take this approach
 
@@ -224,9 +224,9 @@ while (true){
 - Only one process may be active within the monitor at a time
 - condition x, y;
 - Two operations are allowed on a condition variable:
-  - `x.wait()` – a process that invokes the operation is suspended until `x.signal()`
+  - `x.wait()` - a process that invokes the operation is suspended until `x.signal()`
     i.e. enter the waiting queue of x
-  - `x.signal()` – resumes one of processes (if any) that invoked x.wait()
+  - `x.signal()` - resumes one of processes (if any) that invoked x.wait()
     - If no `x.wait()` on the variable, then it has no effect on the variable
 
 ![](https://www.ltzhou.com/wp-content/uploads/2020/12/12-04-14-09-16.png)
@@ -408,7 +408,7 @@ DiningPhilosophers.putdown(i);
   > 请求的资源可能被其他process hold住
 - **No preemption**: a resource can be released only voluntarily by the process holding it, after that process has completed its task
   > The resource should be released based on the process's will
-- **Circular wait**: there exists a set {P0, P1, ..., Pn} of waiting processes such that P0 is waiting for a resource that is held by P1, P1 is waiting for a resource that is held by P2, ..., Pn–1 is waiting for a resource that is held by Pn, and Pn is waiting for a resource that is held by P0.
+- **Circular wait**: there exists a set {P0, P1, ..., Pn} of waiting processes such that P0 is waiting for a resource that is held by P1, P1 is waiting for a resource that is held by P2, ..., Pn-1 is waiting for a resource that is held by Pn, and Pn is waiting for a resource that is held by P0.
 
 
 ### Identify a deadlock situation in a resource allocation graph
@@ -425,11 +425,11 @@ check whether the loop can be unknotted, we should revisit all the paths in the 
 ### Evaluate the four different approaches for preventing deadlocks
 
 Invalidate one of the four necessary conditions for deadlock:
-- **Mutual Exclusion** – not required for sharable resources (e.g., read-only files); must hold for non-sharable resources
+- **Mutual Exclusion** - not required for sharable resources (e.g., read-only files); must hold for non-sharable resources
   > In fact very **difficult** to erase all. But can be done for some special cases
   > Only **partially** resolve the issue
   > Not very practical
-- **Hold and Wait** – must guarantee that whenever a process requests a resource, it does not hold any other resources
+- **Hold and Wait** - must guarantee that whenever a process requests a resource, it does not hold any other resources
   > 任何一个进程请求资源时，必须保证它不能hold住其他资源
   > Two methods: ... or ...
   - Require process to request and be allocated all its resources before it begins execution, or allow process to request resources only when the process has none allocated to it.
@@ -439,7 +439,7 @@ Invalidate one of the four necessary conditions for deadlock:
   - If a process that is holding some resources requests another resource that cannot be immediately allocated to it, then all resources _currently being held are released_
   - Preempted resources are added to the list of resources for which the process is waiting
   - Process will be restarted only when it can regain its old resources, as well as the new ones that it is requesting
-- **Circular Wait** – _impose a total ordering_ of all resource types, and require that each process requests resources in an increasing order of enumeration
+- **Circular Wait** - _impose a total ordering_ of all resource types, and require that each process requests resources in an increasing order of enumeration
   > Which is fully exploited in later research
   > Since it makes the least effects to scheduling issue
   > A simple implementation: enforce a wait_order on different mutex
@@ -487,9 +487,9 @@ System is in **safe state** if there exists a sequence $\left\langle P_{1}, P_{2
 3. **Pretend** to allocate requested resources to Pi by modifying the state as follows:
    > So that we can check availability
     ```
-    Available = Available – Request[i];
+    Available = Available - Request[i];
     Allocation[i] = Allocation[i] + Request[i];
-    Need[i] = Need[i] – Request[i];
+    Need[i] = Need[i] - Request[i];
     ```
    - If safe $\Rightarrow$ the resources are allocated to $P_i$
    - If unsafe $\Rightarrow$ $P_i$ must wait, and the old resource-allocation state is restored
@@ -508,8 +508,8 @@ System is in **safe state** if there exists a sequence $\left\langle P_{1}, P_{2
 ### What is logical address (space) and physical address? 
 
 - The concept of a logical address space that is bound to a separate physical address space is central to proper memory management
-  - Logical address – generated by the CPU; also referred to as virtual address
-  - Physical address – address seen by the memory unit
+  - Logical address - generated by the CPU; also referred to as virtual address
+  - Physical address - address seen by the memory unit
 - Logical and physical addresses are the same in compile-time and load-time address-binding schemes; logical (virtual) and physical addresses _differ in execution-time address-binding scheme_
 - Logical address space is the set of all logical addresses _generated by a program_
 - Physical address space is the set of all physical addresses _generated by a program_
@@ -537,7 +537,7 @@ To accelerate translation of address, it is implemented by HW
   > every process has contiguous space
 - Relocation registers used to protect user processes from each other, and from changing operating-system code and data
   - Base register contains value of smallest physical address
-  - Limit register contains range of logical addresses – each logical address must be less than the limit register
+  - Limit register contains range of logical addresses - each logical address must be less than the limit register
   - MMU maps logical address dynamically
 
 
@@ -549,7 +549,7 @@ To accelerate translation of address, it is implemented by HW
 
 - Since Degree of multiprogramming limited by number of partitions
 - We want Variable-partition sizes for efficiency (sized to a given process’ needs)
-- Hole – block of available memory; holes of various size are scattered throughout memory
+- Hole - block of available memory; holes of various size are scattered throughout memory
 - When a process arrives, it is allocated memory from a hole large enough to accommodate it
 - Process exiting frees its partition, adjacent free partitions combined
 - Operating system maintains information about:
@@ -575,8 +575,8 @@ How to satisfy a request of size n from a list of free holes?
 ### Exaplain the address translation scheme in Paging
 
 Address generated by CPU is divided into:
-- Page number (p) – used as an index into a page table which contains base address of each page in physical memory
-- Page offset (d) – combined with base address to define the physical memory address that is sent to the memory unit
+- Page number (p) - used as an index into a page table which contains base address of each page in physical memory
+- Page offset (d) - combined with base address to define the physical memory address that is sent to the memory unit
 
 ### Paging Hardware Model
 
@@ -596,7 +596,7 @@ Address generated by CPU is divided into:
 a special fast-lookup hardware cache called translation look-aside buffers (TLBs) (also called associative memory).
 
 datails:
-- Some TLBs store address-space identifiers (ASIDs) in each TLB entry – uniquely identifies each process to provide address-space protection for that process
+- Some TLBs store address-space identifiers (ASIDs) in each TLB entry - uniquely identifies each process to provide address-space protection for that process
   - Otherwise need to flush at every context switch
 - TLBs typically small (64 to 1,024 entries)
 - On a TLB miss, value is loaded into the TLB for faster access next time
@@ -671,9 +671,9 @@ When visiting an invalid entry in the page table, a page fault will occur, indic
 
 ### What happens when page fault occurs?
 
-- Service the interrupt – careful coding means just several hundred instructions needed
-- Read the page – lots of time
-- Restart the process – again just a small amout of time
+- Service the interrupt - careful coding means just several hundred instructions needed
+- Read the page - lots of time
+- Restart the process - again just a small amout of time
 
 More details, fault -> determine fault type -> save -> wait schedule -> go
 

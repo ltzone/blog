@@ -102,13 +102,13 @@ The **load** of machine $i$ is $L[i]=\Sigma_{j \in S[i]} t_{j}$
   L[i]-t_{j} & \leq \frac{1}{m} \sum_{k} L[k] \\
   &=\frac{1}{m} \sum_{k} t_{k} \\
   \text { Lemma } 2 \longrightarrow & \leq L^{*} \\
-  \text { Now, } L=L[i]=\underbrace{\left(L[i]-t_{j}\right.}_{\leq L^{*}(above)} & \underbrace{t_{j}}_{\leq L^{*}(Lemma\space1)} \leq 2 L^{*}
+  \text { Now, } L=L[i]={\left(L[i]-t_{j}\right.}_{\leq L^{*}(above)} & {t_{j}}_{\leq L^{*}(Lemma\space1)} \leq 2 L^{*}
   \end{aligned}
   $$
 
 > The 2 analysis is **tight** because we can find a certificate
 
-- An example: m machines, m (m – 1) jobs length 1 jobs, one job of length m.
+- An example: m machines, m (m - 1) jobs length 1 jobs, one job of length m.
 - Worst Case
   ![](./img/11-23-13-41-14.png)
 - Optimal Case
@@ -135,7 +135,7 @@ Sort n jobs in decreasing order of processing times; then run list scheduling al
 - Let $j$ be last job scheduled on machine $i $. 
 
 $$
-L=L[i]=\underbrace{\left(L[i]-t_{j}\right)}_{\text {as before } \rightarrow \leq L^{*}}+\underbrace{t_{j}}_{\le 1 / 2 L^{*} (Lemma \space 3, t_j \le t_{m+1})} \leq \frac{3}{2} L^{*}
+L=L[i]={\left(L[i]-t_{j}\right)}_{\text {as before } \rightarrow \leq L^{*}}+{t_{j}}_{\le 1 / 2 L^{*} (Lemma \space 3, t_j \le t_{m+1})} \leq \frac{3}{2} L^{*}
 $$
 
 > Idea: make use of the $m+1$th job, i.e. the first job that can't be assigned at the beginning.
@@ -185,7 +185,7 @@ Choose site, Repeatedly choose next center to be site farthest from any existing
 - Exactly one $c_{i}^{*}$ in each ball; let $c_{i}$ be the site paired with $c_{i}^{*}$.
 > **Tricky part** Exactly one $c_{i}^{*}$ <- since we are choosing sites as the greedy solution
 - Consider any site $s$ and its closest center $c_{i}^{*} \in C^{\star}$
-- $\operatorname{dist}(s, C) \leq \operatorname{dist}\left(s, c_{i}\right) \leq \operatorname{dist}\left(s, c_{i}^{*}\right)+\operatorname{dist}\left(c_{i}^{*}, c_{i}\right) \leq 2 r\left(C^{*}\right)$
+- $\mathrm{dist}(s, C) \leq \mathrm{dist}\left(s, c_{i}\right) \leq \mathrm{dist}\left(s, c_{i}^{*}\right)+\mathrm{dist}\left(c_{i}^{*}, c_{i}\right) \leq 2 r\left(C^{*}\right)$
 - Thus, $r(C) \leq 2 r\left(C^{*}\right) . \uparrow$
 
 **Theorem**. Greedy algorithm is a 2-approximation for center selection
@@ -202,8 +202,8 @@ problem.
 ![](./img/11-23-14-20-08.png)
 - Let $G=(V, E), k$ be an instance of DOMINATING-SET.
 - Construct instance $G^{\prime}$ of CENTER-SELECTION with sites $V$ and distances
-  - $\operatorname{dist}(u, v)=1$ if $(u, v) \in E$
-  - $\operatorname{dist}(u, v)=2$ if $(u, v) \notin E$
+  - $\mathrm{dist}(u, v)=1$ if $(u, v) \in E$
+  - $\mathrm{dist}(u, v)=2$ if $(u, v) \notin E$
 - Note that $G^{\prime}$ satisfies the triangle inequality.
 - $G$ has dominating set of size $k$ iff there exists $k$ centers $C^{*}$ with $r\left(C^{*}\right)=1$
   > If the covering ratio is 1, solution exists
@@ -326,7 +326,7 @@ $$
 
 ### Weighted vertex cover inapproximability
 
-**Theorem**. [Dinur–Safra 2004] If P ≠ NP, then no ρ-approximation for WEIGHTED-VERTEX-COVER for any ρ < 1.3606 (even if all weights are 1).
+**Theorem**. [Dinur-Safra 2004] If P ≠ NP, then no ρ-approximation for WEIGHTED-VERTEX-COVER for any ρ < 1.3606 (even if all weights are 1).
 
 **Open research problem**. Close the gap.
 
@@ -401,7 +401,7 @@ $$
 
 ![](./img/11-23-15-06-42.png)
 
-**Lemma 5.** If job $j$ is a leaf node and machine $i=\operatorname{parent}(j),$ then $x_{i j}=t_{j}$
+**Lemma 5.** If job $j$ is a leaf node and machine $i=\mathrm{parent}(j),$ then $x_{i j}=t_{j}$
 **Pf**.
 - since $i$ is a leaf, $x_{i j}=0$ for all $j \neq$ parent $(i)$
 - LP constraint guarantees $\Sigma_{i} x_{i j}=t_{j}$
@@ -428,7 +428,7 @@ Pf. The only possible non-leaf job assigned to machine $i$ is parent(i).
 
 **Remark**. Can solve LP using flow techniques on a graph with $m + n + 1$ nodes: given $L$, find feasible flow if it exists. Binary search to find $L^{*}$.
 
-**Extensions**: **unrelated parallel machines**. [Lenstra–Shmoys–Tardos 1990] 
+**Extensions**: **unrelated parallel machines**. [Lenstra-Shmoys-Tardos 1990] 
 - Job j takes $t_{ij}$ time if processed on machine i.
 - 2-approximation algorithm via LP rounding.
   - If $P \neq NP$, then no no $\rho$-approximation exists for any $\rho < 3/2$.
@@ -439,7 +439,7 @@ Pf. The only possible non-leaf job assigned to machine $i$ is parent(i).
 
 ### Polynomial-time approximation scheme
 **PTAS**. (1 + ε)-approximation algorithm for any constant ε > 0. 
-- Load balancing. [Hochbaum–Shmoys 1987] 
+- Load balancing. [Hochbaum-Shmoys 1987] 
 - Euclidean TSP. [Arora, Mitchell 1996]
 
 

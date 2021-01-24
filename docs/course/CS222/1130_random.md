@@ -234,7 +234,7 @@ each coupon, how many boxes before you have $\geq 1$ coupon of each type?
     $$
     E[X]=\sum_{j=0}^{n-1} E\left[X_{j}\right]=\sum_{j=0}^{n-1} \frac{n}{n-j}=n \sum_{i=1}^{n} \frac{1}{i}=n H(n)
     $$
-- prob of success = $(n – j) / n$ ⇒ expected waiting time = $n / (n – j)$
+- prob of success = $(n - j) / n$ ⇒ expected waiting time = $n / (n - j)$
 
 > Application? Solve MAX 3-SAT
 

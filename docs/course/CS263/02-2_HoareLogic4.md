@@ -1,9 +1,9 @@
 ---
-title: Hoare Logic
+title: Hoare Logic 4
 url: pl-hoare4
 date: 2020-03-12 08:02:33
 tags: 
-- Programming Logic
+- Programming Language
 
 categories: 
 - Courses

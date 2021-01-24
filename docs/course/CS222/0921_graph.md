@@ -49,7 +49,7 @@ categories:
 
 #### Paths and connectivity
 
-**Def**. A **path** in an undirected graph $G = (V, E)$ is a sequence of nodes $v_1, v_2, \ldots, v_k$ with the property that each consecutive pair $v_{i–1}$, $v_i$ is joined by an edge in $E$.
+**Def**. A **path** in an undirected graph $G = (V, E)$ is a sequence of nodes $v_1, v_2, \ldots, v_k$ with the property that each consecutive pair $v_{i-1}$, $v_i$ is joined by an edge in $E$.
 
 **Def**. A path is **simple** if all nodes are distinct.
 
@@ -57,7 +57,7 @@ categories:
 
 #### Cycles
 
-**Def**. A **cycle** is a path $v_1, v_2, \ldots, v_k$ in which $v_1 = v_k$, $k > 2$, and the first $k – 1$ nodes are all distinct.
+**Def**. A **cycle** is a path $v_1, v_2, \ldots, v_k$ in which $v_1 = v_k$, $k > 2$, and the first $k - 1$ nodes are all distinct.
 
 #### Trees
 
@@ -66,7 +66,7 @@ categories:
 **Theorem**. Let G be an undirected graph on n nodes. Any two of the following statements imply the third.
 - $G$ is connected.
 - $G$ does not contain a cycle. 
-- $G$ has $n – 1$ edges.
+- $G$ has $n - 1$ edges.
 
 #### Rooted Trees
 
@@ -212,12 +212,12 @@ Pf. [by induction on $n]$
 
 Pf.
 - Maintain the following information:
-  - $\operatorname{count}(w)=$ remaining number of incoming edges
+  - $\mathrm{count}(w)=$ remaining number of incoming edges
   - $S=$ set of remaining nodes with no incoming edges 
 - Initialization: $O(m+n)$ via single scan through graph.
 - Update: to delete $v$
   - remove $v$ from $S$
-  - decrement count $w$ ) for all edges from $v$ to $w$ and add $w$ to $S$ if $\operatorname{count}(w)$ hits 0
+  - decrement count $w$ ) for all edges from $v$ to $w$ and add $w$ to $S$ if $\mathrm{count}(w)$ hits 0
 - this is $O(1)$ per edge
 
 
@@ -275,7 +275,7 @@ How to use greedy to design an algorithm?
 
 Some orders(found by intuitions) can be found for interval shceduling problem.
 - [Earliest start time] Consider jobs in ascending order of $s_j$.
-- [Shortest interval] Consider jobs in ascending order of $f_j – s_j$.
+- [Shortest interval] Consider jobs in ascending order of $f_j - s_j$.
 - [Fewest conflicts] For each job j, count the number of conflicting jobs $c_j$. Schedule in ascending order of $c_j$.
 - [Earliest finish time] Consider jobs in ascending order of $f_j$
 
@@ -322,7 +322,7 @@ Pf. [by contradiction + maximal counterexample principle + a lemma proved with i
 
 - [Earliest start time] Consider lectures in ascending order of $s_j$. 
 - [Earliest finish time] Consider lectures in ascending order of $f_j$. 
-- [Shortest interval] Consider lectures in ascending order of $f_j – s_j$.
+- [Shortest interval] Consider lectures in ascending order of $f_j - s_j$.
 - [Fewest conflicts] For each lecture j, count the number of conflicting lectures $c_j$. Schedule in ascending order of $c_j$.
 
 Trial and Error:
@@ -393,7 +393,7 @@ Pf.
 
 - [Shortest processing time first] Schedule jobs in ascending order of processing time $t_j$.
 - [Earliest deadline first] Schedule jobs in ascending order of deadline $d_j$.
-- [Smallest slack] Schedule jobs in ascending order of slack $d_j – t_j$.
+- [Smallest slack] Schedule jobs in ascending order of slack $d_j - t_j$.
 
 CounterExamples:
 ![](./img/09-21-15-13-33.png)
@@ -435,7 +435,7 @@ Pf. [by contradiction]
 Define S* to be an optimal schedule that has the fewest number of inversions, and let's see what happens.
 - Can assume $S^*$ has no idle time.
 - If $S^*$ has no inversions, then $S = S^*$.
-- If $S^*$ has an inversion, let $i–j$ be an adjacent inversion.
+- If $S^*$ has an inversion, let $i-j$ be an adjacent inversion.
 - Swapping i and j
   - does not increase the max lateness
   - strictly decreases the number of inversions 

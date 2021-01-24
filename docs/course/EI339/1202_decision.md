@@ -1,5 +1,5 @@
 ---
-title: Decision Networks and Value of Information
+title: 13-1 Decision Networks and Value of Information
 url: ai-decision
 date: 2020-12-01 14:21:34
 tags: 
@@ -56,11 +56,12 @@ categories:
     \mathrm{EU}(\text { leave })=\sum_{w} P(w) U(\text { leave }, w)  =0.7 \cdot 100+0.3 \cdot 0=70
     $$
 - Umbrella = take
-    $$\begin{array} \mathrm{EU}(\text { take })=\sum_{w} P(w) U(\text { take }, w) =0.7 \cdot 20+0.3 \cdot 70=35\end{array}
+    $$
+    \mathrm{EU}(\text { take })=\sum_{w} P(w) U(\text { take }, w) =0.7 \cdot 20+0.3 \cdot 70=35
     $$
 - Optimal decision = leave
     $$
-    \operatorname{MEU}(\varnothing)=\max _{a} \mathrm{EU}(a)=70
+    \mathrm{MEU}(\varnothing)=\max _{a} \mathrm{EU}(a)=70
     $$
 
 ## Decisions as Outcome Trees
@@ -98,7 +99,7 @@ categories:
   - Survey may say “oil in a” or “oil in b”, prob 0.5 each 
   - If we know OilLoc, `MEU(OilLoc)` is k (either way)
   - Gain in MEU from knowing OilLoc?
-  - $VPI(OilLoc) = MEU(OilLoc) – MEU(\emptyset) = k/2$
+  - $VPI(OilLoc) = MEU(OilLoc) - MEU(\emptyset) = k/2$
   - Fair price of information: k/2
 > 信息价值体现在增益上，即无信息相比有信息，MEU的增加
 
@@ -109,28 +110,28 @@ categories:
 ![](./img/12-01-15-25-10.png)
 
 - MEU with no evidence
-  $\operatorname{MEU}(\emptyset)=\max _{a} \mathrm{EU}(a)=70$
+  $\mathrm{MEU}(\emptyset)=\max _{a} \mathrm{EU}(a)=70$
 - MEU if forecast is bad
-  $\operatorname{MEU}(F=\mathrm{bad})=\max _{a} \mathrm{EU}(a \mid \mathrm{bad})=53$
+  $\mathrm{MEU}(F=\mathrm{bad})=\max _{a} \mathrm{EU}(a \mid \mathrm{bad})=53$
 - MEU if forecast is good
-  $\operatorname{MEU}(F=\operatorname{good})=\max _{a} \mathrm{EU}(a \mid \mathrm{good})=95$
+  $\mathrm{MEU}(F=\mathrm{good})=\max _{a} \mathrm{EU}(a \mid \mathrm{good})=95$
 > Note: forecast is also a randomized, we need to find the MEU expectation
 - Forecast Distribution: good 0.59, bad 0.41
   $VPI = 0.59 \times 95 + 0.41 \times 53 - 70 = 77.8 - 70 = 7.8$
 
 $$
-\operatorname{VPI}\left(E^{\prime} \mid e\right)=\left(\sum_{e^{\prime}} P\left(e^{\prime} \mid e\right) \operatorname{MEU}\left(e, e^{\prime}\right)\right)-\operatorname{MEU}(e)
+\mathrm{VPI}\left(E^{\prime} \mid e\right)=\left(\sum_{e^{\prime}} P\left(e^{\prime} \mid e\right) \mathrm{MEU}\left(e, e^{\prime}\right)\right)-\mathrm{MEU}(e)
 $$
 
 **Formulation.**
 
-- Assume we have evidence E=e. Value if we act now:$\operatorname{MEU}(e)=\max _{a} \sum_{s} P(s \mid e) U(s, a)$
-- Assume we see that $E^{\prime}=e^{\prime} .$ Value if we act then:$\operatorname{MEU}\left(e, e^{\prime}\right)=\max _{a} \sum_{s} P\left(s \mid e, e^{\prime}\right) U(s, a)$
+- Assume we have evidence E=e. Value if we act now:$\mathrm{MEU}(e)=\max _{a} \sum_{s} P(s \mid e) U(s, a)$
+- Assume we see that $E^{\prime}=e^{\prime} .$ Value if we act then:$\mathrm{MEU}\left(e, e^{\prime}\right)=\max _{a} \sum_{s} P\left(s \mid e, e^{\prime}\right) U(s, a)$
 - BUT _$E^{\prime}$ is a random variable whose value is unknown_, so we don't know what e' will be 
-- Expected value if $E^{\prime}$ is revealed and then we act:$\operatorname{MEU}\left(e, E^{\prime}\right)=\sum_{e^{\prime}} P\left(e^{\prime} \mid e\right) \operatorname{MEU}\left(e, e^{\prime}\right)$
-- Value of information: how much MEU goes up by revealing $E^{\prime}$ first then acting, over acting now: $\operatorname{VPI}\left(E^{\prime} \mid e\right)=\operatorname{MEU}\left(e, E^{\prime}\right)-\operatorname{MEU}(e)$
+- Expected value if $E^{\prime}$ is revealed and then we act:$\mathrm{MEU}\left(e, E^{\prime}\right)=\sum_{e^{\prime}} P\left(e^{\prime} \mid e\right) \mathrm{MEU}\left(e, e^{\prime}\right)$
+- Value of information: how much MEU goes up by revealing $E^{\prime}$ first then acting, over acting now: $\mathrm{VPI}\left(E^{\prime} \mid e\right)=\mathrm{MEU}\left(e, E^{\prime}\right)-\mathrm{MEU}(e)$
 
-> The main complexity in calculation lies in $\operatorname{MEU}\left(e, E^{\prime}\right)=\sum_{e^{\prime}} P\left(e^{\prime} \mid e\right) \operatorname{MEU}\left(e, e^{\prime}\right)$, since we will take the expectation of the new evidence
+> The main complexity in calculation lies in $\mathrm{MEU}\left(e, E^{\prime}\right)=\sum_{e^{\prime}} P\left(e^{\prime} \mid e\right) \mathrm{MEU}\left(e, e^{\prime}\right)$, since we will take the expectation of the new evidence
 
 ![](./img/12-01-15-34-06.png)
 
@@ -139,19 +140,19 @@ $$
 
 **Nonnegative**
 $$
-\forall E^{\prime}, e: \operatorname{VPI}\left(E^{\prime} \mid e\right) \geq 0
+\forall E^{\prime}, e: \mathrm{VPI}\left(E^{\prime} \mid e\right) \geq 0
 $$
 
 **Nonadditive** (think of observing $\mathrm{E}_{\mathrm{j}}$ twice)
 $$
-\operatorname{VPI}\left(E_{j}, E_{k} \mid e\right) \neq \operatorname{VPI}\left(E_{j} \mid e\right)+\operatorname{VPI}\left(E_{k} \mid e\right)
+\mathrm{VPI}\left(E_{j}, E_{k} \mid e\right) \neq \mathrm{VPI}\left(E_{j} \mid e\right)+\mathrm{VPI}\left(E_{k} \mid e\right)
 $$
 
 **Order-independent**
 $$
 \begin{aligned}
-\operatorname{VPI}\left(E_{j}, E_{k} \mid e\right) &=\operatorname{VPI}\left(E_{j} \mid e\right)+\operatorname{VPI}\left(E_{k} \mid e, E_{j}\right) \\
-&=\operatorname{VPI}\left(E_{k} \mid e\right)+\operatorname{VPI}\left(E_{j} \mid e, E_{k}\right)
+\mathrm{VPI}\left(E_{j}, E_{k} \mid e\right) &=\mathrm{VPI}\left(E_{j} \mid e\right)+\mathrm{VPI}\left(E_{k} \mid e, E_{j}\right) \\
+&=\mathrm{VPI}\left(E_{k} \mid e\right)+\mathrm{VPI}\left(E_{j} \mid e, E_{k}\right)
 \end{aligned}
 $$
 

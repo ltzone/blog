@@ -79,7 +79,7 @@ $$
 
 ### Mutual Information and Entropy
 
- ![A1](img/0304-2.png)
+ ![A1](./img/0304-2.png)
  
 $$\begin{array}{c}I(X ; Y)=H(X)-H(X | Y) \\I(X ; Y)=H(Y)-H(Y | X) \\I(X ; Y)=H(X)+H(Y)-H(X, Y) \\I(X ; Y)=I(Y ; X) \\I(X ; X)=H(X)\end{array}$$
 
@@ -110,7 +110,7 @@ Apply Chain Rule for entropy respectively, then bind the $\sum$ together, rewrit
 
 
 
-![relation](img/0309-1.png)
+![relation](./img/0309-1.png)
 
 信息度量的好处是用单一值避免随着随机变量的增多,样本空间指数型的上升
 
@@ -123,8 +123,10 @@ Apply Chain Rule for entropy respectively, then bind the $\sum$ together, rewrit
 > with equality iff $p(x)=q(x)$ for all $x$.
 
 **Proof.**
-- By convexity: $$-D(p \| q)=\Sigma p \log \frac{q}{p} \leq \log \Sigma p \frac{q}{p}=\log \Sigma q \leq \log 1=0$$
-- Using $\log x \le x - 1$when $x>0$ $$-D(p \| q)=\Sigma p \log \frac{q}{p} \leq \Sigma p\left(\frac{q}{p}-1\right)=\Sigma q-\Sigma p \leq 0$$
+- By convexity: 
+  $$-D(p \| q)=\Sigma p \log \frac{q}{p} \leq \log \Sigma p \frac{q}{p}=\log \Sigma q \leq \log 1=0$$
+- Using $\log x \le x - 1$when $x>0$ 
+  $$-D(p \| q)=\Sigma p \log \frac{q}{p} \leq \Sigma p\left(\frac{q}{p}-1\right)=\Sigma q-\Sigma p \leq 0$$
   $\sum q$可能取不到1, 因为$p=0$而$q\neq0$时相对熵被定义为0, 此时这一项q就被消去了. 实际参与运算的$q$之和$\le 1$
 
 

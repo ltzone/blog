@@ -341,7 +341,7 @@ A lot, general concepts not required, only MIPS related topics
 ### ~~Omitted~~
 - Operations on Processes
   - Android Process Importance Hierarchy
-  - Multiprocess Architecture – Chrome Browser
+  - Multiprocess Architecture - Chrome Browser
 - IPC in Message-Passing Systems
   - Indirect Communication
   - Synchronization
@@ -622,7 +622,7 @@ Almost no, just review all the slides in lec4-CA :)
 
 
 ### ~~Omitted~~
-- Kernel Synchronization – Windows
+- Kernel Synchronization - Windows
 - Linux Synchronization
 - POSIX Synchronization
 - Java Synchronization
@@ -699,7 +699,7 @@ Almost no, just review all the slides in lec4-CA :)
 ### Paging
 - Address Translation Scheme
 - Paging Hardware
-- Paging – Calculating Internal Fragmentation
+- Paging - Calculating Internal Fragmentation
 
 
 ### Implementation of Page Table
@@ -781,7 +781,7 @@ Almost no, just review all the slides in lec4-CA :)
   - Aspects of Demand Paging
   - Instruction Restart
   - Free-Frame Lost
-  - Stages in Demand Paging – Worse Case
+  - Stages in Demand Paging - Worse Case
 - Page Replacement
   - Enhanced Second-Chance Algorithm
   - Counting Algorithms

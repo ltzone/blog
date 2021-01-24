@@ -1,5 +1,5 @@
 ---
-title: Object Design - Specifying Interfaces
+title: 7 Object Design - Specifying Interfaces
 url: se-interface
 date: 2020-04-20 09:57:32
 tags: 

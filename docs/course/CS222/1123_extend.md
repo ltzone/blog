@@ -144,6 +144,6 @@ $$
 
 
 **Claim 2**. $|M|=|S|$
-max-flow min-cut theorem $\Rightarrow|M|=\operatorname{cap}(A, B)$
-- only edges of form $(s, u)$ or $(v, t)$ contribute to $\operatorname{cap}(A, B)$
-- $|M|=\operatorname{cap}(A, B)=\left|L_{B}\right|+\left|R_{A}\right|=|\mathrm{S}|$
+max-flow min-cut theorem $\Rightarrow|M|=\mathrm{cap}(A, B)$
+- only edges of form $(s, u)$ or $(v, t)$ contribute to $\mathrm{cap}(A, B)$
+- $|M|=\mathrm{cap}(A, B)=\left|L_{B}\right|+\left|R_{A}\right|=|\mathrm{S}|$

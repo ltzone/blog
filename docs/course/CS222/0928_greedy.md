@@ -83,7 +83,7 @@ Can apply the idea of Dijkstra to ...
 **Def**. A **path** is a sequence of edges which connects a sequence of nodes. 
 **Def**. A **cycle** is a path with no repeated nodes or edges other than the
 starting and ending nodes.
-**Def**. A **cut** is a partition of the nodes into two nonempty subsets S and V – S. 
+**Def**. A **cut** is a partition of the nodes into two nonempty subsets S and V - S. 
 **Def**. The **cutset** of a cut S is the set of edges with exactly one endpoint in S.
 
 **Proposition**. A cycle and a cutset intersect in an even number of edges.
@@ -93,8 +93,8 @@ starting and ending nodes.
 **Proposition**. Let T = (V, F) be a subgraph of G = (V, E). TFAE: 
 - T is a spanning tree of G.
 - T is acyclic and connected.
-- T is connected and has n – 1 edges.
-- T is acyclic and has n – 1 edges.
+- T is connected and has n - 1 edges.
+- T is acyclic and has n - 1 edges.
 - T is minimally connected: removal of any edge disconnects it. 
 - T is maximally acyclic: addition of any edge creates a cycle. 
 - T has a unique simple path between every pair of nodes.
@@ -103,7 +103,7 @@ starting and ending nodes.
 
 Given a connected graph $G = (V, E)$ with edge costs $c_e$, an MST is a subset of the edges $T \subset E$ such that $T$ is a spanning tree whose sum of edge costs is minimized.
 
-**Cayley's theorem.** There are $n^{n–2}$ spanning trees of $K_n$. (*impossible to use brute-force*)
+**Cayley's theorem.** There are $n^{n-2}$ spanning trees of $K_n$. (*impossible to use brute-force*)
 
 
 ### A good example of transforming MST
@@ -129,7 +129,7 @@ Note that,
 
 Fundamental cutset.
 - Deleting any tree edge f from a spanning tree T divide nodes into two connected components. Let D be cutset.
-- Adding any edge $e \in D$ to $T – \{ f \}$ results in new spanning tree.
+- Adding any edge $e \in D$ to $T - \{ f \}$ results in new spanning tree.
 **Observation.** If $c_e < c_f$ where $c_f$ and $c_e$ are in the cut set, $c_f$in $T$ and $c_e$ not, then $T$ is not an MST
 
 ### The greedy Algorithm
@@ -142,7 +142,7 @@ Blue rule.
 - Select an uncolored edge in D of min weight and color it blue.
 Greedy algorithm.
 - Apply the red and blue rules (**either or both, non-deterministically**!) until all edges are colored. The blue edges form an MST.
-- Note: can stop once n – 1 edges colored blue.
+- Note: can stop once n - 1 edges colored blue.
 
 > Note: the following algorithms are just efficient implementations (special cases) of the red/blue rule
 
@@ -321,11 +321,11 @@ An application of MST, 聚类问题
 “Well-known” algorithm in science literature for single-linkage k-clustering:
 - Form a graph on the node set U, corresponding to n clusters.
 - Find the closest pair of objects such that each object is in a different cluster, and add an edge between them.
-- Repeat n – k times until there are exactly k clusters.
+- Repeat n - k times until there are exactly k clusters.
 - 从完全图不断删边，至所需cluster
 
 **Key observation**. This procedure is precisely Kruskal's algorithm (except we stop when there are k connected components).
-**Alternative**. Find an MST and delete the k – 1 longest edges.
+**Alternative**. Find an MST and delete the k - 1 longest edges.
 
 ### Analysis
 

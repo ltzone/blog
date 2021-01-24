@@ -40,14 +40,14 @@ categories:
 
 ### Virtual memory
 
-- **Virtual memory** – separation of user logical memory from physical memory
+- **Virtual memory** - separation of user logical memory from physical memory
   - Only part of the program needs to be in memory for execution
   - Logical address space can therefore be _much larger_ than physical address space
   - Allows address spaces to be shared by several processes
   - Allows for more efficient process creation
   - More programs running concurrently
   - Less I/O needed to load or swap processes
-- **Virtual address space** – logical view of how process is stored in memory
+- **Virtual address space** - logical view of how process is stored in memory
   - Usually start at address 0, contiguous addresses until end of space
   - Meanwhile, physical memory organized in page frames
   - MMU must map logical to physical
@@ -92,7 +92,7 @@ categories:
 - Page is needed $\Rightarrow$ reference to it
   - invalid reference $\Rightarrow$ abort
   - not-in-memory $\Rightarrow$ bring to memory
-- **Lazy swapper** – never swaps a page into memory unless page will be needed
+- **Lazy swapper** - never swaps a page into memory unless page will be needed
   - Swapper that deals with pages is a **pager**
 
 
@@ -111,13 +111,13 @@ categories:
 
 ### Valid-Invalid Bit
 
-- With each page table entry a valid–invalid bit is associated 
-  (v $\Rightarrow$ in-memory – memory resident, i  $\Rightarrow$  not-in-memory)
-- Initially valid–invalid bit is set to i on all entries
+- With each page table entry a valid-invalid bit is associated 
+  (v $\Rightarrow$ in-memory - memory resident, i  $\Rightarrow$  not-in-memory)
+- Initially valid-invalid bit is set to i on all entries
   > When visiting an i entry, a **page fault** will occur, indicating that the page should be loaded from backing store
 - Example of a page table snapshot:
     ![](./img/12-18-14-36-06.png)
-- During MMU address translation, if valid–invalid bit in page table entry is i  $\Rightarrow$  page fault
+- During MMU address translation, if valid-invalid bit in page table entry is i  $\Rightarrow$  page fault
   
 ### Example: Page Table When Some Pages Are Not in Main Memory
 
@@ -144,7 +144,7 @@ categories:
 
 ### Aspects of Demand Paging
 > Issues with demand paging
-- Extreme case – start process with no pages in memory
+- Extreme case - start process with no pages in memory
    - Os sets instruction pointer to first instruction of process, non-memory-resident -> page fault
    - And for every other process pages on first access
    - **Pure demand paging**
@@ -180,7 +180,7 @@ categories:
   > In case we need to restore exactly the swiped out page into the physical memory again, then no copy is needed
 - When a system starts up, all available memory is placed on the free-frame list.
 
-### Stages in Demand Paging – Worse Case
+### Stages in Demand Paging - Worse Case
 > Combined with process scheduling
 1. Trap to the operating system
 2. Save the user registers and process state
@@ -208,7 +208,7 @@ categories:
   - if $p = 0$, no page faults
   - if $p = 1$, every reference is a fault
 - Effective Access Time (EAT)
-  $EAT = (1 – p) \times memoryAccess + p (pageFaultOverhead + \underbrace{\textbf{swapPageOut} + \textbf{swapPageIn}}_{overhead})$
+  $EAT = (1 - p) \times memoryAccess + p (pageFaultOverhead + {\textbf{swapPageOut} + \textbf{swapPageIn}}_{overhead})$
 
 #### Example
 
@@ -245,7 +245,7 @@ categories:
   > easy to implement, thus common in OS
   - Used in Solaris and current BSD
   - Still need to write to swap space
-    - Pages not associated with a file (like stack and heap) – **anonymous memory**
+    - Pages not associated with a file (like stack and heap) - **anonymous memory**
     - Pages modified in memory but not yet written back to the file system
 - Mobile systems
   - Typically don’t support swapping
@@ -282,11 +282,11 @@ categories:
 ### Page Replacement Concepts
 
 - Prevent **over-allocation** of memory by modifying page - *fault service routine to include page replacement*
-- Page replacement – *find some page in memory, but not really in use, page it out*
-  - Algorithm – *terminate? swap out? replace the page?*
-  - Performance – *want an algorithm which will result in minimum number of page faults*
+- Page replacement - *find some page in memory, but not really in use, page it out*
+  - Algorithm - *terminate? swap out? replace the page?*
+  - Performance - *want an algorithm which will result in minimum number of page faults*
   - Same page may be brought into memory several times
-- Use **modify (dirty) bit** to reduce overhead of page transfers – *only modified pages are written to disk*
+- Use **modify (dirty) bit** to reduce overhead of page transfers - *only modified pages are written to disk*
   > Otherwise, only mark as invalid, as discussed before
 - Page replacement completes separation between logical memory and physical memory - large virtual memory can be provided on a smaller physical memory
  
@@ -299,7 +299,7 @@ categories:
 3. Bring the desired page into the (newly) free frame; update the page and frame tables
 4. Continue the process by restarting the instruction that caused the trap
 
-> Note now, for every page fault, potentially 2 page transfers for page fault – increasing EAT
+> Note now, for every page fault, potentially 2 page transfers for page fault - increasing EAT
 
 ![](./img/12-18-15-23-21.png)
 > Critical question: which victim should be chosen to swiped, and how to allocate
@@ -352,7 +352,7 @@ categories:
 - Replace page that has not been used in the most amount of time
 - Associate time of last use with each page
 ![](./img/12-18-15-31-06.png)
-- 12 faults – better than FIFO but worse than OPT
+- 12 faults - better than FIFO but worse than OPT
 - Generally good algorithm and frequently used
 - But how to implement?
 
@@ -443,7 +443,7 @@ categories:
 ## Allocation of Frames
 
 - Each process needs **minimum** number of frames
-- Example: IBM 370 – 6 pages to handle SS MOVE instruction:
+- Example: IBM 370 - 6 pages to handle SS MOVE instruction:
   - instruction is 6 bytes, might span 2 pages 
   > The impact of the instruciton may span larger than its byte length
   - 2 pages to handle **from**
@@ -459,9 +459,9 @@ categories:
 
 Two strategy
 
-- **Equal** allocation – For example, if there are 100 frames (after allocating frames for the OS) and 5 processes, give each process 20 frames
+- **Equal** allocation - For example, if there are 100 frames (after allocating frames for the OS) and 5 processes, give each process 20 frames
   - Keep some as free frame buffer pool
-- Proportional allocation – Allocate according to the size of process
+- Proportional allocation - Allocate according to the size of process
   - Dynamic as degree of *multiprogramming*, process sizes change
   - $s_{i}=$ size of process $p_{i}$
   - $S=\sum s_{i}$
@@ -480,11 +480,11 @@ Two strategy
 
 #### Global vs. Local Allocation
 
-- Global replacement – process selects a replacement frame from the set of all frames; one process can take a frame from another
+- Global replacement - process selects a replacement frame from the set of all frames; one process can take a frame from another
   - But then process execution time can vary greatly
   > 代价可能不同，产生极大variation
   - But greater throughput so more common
-- Local replacement – each process selects from only its own set of allocated frames
+- Local replacement - each process selects from only its own set of allocated frames
   - More consistent per-process performance 
   - But possibly **underutilized** memory
 
@@ -504,7 +504,7 @@ Two strategy
 ### Non-Uniform Memory Access
 > An extension on NUMA HW
 - So far all memory accessed equally
-- Many systems are NUMA – speed of access to memory varies
+- Many systems are NUMA - speed of access to memory varies
   - Consider system boards containing CPUs and memory, interconnected over a system bus
 - NUMA multiprocessing architecture
   ![](./img/12-25-13-08-50.png)
@@ -743,7 +743,7 @@ Two strategy
 
 ### I/O interlock
 > buffer place Must be pinned, should not be swapped out
-- I/O Interlock – Pages must sometimes be locked into memory
+- I/O Interlock - Pages must sometimes be locked into memory
 - Consider I/O - Pages that are used for copying a file from a device must be locked from being selected for eviction by a page replacement algorithm
 - **Pinning** of pages to lock into memory
 

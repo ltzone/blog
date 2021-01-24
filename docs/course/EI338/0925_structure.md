@@ -70,7 +70,7 @@ Functions that ensure the **efficient operation** of the system iteself via *res
 CLI or **command interpreter** allows direct command entry
 
 - Sometimes implemented in kernel, sometimes by systems program
-- Sometimes multiple flavors implemented – shells
+- Sometimes multiple flavors implemented - shells
 - Primarily fetches a command from user and executes it
 - Sometimes commands built-in, sometimes just names of programs
   - If the latter, adding new features doesn’t require shell modification
@@ -147,8 +147,8 @@ Typically, a number associated with each system call
   - Executes `exec()` to load program into process
   - Shell waits for process to terminate or continues with user commands
 - Process exits with:
-  - code = 0–noerror
-  - code > 0 – error code
+  - code = 0-noerror
+  - code > 0 - error code
 
 ```
 low ------------------ high memory
@@ -193,7 +193,7 @@ System programs provide a convenient environment for program development and exe
 
 
 ## Linkers and Loaders
-- Source code compiled into object files designed to be loaded into any physical memory location – **relocatable object file**
+- Source code compiled into object files designed to be loaded into any physical memory location - **relocatable object file**
   > if your system is not compiled locally, when debugging you may find some executions with no related code lines(system call)
 - **Linker** combines these into single binary **executable** file 
   - Also brings in libraries
@@ -248,7 +248,7 @@ System programs provide a convenient environment for program development and exe
   - **Policy**: **What** will be done?
   - **Mechanism**: **How** to do it?
 - Mechanisms determine how to do something; policies decide what will be done
-- The separation of policy from mechanism allows maximum flexibility if policy decisions are to be changed later (example – timer)
+- The separation of policy from mechanism allows maximum flexibility if policy decisions are to be changed later (example - timer)
   - Open sourced OS, Linux
   - Apple/Wintel (closely coupled)
   > an Exception
@@ -273,9 +273,9 @@ System programs provide a convenient environment for program development and exe
 
 - General-purpose OS is very large program 
 - Various ways to structure ones
-  - Simple structure – MS-DOS 
+  - Simple structure - MS-DOS 
   - More complex - UNIX
-  - Layered – an abstraction
+  - Layered - an abstraction
   - Microkernel - Mach
 > but real OS doesn't truly belong to any single of them
 
@@ -283,7 +283,7 @@ System programs provide a convenient environment for program development and exe
 
 > Modern OS are generally monolithic (conceptually)
 
-UNIX – limited by hardware functionality, the original UNIX operating system had **limited structuring**.
+UNIX - limited by hardware functionality, the original UNIX operating system had **limited structuring**.
 The UNIX OS consists of two separable parts
 - System programs (AKA services)
 - Kernal
@@ -397,10 +397,10 @@ Java class files compiled to Java bytecode then translated to executable than ru
   - *Profiling* is periodic sampling of instruction pointer to look for statistical trends
   - e.g. Windows Task Manager
   - Tracing
-    - `strace` – trace system calls invoked by a process
-    - `gdb` – source-level debugger
-    - `perf` – collection of Linux performance tools 
-    - `tcpdump` – collects network packets
+    - `strace` - trace system calls invoked by a process
+    - `gdb` - source-level debugger
+    - `perf` - collection of Linux performance tools 
+    - `tcpdump` - collects network packets
 
 
 

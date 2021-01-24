@@ -1,5 +1,5 @@
 ---
-title: Naive Bayes
+title: 14-2 Naive Bayes
 url: ai-naiveby
 date: 2020-12-11 10:14:09
 tags: 
@@ -261,7 +261,7 @@ $$
 \begin{aligned}
 \theta_{M L} &=\underset{\theta}{\arg \max P(\mathbf{X} \mid \theta)} \\
 &=\underset{\theta}{\arg \max } \prod_{i} P_{\theta}\left(X_{i}\right)
-\end{aligned} \quad \longrightarrow \quad P_{\mathrm{ML}}(x)=\frac{\operatorname{count}(x)}{\text { total samples }}
+\end{aligned} \quad \longrightarrow \quad P_{\mathrm{ML}}(x)=\frac{\mathrm{count}(x)}{\text { total samples }}
 $$
 Another option is to consider the most likely parameter value given the data 最大后验估计
 $$
@@ -349,7 +349,7 @@ Laplace for conditionals:
 
 ## What to Do About Errors?
 
-- Need more features– words aren’t enough! 
+- Need more features- words aren’t enough! 
   - Have you emailed the sender before?
   - Have 1K other people just gotten the same email? 
   - Is the sending information consistent?

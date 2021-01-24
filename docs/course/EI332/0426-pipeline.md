@@ -1,5 +1,5 @@
 ---
-title: The Processor - Pipeline
+title: 5 The Processor - Pipeline
 url: cc-pipeline
 date: 2020-04-26 14:12:04
 tags: 

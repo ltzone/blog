@@ -141,7 +141,7 @@ $$
 ### Polynomials: point-value representation
 
 **Fundamental theorem of algebra**. A degree n polynomial with complex coefficients has exactly n complex roots.
-**Corollary**. A degree $n – 1$ polynomial A(x) is uniquely specified by its evaluation at n distinct values of x
+**Corollary**. A degree $n - 1$ polynomial A(x) is uniquely specified by its evaluation at n distinct values of x
 
 **Polynomial**. [point-value representation]
 $$
@@ -267,7 +267,7 @@ $A\left(\omega^{k+1 / 2 n}\right)=A_{\text {even}}\left(v^{k}\right)-\omega^{k} 
 
 ![](./img/10-12-17-49-10.png)
 
-**Theorem**. The FFT algorithm evaluates a degree n – 1 polynomial at each of the nth roots of unity in $O(n \log n)$ steps and O(n) extra space.
+**Theorem**. The FFT algorithm evaluates a degree n - 1 polynomial at each of the nth roots of unity in $O(n \log n)$ steps and O(n) extra space.
 
 **Proof.**
 $$
@@ -301,7 +301,7 @@ $\omega^{-1}=e^{-2 \pi i / n}$ as principal $n^{t h}$ root of unity (and divide 
 
 ### Polynomial multiplication
 
-**Theorem**. Can multiply two degree n – 1 polynomials (*padding with 0s to make n a power of 2*) in $O(n \log n)$ steps.
+**Theorem**. Can multiply two degree n - 1 polynomials (*padding with 0s to make n a power of 2*) in $O(n \log n)$ steps.
 
 **Pf**.
 ![](./img/10-12-22-12-33.png)

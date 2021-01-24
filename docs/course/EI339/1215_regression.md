@@ -1,5 +1,5 @@
 ---
-title: Perceptrons and Logistic Regression
+title: 15-1 Perceptrons and Logistic Regression
 url: ai-regression
 date: 2020-12-15 14:09:18
 tags: 
@@ -11,7 +11,7 @@ categories:
 ---
 
 
-<!--more
+<!--more-->
 
 
 
@@ -50,7 +50,7 @@ $$
 3. Build the linear combination of classifiers $f(x)=\sum_{m=1}^{M} \alpha_{m} G_{m}(x)$
 4. Final output:
     $$
-    f(x)=\operatorname{sign}(f(x))=\operatorname{sign}\left(\sum_{m=1}^{M} \alpha_{m} \hat{G}_{m}(x)\right)
+    f(x)=\mathrm{sign}(f(x))=\mathrm{sign}\left(\sum_{m=1}^{M} \alpha_{m} \hat{G}_{m}(x)\right)
     $$
    
 
@@ -181,7 +181,7 @@ where k is the dimension of the vector and $\delta$ is related to the distance b
 ### Non-Separable Case: From Deterministic Decision to Probabilistic Decision
 
 Deterministic Decision | Probabilistic Decision
------>------------------- | ----------------------
+------------------------ | ----------------------
 ![](./img/12-15-15-24-37.png) | ![](./img/12-15-15-24-45.png)
 > The distance from the point to the bound is its competitive probability
 
@@ -211,7 +211,7 @@ P\left(y^{(i)}=-1 \mid x^{(i)} ; w\right)&=1-\frac{1}{1+e^{-w \cdot f\left(x^{(i
 
 
 
-### Separable Case: Probabilistic Decision – Clear Preference
+### Separable Case: Probabilistic Decision - Clear Preference
 
 ![](./img/12-15-15-35-15.png)
 
@@ -227,7 +227,7 @@ Recall Perceptron:
 How to make the scores into probabilities?
 
 $$
-\underbrace{z_{1}, z_{2}, z_{3}}_{\text {original activations }} \rightarrow \underbrace{\frac{e^{z_{1}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}, \frac{e^{z_{2}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}, \frac{e^{z_{3}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}}_{\text {softmax activations }}
+{z_{1}, z_{2}, z_{3}}_{\text {original activations }} \rightarrow {\frac{e^{z_{1}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}, \frac{e^{z_{2}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}, \frac{e^{z_{3}}}{e^{z_{1}}+e^{z_{2}}+e^{z_{3}}}}_{\text {softmax activations }}
 $$
 
 

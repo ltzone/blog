@@ -20,9 +20,9 @@ Week 8 of 2020 Spring.
 我们计算两个随机变量的互信息，这里以联合高斯分布为例。
 (Mutual information between correlated Gaussian random variables with correlation $\rho$ ) Let $(X, Y) \sim \mathcal{N}(0, K),$ where
 $$
-\boldsymbol{K}=\left[\begin{array}{cc}
-\boldsymbol{\sigma}^{2} & \boldsymbol{\rho} \boldsymbol{\sigma}^{2} \\
-\boldsymbol{\rho} \boldsymbol{\sigma}^{2} & \boldsymbol{\sigma}^{2}
+{K}=\left[\begin{array}{cc}
+{\sigma}^{2} & {\rho} {\sigma}^{2} \\
+{\rho} {\sigma}^{2} & {\sigma}^{2}
 \end{array}\right]
 $$
 $I(X ; Y) ?$
@@ -45,7 +45,7 @@ $E(X^2),Var(X)$给定的情况下，高斯分布最大化微分熵。
 >   $$
 >   h(X) \leq \frac{1}{2} \log 2 \pi e \sigma^{2}
 >   $$
->   with equality iff $X \sim \mathcal{N}\left(\boldsymbol{\mu}, \boldsymbol{\sigma}^{2}\right)$
+>   with equality iff $X \sim \mathcal{N}\left({\mu}, {\sigma}^{2}\right)$
 > - Let the random variable $X \in R$ satisfy $E X^{2} \leq \sigma^{2} .$ Then
 >   $$
 >   h(x) \leq \frac{1}{2} \log 2 \pi e \sigma^{2}
@@ -55,7 +55,7 @@ $E(X^2),Var(X)$给定的情况下，高斯分布最大化微分熵。
 证明域平均分布最大化离散熵的证明如下，我们用相对熵推出。
 
 1. Let $X_{G} \sim \mathcal{N}\left(\mu, \sigma^{2}\right) .$ Consider 
-   $$\boldsymbol{D}\left(X \| X_{G}\right) \geqq \mathbf{0}$$
+   $${D}\left(X \| X_{G}\right) \geqq \mathbf{0}$$
   Then
   $$
   \int f \log \frac{f}{g} \geq 0
@@ -64,7 +64,7 @@ $E(X^2),Var(X)$给定的情况下，高斯分布最大化微分熵。
   $$h(X)=h(f) \leq-\int f \log g=-\int f \log \frac{1}{\sqrt{2 \pi \sigma^{2}}}+f\left(-\frac{(x-\mu)^{2}}{2 \sigma^{2}}\right)$$
   由于右侧都是常数，可代入化简。
   $$h(X) \leq \frac{1}{2} \log 2 \pi \sigma^{2}+\frac{1}{2}=\frac{1}{2} \log 2 \pi e \sigma^{2}$$
-2. $\operatorname{Var}(X)=E\left(X^{2}\right)-E(X)^{2} \leq \sigma^{2} \cdot \Rightarrow$ Case 1
+2. $\mathrm{Var}(X)=E\left(X^{2}\right)-E(X)^{2} \leq \sigma^{2} \cdot \Rightarrow$ Case 1
 
 使用这两个结论时一定要注意是否存在确定的均值、方差或二阶矩是否存在上界。
 
@@ -87,9 +87,9 @@ $$\begin{aligned}
 h(g) &=-\int_{S} g \ln g \\
 &=-\int_{S} g \ln \frac{g}{f^{*}} f^{*} \\
 &=-D\left(g \| f^{*}\right)-\int_{S} g \ln f^{*} \\
-& \stackrel{(a)}{\leq}-\int_{S} g \ln f^{*} \\
-& \stackrel{(b)}{=}-\int_{S} g\left(\lambda_{0}+\sum \lambda_{i} r_{i}\right) \\
-& \stackrel{(c)}{=}-\int_{S} f^{*}\left(\lambda_{0}+\sum \lambda_{i} r_{i}\right) \\
+& {(a)}{\leq}-\int_{S} g \ln f^{*} \\
+& {(b)}{=}-\int_{S} g\left(\lambda_{0}+\sum \lambda_{i} r_{i}\right) \\
+& {(c)}{=}-\int_{S} f^{*}\left(\lambda_{0}+\sum \lambda_{i} r_{i}\right) \\
 &=-\int_{S} f^{*} \ln f^{*} \\
 &=h\left(f^{*}\right)
 \end{aligned}$$

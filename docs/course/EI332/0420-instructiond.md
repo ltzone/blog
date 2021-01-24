@@ -1,5 +1,5 @@
 ---
-title: Instructions (Part D)：Supporting Procedures in Computer Hardware
+title: 4 Instructions (Part D)：Supporting Procedures in Computer Hardware
 url: cc-instructiond
 date: 2020-04-20 14:02:52
 tags: 

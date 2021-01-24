@@ -78,12 +78,12 @@ Each node in S has to be matched to a different node in N(S).
 **Pf**. $\Rightarrow$ This was the previous observation.
 **Pf**. $\Leftarrow$ Suppose $G$ does not have a perfect matching.
 - Formulate as a max flow problem and let $(A, B)$ be min cut in $G^{\prime} .$
-- By max-flow min-cut theorem, $\operatorname{cap}(A, B)<|L|$.
+- By max-flow min-cut theorem, $\mathrm{cap}(A, B)<|L|$.
 - Define $L_{A}=L \cap A, L_{B}=L \cap B, R_{A}=R \cap A$
-- $\operatorname{cap}(A, B)=\left|L_{B}\right|+\left|R_{A}\right|$
+- $\mathrm{cap}(A, B)=\left|L_{B}\right|+\left|R_{A}\right|$
   > Which is also why we set the inner capacity to be $\infty$, since we won't include them into the minimum cut
 - since min cut can't use $\infty$ edges: $N\left(L_{A}\right) \subseteq R_{A}$
-- | $N\left(L_{A}\right)|\leq| R_{A}|=\operatorname{cap}(A, B)-| L_{B}|<| L|-| L_{B}|=| L_{A} \mid$
+- | $N\left(L_{A}\right)|\leq| R_{A}|=\mathrm{cap}(A, B)-| L_{B}|<| L|-| L_{B}|=| L_{A} \mid$
 
 ![](./img/11-02-13-59-01.png)
 
@@ -209,7 +209,7 @@ Moreover, integrality theorem still holds.
 > The original implementation can still work!
 **Pf**. [ by induction on number of such pairs of antiparallel edges ]
 - Suppose $f(e)>0$ and $f\left(e^{\prime}\right)>0$ for a pair of antiparallel edges $e$ and $e^{\prime}$
-- $\operatorname{Set} f(e)=f(e)-\delta$ and $f\left(e^{\prime}\right)=f\left(e^{\prime}\right)-\delta,$ where $\delta=\min \left\{f(e), f\left(e^{\prime}\right)\right\}$
+- $\mathrm{Set} f(e)=f(e)-\delta$ and $f\left(e^{\prime}\right)=f\left(e^{\prime}\right)-\delta,$ where $\delta=\min \left\{f(e), f\left(e^{\prime}\right)\right\}$
 - $f$ is still a flow of the same value but has one fewer such pair.
 > In another word, anti-parallel edges can always be eliminated, and won't change the value of the maximum flow
 
@@ -283,7 +283,7 @@ a feasible circulation?
 ![](./img/11-02-14-31-23.png)
 
 **Theorem**. There exists a circulation in $G$ iff there exists a circulation in $G'$. Moreover, if all demands, capacities, and lower bounds in $G$ are integers, then there is a circulation in $G$ that is integer-valued.
-**Pf sketch**. $f (e)$ is a circulation in $G$ iff $f '(e) = f (e) – \ell(e)$ is a circulation in $G'$.
+**Pf sketch**. $f (e)$ is a circulation in $G$ iff $f '(e) = f (e) - \ell(e)$ is a circulation in $G'$.
 
 
 ## Survey design
@@ -414,7 +414,7 @@ Pf.
 $$
 \begin{aligned}
 &\text { Maximizing } \sum_{i \in A} a_{i}+\sum_{j \in B} b_{j}-\sum_{(i, j) \in E} p_{i j}\\
-&\text { is equivalent to minimizing } \underbrace{\left(\sum_{i \in V} a_{i}+\sum_{j \in V} b_{j}\right)}_{\text {a constant }}-\sum_{i \in A} a_{i}-\sum_{j \in B} b_{j}+\sum_{(i, j) \in E} p_{i j}\\
+&\text { is equivalent to minimizing } {\left(\sum_{i \in V} a_{i}+\sum_{j \in V} b_{j}\right)}_{\text {a constant }}-\sum_{i \in A} a_{i}-\sum_{j \in B} b_{j}+\sum_{(i, j) \in E} p_{i j}\\
 &\text { or alternatively } \quad \sum_{j \in B} a_{j}+\sum_{i \in A} b_{i}+\sum_{(i, j) \in E \atop|A \cap\{i, j\}|-1} p_{i j}
 \end{aligned}
 $$
@@ -459,16 +459,16 @@ $$
 - Max revenue because: 
 $$
 \begin{aligned}
-\operatorname{cap}(A, B)&=\sum_{v \in B: p_{\nu}>0} p_{v}+\sum_{v \in A: p_{v}<0}\left(-p_{v}\right)\\
+\mathrm{cap}(A, B)&=\sum_{v \in B: p_{\nu}>0} p_{v}+\sum_{v \in A: p_{v}<0}\left(-p_{v}\right)\\
 &=\sum_{v \in B: p_{\nu}>0} p_{v}+\sum_{v \in A: p_{v}<0}\left(-p_{v}\right) + \sum_{v \in A: p_{v}>0}p_{v} - \sum_{v \in A: p_{v}>0}p_{v}\\
-&=\underbrace{\sum_{v: p_{\gamma}>0} p_{v}}_{\text {constant }}-\sum_{v \in A} p_{v}
+&={\sum_{v: p_{\gamma}>0} p_{v}}_{\text {constant }}-\sum_{v \in A} p_{v}
 \end{aligned}
 $$
 > The reason why we set $p_{v}<0$ is to make double-neg -> positive
 
 **Application: Open-pit mining**. (studied since early 1960s)
 - Blocks of earth are extracted from surface to retrieve ore. 
-- Each block v has net value pv = value of ore – processing cost. 
+- Each block v has net value pv = value of ore - processing cost. 
 - Can't remove block v before w or x.
 - ![](./img/11-02-15-30-29.png)
 > Now hyper-soundwave can pre-detect the minings, it is left for the algorithm to decide how to find an cost-efficient strategy

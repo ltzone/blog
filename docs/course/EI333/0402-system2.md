@@ -1,5 +1,5 @@
 ---
-title: System Design - Addressing Design Goals
+title: 6 System Design - Addressing Design Goals
 url: se-system2
 date: 2020-04-02 10:08:22
 tags: 

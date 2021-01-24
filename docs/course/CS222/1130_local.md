@@ -210,7 +210,7 @@ $$
   $$
 - Now, (each edge counted once)
 $$
-\sum_{e \in E} w_{e}=\underbrace{\sum_{\{u, v\} \subseteq A} w_{u v}}_{\leq \frac{1}{2} w(A, B)}+\underbrace{\sum_{u \in A, v \in B} w_{u v}}_{w(A, B)}+\underbrace{\sum_{\{u, \nu\} \subseteq A} w_{u v}}_{\leq \frac{1}{2} w(A, B)} \leq 2 w(A, B)
+\sum_{e \in E} w_{e}={\sum_{\{u, v\} \subseteq A} w_{u v}}_{\leq \frac{1}{2} w(A, B)}+{\sum_{u \in A, v \in B} w_{u v}}_{w(A, B)}+{\sum_{\{u, \nu\} \subseteq A} w_{u v}}_{\leq \frac{1}{2} w(A, B)} \leq 2 w(A, B)
 $$
 
 ### Improvement: Big Flips

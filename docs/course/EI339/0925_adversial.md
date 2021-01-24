@@ -20,7 +20,7 @@ categories:
 - "Unpredictable opponet"
   - specifying a move for every possible opponent reply
 - E.g for chess, averaging branching is 35, and search 50 moves by each player (100 total)
-  - Time limits $35^100$
+  - Time limits $35^{100}$
 
 ### Two-Agent Games
 - perfect information
@@ -137,7 +137,7 @@ Solution：
 - Ideal function: returns the actual minimax value of the position 
 - In practice: typically weighted linear sum of features:
   $$
-  \operatorname{Eval}(s)=w_{1} f_{1}(s)+w_{2} f_{2}(s)+\ldots+w_{n} f_{n}(s)
+  \mathrm{Eval}(s)=w_{1} f_{1}(s)+w_{2} f_{2}(s)+\ldots+w_{n} f_{n}(s)
   $$
 - e.g. $f_1(s)=(\text{num of white queens} - \text{num of black queens})$, etc
 

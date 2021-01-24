@@ -26,7 +26,7 @@ Informally, an assertion is a proposition which describes a particular property 
 
 More generally, 我们可以用程序变量的值、程序变量的地址、内存上的信息来描述程序状态。
 
-$$(\mathbf{[I]} \longmapsto \theta) \text{AND} ([\mathbf{t}] +4 \longmapsto \text { NULL } ) \operatorname{AND} ([\mathbb{S}] = 0)$$
+$$(\mathbf{[I]} \longmapsto \theta) \text{AND} ([\mathbf{t}] +4 \longmapsto \text { NULL } ) \mathrm{AND} ([\mathbb{S}] = 0)$$
 
 ### What is a "Proposition"
 

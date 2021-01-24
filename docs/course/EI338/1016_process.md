@@ -60,14 +60,14 @@ categories:
 ### Process Control Block
 
 Information associated with each process (also called **task control block**)
-- Process state – running, waiting, etc
-- Program counter – location of instruction to next execute
-- CPU registers – contents of all process- centric registers
+- Process state - running, waiting, etc
+- Program counter - location of instruction to next execute
+- CPU registers - contents of all process- centric registers
 - CPU scheduling information- priorities, scheduling queue pointers
-- Memory-management information – memory allocated to the process
+- Memory-management information - memory allocated to the process
   > No overlap between processes
-- Accounting information – CPU used, clock time elapsed since start, time limits
-- I/O status information – I/O devices allocated to process, list of open files
+- Accounting information - CPU used, clock time elapsed since start, time limits
+- I/O status information - I/O devices allocated to process, list of open files
 
 > Note the difference between **THREADS** and **PROCESSES**
 
@@ -92,8 +92,8 @@ Information associated with each process (also called **task control block**)
 - Maximize CPU use, quickly switch processes onto CPU core
 - **Process scheduler** selects among available processes for next execution on CPU core
 - Maintains **scheduling queues** of processes
-  - **Ready queue**– set of all processes residing _in main memory, ready and waiting to execute_
-  - **Wait queues** – set of processes waiting for an event (i.e. I/O)
+  - **Ready queue**- set of all processes residing _in main memory, ready and waiting to execute_
+  - **Wait queues** - set of processes waiting for an event (i.e. I/O)
   - Processes migrate among the various queues
 > Implemented in Linked-lists of `struct task_struct`
 
@@ -124,7 +124,7 @@ Information associated with each process (also called **task control block**)
 - Some mobile systems (e.g., early version of iOS) allow only one process to run, others suspended
 - Due to screen real estate, user interface limits iOS provides for 
   - Single foreground process- controlled via user interface
-  - Multiple background processes– in memory, running, but not on the display, and with limits
+  - Multiple background processes- in memory, running, but not on the display, and with limits
   - Limits include single, short task, receiving notification of events, specific long-running tasks like audio playback
 - Android runs foreground and background, with fewer limits
   - Background process uses a service to perform tasks
@@ -200,7 +200,7 @@ Information associated with each process (also called **task control block**)
   - Empty process
 - Android will begin terminating processes that are least important.
 
-### Multiprocess Architecture – Chrome Browser
+### Multiprocess Architecture - Chrome Browser
 - Many web browsers ran as single process (some still do)
   - If one website causes trouble, entire browser can hang or crash
 - Google Chrome Browser is **multiprocess** with 3 different types of processes:
@@ -295,7 +295,7 @@ while (true) {
 
 ## IPC in Message-Passing Systems
 - Mechanism for processes to communicate and to synchronize their actions
-- Message system – processes communicate with each other without resorting to shared variables
+- Message system - processes communicate with each other without resorting to shared variables
 - IPC facility provides two operations:  
   - `send(message)`
   - `receive(message)`
@@ -322,8 +322,8 @@ while (true) {
 
 ### Direct Communication
 - Processes must name each other explicitly:
-  - `send (P, message)` – send a message to process P
-  - `receive(Q, message)` – receive a message from process Q
+  - `send (P, message)` - send a message to process P
+  - `receive(Q, message)` - receive a message from process Q
 - Properties of communication link
   - Links are established automatically
   - A link is associated with **exactly one pair** of communicating processes
@@ -344,8 +344,8 @@ while (true) {
   - send and receive messages through mailbox 
   - destroy a mailbox
 - Primitives are defined as:
-  - `send(A, message)` – send a message to mailbox A 
-  - `receive(A, message)` – receive a message from mailbox A
+  - `send(A, message)` - send a message to mailbox A 
+  - `receive(A, message)` - receive a message from mailbox A
 
 ### Synchronization
 > Two kinds, blocking/synchronous VS non-blocking/asynchronous
@@ -382,9 +382,9 @@ while (true) {
 ### Buffering
 - Queue of messages attached to the link. 
 - Implemented in one of three ways
-  1. Zero capacity – no messages are queued on a link. Sender must wait for receiver (*rendezvous*)
-  2. Bounded capacity – finite length of n messages Sender must wait if link full
-  3. Unbounded capacity – infinite length Sender never waits
+  1. Zero capacity - no messages are queued on a link. Sender must wait for receiver (*rendezvous*)
+  2. Bounded capacity - finite length of n messages Sender must wait if link full
+  3. Unbounded capacity - infinite length Sender never waits
 
 
 
@@ -447,8 +447,8 @@ while (true) {
 ### Pipes
 > An early form, usually for processes on the same system
 
-- **Ordinary pipes** – cannot be accessed from outside the process that created it. Typically, a parent process creates a pipe and uses it to communicate with a child process that it created.
-- **Named pipes** – can be accessed without a parent-child relationship.
+- **Ordinary pipes** - cannot be accessed from outside the process that created it. Typically, a parent process creates a pipe and uses it to communicate with a child process that it created.
+- **Named pipes** - can be accessed without a parent-child relationship.
 
 #### Ordinary Pipes
 
@@ -478,7 +478,7 @@ while (true) {
 ### Sockets
 
 - A **socket** is defined as an endpoint for communication
-- Concatenation of IP address and **port** – a number included at start of message packet to differentiate network services on a host
+- Concatenation of IP address and **port** - a number included at start of message packet to differentiate network services on a host
 - The socket 161.25.19.8:1625 refers to port 1625 on host 161.25.19.8
 - Communication consists between a pair of sockets
 - All ports below 1024 are **well known**, used for standard services
@@ -492,7 +492,7 @@ while (true) {
     - by creating connection, handshaking, ...
   - Connectionless (UDP)
     - `ping`
-  - MulticastSocket class– data can be sent to multiple recipients
+  - MulticastSocket class- data can be sent to multiple recipients
 
 #### Socket Usage
 
@@ -504,7 +504,7 @@ while (true) {
 ### Remote Procedure Calls
 - Remote procedure call (RPC) abstracts procedure calls between processes on networked systems
   - Again uses ports for service differentiation
-- **Stubs** – client-side proxy for the actual procedure on the server
+- **Stubs** - client-side proxy for the actual procedure on the server
   > a "proxy" to cover up the different configurations between systems
   - The client-side stub locates the server and **marshalls** the parameters
   - The server-side stub receives this message, unpacks the marshalled parameters, and performs the procedure on the server
@@ -517,7 +517,7 @@ while (true) {
     - exactly once _*Periodical RPC until ACK*_
     - at most once _*Using Timestamp*_
     > so that correcting instructions can be resent if detected
-- Binding: name of procedure call – address of the call. How does client know the port numbers on server?
+- Binding: name of procedure call - address of the call. How does client know the port numbers on server?
   - Static: fixed por tnumber
   - Dynamic: Os typically provides a rendezvous or matchmaker service to connect client and server
 

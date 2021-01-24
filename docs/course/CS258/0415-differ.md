@@ -73,7 +73,7 @@ h(f(x))&=-\int f(x) \log f(x) d x \\
 \end{aligned}
 $$
 $$
-\int f(x) d x=1 \text { and } \operatorname{Var}(X)=\int(x-\mu)^{2} f(x) d x=\sigma^{2}
+\int f(x) d x=1 \text { and } \mathrm{Var}(X)=\int(x-\mu)^{2} f(x) d x=\sigma^{2}
 $$
 用代入方差的方法, 简化运算.
 $$
@@ -108,7 +108,7 @@ $$
 
 > $$\begin{array}{c}
 > \boldsymbol{h}(\boldsymbol{a} \boldsymbol{X})=\boldsymbol{h}(\boldsymbol{X})+\log |\boldsymbol{a}| \\
-> \boldsymbol{h}(\boldsymbol{A X})=\boldsymbol{h}(\boldsymbol{X})+\log |\operatorname{det} \boldsymbol{A}|
+> \boldsymbol{h}(\boldsymbol{A X})=\boldsymbol{h}(\boldsymbol{X})+\log |\mathrm{det} \boldsymbol{A}|
 > \end{array}$$
 
 Let $Y=a X .$ Then $f_{Y}(y)=\frac{1}{|a|} f_{X}\left(\frac{y}{a}\right),$ and
@@ -159,7 +159,7 @@ $$H\left(X^{\Delta}\right)+\log \Delta \rightarrow h(f)=h(X), \text { as } \Delt
 连续情况,考虑元素的体积
 The volume of a set $A \subset \mathcal{R}^{n}$ is defined as
 $$
-\operatorname{Vol}(A)=\int_{A} d x_{1} d x_{2} \ldots d x_{n}
+\mathrm{Vol}(A)=\int_{A} d x_{1} d x_{2} \ldots d x_{n}
 $$
 在这里, $2^{n h(X)}$ is the volume
 
@@ -205,11 +205,11 @@ Pf by expectation (虽然定义的方式不同,但期望的写法依然成立)
 
 > - The **covariance** between two random variables $X$ and $Y$ is defined as
 >   $$
->   \operatorname{cov}(X ; Y)=E(X-E X)(Y-E Y)=E(X Y)-(E X)(E Y)
+>   \mathrm{cov}(X ; Y)=E(X-E X)(Y-E Y)=E(X Y)-(E X)(E Y)
 >   $$
 > - For a random vector $X=\left[X_{1}, X_{2}, \ldots, X_{n}\right]^{T},$ the **covariance matrix** 相关矩阵 is defined a $=$
 >   $$
->   K_{x}=E(X-E X)(X-E X)^{T}=\left[\operatorname{cov}\left(X_{i} ; X_{j}\right)\right]
+>   K_{x}=E(X-E X)(X-E X)^{T}=\left[\mathrm{cov}\left(X_{i} ; X_{j}\right)\right]
 >   $$
 >   and the **correlation matrix** is defined as $\widetilde{K}_{X}=E X X^{T}=\left[{E} {X}_{{i}} {X}_{{j}}\right]$
 > - $K_{X}=E X X^{T}-(E X)\left(E X^{T}\right)=\widetilde{K}_{X}-(E X)\left(E X^{T}\right)$

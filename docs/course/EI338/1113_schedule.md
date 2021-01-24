@@ -21,7 +21,7 @@ categories:
 ## Basic Concepts
 
 - Maximum CPU utilization obtained with multiprogramming
-- CPU–I/O Burst Cycle – Process execution consists of a **cycle** of CPU execution and I/O wait
+- CPU-I/O Burst Cycle - Process execution consists of a **cycle** of CPU execution and I/O wait
 - **CPU burst** followed by **I/O burst**
 - CPU burst distribution is of main concern
 
@@ -58,7 +58,7 @@ Histogram of CPU-burst Times(连续使用的时间)
   - Switching Context
   - Switching to User Mode
   - jumping to proper location in the user program to restart that program
-- **Dispatch latency** – time it takes for the dispatcher to stop one process and start another running
+- **Dispatch latency** - time it takes for the dispatcher to stop one process and start another running
   > During which period, the CPU is not doing any job
 
 ![](./img/11-13-14-41-32.png)
@@ -66,17 +66,17 @@ Histogram of CPU-burst Times(连续使用的时间)
 ## Scheduling Criteria
 
 > Globally, maximize ...
-- **CPU utilization** – keep the CPU as busy as possible
+- **CPU utilization** - keep the CPU as busy as possible
   > By checking CPU profile
-- **Throughput** – # of processes that complete their execution per time unit
+- **Throughput** - # of processes that complete their execution per time unit
   > In OS scenerio, particular def here
 
 > The following criteria are w.r.t. Process, to minimize....
-- **Turnaround time** – amount of time to execute a particular process
+- **Turnaround time** - amount of time to execute a particular process
   > At least the program time, may be larger due to other reasons
-- **Waiting time** – amount of time a process has been waiting **in the ready queue**
+- **Waiting time** - amount of time a process has been waiting **in the ready queue**
   > The waiting time for IO is NOT counted
-- **Response time** – amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment)
+- **Response time** - amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment)
 > Turnarount time and response time are usually counted in time chips 时间片
 
 ### Scheduling Algorithm Optimization Criteria
@@ -117,7 +117,7 @@ Suppose that the processes arrive in the order: $P_2 ,P_3 ,P_1$
 
 - Associate with each process the length of its next CPU burst 
   - Use these lengths to schedule the process with the shortest time
-- SJF is optimal – gives minimum average waiting time for a given set of processes
+- SJF is optimal - gives minimum average waiting time for a given set of processes
   - The difficulty is knowing the length of the next CPU request
   - Could ask the user
 
@@ -236,8 +236,8 @@ $P_3$ | 3
   - Nonpreemptive
 - SJF is priority scheduling where priority is the inverse of predicted next CPU burst time
   > The shorter the job, the higher the priority
-- Problem $\equiv$ **Starvation** – low priority processes may never execute
-- Solution $\equiv$ **Aging** – as time progresses increase the priority of the process
+- Problem $\equiv$ **Starvation** - low priority processes may never execute
+- Solution $\equiv$ **Aging** - as time progresses increase the priority of the process
 
 #### Example of Priority Scheduling
 
@@ -319,7 +319,7 @@ Average waiting time = 8.2 msec
 - API allows specifying either PCS or SCS during thread creation
   - `PTHREAD_SCOPE_PROCESS` schedules threads using PCS scheduling
   - `PTHREAD_SCOPE_SYSTEM` schedules threads using SCS scheduling
-- Can be limited by OS – Linux and macOS only allow PTHREAD_SCOPE_SYSTEM
+- Can be limited by OS - Linux and macOS only allow PTHREAD_SCOPE_SYSTEM
 
 ![](./img/11-27-13-14-20.png)
 
@@ -382,11 +382,11 @@ Average waiting time = 8.2 msec
 
 - If SMP, need to keep all CPUs loaded for efficiency 
   - **Load balancing** attempts to keep workload evenly distributed
-  1. **Push migration (AKA. Task Migration)** – periodic task checks load on each processor, and if found pushes task from overloaded CPU to other CPUs
+  1. **Push migration (AKA. Task Migration)** - periodic task checks load on each processor, and if found pushes task from overloaded CPU to other CPUs
   > OS can tell in advance how long the task will execute, or during execution, it found some cores are busy/idle, we can migrate one task to another
   > issues like memory conflicts may be taken into account
   > address dependency of task graph
-  2. **Pull migration** – idle processors pulls waiting task from busy processor
+  2. **Pull migration** - idle processors pulls waiting task from busy processor
 
 
 
@@ -407,8 +407,8 @@ Average waiting time = 8.2 msec
 > Trade off, no load balancing VS load balancing cost
 > on OS level, there are some methods, e.g. constrain a process to a processor/set of processors
 
-- **Soft affinity** – the operating system attempts to keep a thread running on the same processor, but no guarantees.
-- **Hard affinity** – allows a process to specify a set of processors it may run on.
+- **Soft affinity** - the operating system attempts to keep a thread running on the same processor, but no guarantees.
+- **Hard affinity** - allows a process to specify a set of processors it may run on.
 
 > A basic strategy to select affinity set, depend on the structure of the processor (L1 cache may be aborted, but L2 cache should be shared)
 > ![](./img/11-27-13-37-46.png)
@@ -435,19 +435,19 @@ If the operating system is NUMA-aware, it will assign memory closes to the CPU t
 > Every task comes with a critical **deadline**
 > e.g. in a car system, detect a crash!
 Can present obvious challenges
-- Soft real-time systems – Critical real-time tasks have the highest priority, but no guarantee as to when tasks will be scheduled
-- Hard real-time systems – task must be serviced by its deadline
+- Soft real-time systems - Critical real-time tasks have the highest priority, but no guarantee as to when tasks will be scheduled
+- Hard real-time systems - task must be serviced by its deadline
 
 > critical criteria: latency - time between the request arrive and finish
 
 
-- Event latency – the amount of time that elapses from when an event occurs to when it is serviced.
+- Event latency - the amount of time that elapses from when an event occurs to when it is serviced.
 - Two types of latencies affect performance
-  1. **Interrupt latency** – time from arrival of interrupt to start of routine that services interrupt
+  1. **Interrupt latency** - time from arrival of interrupt to start of routine that services interrupt
   > ![](./img/11-27-14-09-39.png)
   > Not necessarily is a minimized latency a good real time system (just a **soft** object)
   > The object should be **meet the deadline**
-  2. **Dispatch latency** – time for schedule to take current process off CPU and switch to another
+  2. **Dispatch latency** - time for schedule to take current process off CPU and switch to another
      two phases
      1. Preemption of any process running in kernel mode
      2. Release by low- priority process of resources needed by high-priority processes
@@ -546,10 +546,10 @@ But this may cause Process P2 misses finishing its deadline at time 80
     - 1. Default 2. real-time
 - Quantum calculated based on nice value from -20 to +19
   - Lower value is higher priority
-  - Calculates target latency – interval of time during which task should run at least once
+  - Calculates target latency - interval of time during which task should run at least once
   - Target latency can increase if say number of active tasks increases
 - CFS scheduler maintains per task virtual run time in variable vruntime
-  - Associated with **decay factor based on priority of task** – lower priority is higher decay rate
+  - Associated with **decay factor based on priority of task** - lower priority is higher decay rate
   - Normal default priority yields virtual run time = actual run time
 - To decide next task to run, scheduler picks task with **lowest virtual run time** and **give it a target latency portion** of CPU
 
@@ -669,7 +669,7 @@ as a red-black tree $O(lgN)$
 - n = average queue length
 - W = average waiting time in queue
 - λ = average arrival rate into queue
-- Little’s law – in steady state, processes leaving queue must equal processes arriving, thus: $n=\lambda \times W$
+- Little’s law - in steady state, processes leaving queue must equal processes arriving, thus: $n=\lambda \times W$
   - Valid for any scheduling algorithm and arrival distribution
 - For example, if on average 7 processes arrive per second, and normally 14 processes in queue, then average wait time per process = 2 seconds
 
