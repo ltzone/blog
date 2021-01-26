@@ -49,6 +49,16 @@ module.exports = {
 				],
 				link: "/course/"
 			},
+			{
+				text: "Projects",
+				items: [
+					{ "text": "OCaml Tiger Compiler", "link": "/projects/tiger/" },
+					{ "text": "CSAPP Lab", "link": "/projects/csapp/" },
+					{ "text": "LeetCode Record", "link": "/projects/leetcode/" },
+					{ "text": "SJTU Go", "link": "/projects/SJTU-Go/" },
+				],
+				link: "/course/"
+			},
 			{ text: 'About', link: '/about/'},
 			{ text: 'TimeLine', link: '/timeline/', icon: 'reco-date' }
 		],
