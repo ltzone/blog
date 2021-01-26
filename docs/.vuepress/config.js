@@ -15,6 +15,9 @@ module.exports = {
 				"EI333": "EI333 Software Engineering",
 				"EI338": "EI338 System Engineering",
 				"EI339": "EI339 Artificial Intelligence",
+				"hol-program": "Lambda Prolog",
+				"csapp": "CSAPP Labs",
+				"tiger": "OCaml Tiger Compiler"
 			},
 		}
 	},
@@ -56,6 +59,7 @@ module.exports = {
 					{ "text": "CSAPP Lab", "link": "/projects/csapp/" },
 					{ "text": "LeetCode Record", "link": "/projects/leetcode/" },
 					{ "text": "SJTU Go", "link": "/projects/SJTU-Go/" },
+					{ "text": "Lambda Prolog", "link": "/projects/hol-program/" },
 				],
 				link: "/course/"
 			},
