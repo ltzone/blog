@@ -1,3 +1,5 @@
+let vssueConfig = require('./secret');
+
 module.exports = {
 	title: "LTzone",
 	description: "Tony's Blog",
@@ -63,7 +65,7 @@ module.exports = {
 		// 备案
 		record: '沪ICP备20004458号',
 		recordLink: 'http://www.beian.miit.gov.cn/',
-		// 项目开始时间，只填写年份
-		startYear: '2020'
+		startYear: '2020',
+		vssueConfig: vssueConfig
 	}
 }
