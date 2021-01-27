@@ -70,7 +70,8 @@ module.exports = {
 			socialLinks: [     // 信息栏展示社交信息
 				{ icon: 'reco-mail', link: "mailto:ltzhou@sjtu.edu.cn"},
 				{ icon: 'reco-github', link: 'https://github.com/ltzone' },
-				{ icon: 'reco-twitter', link: 'https://twitter.com/tonyzhou0608' }
+				{ icon: 'reco-twitter', link: 'https://twitter.com/tonyzhou0608' },
+				{ icon: 'reco-zhihu', link: 'https://www.zhihu.com/people/tony-zhou-44-52'}
 			  ]
 		},
 		noFoundPageByTencent: false,
