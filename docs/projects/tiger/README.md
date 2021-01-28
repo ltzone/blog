@@ -59,14 +59,15 @@ Solution to "Modern Compiler Implementation in ML" implemented in Ocaml
   - :heavy_check_mark: Semantic Actions: [build AST](tiger/lib/frontend/parser.mly) (*Aug 20th, 2020*)
   - :heavy_check_mark: [Driver](tiger/driver/util.ml) and [Test Cases](tiger/testcases) (*Aug 20th, 2020*)
   - :heavy_check_mark: Explicitly resolve shift/reduce conflicts (*Aug 20th, 2020*)
-  - :black_square_button: More Error Recovery, a better `pos` setting
+  - :heavy_check_mark: a better `pos` setting (*Jan 28th, 2021*)
+  - :black_square_button: More Error Recovery,
 - :black_square_button: Exercises
   - :heavy_check_mark: 4.1 Regular Expression Abstract Syntax (*Aug 25th, 2020*)
   - :heavy_check_mark: 4.2 ~ 4.4 Straight Line Interpreter implemented in Menhir through semantic actions (*Aug 25th, 2020*)
   - :black_square_button: 4.5 Straight Line Interpreter implemented in Recursive Descent
   - :black_square_button: 4.6 rewrite recursion direction
 
-> To Run the parser, `cd tiger; make; dune utop`, then execute `Util.parse_file "testcases/yourtestfile.tig"` in utop to check the parsed syntax tree
+> To Run the parser, `cd tiger; make utop`, then execute `Util.Semant_Util.parse_file "testcases/yourtestfile.tig"` in utop to check the parsed syntax tree
 
 ### Chapter 5 Semantic Actions
 - :heavy_check_mark: Reading
@@ -84,7 +85,7 @@ Solution to "Modern Compiler Implementation in ML" implemented in Ocaml
   - :black_square_button: efficient data structure for environment "adding"
   - :black_square_button: cycle of type definitions
 
-> To Run the type checker, modify the `dune` file in `/driver`, then execute `dune exec driver/semant_util.exe` in shell to type check all the tiger programs
+> To Run the type checker, `cd tiger; make utop`, then execute `Util.Semant_Util.run_test()` in utop to type check all the tiger programs
 
 ## References
 

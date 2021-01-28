@@ -135,6 +135,8 @@ type ty =
 
 Basically following the instructions on the textbook.
 
+- To check the correct nesting of `break` statement, we simply add an extra parameter to `transExp`
+
 ### Lessons to learn
 
 - How to judge two types are equivalent are important!
