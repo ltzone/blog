@@ -9,6 +9,7 @@ categories:
 
 sidebar: True
 lang: en-US
+autoNext: lab1-data
 ---
 
 I am planning to finish the labs of CSAPP this winter.
