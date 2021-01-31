@@ -1,11 +1,11 @@
 ---
 title: Lab 1 Data Lab
-date: 2021-01-29 23:51:20
+date: 2020-10-8 23:51:20
 tags: 
 - CSAPP
 
 categories: 
-- study
+- Study
 
 sidebar: True
 lang: en-US

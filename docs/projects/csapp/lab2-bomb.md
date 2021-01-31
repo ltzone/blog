@@ -5,7 +5,7 @@ tags:
 - CSAPP
 
 categories: 
-- study
+- Study
 
 sidebar: True
 lang: en-US

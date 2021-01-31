@@ -1,6 +1,6 @@
 ---
 title: CSAPP Lab Digest
-date: 2021-01-26 11:09:40
+date: 2020-10-07 11:09:40
 tags: 
 - CSAPP
 
@@ -12,7 +12,7 @@ lang: en-US
 autoNext: lab1-data
 ---
 
-I am planning to finish the labs of CSAPP this winter.
+I am planning to finish the labs of CSAPP in 2021 winter.
 
 <!--more-->
 
