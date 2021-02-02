@@ -1,6 +1,6 @@
 ---
 title: Lab 1 - Booting a Machine
-date: 2021-01-29 16:36:59
+date: 2021-02-02 16:36:59
 tags: 
 - Modern Operating Systems
 
