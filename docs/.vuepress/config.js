@@ -1,9 +1,19 @@
 let vssueConfig = require('./secret');
 
 module.exports = {
-	title: "LTzone",
-	description: "Tony's Blog",
 	theme: "reco",
+	locales:{
+		'/': {
+			lang: 'en-US',
+			title: 'LTZone',
+			description: "Tony's Blog"
+		},
+		'/zh/': {
+			lang: 'zh-CN',
+			title: 'LTZone',
+			description: "Tony's Blog"
+		},
+	},
 	plugins: {
 		"vuepress-plugin-auto-sidebar": {
 			titleMode: "titlecase",
@@ -38,49 +48,99 @@ module.exports = {
 	themeConfig: {
 		type: 'blog',
 		authorAvatar: '/id.jpeg',
-		nav: [
-			{
-				text: "Notes",
-				items: [
-					{ "text": "CS222 Algorithm Analysis", "link": "/course/CS222/" },
-					{ "text": "CS258 Information Theory", "link": "/course/CS258/" },
-					{ "text": "CS263 Programming Language", "link": "/course/CS263/" },
-					{ "text": "EI332 Computer Composition", "link": "/course/EI332/" },
-					{ "text": "EI333 Software Engineering", "link": "/course/EI333/" },
-					{ "text": "EI338 System Engineering", "link": "/course/EI338/" },
-					{ "text": "EI339 Artificial Intelligence", "link": "/course/EI339/" },
+		locales:{
+			'/': {
+				nav: [
+					{
+						text: "Notes",
+						items: [
+							{ "text": "CS222 Algorithm Analysis", "link": "/course/CS222/" },
+							{ "text": "CS258 Information Theory", "link": "/course/CS258/" },
+							{ "text": "CS263 Programming Language", "link": "/course/CS263/" },
+							{ "text": "EI332 Computer Composition", "link": "/course/EI332/" },
+							{ "text": "EI333 Software Engineering", "link": "/course/EI333/" },
+							{ "text": "EI338 System Engineering", "link": "/course/EI338/" },
+							{ "text": "EI339 Artificial Intelligence", "link": "/course/EI339/" },
+						],
+						link: "/course/"
+					},
+					{
+						text: "Projects",
+						items: [
+							{ "text": "OCaml Tiger Compiler", "link": "/projects/tiger/" },
+							{ "text": "CSAPP Lab", "link": "/projects/csapp/" },
+							{ "text": "LeetCode Record", "link": "/projects/leetcode/" },
+							{ "text": "SJTU Go", "link": "/projects/SJTU-Go/" },
+							{ "text": "Lambda Prolog", "link": "/projects/hol-program/" },
+						],
+						link: "/projects/"
+					},
+					{ text: 'About', link: '/about/'},
+					{ text: 'TimeLine', link: '/timeline/', icon: 'reco-date' }
 				],
-				link: "/course/"
+				blogConfig:{
+					socialLinks: [     // 信息栏展示社交信息
+						{ icon: 'reco-mail', link: "mailto:ltzhou@sjtu.edu.cn"},
+						{ icon: 'reco-github', link: 'https://github.com/ltzone' },
+						{ icon: 'reco-twitter', link: 'https://twitter.com/tonyzhou0608' },
+						{ icon: 'reco-zhihu', link: 'https://www.zhihu.com/people/tony-zhou-44-52'}
+					]
+				},
+				noFoundPageByTencent: false,
+				subSidebar: 'auto',
+				author: 'Tony Zhou',
+				// 备案
+				record: '沪ICP备20004458号',
+				recordLink: 'http://www.beian.miit.gov.cn/',
+				startYear: '2020',
+				vssueConfig: vssueConfig
 			},
-			{
-				text: "Projects",
-				items: [
-					{ "text": "OCaml Tiger Compiler", "link": "/projects/tiger/" },
-					{ "text": "CSAPP Lab", "link": "/projects/csapp/" },
-					{ "text": "LeetCode Record", "link": "/projects/leetcode/" },
-					{ "text": "SJTU Go", "link": "/projects/SJTU-Go/" },
-					{ "text": "Lambda Prolog", "link": "/projects/hol-program/" },
+			'/zh/': {
+				nav: [
+					{
+						text: "Notes",
+						items: [
+							{ "text": "CS222 Algorithm Analysis", "link": "../course/CS222/" },
+							{ "text": "CS258 Information Theory", "link": "../course/CS258/" },
+							{ "text": "CS263 Programming Language", "link": "../course/CS263/" },
+							{ "text": "EI332 Computer Composition", "link": "../course/EI332/" },
+							{ "text": "EI333 Software Engineering", "link": "../course/EI333/" },
+							{ "text": "EI338 System Engineering", "link": "../course/EI338/" },
+							{ "text": "EI339 Artificial Intelligence", "link": "../course/EI339/" },
+						],
+						link: "/course/"
+					},
+					{
+						text: "Projects",
+						items: [
+							{ "text": "OCaml Tiger Compiler", "link": "/projects/tiger/" },
+							{ "text": "CSAPP Lab", "link": "/projects/csapp/" },
+							{ "text": "LeetCode Record", "link": "/projects/leetcode/" },
+							{ "text": "SJTU Go", "link": "/projects/SJTU-Go/" },
+							{ "text": "Lambda Prolog", "link": "/projects/hol-program/" },
+						],
+						link: "/projects/"
+					},
+					{ text: 'About', link: '/about/'},
+					{ text: 'TimeLine', link: '/timeline/', icon: 'reco-date' }
 				],
-				link: "/course/"
-			},
-			{ text: 'About', link: '/about/'},
-			{ text: 'TimeLine', link: '/timeline/', icon: 'reco-date' }
-		],
-		blogConfig:{
-			socialLinks: [     // 信息栏展示社交信息
-				{ icon: 'reco-mail', link: "mailto:ltzhou@sjtu.edu.cn"},
-				{ icon: 'reco-github', link: 'https://github.com/ltzone' },
-				{ icon: 'reco-twitter', link: 'https://twitter.com/tonyzhou0608' },
-				{ icon: 'reco-zhihu', link: 'https://www.zhihu.com/people/tony-zhou-44-52'}
-			  ]
-		},
-		noFoundPageByTencent: false,
-		subSidebar: 'auto',
-		author: 'Tony Zhou',
-		// 备案
-		record: '沪ICP备20004458号',
-		recordLink: 'http://www.beian.miit.gov.cn/',
-		startYear: '2020',
-		vssueConfig: vssueConfig
+				blogConfig:{
+					socialLinks: [     // 信息栏展示社交信息
+						{ icon: 'reco-mail', link: "mailto:ltzhou@sjtu.edu.cn"},
+						{ icon: 'reco-github', link: 'https://github.com/ltzone' },
+						{ icon: 'reco-twitter', link: 'https://twitter.com/tonyzhou0608' },
+						{ icon: 'reco-zhihu', link: 'https://www.zhihu.com/people/tony-zhou-44-52'}
+					]
+				},
+				noFoundPageByTencent: false,
+				subSidebar: 'auto',
+				author: 'Tony Zhou',
+				// 备案
+				record: '沪ICP备20004458号',
+				recordLink: 'http://www.beian.miit.gov.cn/',
+				startYear: '2020',
+				vssueConfig: vssueConfig
+			}
+		}
 	}
 }
