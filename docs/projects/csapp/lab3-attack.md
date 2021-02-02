@@ -106,7 +106,7 @@ fa 18 40 00 00 00 00 00 # (on return) jmp destination
 Note that our input string is at a higher address of the stack. Therefore, future function calls that may modify the stack will not interfere with our string. Therefore, the `00` buffer space is not a desired place for the cookie string, since it will be popped when `getbuf` is returned. 
 :::
 
-### Attack 4
+## Attack 4
 
 We first use `objdump -h rtarget` to check the instructions provided by the `farm.c`. After some efforts in observation, we have found two useful utilities.
 
