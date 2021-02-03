@@ -76,9 +76,9 @@ Solution to "Modern Compiler Implementation in ML" implemented in Ocaml
 - :heavy_check_mark: Programming Part A: (*Sept 2nd, 2020*)
   - :heavy_check_mark: [Simple Type Checker](tiger/lib/analysis/semant.ml) (*Aug 31st, 2020*)
   - :heavy_check_mark: [Declaration Processor](tiger/lib/analysis/semant.ml) (*Sept 2nd, 2020*)
-- :black_square_button: Programming Part B:
+- :heavy_check_mark: Programming Part B: (*Jan 31st, 2021*)
   - :heavy_check_mark: [Handle (Mutually) Recursive Functions, Types Declarations](tiger/lib/analysis/semant.ml) (*Sept 2nd, 2020*)
-  - :black_square_button: Correct Nesting of break statements
+  - :heavy_check_mark: Correct Nesting of break statements (*Jan 31st, 2021*)
   - :heavy_check_mark: [Driver](tiger/driver/semant_util.ml) and [TestCases](tiger/testcases/semant_output.txt) (*Oct 9th, 2020*)
 - :black_square_button: Exercises
   - :black_square_button: Improve HashTable Implementation
@@ -86,6 +86,24 @@ Solution to "Modern Compiler Implementation in ML" implemented in Ocaml
   - :black_square_button: cycle of type definitions
 
 > To Run the type checker, `cd tiger; make utop`, then execute `Util.Semant_Util.run_test()` in utop to type check all the tiger programs
+
+### Chapter 6 Activation Records
+- :heavy_check_mark: Reading (*Feb 3rd, 2021*)
+  - :heavy_check_mark: [Foundation Notes](./chap6) (*Feb 3rd, 2021*)
+  - :heavy_check_mark: [Implementation Notes](./chap6) (*Feb 3rd, 2021*)
+- :heavy_check_mark: Programming Basic:(*Feb 3rd, 2021*)
+  - :heavy_check_mark: [Interface Translate with Semant](tiger/lib/analysis/semant.ml) (*Feb 3rd, 2021*)
+  - :heavy_check_mark: [Implement MIPSframe](tiger/lib/analysis/frame.ml) (*Feb 3rd, 2021*)
+- :black_square_button: Programming Advanced:
+  - :black_square_button: Pass limited parameters in registers
+  - :black_square_button: Implement FindEscape
+  - :black_square_button: Handle functions with parameters more than limited registers
+- :black_square_button: Exercises
+  - :black_square_button: C compiler Observation
+  - :black_square_button: Explore Deep Recursive Functions
+  - :black_square_button: Mark Tiger Functions/Registers which don't need static links
+  - :black_square_button: Discuss the use of Display
+
 
 ## References
 

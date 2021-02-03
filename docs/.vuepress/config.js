@@ -58,7 +58,7 @@ module.exports = {
 					{ "text": "OCaml Tiger Compiler", "link": "/projects/tiger/" },
 					{ "text": "CSAPP Lab", "link": "/projects/csapp/" },
 					{ "text": "LeetCode Record", "link": "/projects/leetcode/" },
-					{ "text": "SJTU Go", "link": "/projects/SJTU-Go/" },
+					// { "text": "SJTU Go", "link": "/projects/SJTU-Go/" },
 					{ "text": "Lambda Prolog", "link": "/projects/hol-program/" },
 				],
 				link: "/course/"
