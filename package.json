@@ -17,7 +17,7 @@
   "devDependencies": {
     "@maginapp/vuepress-plugin-katex": "^1.0.9",
     "vuepress": "^1.8.0",
-    "vuepress-plugin-auto-sidebar": "^1.5.0",
+    "vuepress-plugin-auto-sidebar": "git+https://gitee.com/ltzhou/vuepress-plugin-auto-sidebar.git",
     "vuepress-theme-reco": "^1.6.1"
   },
   "dependencies": {
