@@ -5,5 +5,7 @@ bgImageStyle: {
     height: '350px',
     background-position: 'bottom'
 }
+sidebar: false
+subSidebar: false
 ---
 
