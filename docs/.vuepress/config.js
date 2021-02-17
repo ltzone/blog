@@ -128,7 +128,7 @@ module.exports = {
 						link: "/zh/projects/"
 					},
 					{ text: '关于我', link: '/zh/about/'},
-					{ text: '时间线', link: '/timeline/', icon: 'reco-date' }
+					{ text: '时间线', link: '/zh/timeline/', icon: 'reco-date' }
 				],
 			}
 		},

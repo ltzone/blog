@@ -6,6 +6,8 @@ sticky: 1
 
 sidebar: true
 
+lang: en-US
+
 categories:
 - Courses
 ---
