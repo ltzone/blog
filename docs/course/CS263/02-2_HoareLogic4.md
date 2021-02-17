@@ -14,7 +14,7 @@ Week 2 of 2020 Spring. Use Hoare Logic to Prove Programs
 
 **KeyWords**: Programming Logic, Hoare Logic
 
-<!--more-->
+<!-- more -->
 
 
 

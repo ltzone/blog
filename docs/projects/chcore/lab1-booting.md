@@ -12,7 +12,7 @@ lang: en-US
 ---
 
 
-<!--more-->
+<!-- more -->
 
 ## Exercise 1: ARM Instructions
 

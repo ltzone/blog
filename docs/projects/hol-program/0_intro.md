@@ -173,7 +173,7 @@ This book will
 
 ![](./img/01-26-15-06-44.png)
 
-The first part introduces a proof-theoretic foundation for logic programming in the set- ting of first-order logic
+The first part introduces a proof-theoretic foundation for logic programming in the setting of first-order logic
 
 - Chapter 1 describes how symbolic objects might be represented using simply typed, first-order terms and manipulated using first-order unification. 
 - Chapter 2 presents an abstract framework for logic programming and elaborates this framework using first-order Horn clauses. 

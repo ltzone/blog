@@ -13,7 +13,7 @@ lang: zh-CN
 
 In this piece of work, I will try to implement a compiler of the tiger language through OCaml under the guidance of "Modern Compiler Implementation in ML".
 
-<!--more-->
+<!-- more -->
 
 Solution to "Modern Compiler Implementation in ML" implemented in Ocaml
 

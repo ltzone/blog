@@ -16,7 +16,7 @@ categories:
 
 In this chapter, the book introduces how lexical analysis rules are described on the notion of _*Regular Expressions*_, and how they are converted to _*NFA*_ or _*DFA*_ (by means of the iterating algorithm) in order to be implemented.
 
-<!--more-->
+<!-- more -->
 
 ## Lexical Tokens
 

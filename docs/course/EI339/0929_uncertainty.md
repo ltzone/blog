@@ -16,7 +16,7 @@ Worst-Case vs. Average Case
 
 
 
-<!--more-->
+<!-- more -->
 
 
 

@@ -10,7 +10,7 @@ lang: zh-CN
 ---
 
 
-<!--more-->
+<!-- more -->
 
 1. 只有标注了Categories的posts会被首页统计
 

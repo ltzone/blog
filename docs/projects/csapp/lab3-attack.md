@@ -12,7 +12,7 @@ lang: en-US
 ---
 
 
-<!--more-->
+<!-- more -->
 
 
 ## Textbook 3.10 Combining Control and Data in Machine-level Programs

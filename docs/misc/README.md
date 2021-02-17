@@ -7,6 +7,6 @@ lang: en-US
 ---
 
 
-<!--more-->
+<!-- more -->
 
 A category to archive all misc notes.

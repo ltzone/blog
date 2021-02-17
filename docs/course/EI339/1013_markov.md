@@ -15,7 +15,7 @@ Problem: the effect of an action exists uncertainty. (i.e. the agent may not fun
 
 ![](./img/10-13-14-06-35.png)
 
-<!--more-->
+<!-- more -->
 
 
 

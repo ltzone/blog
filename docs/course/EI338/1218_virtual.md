@@ -19,7 +19,7 @@ categories:
 - Design a virtual memory manager simulation in the C programming language.
 
 
-<!--more-->
+<!-- more -->
 
 
 

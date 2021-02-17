@@ -23,7 +23,7 @@ Consequence.
 - Divide-and-conquer: Θ(nlogn).
 
 
-<!--more-->
+<!-- more -->
 
 
 

@@ -9,7 +9,7 @@ tags:
 
 在[上一篇日志](https://www.ltzhou.com/sg-springinit)中我们说到可以将本地打包生成的jar包直接上传到服务器运行, 在[配置Jupyter](https://www.ltzhou.com/ecs-jupyter)时, 我们介绍了apache2反向代理实现二级域名到端口映射的方法. 由于微信小程序要求后端API必须具有https协议, 本节将会实现通过SpringBoot框架搭建的API接口(https)的实现.
 
-<!--more-->
+<!-- more -->
 
 [toc]
 

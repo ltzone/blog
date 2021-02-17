@@ -12,6 +12,6 @@ lang: en-US
 ---
 
 
-<!--more-->
+<!-- more -->
 
 doc TBD.

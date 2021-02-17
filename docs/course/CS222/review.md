@@ -28,5 +28,5 @@ categories:
 | Week13   	| Local Search & Randomized                                                        	| 11月30日 	|
 
 
-<!--more-->
+<!-- more -->
 

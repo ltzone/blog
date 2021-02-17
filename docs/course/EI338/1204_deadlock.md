@@ -19,7 +19,7 @@ categories:
 - Apply the deadlock detection algorithm
 - Evaluate approaches for recovering from deadlock
 
-<!--more-->
+<!-- more -->
 
 
 

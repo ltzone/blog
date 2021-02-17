@@ -12,6 +12,6 @@ lang: zh-CN
 
 An archive of my leetcode digest, however, there are no recent plans to move forward in this project.
 
-<!--more-->
+<!-- more -->
 
 

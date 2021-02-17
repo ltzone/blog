@@ -13,7 +13,7 @@ lang: en-US
 ---
 
 
-<!--more-->
+<!-- more -->
 
 ## Introduction
 

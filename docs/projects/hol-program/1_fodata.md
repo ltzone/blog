@@ -12,7 +12,7 @@ lang: en-US
 ---
 
 
-<!--more-->
+<!-- more -->
 
 ## 1 Sorts and type constructors
 

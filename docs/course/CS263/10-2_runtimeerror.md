@@ -12,7 +12,7 @@ categories:
 
 Week 12 of 2020 Spring
 
-<!--more-->
+<!-- more -->
 
 
 

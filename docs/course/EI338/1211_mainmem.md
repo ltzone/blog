@@ -14,7 +14,7 @@ categories:
 - To discuss various memory-management techniques,
 - To provide a detailed description of the Intel Pentium, which supports both pure segmentation and segmentation with paging
 
-<!--more-->
+<!-- more -->
 
 
 

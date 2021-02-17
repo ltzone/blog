@@ -12,7 +12,7 @@ categories:
 
 Week 8 of 2020 Spring.
 
-<!--more-->
+<!-- more -->
 
 
 

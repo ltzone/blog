@@ -10,7 +10,7 @@ categories:
 
 ---
 
-<!--more-->
+<!-- more -->
 
 
 

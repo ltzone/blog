@@ -12,7 +12,7 @@ categories:
 
 The semantic analysis phase of a compiler connects variable definitions to their uses, does type check and translates the AST into a simpler representation for generating machine code.
 
-<!--more-->
+<!-- more -->
 
 ## Symbol Tables
 

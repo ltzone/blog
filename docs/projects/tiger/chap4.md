@@ -13,7 +13,7 @@ categories:
 The semantic actions of a parser can do useful things with the phrases that are parsed.
 
 
-<!--more-->
+<!-- more -->
 
 ## Semantic actions
 

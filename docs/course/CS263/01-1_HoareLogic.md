@@ -14,7 +14,7 @@ Week 1 of 2020 Spring. An Introduction to Hoare Logic.
 
 **Keywords**: Assertions, Hoare Triples, Program Semantic
 
-<!--more-->
+<!-- more -->
 
 
 

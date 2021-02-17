@@ -11,7 +11,7 @@ categories:
 
 ---
 
-<!--more-->
+<!-- more -->
 
 Motivation: finite automaton can't recognize balanced parentheses, we need something more powerful than finite automata to parse language described by **grammars**.
 

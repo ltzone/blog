@@ -37,7 +37,7 @@ Optimization Problem
 ![](./img/11-16-14-03-58.png)
 
 
-<!--more-->
+<!-- more -->
 
 
 

@@ -12,7 +12,7 @@ categories:
 
 Week 5 of 2020 Spring. Questions to ask yourself when designing a subsystem.
 
-<!--more-->
+<!-- more -->
 
 
 

@@ -10,7 +10,7 @@ categories:
 
 ---
 
-<!--more-->
+<!-- more -->
 
 A further discussion on Search Algorithms, (depth-limited/iterative depth first/uniform cost) and search summary.
 

@@ -12,7 +12,7 @@ lang: en-US
 ---
 
 
-<!--more-->
+<!-- more -->
 
 
 ## GDB Cheatnotes

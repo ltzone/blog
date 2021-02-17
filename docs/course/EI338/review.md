@@ -31,7 +31,7 @@ Updated on Dec 26, 2020 10:00 PM
 |   OS-9     	|   Memory space mapping, MMU, Contiguous Memory Allocation, Paging, TLB, Page Tables                                                   	|
 |   OS-10    	|   Virtual Memory, Demand Paging, Page Replacement                                                                                     	|
 
-<!--more-->
+<!-- more -->
 
 
 

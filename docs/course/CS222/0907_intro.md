@@ -12,7 +12,7 @@ categories:
 
 
 
-<!--more-->
+<!-- more -->
 
 
 ## Euclid’s Algorithm

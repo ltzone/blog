@@ -14,7 +14,7 @@ Week 2 of 2020 Spring. More about Hoare Logic
 
 **KeyWords**: Hoare Logic, Program Semantics
 
-<!--more-->
+<!-- more -->
 
 
 

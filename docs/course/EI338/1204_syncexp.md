@@ -14,7 +14,7 @@ categories:
 - Explain the _bounded-buffer_, _readers-writers_, and _dining philosophers synchronization_ problems.
 - Describe the tools used by Linux and Windows to solve synchronization problems.
 - Illustrate how POSIX and Java can be used to solve process synchronization problems.
-<!--more-->
+<!-- more -->
 
 
 

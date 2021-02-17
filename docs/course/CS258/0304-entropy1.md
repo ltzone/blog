@@ -14,7 +14,7 @@ Week 1 of 2020 Spring. Entropy
 
 **KeyWords**: Entropy, Joint Entropy, Conditional Entropy
 
-<!--more-->
+<!-- more -->
 
 
 
