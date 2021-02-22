@@ -30,7 +30,7 @@ We will present **first-order Horn clauses** as a specific elaboration of this f
   - `type  memb       A -> list A -> o.` and `type  append     list A -> list A -> list A -> o.` are first-order predicate symbols
   - `memb 1 (1 :: 2 :: nil)` is an atomic formula
 
-::: tips
+::: tip
 In $\lambda$Prolog, to permit the construction of complex formulas, we add to signatures a special, pre-defined set of *logical constants or propositional symbols.*
 
 - `true` of type `o` representing $\top$,
@@ -46,7 +46,7 @@ Note, with `o` as argument type, these quantifiers are a violation of the restri
 
 The final addition that leads to the full set of first-order formulas is that of universal and existential quantification. Both forms of quantification range over explicit domains specified by types, written as $\forall_{\tau} F$ and $\exists_{\tau} F$ respectively. Both quantifiers **bind** a variable and establish a **scope** for its binding.
 
-::: tips
+::: tip
 
 In $\lambda$Prolog, we write `(pi (x:T)\ F)` and `(sigma (x:T)\ F)` respectively, where `F`, `T`, `x` are conrete syntax renditions of the formula $F$, type $\tau$ and the variable $x$.
 
@@ -66,7 +66,7 @@ pi X\ pi L\ pi K\ pi M\ append (X::L) K (X::M) :- append L K M
 sigma X\ pi y\ sigma h\ append X y h
 ```
 
-::: tips
+::: tip
 the syntax of bound variable names can be any contiguous sequence of characters beginning with an upper or lower case letter.
 :::
 
