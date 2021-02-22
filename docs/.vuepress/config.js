@@ -28,7 +28,8 @@ module.exports = {
 				"EI339": "EI339 Artificial Intelligence",
 				"hol-program": "Lambda Prolog",
 				"csapp": "CSAPP Labs",
-				"tiger": "OCaml Tiger Compiler"
+				"tiger": "OCaml Tiger Compiler",
+				"CS245": "CS245 Data Science"
 			},
 			unSidebarDir: [
 				"/zh/"
@@ -75,6 +76,7 @@ module.exports = {
 						text: "Notes",
 						items: [
 							{ "text": "CS222 Algorithm Analysis", "link": "/course/CS222/" },
+							{ "text": "CS245 Data Science", "link": "/course/CS245/" },
 							{ "text": "CS258 Information Theory", "link": "/course/CS258/" },
 							{ "text": "CS263 Programming Language", "link": "/course/CS263/" },
 							{ "text": "EI332 Computer Composition", "link": "/course/EI332/" },
@@ -107,6 +109,7 @@ module.exports = {
 						text: "笔记",
 						items: [
 							{ "text": "CS222 算法设计与分析", "link": "/course/CS222/" },
+							{ "text": "CS245 数据科学", "link": "/course/CS245/" },
 							{ "text": "CS258 信息论", "link": "/course/CS258/" },
 							{ "text": "CS263 程序语言", "link": "/course/CS263/" },
 							{ "text": "EI332 计算机组成", "link": "/course/EI332/" },
