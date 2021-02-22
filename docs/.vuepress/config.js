@@ -29,7 +29,8 @@ module.exports = {
 				"hol-program": "Lambda Prolog",
 				"csapp": "CSAPP Labs",
 				"tiger": "OCaml Tiger Compiler",
-				"CS245": "CS245 Data Science"
+				"CS245": "CS245 Data Science",
+				"CS383": "CS383 Programming Language"
 			},
 			unSidebarDir: [
 				"/zh/"
@@ -79,6 +80,7 @@ module.exports = {
 							{ "text": "CS245 Data Science", "link": "/course/CS245/" },
 							{ "text": "CS258 Information Theory", "link": "/course/CS258/" },
 							{ "text": "CS263 Programming Language", "link": "/course/CS263/" },
+							{ "text": "CS383 Programming Language Design", "link": "/course/CS383/" },
 							{ "text": "EI332 Computer Composition", "link": "/course/EI332/" },
 							{ "text": "EI333 Software Engineering", "link": "/course/EI333/" },
 							{ "text": "EI338 System Engineering", "link": "/course/EI338/" },
@@ -112,6 +114,7 @@ module.exports = {
 							{ "text": "CS245 数据科学", "link": "/course/CS245/" },
 							{ "text": "CS258 信息论", "link": "/course/CS258/" },
 							{ "text": "CS263 程序语言", "link": "/course/CS263/" },
+							{ "text": "CS383 程序设计语言", "link": "/course/CS383/" },
 							{ "text": "EI332 计算机组成", "link": "/course/EI332/" },
 							{ "text": "EI333 软件工程", "link": "/course/EI333/" },
 							{ "text": "EI338 计算机系统工程", "link": "/course/EI338/" },
