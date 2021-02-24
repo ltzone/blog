@@ -1,5 +1,5 @@
 ---
-title: Cloud Server Cheatnotes
+title: Cloud Server Tips
 date: 2021-02-16 12:58:20
 
 
@@ -15,8 +15,6 @@ lang: en-US
 
 1. `adduser`
 2. `tee /etc/sudoers.d/ltzhou <<< 'ltzhou ALL=(ALL) ALL'`
-
-
 
 ## Nginx
 
@@ -34,3 +32,14 @@ Nginx 配置文件结构以及最佳实践
    - `/var/www/<site_name>`
    - `/var/www/html/<site_name>`
    - `/opt/<site_name>`
+
+
+## 部署博客
+
+将本地`~/.ssh/id_rsa.pub`复制到服务器`~/.ssh/authorized_keys`之后即可免密登录。
+
+本地 build ，然后打包上传
+```
+ssh ltzhou@ltzhou.com "cd ~; rm -rf www; mkdir www"
+cd docs/.vuepress/dist; tar -zcf - ./ | ssh ltzhou@ltzhou.com "tar -zxf - -C ~/www"
+```

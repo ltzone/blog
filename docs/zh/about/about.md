@@ -9,14 +9,17 @@ sidebar: true
 lang: zh-CN
 
 categories:
-- Courses
+- Misc
 ---
 
-欢迎来到我的博客
 
-请通过右上角的导航栏查看更多内容
+欢迎来到我的博客，本站主要包含了我所有的[课程笔记](/course/)，以及一些有关我正在做的 [project](/projects/) 的信息。
 
-更多功能开发中...
+[关于我](/about/)
+
+可以通过[时间轴](/timeline/)，[类别](/categories/Courses/) 或[标签](/tag/)的形式查看所有博文。或者切换到[英文模式](/)查看更多博文。
+
+
 
 <!-- more -->
 

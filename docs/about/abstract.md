@@ -9,15 +9,16 @@ sidebar: true
 lang: en-US
 
 categories:
-- Courses
+- Misc
 ---
-
-Welcome to my blog, a place where my knowledge and techniques are shared.
-
-You can check the navigation bar on the top right corner to check all my posts.
-
-Multi-language support is under development.
 
 <!-- more -->
 
 
+Welcome to my blog, this site mainly contains all my [course notes](/course/), as well as some information about the [projects](/projects/) I am doing.
+
+my [CV](/about/)
+
+You can view all posts through [timeline](/timeline/), [categories](/categories/Courses/), or [tags](/tag/) pages. You may switch to [Chinese mode](/zh/) for more posts.
+
+<!-- more -->
