@@ -52,7 +52,7 @@ data source
   - **data cube**: a multidimensional data structure
     - **dimension** is an attribute or a set of attributes
     - each **cell** stores aggregate measure
-    - operations include rill-down, roll-up
+    - operations include **rill-down, roll-up**
   > ![](./img/02-23-11-03-31.png)
 - transaction data
   - ID + list of items
@@ -111,12 +111,16 @@ compare between different types
 ### Statistical Model
 
 - mean, median, mode, proximity measure
-- **hypothesis test**
+- $\mathcal{X}^2$-correlation **hypothesis test**
   - e.g. $\mathcal{X}^2$-correlation to check A and B are independent if $\mathcal{X}^2$ value is ...
+  > ![](./img/02-25-08-06-13.png)
 
 ### Machine Learning
 
-- Supervised learning, unsupervised learning, semi-supervised learning , ...
+- Supervised learning, unsupervised learning, semi-supervised learning (/w unlabeled examples), ...
+  > ![](./img/02-25-08-08-33.png)
+  >
+  > We can exploit unlabeled examples to help improve the boundary
 
 
 ::: details difference between data mining and machine learning
@@ -125,5 +129,31 @@ compare between different types
 - machine learning is the study of algorithms that are performed automatically, aiming at eliminating human effort
 
 :::
+
+### Database Systems and Data Warehouses
+
+data mining uses scalable database technologies to achieve high **efficiency** and **scalability**
+
+### Information Retrieval
+
+differ from database systems in that:
+1. data under search are unstructured
+> Are more likely to find information in file systems
+2. queries are formed by keywords
+
+method: probabilistic models
+- e.g., language model, topic model...
+
+
+## Applications
+
+1. Frequent Item Set Mining
+2. Page Ranking
+3. Ads Display
+4. Information Extraction
+   > extract info from CV
+5. Computer Vision
+6. Interactive Recommendation
+   > exploration and exploitation
 
 
