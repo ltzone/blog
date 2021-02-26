@@ -12,8 +12,6 @@ categories:
 - Misc
 ---
 
-<!-- more -->
-
 
 Welcome to my blog, this site mainly contains all my [course notes](/course/), as well as some information about the [projects](/projects/) I am doing.
 
