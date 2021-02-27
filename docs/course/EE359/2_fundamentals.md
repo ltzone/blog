@@ -109,7 +109,7 @@ lang: en-US
 
 > Note, the bottom or top should be either max/min **or 1.5*IQR**
 
-> For boxplots, takes $O(n\log n)$, for approximating the boxplots, takes $O(N)$ or sublinear time
+> For boxplots, takes ~~$O(n\log n)$~~ ($O(n)$ using median selection), for approximating the boxplots, takes $O(N)$ or sublinear time
  
 
 - **Variance and Standard Deviation**
