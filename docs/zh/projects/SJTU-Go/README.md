@@ -5,7 +5,8 @@ tags:
 - Software Engineering
 - SJTU-Go
 
-lang: zh-CN
+lang: en-US
+autoNext: 1_springinit
 ---
 
 
