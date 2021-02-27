@@ -1,5 +1,5 @@
 ---
-title: 【SJTU-Go开发日志】在服务器上部署SpringBoot二级域名api
+title: 在服务器上部署SpringBoot二级域名api
 url: sg-makeapi
 date: 2020-04-17 20:30:08
 tags: 
@@ -11,7 +11,6 @@ tags:
 
 <!-- more -->
 
-[toc]
 
 ## 在服务器安装AdoptOpenJDK
 
@@ -34,7 +33,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 使用`java -version`命令, 检查是否配置成功.
 
-![](img/04-17-21-59-07.png)
+![](./img/04-17-21-59-07.png)
 
 ## Apache配置反向代理
 
@@ -89,7 +88,7 @@ keytool -importkeystore -srckeystore D:\api.ltzhou.com.pfx -destkeystore D:\api.
 
 输入密钥的密码.
 
-![](img/04-17-22-53-05.png)
+![](./img/04-17-22-53-05.png)
 
 将转化后的证书文件放到java项目目录下, 同时在`application.properties`文件中输入如下配置.
 
@@ -100,7 +99,7 @@ server.ssl.key-store-password=fUHAPAlU
 server.ssl.key-store-type=JKS
 server.ssl.key-alias=alias
 ```
-![](img/04-17-22-54-57.png)
+![](./img/04-17-22-54-57.png)
 
 运行, 成功编译, 在本地浏览器我们就可以通过https访问对应端口了. 当然, 由于本地地址没有和二级域名对应, 浏览器会提示不安全.
 
@@ -108,11 +107,11 @@ server.ssl.key-alias=alias
 
 使用Maven的Package工具, 完成jar包的打包. 我们使用`scp`工具将本地jar包上传到服务器
 
-![](img/04-17-22-57-20.png)
+![](./img/04-17-22-57-20.png)
 
 使用ssh登录服务器, 使用`java -jar`命令运行jar包. 成功运行. 且通过浏览器访问`https://api.ltzhou.com/hello` 我们可以得到安全链接下的返回值.
 
-![](img/04-17-22-58-09.png)
+![](./img/04-17-22-58-09.png)
 
 要让jar包中的web应用持续后台运行, 执行如下命令.
 

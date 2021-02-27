@@ -12,7 +12,6 @@ EI333软件工程的大作业定为做一个校园内的共享出行导航系统
 
 <!-- more -->
 
-[toc]
 
 ## 安装Java和IDE
 
@@ -26,7 +25,7 @@ EI333软件工程的大作业定为做一个校园内的共享出行导航系统
 
 SpringBoot是一个基于Java的项目框架，我们可以用SpringBoot Initializer一键生成一套后端项目的配置。我们可以在 https://start.spring.io/ 上按照如下配置生成初始项目。
 
-![](img/04-10-14-37-16.png)
+![](./img/04-10-14-37-16.png)
 
 将下载的zip文件解压到我们小组的Git仓库中。IDEA新建项目也支持SpringBoot的初始配置。这一步已经做好了，配置文件都已存放在目前Git仓库的master分支中。
 
@@ -34,7 +33,7 @@ SpringBoot是一个基于Java的项目框架，我们可以用SpringBoot Initial
 
 `git clone`,或者`git pull`后，用IDEA打开`SJTU-Go`的项目目录。IDEA的界面和PyCharm十分类似，上手不会太困难。
 
-![](img/04-10-18-51-34.png)
+![](./img/04-10-18-51-34.png)
 
 右键左侧的pom.xml文件，按上图所示安装相关依赖。等待依赖包安装完成。连接学校VPN可能速度会得到提升。
 

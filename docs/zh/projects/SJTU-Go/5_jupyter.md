@@ -11,7 +11,6 @@ tags:
 
 <!-- more -->
 
-[toc]
 
 ## 背景
 
@@ -27,11 +26,11 @@ tags:
 
 SSL证书当然是有免费的注册方式的，如果直接购买阿里云的一键配置服务也就不会有这篇文章那么多事了。在[SSL控制台](https://yundun.console.aliyun.com/?spm=5176.13329450.nav-right.1.51494df5WQ9ivc&p=cas#/overview/cn-hangzhou)中，选择购买证书，选择免费版购买。
 
-![](img/04-12-09-46-10.png)
+![](./img/04-12-09-46-10.png)
 
 注册相关信息后，等待约半小时的审核，就可以在SSL控制台看到通过审核的证书。
 
-![](img/04-12-09-47-56.png)
+![](./img/04-12-09-47-56.png)
 
 由于免费版的SSL只支持注册单个二级域名，因此针对我们需要的二级域名地址需要准备单独的SSL证书进行配置，这里我注册了3个，阿里云最多允许个人注册20个。
 
@@ -111,7 +110,7 @@ define('FORCE_SSL_ADMIN', true);
 
 另外，在WordPress的管理员设置中，我们也将主页名从http改为https。
 
-![](img/04-12-12-34-59.png)
+![](./img/04-12-12-34-59.png)
 
 接下来访问主页，我们就可以看到地址栏左侧带上了一把锁，表明SSL认证成功。
 
@@ -119,7 +118,7 @@ define('FORCE_SSL_ADMIN', true);
 
 推荐一个工具，[better search replace](https://wordpress.org/plugins/better-search-replace/)。安装该插件后，按下图执行对应的替换，选中所有的数据表，取消dry run选项，即可解决以上问题。
 
-![](img/04-12-12-38-27.png)
+![](./img/04-12-12-38-27.png)
 
 接下来我们就能通过https连接访问所有博客网页了。
 
@@ -167,7 +166,7 @@ c.NotebookApp.keyfile = u'path_to.key'
 
 另外，在DNS解析控制台添加如下记录：
 
-![](img/04-12-13-06-38.png)
+![](./img/04-12-13-06-38.png)
 
 重启apache服务，重启jupyter notebook，即可正常通过二级域名访问jupyter notebook。下面是踩坑记录，如果你在配置的过程中有遇到问题，不妨参考。
 

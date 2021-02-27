@@ -14,7 +14,6 @@ Git是一个分布式版本控制系统, Git可以用于管理代码版本、协
 
 <!-- more -->
 
-[toc]
 
 ## Terminologies
 
@@ -43,7 +42,7 @@ Git是一个分布式版本控制系统, Git可以用于管理代码版本、协
 
 在仓库首页的右上角，我们可以找到当前git仓库的地址，复制地址，在支持git的命令行中输入`git clone https://github.com/ltzone/SJTU-Go.git`即可将当前仓库克隆到本地。
 
-![](img/03-23-19-09-15.png)
+![](./img/03-23-19-09-15.png)
 
 GitHub提供了两种clone到本地的方式，通过右上角的`Use SSH`切换。
 - 使用HTTPS clone，可以直接下载仓库，但此后每次push都需要输入你的GitHub密码，比较麻烦。
@@ -70,7 +69,7 @@ cd ~/.ssh
 ssh-keygen -t rsa -C "your_email@youremail.com" 
 ```
 
-![](img/03-23-20-28-01.png)
+![](./img/03-23-20-28-01.png)
 
 执行这条命令会如上图提示文件保存路径，可以直接按Enter，（注：默认的ssh文件保存地址在C/用户(Users)/你的用户名/.ssh中）
 然后提示输入 passphrase（密码），输入两次（可以不输直接两次Enter）（注：在这里的密码是SSH密钥对应的密码，用途是建立你的机器和你的远程github账号的连接，可以不和github本身的密码一致，不输也可以；输入的过程不会明文显示，输完回车即可）
@@ -81,7 +80,7 @@ ssh-keygen -t rsa -C "your_email@youremail.com"
 （3）复制ssh key到github： 
 打开github网站，点击右上角头像图标，进入settings，然后点击左边菜单的 ssh key， 然后右边页面的 add ssh key，将复制的内容粘贴到github的key中，title任填，直接保存即可。
 
-![](img/03-23-20-27-28.png)
+![](./img/03-23-20-27-28.png)
 
 （4）测试 ssh 链接 github：
 ```
@@ -92,7 +91,7 @@ ssh -T git@github.com
 
 （5） 随后就可以克隆远程仓库，输入下图命令，图中会要求输入密码，这个密码是你在创建SSH密钥过程中在命令行设置的密码，不是github账号的密码。以下是克隆成功后的命令
  
-![](img/03-23-20-27-13.png)
+![](./img/03-23-20-27-13.png)
 
 （6）	可以看到根目录下有了一个新的以仓库名为名称的文件夹，里面有仓库的所有信息，本地的仓库也已经和远程仓库（名为origin）连接起来了，配置完成。
 
@@ -182,4 +181,4 @@ temp/*.png 忽略temp文件夹下所有的png图片
 2. https://www.runoob.com/git/git-tutorial.html
 
 > Git的操作是不是很简单，你学会了吗？
-> ![](img/03-23-21-38-38.png)
+> ![](./img/03-23-21-38-38.png)

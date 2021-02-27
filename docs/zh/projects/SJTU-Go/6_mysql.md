@@ -11,7 +11,6 @@ tags:
 
 <!-- more -->
 
-[toc]
 
 环境: 基于[部署WordPress](http://www.ltzhou.com/vps-1/)一文中的服务器和MySQL配置.
 
@@ -82,8 +81,8 @@ vim /etc/mysql/mysql.conf.d/mysqld.cnf
 
 ## 配置MySQL WorkBench
 
-![](img/03-29-14-07-58.png)
+![](./img/03-29-14-07-58.png)
 
 填入相关信息, 连接成功.
 
-![](img/03-29-14-41-31.png)
+![](./img/03-29-14-41-31.png)
