@@ -1,5 +1,5 @@
 ---
-title: 1 Introduction
+title: Chapter 1 Introduction (1)
 date: 2021-02-23 09:26:44
 tags: 
 - Computer Networks
@@ -10,6 +10,17 @@ categories:
 sidebar: true
 lang: en-US
 ---
+
+Topics:
+
+- What’s Computer Network?
+  - classification by physical media
+  - by transmission tech
+  - by scale
+- Protocol layers, service models
+  - OSI
+  - TCP/IP
+  - Hybrid
 
 
 <!-- more -->
@@ -122,6 +133,8 @@ The token strategy ensures that only a single client will be using the channel
   > In a word, **interface is called to provide services**
 
 
+## Protocal Layers, service models
+
 
 ### Protocals
 
@@ -193,3 +206,19 @@ The OSI 7-layer Reference Model is an ideal layer design, where many protocols a
   - LAN/ARPANET/Ethernet/802.11/...
 
 :::
+
+::: tip
+
+OSI model has proven to be exceptionally useful for discussing computer networks, OSI protocols have not become popular.
+
+TCP/IP Model is practically nonexistent, but protocols are widely used, deeply entrenched, and thus hard to replace.
+
+:::
+
+
+In this course, we will use a **Hybrid Model**
+- **application**: programs using network services (http, ftp, smtp)
+- **transport**: end-end reliable data transfer (tcp, udp)
+- **network**: send packets over multiple networks (ip, routing algorithms)
+- **link**: data transfer between neighboring network nodes (Ethernet, WiFi, ppp, MAC)
+- **physical**: send bits as signals “on the wire” (media, modulation,encoding)
