@@ -174,3 +174,111 @@ Network core is a **mesh of interconnected routers**
 The fundamental question: how is data transferred through net?                          
 - **circuit switching**: *dedicated circuit per call*: like telephone net
 - **packet-switching**: *data sent through net* in discrete “chunks”
+
+> Why packet switching gradually replace circuit switching?
+
+### Circuit Switching
+
+End-end resources reserved for “call”
+> "call" is referred to here as an end-to-end communication
+- link bandwidth, switch capacity
+- dedicated resources: no sharing
+- circuit-like (guaranteed) performance
+- call setup required
+
+**Problem**. network resources (e.g., bandwidth) divided into “pieces”
+- pieces allocated to calls
+- resource piece **idle** *if not used by owning call* (no sharing)
+- dividing link bandwidth into “pieces”
+  - frequency division 
+  - time division
+
+
+::: tip FDM and TDM
+
+| Frequency Division Multiplexing | Time Division Multiplexing
+| --- | --- |
+| ![](./img/03-03-10-13-23.png) | ![](./img/03-03-10-13-37.png) |
+| allocate different frequency to different users | allocate different time slots to different users |
+| enables constant data streaming, but low bandwidth | enables large bandwidth  |
+| e.g. voice over IP requires low bandwidth (<Kbps) |  |  
+
+:::
+
+### Packet Switching
+
+
+- each end-end data stream divided into packets
+  - user A, B packets share network resources
+  - each packet uses full link bandwidth
+  - resources **used as needed**
+  > implemented by maintaining a series of queues in the router
+- resource contention:
+  - aggregate resource demand can exceed amount available
+    - Packets queue up
+- store and forward: _packets move one hop at a time_
+  - Node receives complete packet before forwarding
+
+::: tip Statistical Multiplexing
+
+![](./img/03-03-11-01-11.png)
+
+Sequence of A & B packets does not have fixed pattern, shared on demand $\Rightarrow$ **statistical multiplexing**. 统计复用
+**Recall TDM**: each host gets same slot in revolving TDM frame.
+
+:::
+
+
+### Packet Switching versus Circuit Switching
+
+
+- **Advantages**. Great for bursty data
+  - resource sharing
+  - simpler, no call setup
+- **Problem**. Excessive congestion: packet delay and loss
+  - protocols needed for reliability, congestion control
+  ::: danger Store-and-forward
+  **K-times the delay** for (K-1) intermediate routers (K links),
+
+  assumes zero propagation delay (from the input of router to the output)
+  :::
+- Q: How to provide circuit-like behavior?
+  - bandwidth guarantees needed for audio/video apps 
+  - still unsolved (chapter 7)
+
+
+
+## Delay, loss, and throughput
+
+packets queue in router buffers
+- packet arrival rate to link (temporarily) exceeds output link capacity $\Rightarrow$ Loss
+- packets **queue**, wait for turn $\Rightarrow$ Delay
+
+![](./img/03-03-11-28-19.png)
+
+
+### Sources of packet delay
+
+- **nodal processing delay,**
+  - The time required to examine the packet’s header and determine where to direct the packet
+- **queuing delay,**
+  - the time needed for waiting to be transmitted onto the link.
+  - The length of the queuing delay of a specific packet will depend on the number of earlier-arriving packets that are queued and waiting for transmission onto the link.
+- **transmission delay,**
+  - the amount of time required to push (that is, transmit) all of the packet’s bits into the link
+- **and propagation delay**
+  - The time required to propagate from the beginning of the link to router B
+  - *typically, at the speed of light*
+
+
+::: tip Issues related to store-and-wait
+
+- If propagate speed is slow,
+  - delay = propagate delay + transmission delay = s/v + L/R
+
+- If propagate speed is very fast, reaches before all packages arrive
+  - delay = nodal processing delay + transmission delay = L/R + L/R
+
+> The relation between total delays != sum of all sources of delay 
+
+:::
