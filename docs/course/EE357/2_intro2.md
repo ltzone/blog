@@ -260,25 +260,84 @@ packets queue in router buffers
 ### Sources of packet delay
 
 - **nodal processing delay,**
+  > i.e. the delay caused by the introduction of this particular node (router)
   - The time required to examine the packet’s header and determine where to direct the packet
+  - *often negligible*
 - **queuing delay,**
   - the time needed for waiting to be transmitted onto the link.
   - The length of the queuing delay of a specific packet will depend on the number of earlier-arriving packets that are queued and waiting for transmission onto the link.
 - **transmission delay,**
   - the amount of time required to push (that is, transmit) all of the packet’s bits into the link
+  - $d_{trans}=L/R$, where L is the packet length (bits) and R is bandwidth (bps)
+  > from the first bit to the last bit being pushed onto the link
 - **and propagation delay**
   - The time required to propagate from the beginning of the link to router B
   - *typically, at the speed of light*
+  - $d_{prop}=d/s$
 
 
 ::: tip Issues related to store-and-wait
 
 - If propagate speed is slow,
   - delay = propagate delay + transmission delay = s/v + L/R
+  - In the example below, the propagate delay dominates the total delay
+  
+    ![](./img/03-09-08-20-55.png)
 
 - If propagate speed is very fast, reaches before all packages arrive
-  - delay = nodal processing delay + transmission delay = L/R + L/R
+  - delay = propagate delay + transmission delay = s/v + L/R
+  - In the example below, transmission delay dominates the total delay
+  - It can happen that first car arrives at second both while three still at first booth
 
-> The relation between total delays != sum of all sources of delay 
+    ![](./img/03-09-08-24-40.png)
+
 
 :::
+
+### Queuing Delay
+
+- R: link bandwidth (bps)
+- L: packet length (bits)
+- a: average packet arrival rate
+
+![](./img/03-09-08-28-47.png)
+
+- `La/R ~ 0`: avg. queueing delay small
+- `La/R -> 1`: avg. queueing delay large 
+- `La/R > 1`: more “work” arriving  than can be serviced, average delay infinite!
+
+> We should avoid the last case when designing a real network
+
+
+### Real Internet delays, routes
+
+`traceroute` program: provides delay measurement from source to router along end-end Internet path towards destination. For all router `i`:
+- sends three packets that will reach router `i` on path towards destination
+- router `i` will return packets to sender
+- sender times interval between transmission and reply.
+
+
+### Packet Loss
+
+- queue (aka buffer) preceding link in buffer has finite capacity
+- packet arriving to full queue dropped (aka lost) 
+- lost packet may be retransmitted by previous node, by source end system, or not at all
+
+![](./img/03-09-08-31-43.png)
+
+
+### Throughput
+
+- **throughput**: rate (bits/time unit) at which bits transferred between sender/receiver
+  - **instantaneous**: rate at given point in time 
+  - **average**: rate over longer period of time
+  > An end-to-end concept
+
+![](img/03-09-08-33-38.png)
+
+$$ThroughPut = \min (R_s, R_c)$$
+
+- **Bottleneck Link**: the link on end-end path that constrains end-end throughput
+
+- In real Internet, assume $R$ is shared, per end-end throughput $=\min(R_c,R_s,R/10)$
+  - and $R_c$ or $R_s$ is often the bottleneck

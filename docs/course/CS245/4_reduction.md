@@ -2,10 +2,10 @@
 title: 4 Dimensionality Reduction
 date: 2021-03-08 08:22:21
 tags: 
-- Courses
+- Data Science
 
 categories: 
-- Data Science
+- Courses
 
 sidebar: true
 lang: en-US
