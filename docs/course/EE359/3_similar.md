@@ -22,6 +22,13 @@ lang: en-US
   - view LSH techniques from a theoretic perspective
 - Methods for High Degrees of Similarity
 
+**Summary**:
+
+- **Shingling**: convert documents to sets
+- **Min-hashing**: convert large sets to short signatures, preserving similarity $\Pr[h_\pi(C_1) = h_\pi(C_2)] = sim(C_1, C_2)$
+- **Locality-Sensitive Hashing**: hash to find candidate pairs of similarity$\ge s$
+
+
 <!-- more -->
 
 **Problem Definition**. Given a large number (N in the millions or billions) of documents, find `near duplicate’ pairs
@@ -112,6 +119,8 @@ lang: en-US
 - Jaccard similarity of two sets is the size of their intersection divided by the size of their union:
 - $\mathrm{sim}\left(\mathrm{C}_{1}, \mathrm{C}_{2}\right)=\left|\mathrm{C}_{1} \cap \mathrm{C}_{2}\right| /\left|\mathrm{C}_{1} \cup \mathrm{C}_{2}\right|$
 - **Jaccard distance**: $d\left(\mathrm{C}_{1}, \mathrm{C}_{2}\right)=1-\left|\mathrm{C}_{1} \cap \mathrm{C}_{2}\right| /\left|\mathrm{C}_{1} \cup \mathrm{C}_{2}\right|$
+
+> Since it makes no sense to discuss Negative-Negative entries for such a sparse 0-1 vector
 
 ![](./img/03-02-11-37-37.png)
 
@@ -219,7 +228,9 @@ Using min-hash as signature, then the signature of document will be very small (
 > ![](./img/03-04-09-07-23.png)
 
 
-> Now that we can efficiently compare between two shinglings, how can we find those pairs? Since the accuracy of signatures are not high enough (as shown in the example before), the signature matrix should be very large, which poses a challenge for querying similar pairs
+> Now that we can efficiently compare between two shinglings by **shrinking vector into smaller sizes using min hash while preserving similarity** 
+>
+> how can we find those pairs? Since the accuracy of signatures are not high enough (as shown in the example before), the signature matrix should be very large, which poses a challenge for querying similar pairs
 
 
 ## Locality-Sensitive Hashing
@@ -247,7 +258,8 @@ Using min-hash as signature, then the signature of document will be very small (
 - For each band, hash its portion of each column to a hash table with k buckets
 - **Candidate column pairs** are those that hash to the same bucket for >= 1 band
 - **Tune b and r** to catch similar pairs, but few non- similar pairs
-- 
+
+
 Assume: there are enough buckets that columns are unlikely to hash to the same bucket unless they are identical in a band; “same bucket” means “identical in that band”
 
 ![](./img/03-04-09-24-23.png)
@@ -301,6 +313,7 @@ Assume: there are enough buckets that columns are unlikely to hash to the same b
   - Prob. that some row in band unequal = $1- t^r$ 
 - Prob. that no band identical = $(1- t^r)^b$
 - Prob. that at least 1 band identical = $1- (1- t^r)^b$
+  > i.e. the prob of being allocated into a same bucket and become one of the candidates
 
 ![](./img/03-04-09-36-12.png)
 
