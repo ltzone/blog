@@ -11,9 +11,17 @@ sidebar: true
 lang: en-US
 ---
 
+With LSH, we can do applications like fingerprint matching, entity-resolution (compare between databases to find the same entity). Then we extend to different distance measures and their locality sensitive funcitons.
+
+- Jaccard - Min Hashing (Row Permutation)
+- Euclidean - Projection Distance on Random Line
+- Cosine - Random Hyperplanes
+
+These functions have hash values with the property that similar data will have a higher probability *hashing into the same bucket*. To sharpen the `S-CURVE`, we can use compositions (AND:all buckets should match/OR:admitting match in one band) 
+
+For items with high similarity, we introduce another approach which first converts sets to strings and then use length/positions/prefixes/suffix as the bucket index to quickly discard false matches. This approach can ensures no False Negative given similarity bound.
 
 <!-- more -->
-
 
 
 ## Applications of Locality-Sensitive Hashing
@@ -326,7 +334,9 @@ Claim: $\Pr[h(x)=h(y)]=1 - (x - y)/ 180$
 
 > What if our data are already similar enough, is there any strict methods (instead of approx like LSH) to eliminate records that are not similar enough. We will introduce some tricks in this section
 
-> Until now, LSH technique works well when the Jaccard similarity <= 80%. When sets are at a very high Jaccard similarity, we have other techniques with **no false negatives**.
+> Until now, LSH technique works well when the Jaccard similarity <= 80%. When sets are at a very high Jaccard similarity, we have other techniques with **no false negatives**. (all considered candidates should contain no false matches)
+
+> Idea: use simple, straightforward properties to discard negative matches
 
 ### Setting: Sets as Strings
 
@@ -346,10 +356,120 @@ Claim: $\Pr[h(x)=h(y)]=1 - (x - y)/ 180$
 ### Jaccard and Edit Distance
 
 **Theorem.** Suppose two sets have Jaccard distance J and are represented by strings s1 and s2. Let the **LCS (least common sequence)** of s1 and s2 have length C and the edit distance be E. Then $1 - J = C/(C+E)$, or equivalently $J = E/(C+E)$.
-> Intuition, remain the same and edit the difference
+> i.e. taking the intersection of two sequences (assuming no intersection)
+
+> **Intuition**, preserve the same and edit the difference
 
 > works because these strings never repeat a symbol, and symbols appear in the same order, otherwise, the formula can only be an estimation
 
-#### Length-Based Indexes
+### Length-Based Indexes
+
+> Intuition, a `L`-length set's similar items can only locate in sets with length ranging from `0.9L-1.1L`
 
 > Given length, we can already erase out a lot of candidates
+
+::: theorem
+
+set A —> string A, length L, set B —> string B, length M then A is Jaccard distance J from B only if $L(1-J) \le M \le L/(1-J)$
+
+![](./img/03-11-08-18-43.png)
+
+:::
+
+### Prefix-Based Indexing
+
+- If two strings are 90% similar, they must share some symbol in their prefixes whose length is just above 10% of the length of each string
+
+::: theorem
+
+We can base an index on symbols in just the first $\lfloor JL+1 \rfloor$ positions of a string of length L
+
+![](./img/03-11-08-23-00.png)
+
+::: 
+
+
+More specifically, Think of a bucket for each possible symbol
+
+Each string of length $L$ is placed in the bucket for each of its first $\lfloor \mathrm{JL}+1\rfloor$ positions
+
+Given a probe string s of length $\mathrm{L},$ with $\mathrm{J}$ the limit on Jaccard distance: for (each symbol a among the first $\lfloor \mathrm{JL}+1 \rfloor$ positions of s) look for other strings in the bucket for a;
+
+![](./img/03-11-08-25-43.png)
+
+
+### Position + Prefix-Based Indexing
+
+> Consider the strings s = `acdefghijk` and t = `bcdefghijk`, and assume `SIM = 0.9`. What are the buckets do s and t placed in?
+> - `s` indexed under `a` and `c`, `t` indexed under `b` and `c`
+> - But in fact, `a` and `b` are already different, with position, we can know that even if the rest symbols all agree, `J = 1/11 < 0.1`
+
+
+**Idea**: Consider whether the **first common symbol** appear close enough to the fronts of both strings
+
+
+::: theorem
+
+If position i of probe string s is the first position to match a prefix position of string t, and it matches position j,
+
+![](./img/03-11-08-34-37.png)
+
+- $\Rightarrow$ edit distance is at least `E >= i + j - 2`
+- $\Rightarrow$ LCS of `s` and `t` is no longer than `C <= L - i + 1` (L is the length of the shorter sequence)
+- Recall $\frac{1}{J} = \frac{C+E}{E} = \frac{C}{E}+1$
+- $\Rightarrow$ $\frac{i+j-2}{L+j-1} \le \frac{E}{E+C} \Rightarrow j \le \frac{JL-J-i+2}{1-J}$
+
+:::
+
+**Implementation**
+1. Create a 2-attribute index on (symbol, position)
+2. If string s has symbol a as the i-th position of its prefix (first $\lfloor JL+1 \rfloor$ positions ), add s to the bucket (a, i)
+   
+   > Note, we are not finding similar items in the same bucket, but to look for candidates in `(a,j)` in case of `(a,i)` (here, hash works also like a quick lookup)
+
+3. Given probe string s, we only need to find a candidate once. So we
+  ![](./img/03-11-08-41-15.png)
+
+::: details An Example
+
+![](./img/03-11-08-43-28.png)
+
+> With more buckets, the strings in every bucket will be smaller, efficiency won't hurt
+> 
+> And we can guarantee no False-Negative
+
+:::
+
+
+### Position + Prefix + Suffix-Based Indexing
+
+- Idea: index on three attributes:
+  - Character at a prefix position
+  - Number of that position
+  - **Length of the suffix** = number of positions in the entire string to the right of the given position
+
+- **Lower bound on E** is
+  - `i + j - 2`
+  - `|k - m|` = absolute difference of the lengths of the suffixes of s and t
+
+- **Upper bound on C** is `1 + min(k,m)`
+
+$$j+|k-m|\le \frac{J(i-1+min(k,m))-i+2}{1-J}$$
+
+::: details Example
+
+![](./img/03-11-09-03-16.png)
+
+:::
+
+::: tip Summary
+
+
+- Three index schemes 
+  - symbol
+  - symbol + position
+  - symbol + position + suffix length
+- The number of buckets grows as we add dimensions to the index, but the total size of the buckets remains the same
+  - because each string is placed in $\lfloor JL+1\rfloor$ buckets
+
+:::
