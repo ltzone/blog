@@ -63,6 +63,7 @@ repeatedly use `FINDNEXT(F)` to remove a new feature from `F`, until `F` **does 
    > Though effective, not expressive enough
 
 2. Nonlinear Projection $f' = p(f)$
+   > $p$ can be non-linear
    - Kernel PCA 
    - Auto-encoder
 
@@ -110,3 +111,180 @@ $$
 \mathbf{X X}^{T} \mathbf{v}=\lambda \mathbf{v}
 \end{array}
 $$
+
+> Treat $XX^T$ as a whole and decompose it to get its eigen value and their corresponding eigen vectors. We choose the first $d$ largest eigen values, then the reduced feature will be
+> $$\bar{x_i} = [v_1^Tx_i, v_2^Tx_i, \ldots, v_d^Tx_i,] $$
+> where $x_i$ and $v_i$ are both k-dim.
+
+
+### Kernel PCA
+
+$$
+\begin{array}{l}
+\phi(\mathbf{X})=\left[\phi\left(\mathbf{x}_{1}\right), \phi\left(\mathbf{x}_{2}\right), \ldots, \phi\left(\mathbf{x}_{n}\right)\right] \\
+\mathbf{v}=\phi(\mathbf{X}) \mathbf{\alpha}
+\end{array}
+$$
+
+
+![](./img/03-15-08-32-24.png)
+
+> Idea, first use the kernel to transform the features, then we perform PCA on the kernel matrix.
+
+$$
+\begin{aligned}
+& \mathbf{X X}^{T} \mathbf{v}=\lambda \mathbf{v} \\
+\Longrightarrow & \phi(\mathbf{X}) \phi(\mathbf{X})^{T} \phi(\mathbf{X}) \mathbf{\alpha}=\lambda \phi(\mathbf{X}) \mathbf{\alpha} \\
+\Longrightarrow & \phi(\mathbf{X})^{T} \phi(\mathbf{X}) \phi(\mathbf{X})^{T} \phi(\mathbf{X}) \mathbf{\alpha}=\lambda \phi(\mathbf{X})^{T} \phi(\mathbf{X}) \mathbf{\alpha} \\
+\Longrightarrow & \mathbf{K K} \mathbf{\alpha}=\lambda \mathbf{K} \mathbf{\alpha} \\
+\Longrightarrow & \mathbf{K} \mathbf{\alpha}=\lambda \mathbf{\alpha}
+\end{aligned}
+$$
+
+![](./img/03-15-08-32-38.png)
+
+### Linear Discriminative Analysis (LDA)
+
+LDA as a classification method. LDA as a (**supervised**) dimensionality reduction method.
+
+Find the projection so that 
+- different categories of data can be discriminated AMAP.
+  - $\max\left(\mathbf{v}^{T} \mathbf{\mu}_{1}-\mathbf{v}^{T} \mathbf{\mu}_{2}\right)^{2}$
+- same category of data can be aggregated AMAP.
+  - $\min \mathbf{\sigma'}_{1}^{2}+\mathbf{\sigma'}_{2}^{2}$
+
+
+$$
+\begin{aligned}
+J(\mathbf{v}) &=\frac{\left(\mathbf{v}^{T} \mathbf{\mu}_{1}-\mathbf{v}^{T} \mathbf{\mu}_{2}\right)^{2}}{\mathbf{\sigma}_{1}^{2}+\mathbf{\sigma}_{2}^{2}} \\
+&=\frac{\left(\mathbf{v}^{T} \mathbf{\mu}_{1}-\mathbf{v}^{T} \mathbf{\mu}_{2}\right)^{2}}{\sum_{i=1}^{C_{1}}\left(\mathbf{v}^{T} \mathbf{x}_{1, i}-\mathbf{v}^{T} \mathbf{\mu}_{1}\right)^{2}+\sum_{i=1}^{C_{2}}\left(\mathbf{v}^{T} \mathbf{x}_{2, i}-\mathbf{v}^{T} \mathbf{\mu}_{2}\right)^{2}}
+\end{aligned}
+$$
+
+> column vector * column vector = matrix, 1 & 2 here is just a mark of group
+
+![](./img/03-15-08-44-07.png)
+
+
+### Auto-encoder
+
+First project the features into the bottleneck, then reconstruct from bottleneck.
+
+![](./img/03-15-08-45-24.png)
+
+Given data, parameters of auto-encoder can be learned.
+
+> Note. combination of linear encoders are still a layer of linear encoder.
+
+### Variational Auto-encoder
+
+> For most feature projection applications, auto-encoder can suffice, though
+
+> a probability version of auto-encoder
+
+![](./img/03-15-08-58-27.png)
+
+The encoded feature is presented in a probabilistic way, usally assuming Gaussian Distribution. The output of encoder/decoder is not a value, but a probability distribution.
+
+
+> The sampling process is $z = \mu_z + \epsilon \delta_{z}$, $\epsilon \in [0,1]$
+> - $p(z)$ is usually designed to be a simple distribution e.g. $N(0,1)$
+> 
+> Reconstruction is based on $\mu_x,\delta_x,x^i$, 
+> - we want the input x to fit the decoded curve AMAP, so $\max \log p_{\theta_1}(x_i|z_i)$
+
+
+## Feature Learning
+
+The optimization goal is the reduced feature itself.
+
+### Stochastic Neighborhood Embedding (SNE)
+
+Obtain $\tilde{\mathbf{x}}$ from $\mathbf{x}: \mathbf{x} \rightarrow \tilde{\mathbf{x}},$ maintain the relative distance.
+
+> Here, $p(i|j)$ is just designed to be a measure of similarity between samples
+
+
+$$
+\begin{array}{l}
+p(j \mid i)=\frac{\exp \left(-\left\|\mathbf{x}_{i}-\mathbf{x}_{j}\right\|^{2}\right)}{\sum_{k \neq i} \exp \left(-\left\|\mathbf{x}_{i}-\mathbf{x}_{k}\right\|^{2}\right)} \\
+q(j \mid i)=\frac{\exp \left(-\left\|\tilde{\mathbf{x}}_{i}-\tilde{\mathbf{x}}_{j}\right\|^{2}\right)}{\sum_{k \neq i} \exp \left(-\left\|\tilde{\mathbf{x}}_{i}-\tilde{\mathbf{x}}_{k}\right\|^{2}\right)} \\
+p(j \mid i) \text{ should be close to } q(j \mid i)
+\end{array}
+$$
+$$
+L=\sum_{i} K L\left(P_{i} \| Q_{i}\right)=\sum_{i} \sum_{j} p(j \mid i) \log \frac{p(j \mid i)}{q(j \mid i)}
+$$
+
+> Here $P_i$ is shorthand for $[p(1|i),p(2|i),\ldots,p(N|i)]$
+
+Note, in the $L$ above, only $\tilde{x},\tilde{y}$ are unknown. The optimizaiton result is the reduced feature directly
+
+### SNE with t-distribution (t-SNE)
+
+t-SNE: SNE with t-distribution, replace Gaussian distribution with t-distribution (degree of freedom is 1)
+
+> Robust to outliers
+
+![](./img/03-15-09-15-59.png)
+
+> Why replace?
+> 
+> If we want to contain the outliers, we should use the thin tail, otherwise heavy tail should be preferred
+
+
+> Application: Data Visualization
+> 
+> ![](./img/03-15-09-21-46.png)
+
+
+### Local Linear Embedding (LLE)
+
+We want $x_i$ to be a linear combination of its neighbors. 
+
+![](./img/03-15-09-24-41.png)
+
+> Note $x_i - \sum w_{ij} x_j$ is just another representation of similarity
+>
+> Similar to the idea in SNE, except that SNE wants $p(j|i)$ to remains the same.
+> ,while LLE expects $w_{ij}$ remains the same
+
+First, solve $W$
+
+
+$$
+\begin{array}{ll}
+\min _{\mathbf{W}} & \left\|\mathbf{x}_{i}-\sum_{j \in N(i)} w_{i j} \mathbf{x}_{j}\right\|^{2} \\
+\text { s.t. } & \sum_j w_{i j}=1
+\end{array}
+$$
+
+Then, use the $W$ above and optimize $Y$ to maintain local relationship
+
+$$
+\begin{array}{ll}
+\min _{\mathbf{Y}} & \left\|\mathbf{y}_{i}-\sum_{j \in N(i)} w_{i j} \mathbf{y}_{j}\right\|^{2} \\
+\text { s.t. } & \mathbf{Y}^{T} \mathbf{Y}=\mathbf{I}
+\end{array}
+$$
+
+> LLE consider local neighborhood, while SNE consider the global difference of probabilities
+
+
+### Sparse Coding
+
+> We want to reconstruct Y using the dictionary by training a sparse X (which is  achieved by minimizing the l1-norm)
+
+![](./img/03-15-09-32-04.png)
+
+Use sparse $\mathbf{X}$ to represent $\mathbf{Y}: \min _{\mathbf{X}}\|\mathbf{Y}-\mathbf{D} \mathbf{X}\|_{F}^{2}+ \lambda\|\mathbf{X}\|_{1}$
+
+> The solution of the above goal is tough and tricky, though. (D can be known or unknown)
+Update $\mathrm{X}$ and $\mathrm{D}$ alternatingly
+1. Fix $\mathbf{X}$, update $\mathbf{D}$
+2. Fix $\mathrm{D},$ update $\mathrm{X}$
+3. repeat (if needed)
+
+
+### Multi Dimensional Scaling (MDS)
+

@@ -34,6 +34,11 @@ Nginx 配置文件结构以及最佳实践
    - `/opt/<site_name>`
 
 
+::: tip
+如果要在一个server下部署多个目录，对于非`/`的location，文件地址应该设为`alias`而不是`root`
+:::
+
+
 ## 部署博客
 
 将本地`~/.ssh/id_rsa.pub`复制到服务器`~/.ssh/authorized_keys`之后即可免密登录。
