@@ -308,6 +308,15 @@ packets queue in router buffers
 
 > We should avoid the last case when designing a real network
 
+::: tip
+
+When La/R = 1, the queuing delay may be dependent on the packet arriving pattern. Usually a large queuing delay may still exist.
+
+![](./img/03-16-08-12-18.png)
+
+:::
+
+
 
 ### Real Internet delays, routes
 

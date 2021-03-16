@@ -238,6 +238,36 @@ Typical Application Protocol includes
   - client sends requests as soon as it encounters a referenced object
   - as little as one RTT for all the referenced objects
 
+
+```
+
+        without pipelining                       with pipelinging
+
+ client              server              client              server
+     │      TCP         │                     │      TCP         │
+     ├─────────────────►│                     ├─────────────────►│
+     │      TCP         │                     │      TCP         │
+     │◄─────────────────┤                     │◄─────────────────┤
+     │                  │                     │                  │
+     │      Request     │                     │      Request     │
+     ├─────────────────►│                     ├─────────────────►│
+     │                  │                     │┴┼┼┼┼┼┼┼┼┼┼┼┼┼┼┤► │
+     │◄─────────────────┤                     │▼└┼┼┼┼┼┼┼┼┼┼┼┼┼┼┬─┤
+     │ ◄├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼│Transmission         │ ◄├┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼│Transmission
+     │◄─────────────────┤ Time                │◄┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼│ Time
+     │                  │                     │ ◄────────────────┤
+     │                  │                     │                  │
+     ├─────────────────►│                     ├─────────────────►│
+     │                  │                     │    TCP close     │
+     │◄┌────────────────┤                     │◄─────────────────┤
+     │ │┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼│                     │                  │
+     │◄└────────────────┤                     │                  │
+     │      ......      │                     │                  │
+     │                  │                     │                  │
+     ├─────────────────►│                     │                  │
+     │    TCP close     │                     │                  │
+```
+
 ### HTTP Request Message
 
 | ASCII Example | General Format |
@@ -250,6 +280,37 @@ Typical Application Protocol includes
     - PUT
     - DELETE
 
+### Cookies
+
+Many major Web sites use cookies, Four components:
+1. cookie header line of HTTP response message
+2. cookie header line in HTTP request message
+3. cookie file kept on user’s host, managed by user’s browser
+4. back-end database at Web site
+
+![](./img/03-16-09-20-41.png)
+
+
+What cookies can bring:
+- authorization
+- shopping carts
+- recommendations
+- user session state (Web e-mail)
+
+### Web Caches (Proxy Server)
+
+Goal: satisfy client request without involving origin server
+
+- user sets browser: Web accesses via cache
+- browser sends all HTTP requests to cache
+  - object in cache: cache returns object
+  - else cache requests object from origin server, then returns object to client
+
+Why Web caching?
+- *Client*: Reduce response time for client request.
+- *LAN*: Reduce traffic on an institution’s access link.
+  > e.g. SJTU -> Internet
+- *Internet* dense with caches enables “poor” content providers to effectively deliver content (but so does P2P file sharing)
 
 
 ## FTP
