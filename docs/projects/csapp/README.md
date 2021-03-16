@@ -23,4 +23,5 @@ This semester, I will follow the schedule of [ICS 2021](https://ipads.se.sjtu.ed
 
 ## Recent news
 
+- 2021.03.16, [Lab#4](./lab4-y86sim) is completed.
 - 2021.02.27, [Homework#1](./hw1/) is completed.
