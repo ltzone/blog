@@ -286,7 +286,169 @@ $$
 \end{aligned}
 $$
 
+- But what if $z^{(i)}$’s are not known?
+- EM algorithm. 
+  - E-step: guess the values of $z^{(i)}$’s. 
+  - M-step: update the parameters based on our guesses
 
+### EM Algorithm
+
+- Repeat Until Convergence {
+  1. (E-step) For each i, j set,
+     $$
+     w_{j}^{(i)}:=p\left(z^{(i)}=j \mid x^{(i)} ; \phi, \mu, \Sigma\right)
+     $$
+  2. (M-step) Update the parameters
+     $$
+     \begin{aligned}
+     \phi_{j} &:=\frac{1}{m} \sum_{i=1}^{m} w_{j}^{(i)}, \\
+     \mu_{j} &:=\frac{\sum_{i=1}^{m} w_{j}^{(i)} x^{(i)}}{\sum_{i=1}^{m} w_{j}^{(i) },} \\
+     \Sigma_{j} &:=\frac{\sum_{i=1}^{m} w_{j}^{(i)}\left(x^{(i)}-\mu_{j}\right) \left(x^{(i)}-\mu_{j}\right)^{T}}{\sum_{i=1}^{m} w_{j}^{(i)}}
+     \end{aligned}
+     $$
+  }
+
+**Remark.**
+- $w_{j}^{(i)}:=p\left(z^{(i)}=j \mid x^{(i)} ; \phi, \mu, \Sigma\right)$ viewed as **posterior probability**, evaluating the density of a Gaussian at $x^{(i)}$
+- Compared to$\phi_{j}=\frac{1}{m} \sum_{i=1}^{m} 1\left\{z^{(i)}=j\right\}$, Here  $\phi_{j} &:=\frac{1}{m} \sum_{i=1}^{m} w_{j}^{(i)}$ is a **soft guess** for the values of $z^{(i)}$
+- Note, the algorithm may be susceptible to local optima!
+
+### Jensen's Inequality
+
+$\mathrm{f}$ is a convex function, $\mathrm{X}$ is a random variable. Then:
+$$
+\mathrm{E}[f(X)] \geq f(\mathrm{E} X)
+$$
+$\mathrm{E}[f(X)]=f(\mathrm{E} X)$ holds true iff $X=\mathrm{E}[X] \mathrm{w} /$ prob. $1,$ i.e., $X$ is $\mathrm{a}$ contant.
+
+![](./img/03-16-12-17-57.png)
+
+### EM Alg. (General)
+
+Given a training set $\left\{x^{(1)}, \ldots, x^{(m)}\right\}$ and fit the parameters of a mode $\mathrm{p}(\mathrm{x}, \mathrm{z})$ to the data, where likelihood is given by
+$$
+\begin{aligned}
+\ell(\theta) &=\sum_{i=1}^{m} \log p(x ; \theta) \\
+&=\sum_{i=1}^{m} \log \sum_{z} p(x, z ; \theta)
+\end{aligned}
+$$
+
+Maximizing $l(\theta)$ might be difficult! So we repeatedly **construct a lower-bound on l (E-step)**, and **optimize the lower-bound (M-step)**
+
+> Goal: move sum out of log, using Jensen
+
+> Here, $\theta$ is just a shorthand for $\phi,\Sigma,\mu$
+
+> log x is a concave function, can use Jensen's Inequality
+
+
+$$
+\begin{aligned}
+\sum_{i} \log p\left(x^{(i)} ; \theta\right) &=\sum_{i} \log \sum_{z^{(i)}} p\left(x^{(i)}, z^{(i)} ; \theta\right) \\
+ &=\sum_{i} \log \sum_{z^{(i)}} Q_{i}\left(z^{(i)}\right) \frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{Q_{i}\left(z^{(i)}\right)} \\
+& \geq \sum_{i} \sum_{z^{(i)}} Q_{i}\left(z^{(i)}\right) \log \frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{Q_{i}\left(z^{(i)}\right)}
+\end{aligned}
+$$
+
+> To maximize, we want the lower-bound be equal to LHS, i.e. equality holds, $X = C$
+
+- Which $Q_i$ should we choose?
+If we have some current guesses $\theta,$ we should try to make the lower-bound tight at $\theta$
+- To make the lower-bound tight at $\theta,$ we should let the Jensen's inequality holds with equality:
+  $$
+  \frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{Q_{i}\left(z^{(i)}\right)}=c
+  $$
+- Since $\sum_{z} Q_{i}\left(z^{(i)}\right)=1,$ we set $Q_{i}$ be the posterior distribution of $z^{(i)}$ s given $x^{(i)}$ and $\theta:$
+  $$
+  \begin{aligned}
+  Q_{i}\left(z^{(i)}\right) &=\frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{\sum_{z} p\left(x^{(i)}, z ; \theta\right)} \\
+  &=\frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{p\left(x^{(i)} ; \theta\right)} \\
+  &=p\left(z^{(i)} \mid x^{(i)} ; \theta\right)
+  \end{aligned}
+  $$
+
+::: tip EM Summary
+
+- E-step: $\sum_{i} \sum_{z^{(i)}} Q_{i}\left(z^{(i)}\right) \log \frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{Q_{i}\left(z^{(i)}\right)}$ gives the lower-bound of $\mathrm{l}(\theta)$
+- M-step: Maximize the lower-bound w.r.t. $\theta$
+- Repeat until convergence {
+  1. (E-step) For each $i$, set
+     $$
+     Q_{i}\left(z^{(i)}\right):=p\left(z^{(i)} \mid x^{(i)} ; \theta\right)
+     $$
+  2. (M-step) Set
+     $$
+     \theta:=\arg \max _{\theta} \sum_{i} \sum_{z^{(i)}} Q_{i}\left(z^{(i)}\right)  \log \frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{Q_{i}\left(z^{(i)}\right)}
+     $$
+  }
+:::
+
+### Correctness
+
+Assume $\theta^{(t)}$ and $\theta^{(t+1)}$ are parameters from two successive iterations. We show $I\left(\theta^{(t)}\right) \leq l\left(\theta^{(t+1)}\right)$
+- The choice of $Q_{i}^{(t)}\left(z^{(i)}\right):=p\left(z^{(i)} \mid x^{(i)} ; \theta^{(t)}\right)$ ensures Jensen's inequality holds with equality:
+  $$
+  \ell\left(\theta^{(t)}\right)=\sum_{i} \sum_{z^{(i)}} Q_{i}^{(t)}\left(z^{(i)}\right) \log \frac{p\left(x^{(i)}, z^{(i)} ; \theta^{(t)}\right)}{Q_{i}^{(t)}\left(z^{(i)}\right)}
+  $$
+- $\theta^{(t+1)}$ are obtained by maximizing the right hand side of the above $ \quad$ Jensen inequality for
+  $$
+  \begin{array}{ll}
+  \ell\left(\theta^{(t+1)}\right) &\geq \sum_{i} \sum_{z^{(i)}} Q_{i}^{(t)}\left(z^{(i)}\right) \log \frac{p\left(x^{(i)}, z^{(i)} ; \theta^{(t+1)}\right)}{Q_{i}^{(t)}\left(z^{(i)}\right)} \\
+  &\geq \sum_{i} \sum_{z^{(i)}} Q_{i}^{(t)}\left(z^{(i)}\right) \log \frac{p\left(x^{(i)}, z^{(i)} ; \theta^{(t)}\right)}{Q_{i}^{(t)}\left(z^{(i)}\right)} \\
+  &=\ell\left(\theta^{(t)}\right)
+  \end{array}
+  $$
+  - Jensen's Inequality for concave functioon
+  - Maximization Step
+  - the choice of $Q_i$
+
+> What about convergence?
+
+- Convergence criteria: the increase of $I(\theta)$ between two successive iterations is smaller than some tolerance
+- If we define
+  $$
+  J(Q, \theta)=\sum_{i} \sum_{z^{(i)}} Q_{i}\left(z^{(i)}\right) \log \frac{p\left(x^{(i)}, z^{(i)} ; \theta\right)}{Q_{i}\left(z^{(i)}\right)}
+  $$
+  - EM alg. can be viewed as a coordinate ascent on $J$, in which the E-step maximize it w.r.t. $\mathrm{Q}$ and M-step maximizes it w.r.t. $\theta$
+> Similar to K-means
+
+### Mixture of Gaussians Revisited
+
+- Fitting parameters $\Phi, \mu, \Sigma$ in a mixture of Gaussians
+- E-step: $w_{j}^{(i)}=Q_{i}\left(z^{(i)}=j\right)=P\left(z^{(i)}=j \mid x^{(i)} ; \phi, \mu, \Sigma\right)$
+- M-step:
+  $$
+  \begin{array}{l}
+  \sum_{i=1}^{m} \sum_{z^{(i)}} Q_{i}\left(z^{(i)}\right) \log \frac{p\left(x^{(i)}, z^{(i)} ; \phi, \mu, \Sigma\right)}{Q_{i}\left(z^{(i)}\right)} \\
+  \quad=\sum_{i=1}^{m} \sum_{j=1}^{k} Q_{i}\left(z^{(i)}=j\right) \log \frac{p\left(x^{(i)} \mid z^{(i)}=j ; \mu, \Sigma\right) p\left(z^{(i)}=j ; \phi\right)}{Q_{i}\left(z^{(i)}=j\right)} \\
+  =\sum_{i=1}^{m} \sum_{j=1}^{k} w_{j}^{(i)} \log \frac{\frac{1}{(2 \pi)^{n / 2}\left|\Sigma_{j}\right|^{1 / 2}} \exp \left(-\frac{1}{2}\left(x^{(i)}-\mu_{j}\right)^{T} \Sigma_{j}^{-1}\left(x^{(i)}-\mu_{j}\right)\right) \cdot \phi_{j}}{w_{j}^{(i)}}
+  \end{array}
+  $$
+- M-step (fitting $\mu$ i):
+  $$
+  \begin{aligned}
+  \nabla_{\mu l} & \sum_{i=1}^{m} \sum_{j=1}^{k} w_{j}^{(i)} \log \frac{\frac{1}{(2 \pi)^{n / 2}\left|\Sigma_{j}\right|^{1 / 2}} \exp \left(-\frac{1}{2}\left(x^{(i)}-\mu_{j}\right)^{T} \sum_{j}^{-1}\left(x^{(i)}-\mu_{j}\right)\right) \cdot \phi_{j}}{w_{j}^{(i)}} \\
+  &=-\nabla_{\mu_{l}} \sum_{i=1}^{m} \sum_{j=1}^{k} w_{j}^{(i)} \frac{1}{2}\left(x^{(i)}-\mu_{j}\right)^{T} \Sigma_{j}^{-1}\left(x^{(i)}-\mu_{j}\right) \\
+  &=\frac{1}{2} \sum_{i=1}^{m} w_{l}^{(i)} \nabla_{\mu} {2 \mu_{l}^{T} \Sigma_{l}^{-1} x^{(i)}-\mu_{l}^{T} \Sigma_{l}^{-1} \mu_{l}} \\
+  &=\sum_{i=1}^{m} w_{l}^{(i)}\left(\Sigma_{l}^{-1} x^{(i)}-\Sigma_{l}^{-1} \mu_{l}\right)
+  \end{aligned}
+  $$
+  - Set the derivative to 0 and solve for $\mu \mathrm{i}$ : $\mu_{l}:=\frac{\sum_{i=1}^{m} w_{l}^{(i)} x^{(i)}}{\sum_{i=1}^{m} w_{l}^{(i)}}$
+- M-step (fitting $\Phi \mathrm{j})$ 
+  - We only need to maximize $\sum_{i=1}^{m} \sum_{j=1}^{k} w_{j}^{(i)} \log \phi_{j}$
+  - Consider $\sum_{j} \phi_{j}=1,$ we construct the Lagrangian
+    $$
+    \mathcal{L}(\phi)=\sum_{i=1}^{m} \sum_{j=1}^{k} w_{j}^{(i)} \log \phi_{j}+\beta\left(\sum_{j=1}^{k} \phi_{j}-1\right)
+    $$
+  - Taking derivative w.r.t. $\Phi$ j and set to 0
+    $$
+    \begin{aligned}
+    \frac{\partial}{\partial \phi_{j}} \mathcal{L}(\phi)=\sum_{i=1}^{m} \frac{w_{j}^{(i)}} {\phi_{j}} +\beta=0 &\Rightarrow \phi_{j}=\frac{\sum_{i=1}^{m} w_{j}^{(i)}}{-\beta} \\
+    \sum_{j} \phi_{j}=1 &\Rightarrow \phi_{j}:=\frac{1}{m} \sum_{i=1}^{m} w_{j}^{(i)}
+    \end{aligned}
+    $$
+
+  > Similarly, the expression of sigma can also be derived
 
 ## The BFR Algorithm
 
