@@ -270,8 +270,8 @@ Typical Application Protocol includes
 
 ### HTTP Request Message
 
-| ASCII Example | General Format |
-| ------ | ----- |
+| ASCII Example                 | General Format                |
+| ----------------------------- | ----------------------------- |
 | ![](./img/03-10-11-35-41.png) | ![](./img/03-10-11-35-56.png) |
 
 - Method Types
@@ -313,12 +313,194 @@ Why Web caching?
 - *Internet* dense with caches enables “poor” content providers to effectively deliver content (but so does P2P file sharing)
 
 
+::: details Caching Example
+
+**Assumptions**
+- average object size = 100,000 bits 
+- avg. request rate from institution’s browsers to origin servers = 15/sec
+- delay from institutional router to any origin server and back to router = 2 sec
+
+| Origin                        | Increase Access Link Bandwidth | Institutional Cache           |
+| ----------------------------- | ------------------------------ | ----------------------------- |
+| ![](./img/03-17-10-10-11.png) | ![](./img/03-17-10-10-19.png)  | ![](./img/03-17-10-10-28.png) |
+
+
+
+
+**Consequences**
+
+- utilization on LAN = 15%
+  > $=\frac{La}{R} = \frac{10^5 \times 15}{10^t} = 15\%$
+- utilization on access link = 100%
+  > $=\frac{La}{R} = \frac{10^5 \times 15}{1.5 \times 10 ^ 6} = 100\%$
+- total delay = Internet delay + access delay + LAN delay = 2 sec + minutes + milliseconds
+  > Why minutes? Queuing Delay
+
+**increase bandwidth of access link to, say, 10 Mbps**
+
+- utilization on LAN = 15%
+- utilization on access link = 15%
+- Total delay = Internet delay + access delay + LAN delay = 2 sec + msecs + msecs 
+- often a costly upgrade
+
+**Install Cache, suppose hit rate is .4**
+
+- 40% requests will be satisfied almost immediately
+- 60% requests satisfied by origin server
+- utilization of access link reduced to 60%, resulting in negligible delays (say 10 msec)
+- total avg delay = Internet delay + access delay + LAN delay = .6*(2.01) secs + .4*milliseconds < 1.4 secs
+
+:::
+
+### Conditional GET
+
+
+- Goal: don’t send object if cache has up-to-date cached version
+- cache: specify date of cached copy in HTTP request
+  `If-modified-since: <date>`
+- server: response contains no object if cached copy is up-to-date: `HTTP/1.0 304 Not Modified`
+
+![](./img/03-17-10-27-03.png)
+
 ## FTP
 
+**FTP: the file transfer protocol**
+
+- Client Server Model
+  - client: side that **initiates transfer(always)** (either to/from remote)
+  - server: remote host
+- Standard: "RFC 959"
+- ftp server: port 21
+
+### Separate Control, Data Connections
+
+
+|  Control Connection     |  Data Connection (s)     |
+|  ---  |  ---  |
+|  Port 21     |  Port X     |
+|  Client contacts server, obtains authorization     |       |
+|  Client browses remote directory by sending control commands      | When server receives a command, opens TCP data connection to client      |
+|       | After transferring one file, server closes connection.       |
+|    | Server **open a second TCP data connection** to transfer another file    |    
+
+
+- Such pattern of control connection is called **"out of band"**
+  > By contrast, HTTP is called "in-band" connection
+- FTP server maintains “state”: current directory, earlier authentication
+  > - which may sometimes be a constraint on the total connections of a FTP server
+  > - By constrast, HTTP is stateless
+
+
+### FTP commands, responses
+
+|  Sample Commands     |  Sample return codes     |
+|  ---  |  ---  |
+|  sent as ASCII text over control channel     |  status code and phrase (as in HTTP)     |
+| `USER username`        |  `331 Username OK, password required`     |
+| `PASS password`       |       |
+| `LIST` return list of file in current directory       |  `425 Can’t open data connection`     |
+| `RETR filename` retrieves (gets) file       |  `125 data connection already open; transfer starting`     |
+| `STOR filename` stores (puts) file onto remote host | `452 Error writing file`  | 
 
 
 ## Electronic Mail (SMTP, POP3, IMAP)
 
+![](./img/03-17-11-02-46.png)
+
+**Three major components**
+- user agents
+  - a.k.a. “mail reader”
+  - composing, editing, reading mail messages
+  - e.g., Eudora, Outlook, elm, Netscape Messenger
+  - outgoing, incoming messages stored on server
+- mail servers
+  - **mailbox** contains incoming messages for user
+  - **message queue** of outgoing (to be sent) mail messages
+  - **SMTP protocol** between mail servers to send email messages
+    > a client-server view of SMTP protocol, not referring to user agents
+    - client: sending mail server
+    - “server”: receiving mail server
+- **simple mail transfer protocol: SMTP**
+
+### Electronic Mail: SMTP [RFC 2821]
+- r uses TCP on port 25 to reliably transfer email
+- direct transfer: sending server to receiving server
+- three phases of transfer
+  - handshaking (greeting) 
+  - transfer of messages
+  - Closure
+- command/response interaction
+  - **commands**: ASCII text
+  - **response**: status code and phrase
+
+![](./img/03-17-11-13-20.png)
+
+**Features**
+- SMTP uses persistent connections
+- SMTP requires message (header & body) to be in 7-bit ASCII
+- SMTP server uses CRLF.CRLF to determine end of message
+  
+**Comparison with HTTP:**
+- HTTP: pull 
+- SMTP: push
+- both have ASCII
+  - command/response interaction, status codes
+- HTTP: each object encapsulated in its own response msg *1-1*
+- SMTP: multiple objects sent in multipart msg *\*-1*
 
 
-## DNS
+### Message Format
+
+| Simple Encoding, defined by RFC 822 | Multimedia Extensions, defined by RFC 2045, 2056 |
+| --- | --- |
+| ![](./img/03-17-11-23-16.png) | ![](./img/03-17-11-23-27.png) | 
+
+
+
+### Mail access protocols
+
+![](./img/03-17-11-24-10.png)
+
+- Recall, SMTP: delivery/storage to receiver’s server
+- Mail access protocol: retrieval from server
+  - POP: Post Office Protocol [RFC 1939]
+    - authorization (agent <-->server) and download
+  - IMAP: Internet Mail Access Protocol [RFC 1730] 
+    - more features(more complex)
+    - manipulation of stored msgs on server
+  - HTTP: Hotmail , Yahoo! Mail, etc.
+
+
+### POP3
+- Phases
+  - Authorization Phase
+  - Transaction Phase
+  - Update Phase
+- Modes
+  - Download and Delete
+  - Download and Keep
+- Has state within a TCP connection
+- Stateless across sessions
+
+```
+telnet pop3.sjtu.edu.cn 110
+> user ltzhou
+> pass XXXXXX
+> list
+> retr 1
+> dele 1
+> quit
+```
+
+### IMAP
+
+- Keep all messages in one place: the server
+- Allows user to organize messages in folders
+- IMAP keeps user state across sessions:
+  - names of folders and mappings between message IDs and folder name
+
+
+## DNS: Domain Name System
+
+- **distributed database** implemented in hierarchy of many servers
+- 
