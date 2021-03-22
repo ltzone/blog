@@ -277,6 +277,8 @@ $$
 
 ![](./img/03-15-09-32-04.png)
 
+> Note: l1-norm can help achieve a sparse representation
+
 Use sparse $\mathbf{X}$ to represent $\mathbf{Y}: \min _{\mathbf{X}}\|\mathbf{Y}-\mathbf{D} \mathbf{X}\|_{F}^{2}+ \lambda\|\mathbf{X}\|_{1}$
 
 > The solution of the above goal is tough and tricky, though. (D can be known or unknown)
@@ -288,3 +290,57 @@ Update $\mathrm{X}$ and $\mathrm{D}$ alternatingly
 
 ### Multi Dimensional Scaling (MDS)
 
+We have $\left\{\left.\mathbf{x}_{i}\right|_{i=1} ^{n}\right\}$ with $\mathbf{x}_{i}=\left[x_{i 1} ; x_{i 2} ; \ldots ; x_{i d}\right]$
+
+By denoting $\mathbf{B}=\mathbf{X}^{T} \mathbf{X}$
+
+$$
+\begin{aligned}
+d_{i j}^{2} &=\left\|\mathbf{x}_{i}-\mathbf{x}_{j}\right\|^{2}=\mathbf{x}_{i}^{T} \mathbf{x}_{i}+\mathbf{x}_{j}^{T} \mathbf{x}_{j}-2 \mathbf{x}_{i}^{T} \mathbf{x}_{j} \\
+&=b_{i i}+b_{j j}-2 b_{i j}
+\end{aligned}
+$$
+
+If $\left\{\left.\mathbf{x}_{i}\right|_{i=1} ^{n}\right\}$ are decentralized
+
+$$
+\begin{aligned}
+& \sum_{i=1}^{n} x_{i k}=0 \\
+\Rightarrow \quad & \sum_{i=1}^{n} b_{i j}=\sum_{i=1}^{n} \sum_{k=1}^{d} x_{i k} x_{j k}=\sum_{k=1}^{d} x_{j k} \sum_{i=1}^{n} x_{i k}=0
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+&\left\{\begin{array}{l}
+d_{i j}^{2}=b_{i i}+b_{j j}-2 b_{i j} \\
+\sum_{i=1}^{n} b_{i j}=0
+\end{array} \quad \Rightarrow \quad \left[\begin{array}{l}
+\sum_{i=1}^{n} d_{i j}^{2}=\sum_{i=1}^{n} b_{i i}+n b_{j j} \\
+\sum_{j=1}^{n} d_{i j}^{2}=\sum_{i=1}^{n} b_{i i}+n b_{i i} \\
+\sum_{i=1}^{n} \sum_{j=1}^{n} d_{i j}^{2}=2 n \sum_{i=1}^{n} b_{i i}
+\end{array}\right.\right.\\
+&b_{i j}=-\frac{1}{2}\left(d_{i j}^{2}-\frac{1}{n} \sum_{i=1}^{n} d_{i j}^{2}-\frac{1}{n} \sum_{j=1}^{n} d_{i j}^{2}+\frac{1}{n^{2}} \sum_{i=1}^{n} \sum_{j=1}^{n} d_{i j}^{2}\right)
+\end{aligned}
+$$
+
+$$
+b_{i j}=-\frac{1}{2}\left(d_{i j}^{2}-\frac{1}{n} \sum_{i=1}^{n} d_{i j}^{2}-\frac{1}{n} \sum_{j=1}^{n} d_{i j}^{2}+\frac{1}{n^{2}} \sum_{i=1}^{n} \sum_{j=1}^{n} d_{i j}^{2}\right)
+$$
+
+$\mathbf{B}=-\frac{1}{2} \mathbf{H} \overline{\mathbf{D}} \mathbf{H} \quad$ with $\bar{D}_{i j}=d_{i j}^{2}$ and $\mathbf{H}=\mathbf{I}-\frac{1}{n} \mathbf{1 1}^{T}$
+
+Given distance matrix $\overline{\mathrm{D}},$ we can calculate $\mathbf{B},$ and then obtain $\tilde{\mathbf{X}}$ based on $\mathbf{B}=\tilde{\mathbf{X}}^{T} \tilde{\mathbf{X}}$
+
+> If we want a set of features $\tilde{X}$ given certain sets of distances $\tilde{D}$
+> 
+> Can be used for visualization (reduce high dim data to low, while maintaining their distance)
+
+
+### ISOMap
+
+> An application of MDS
+
+![](./img/03-22-08-17-24.png)
+
+> We want the Euclidean Distance in the new space be equivalent to the distance on the manifold.
