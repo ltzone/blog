@@ -503,4 +503,95 @@ telnet pop3.sjtu.edu.cn 110
 ## DNS: Domain Name System
 
 - **distributed database** implemented in hierarchy of many servers
-- 
+- **decentralized**
+  - single point of failure
+  - traffic volume
+  - distant centralized database
+
+### DNS Services
+
+- Hostname to IP address translation
+- Host aliasing
+  - Canonical and alias names（规范主机名）
+- Load distribution
+  - Replicated Web servers: set of IP addresses for one canonical name
+
+![](./img/03-23-08-18-29.png)
+
+### Distributed, Hierarchical Database
+
+#### Local Name Server
+- Does not strictly belong to hierarchy
+- Each ISP (residential, company, univ) has one.
+  - Also called “default name server”
+- When a host makes a DNS query
+  - query is sent to its local DNS server
+  - Acts as a proxy, forwards query into hierarchy.
+
+
+#### Authoritative DNS servers:
+- An organization’s DNS servers,
+  - providing authoritative hostname to IP mappings for organization’s servers (e.g., Web and mail).
+- Can be maintained by organization or service provider
+
+
+#### Top-level domain (TLD) servers:
+- responsible for com, org, net, edu, etc.
+- all top-level country domains uk, fr, ca, jp. v Educause for edu TLD
+
+
+#### Root name servers
+
+- contacted by local name server that can not resolve name 
+- root name server:
+  - contacts authoritative name server if name mapping not known v gets mapping
+  - returns mapping to local name server
+
+### Iterative VS Recursive Querying 
+
+|  Iterative     |  Recursive     |
+|  ---  |  ---  |
+|  ![](./img/03-23-08-34-03.png)     |  ![](./img/03-23-08-34-17.png)     |
+|   puts burden of name resolution on contacted name server    |  contacted server replies with name of server to contact
+         |
+
+### DNS Caching
+
+- Once (any) name server learns mapping, it caches mapping
+  - cache entries timeout (disappear) after some time
+  - TLD servers typically cached in local name servers
+
+### DNS Records
+
+**Resource Records(RR)** format `(name, value, type, ttl)`
+
+|  Type     |  Name     |  Value     |
+|  ---  |  ---  |  ---  |
+|  A     |  hostname     |  IP address     |
+|   NS    |  domain     |   hostname of authoritative name server    |
+|   CNAME    |  alias name for some canonical name     |  canonical name     |
+|   MX    |  mailserver name     |  the actucal name of the mail server     |
+
+
+![](./img/03-23-09-08-21.png)
+
+
+## Socket programming with TCP
+
+**Socket**: a door between application process and end-end- transport protocol (UCP or TCP)
+
+**Prequisites**
+- Client must contact server
+  - server process must first be running
+  - server must have created socket (door) that welcomes client’s contact
+- Client contacts server by:
+  - creating client-local TCP socket r specifying IP address, port number of server process
+  - When **client creates socket**: client TCP establishes connection to server TCP
+- When contacted by client, **server TCP creates new socket** for server process to communicate with client
+  - allows server to talk with multiple clients
+  - source port numbers used to distinguish clients (more in Chap 3)
+
+
+First establish TCP's threeway handshake through welcoming socket, then transfer data through another connection socket.
+
+![](./img/03-23-09-39-22.png)
