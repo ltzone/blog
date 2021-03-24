@@ -595,3 +595,70 @@ telnet pop3.sjtu.edu.cn 110
 First establish TCP's threeway handshake through welcoming socket, then transfer data through another connection socket.
 
 ![](./img/03-23-09-39-22.png)
+
+
+## Socket Programming with UDP
+
+UDP: no “connection” between client and server
+- no handshaking
+- sender explicitly attaches IP address and port of destination to each packet
+- server must extract IP address, port of sender from received packet
+
+UDP: transmitted data may be received out of order, or lost
+
+![](./img/03-24-10-06-36.png)
+
+> - TCP use two sockets for handshaking and data transfer
+> - UDP does not have handshaking, only one socket is required.
+
+::: tip
+
+What is the difference between sockets and ports?
+
+- Sockets are physical telephones
+- Ports are extension numbers
+  IP address is the phone number
+  
+:::
+
+
+## Summary
+
+- Application architectures 
+  - client-server
+  - P2P
+  - hybrid (e.g. Skype, IM Applications)
+- application service requirements:
+  - reliability, (usually connection-oriented, implemented in TCP, though some UDP applications may work as well)
+  - bandwidth, delay
+- Internet transport service model
+  - **connection-oriented**, reliable: TCP
+  - unreliable, datagrams: UDP
+- specific protocols: 
+  - HTTP
+    - (non)persistent (w/wo) pipelining
+  - FTP
+  - SMTP, POP, IMAP
+  - DNS
+- socket programming
+
+**Protocols**
+
+- typical request/reply message exchange:
+  - client requests info or service
+  - server responds with data, status code
+- message formats:
+  > basic concepts and components, field detail not required
+  - headers: fields giving info about data
+  - data: info being communicated
+  - control vs. data msgs
+  - in-band, out-of-band
+  - **centralized vs. decentralized**
+    > e.g. why DNS decentralized
+  - stateless vs. stateful
+    > HTTP itself is stateless, but we can maintain state through
+  - reliable vs. unreliable msg transfer
+  - “complexity at network edge”
+    > DNS as an important infrastructure, but implemented on endhosts
+
+    
