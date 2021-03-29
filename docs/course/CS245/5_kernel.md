@@ -151,3 +151,38 @@ or we can also use LP to solve $b - \xi_i$ precisely.
 
 > For kernel SVM, we can only solve it in its dual form
 
+
+## Kernel trick for other Maching Learning Models
+
+
+Kernel in logistic regression:
+$$
+\min _{\mathbf{w}, b} \sum_{j} \frac{1}{1+\exp ^{y_{j}\left(\mathbf{w}^{T} \phi\left(\mathbf{x}_{j}\right)+b\right)}}
+$$
+representation theorem: $\mathbf{w}=\sum_{i} \alpha_{i} \phi\left(\mathbf{x}_{i}\right)$
+$$
+\min _{\alpha_{i}} \sum_{j} \frac{1}{1+\exp ^{y_{j}\left(\sum_{i} \alpha_{i} {K}\left({\mathbf{x}}_{i}, {\mathbf{x}}_{j}\right)+b\right)}}
+$$
+
+
+## Kernel Properties
+- Symmetry
+  $$
+  K(\mathbf{x}, \mathbf{y})=K(\mathbf{y}, \mathbf{x})
+  $$
+- Cauchy-Schwarz Inequality
+$$
+\begin{array}{l}
+K(\mathbf{x}, \mathbf{y})^{2} \leq K(\mathbf{x}, \mathbf{x}) K(\mathbf{y}, \mathbf{y}) \\
+K(\mathbf{x}, \mathbf{y})^{2}=\left(\mathbf{x}^{T} \mathbf{y}\right)^{2} \leq\|\mathbf{x}\|^{2}\|\mathbf{y}\|^{2}=\left(\mathbf{x}^{T} \mathbf{x}\right)\left(\mathbf{y}^{T} \mathbf{y}\right)=K(\mathbf{x}, \mathbf{x}) K(\mathbf{y}, \mathbf{y})
+\end{array}
+$$
+- Closure property
+$$
+K(\mathbf{x}, \mathbf{y})=c+K_{1}(\mathbf{x}, \mathbf{y}) \\
+K(\mathbf{x}, \mathbf{y})=K_{1}(\mathbf{x}, \mathbf{y})+K_{2}(\mathbf{x}, \mathbf{y}) \\
+K(\mathbf{x}, \mathbf{y})=K_{1}(\mathbf{x}, \mathbf{y}) \cdot K_{2}(\mathbf{x}, \mathbf{y})
+$$
+
+
+
