@@ -114,13 +114,13 @@ A large part of this course will focus on understanding protocols for networking
 
 ### Internet protocol stack
 
-|  Protocol     |  Functions     | Example      |
-|  :--: |  ---  |  ---  |
-|  **application**     | supporting network applications      | FTP, SMTP, HTTP, DNS ...     |
-|  **transport**     |  host-host data transfer     | TCP, UDP ...      |
-|  **network**     | routing of datagrams from source to destination      | IP, BGP, routing protocols ...      |
-|  **link**     | data transfer between neighboring network elements      |  PPP, Ethernet, WiFi, Bluetooth ...     |
-|  **physical**     | bits “on the wire”      |  OFDM, DSSS, CDMA, Coding ...     |
+|  Protocol     |  Functions     | Example      | Unit Name |
+|  :--: |  ---  |  ---  | --- |
+|  **application**     | supporting network applications      | FTP, SMTP, HTTP, DNS ...     | Message |
+|  **transport**     |  host-host data transfer     | TCP, UDP ...      | Segment |
+|  **network**     | routing of datagrams from source to destination      | IP, BGP, routing protocols ...      | Datagram/Packet|
+|  **link**     | data transfer between neighboring network elements      |  PPP, Ethernet, WiFi, Bluetooth ...     | Frame|
+|  **physical**     | bits “on the wire”      |  OFDM, DSSS, CDMA, Coding ...     | bit |
 
 
 ::: tip The big Picture of Encapsulation

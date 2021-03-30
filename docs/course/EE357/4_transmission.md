@@ -163,3 +163,73 @@ User Datagram Protocol
 > Why sometimes can't detect, and why ensures a fair performance?
 
 ## 4 Principles of reliable data transfer
+
+![](./img/03-30-08-14-59.png)
+
+- `rdt_send()`, shorthand for reliable data trasfer send. called from above (e.g. by app). But the actual tranfer takes place on unreliable channel `udt_send()`.
+- Data packed into packet.
+- `rdt_rcv()` called when packet arrives, decides **whether** to pass the packet to the upper layer. Then call `deliver_data()` to deliver data to upper.
+
+**characteristics of unreliable channel** will determine complexity of reliable data transfer protocol (rdt)
+> The less reliable the channel is, the more complexity in the design of the protocol
+
+
+### Rdt1.0: over a reliable channel
+
+> The extreme case of an unreliable channel is a reliable channel
+
+
+- Assume underlying channel perfectly reliable 
+  - no bit errors
+  - no loss of packets
+- separate FSMs for sender, receiver:
+  - sender sends data into underlying channel 
+  - receiver read data from underlying channel
+
+![](./img/03-30-08-31-07.png)
+
+> The dashed line is the initial state
+
+
+### Rdt2.0: channel with bit errors
+
+- underlying channel may flip bits in packet m checksum to detect bit errors
+- the question: how to recover from errors:
+  - **acknowledgements (ACKs)**: receiver explicitly tells sender that pkt received OK
+  - **negative acknowledgements (NAKs)**: receiver explicitly tells sender that pkt had errors
+  - sender retransmits pkt on receipt of NAK
+- new mechanisms in rdt2.0 (beyond rdt1.0):
+  - error detection
+  - receiver feedback: control msgs (ACK,NAK) rcvr->sender
+
+
+![](./img/03-30-08-45-40.png)
+
+> - `make_pkt(data, checksum)` in 2.0 compared to `make_pkt(data)` in 1.0
+
+
+### Rdt2.1: improvement with sequence number
+
+::: warning
+- A major flow of `rdt2.0`:
+  - What if ACK/NCK corrupted?
+    - sender doesn't know what happened at receiver
+    - can't just retransmit, possible duplicate?
+  - Handling Duplicates
+    - sender retransmits current pkt if ACK/NAK garbled
+    - sender **adds sequence number to each pkt**
+    - receiver discards (doesn't deliver up) duplicate pkt
+
+A Feature of this strategy is **Stop and wait.** sender sends one packet, then waits for receiver response
+
+:::
+
+
+> How many bits are required for sequence number?
+> - Ans: **1**
+> - We only need to distinguish between consecutive packets using 0 and 1
+
+![](./img/03-30-09-26-59.png)
+
+
+![](./img/03-30-09-32-12.png)
