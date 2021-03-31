@@ -233,3 +233,85 @@ A Feature of this strategy is **Stop and wait.** sender sends one packet, then w
 
 
 ![](./img/03-30-09-32-12.png)
+
+### Rdt2.2: a NAK-free protocol
+
+> Are NAK signal really necessary? What about ACK itself? Save a control signal
+
+- instead of NAK, receiver sends ACK for last pkt received (correctly)
+  - receiver must explicitly include **seq # of pkt being ACKed**
+- duplicate ACK at sender results in same action as NAK: retransmit current pkt
+
+> Shrink NAK and sequence number together
+
+![](./img/03-31-10-30-28.png)
+
+### Rdt3.0: channels with errors and LOSS
+
+**New assumption**: underlying channel can also lose packets (data or ACKs)
+- checksum, seq. #, ACKs, retransmissions will be of help, but not enough
+
+**Approach**: sender waits "reasonable" amout of time for ACK (**timeout**)
+- retransmits if no ACK received in this time
+> The selection of time matters, will be resolved in TCP
+- if packet (or ACK) just delayed (not lost)
+  - retransmission will be dupliate, but use of seq.#'s already handles this
+  - receiver must specify seq # of packet being ACKed
+- requires countdown timer
+
+![](./img/03-31-10-43-47.png)
+
+> difference: after sending a packet, it will begin timing. And resent packet if timeout
+
+> Loss during sender -> receiver pkt / receiver -> sender ACK will both leads to a timeout and resending
+
+|  No Loss     |  Packet Loss     |  ACK Loss     |  Premature timeout/delayed ACK     |
+|  ---  |  ---  |  ---  |  ---  |
+| ![](./img/03-31-10-53-10.png)      |  ![](./img/03-31-10-53-18.png)     |       ![](./img/03-31-10-53-28.png) |  ![](./img/03-31-10-53-38.png)     |
+
+> - Note, in the last case, sender doesn't need to worry if the `ACK1` corresponds to its `pkt1`, as long as he knows that the `pkt1` is received successfully
+> - However, the second `ACK1` will cause the sender to send a duplicate packet (and **always** duplicate packets for all later sending) (a price to pay for!)
+> - Fortunately, receiver can detect duplicate. and order can be ensured correct
+
+
+::: theorem
+
+**Performance of rdt3.0**, an example: 1 Gbps link, 15 ms e-e prop. delay, 1KB packet:
+
+$T_{trans} = \frac{L(packetLength)}{transRate} = \frac{8kb/pkt}{10^9 b/sec} = 8 \mu s$
+
+**Utilization.** fraction of time sender busy sending
+
+$U_{sender} = \frac{L/R}{RTT+L/R} = \frac{0.008ms}{2\times 15ms + 0.008ms} = 0.00027$
+
+![](./img/03-31-11-01-55.png)
+
+
+### Pipelined Protocols
+
+> By contrast to Stop and Wait
+
+**Pipelining:** sender allows multiple, “in-flight”, yet-to-be-acknowledged pkts
+> Increase the utilization of data rate/bandwidth of the network
+- range of sequence numbers must be increased 
+- buffering at sender and/or receiver
+- Two generic forms of pipelined protocols: 
+  - go-Back-N, *needs not buffer at receiver end*
+  - selective repeat *needs buffer at receiver end*
+
+
+### Go Back N
+
+**Sender Settings**:
+- k-bit seq # in pkt header
+- “window” of up to N, consecutive unack’ed pkts allowed
+- `ACK(n)`: ACKs all pkts up to, including seq # n - “cumulative ACK” 
+  - may receive duplicate ACKs (see receiver)
+- timer for each in-flight pkt
+- `timeout(n)`: retransmit pkt n and all higher seq # pkts in window
+
+![](./img/03-31-11-23-58.png)
+
+> - if data waiting to be sent > N, the GBN will refuse the data
+> - if timeout happens, "go-back-N", from `base` to `nextseq-1` will be resent
+> 
