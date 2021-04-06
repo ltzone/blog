@@ -305,7 +305,8 @@ $U_{sender} = \frac{L/R}{RTT+L/R} = \frac{0.008ms}{2\times 15ms + 0.008ms} = 0.0
 **Sender Settings**:
 - k-bit seq # in pkt header
 - “window” of up to N, consecutive unack’ed pkts allowed
-- `ACK(n)`: ACKs all pkts up to, including seq # n - “cumulative ACK” 
+- `ACK(n)`: ACKs **all pkts up to**, including seq # n - “**cumulative** ACK”
+  > So that the sender can safely move the `send_base s`
   - may receive duplicate ACKs (see receiver)
 - timer for each in-flight pkt
 - `timeout(n)`: retransmit pkt n and all higher seq # pkts in window
@@ -313,5 +314,94 @@ $U_{sender} = \frac{L/R}{RTT+L/R} = \frac{0.008ms}{2\times 15ms + 0.008ms} = 0.0
 ![](./img/03-31-11-23-58.png)
 
 > - if data waiting to be sent > N, the GBN will refuse the data
+> - which means all sequence numbers in the window have been utilized and unavailable
+> - a timer will be sent for **base** packet
 > - if timeout happens, "go-back-N", from `base` to `nextseq-1` will be resent
-> 
+
+> A duplicate ACK index check should be added on receipt of `rcvpkt` and `notcorrput(rcvpkt)`
+
+
+**Receiver Settings**:
+
+- ACK-only: always send ACK for correctly-received pkt with highest **in-order** seq #
+  - may generate duplicate ACKs
+  - need only remember `expectedseqnum`
+    - to know when all the packets are received
+- out-of-order pkt:
+  - discard (don’t buffer) -> **no receiver buffering!** 
+  - Re-ACK pkt with highest in-order seq #
+
+![](./img/04-06-08-59-00.png)
+
+
+**Example**
+
+![](./img/04-06-08-30-34.png)
+> This diagram may be misleading, according to FSM, pkt 2 time out should start from "ignore duplicate ACK"
+
+
+> Protocols of this type is called sliding-window protocol
+
+
+
+### Selective Repeat
+
+
+- receiver individually acknowledges all correctly received pkts 
+  - buffers pkts, as needed, for eventual in-order delivery to upper layer
+- sender only resends pkts for which ACK not received 
+  - sender timer for each unACKed pkt
+- sender window
+  - N consecutive seq #’s
+  - again limits seq #s of sent, unACKed pkts
+
+
+![](./img/04-06-09-03-46.png)
+
+> Later, we will see that receiver window will affect flow control.
+
+
+**Sender Events**
+- data from above :
+  - if next available seq # in window, send pkt
+- timeout(n):
+  - resend pkt n, restart timer 
+- ACK(n) in `[sendbase,sendbase+N]`:
+  - mark pkt n as received
+  - if n smallest unACKed pkt, advance window base to next unACKed seq #
+
+**Receiver Events.**
+- pkt n in [rcvbase, rcvbase+N-1]
+  - send ACK(n)
+  - out-of-order: buffer
+  - in-order: deliver (also deliver buffered, in-order pkts), advance window to next not- yet-received pkt
+- pkt n in `[rcvbase-N,rcvbase-1]`
+  > Though abandoned, delivered to application, seem to be out of business from receiver's perspective. Still unsure whether sender receive the ACK, must be sent so that sender can proceed to move the window forward.
+  - ACK(n)
+- otherwise:
+  - ignore
+
+
+Every individual has its own ACK and timer, no more cumulative
+
+
+::: theorem Selective repeat: dilemma
+
+Example: 
+- seq#: 0,1,2,3
+- window size = 3
+
+![](./img/04-06-09-20-54.png)
+
+all ACKs are lost, sender send pkt0 again, but receiver will put it into the 0 buffer. will deliver a duplicate data to the application
+
+![](./img/04-06-09-23-39.png)
+
+- sender/receiver have no idea of each other's status
+- receiver sees no difference in two scenarios!
+- incorrectly passes duplicate data as new in (a)
+
+What's the relationship between seq # size and window size is safe?
+- seq # > 2 * window size
+
+:::
