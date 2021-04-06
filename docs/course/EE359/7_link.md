@@ -305,9 +305,274 @@ Bipartite Pin and Board Graph
 > Use visit count to replace proximity, instead of a large vector.
 > A local Algorithm, only depends on neighbours
 
+### Pixie Recommendations
+
+> Compared to SimRank that traverse the graph, it is a local algorithm
+
+Pixie:
+- Outputs top 1k pins with highest visit count
+Extensions:
+- Weighted edges:
+  - The walk prefers to traverse certain edges: 
+    - e.g. Edges to pins in local language of the recommended user
+- Early Stopping:
+  - Don’t need to walk a fixed big number of steps
+  - Walk until 1k-th pin has at least 20 visits
+
+#### Graph Cleaning/Pruning
+
+**Problem**:
+- Graph has 200 billion edges. We don’t need all of them!
+  - Super popular pins are pinned to millions of boards
+  - Not useful: when the random walk hits the pin, the signal just **disperses**
+
+**Solution**: 
+- keep only good boards for pins
+- Compute the similarity between pin’s topic vector and each of its boards. Only take boards with high similarity
+
+> ![](./img/04-06-10-15-40.png)
+> 
+> Viya's board may not be useful in recommendation
+
+#### Benefits
+
+- Blazingly fast: Given Q, we can output top 1k in 50ms (after doing 100k steps of the random walk)
+- Single machine can run 1500 walks in **parallel** (1500 recommendation requests per second)
+- Can fit entire graph in RAM (17 billion edges, 3 billion nodes) 
+- Can scale it by just adding more machines
+
 ## Hubs and Authorities 
 
+> Uptil now, all the methods are based on the basic idea of page rank that **in-links** matter.
+> 
+> Any other methods that compute importance?
+
+HITS (Hypertext-Induced Topic Selection)
+- Is a measure of importance of pages or documents, similar to PageRank
+- Proposed at around same time as PageRank (’98) 
+
+Goal: Say we want to find good newspapers
+- Don’t just find newspapers. Find “experts” – people who link in a coordinated way to good newspapers
+
+Idea: Links as votes
+- Page is more important if it has more links
+- In-coming links? Out-going links?
+
+### Example
 
 
+### Definition
+
+- A good hub links to many good authorities
+- A good authority is linked from many good hubs
+- Model using two scores for each node:
+  - Hub score and Authority score
+  - Represented as vectors $\mathbf{h}$ and $\mathbf{a}$
+- Each page $i$ has 2 scores:
+  - Authority score: $a_{i}$
+  - Hub score: $\mathbf{h}_{\mathbf{i}}$
+
+### Algorithm
+
+HITS algorithm:
+- Initialize: $a_{j}^{(0)}=1 / \sqrt{\mathrm{N}}, \mathrm{h}_{\mathrm{j}}^{(0)}=1 / \sqrt{\mathrm{N}}$
+- Then keep iterating until convergence:
+  - $\forall i$ : Authority: $a_{i}^{(t+1)}=\sum_{j \rightarrow i} h_{j}^{(t)}$
+  - $\forall i:$ Hub: $h_{i}^{(t+1)}=\sum_{i \rightarrow j} a_{j}^{(t)}$
+  - $\forall i:$ Normalize:
+    $$
+    \sum_{i}\left(a_{i}^{(t+1)}\right)^{2}=1, \sum_{j}\left(h_{j}^{(t+1)}\right)^{2}=1
+    $$
+
+### Analysis
+
+
+**Theorem.**  HITS converges to a single stable point
+
+Notation:
+- Vector $a=\left(a 1 \ldots, a_{n}\right), \quad h=\left(h 1 \ldots, h_{n}\right)$
+- Adjacency matrix $\mathbf{A}(N \mathrm{x} M): \mathbf{A} i \mathbf{j}=1$ if $\mathrm{i} \rightarrow \mathrm{j}, 0$ otherwise
+
+Then $h_{i}=\sum_{i \rightarrow j} a_{j}$ can be rewritten as $h_{i}=\sum_{j} A_{i j} \cdot a_{j}$
+
+So: $\mathbf{h}=\mathbf{A} \cdot \mathbf{a}$
+
+Similarly, $a_{i}=\sum_{j \rightarrow i} h_{j}$ can be rewritten as $a_{i}=\sum_{j} A_{j i} \cdot h_{j}=A^{T} \cdot h$
+
+HITS algorithm in vector notation:
+- Set: $a_{i}=h_{i}=\frac{1}{\sqrt{n}}$
+
+Repeat until convergence:
+- $\mathbf{h}=\mathbf{A} \cdot \mathbf{a}$
+- $\mathbf{a}=\mathbf{A}^{\mathbf{T}} \cdot \mathbf{h}$
+- Normalize $\mathbf{a}$ and $\mathbf{h}$
+
+Then: $a=A^{T} \cdot(A \cdot a)$
+
+
+Convergence criterion:
+$$
+\begin{array}{l}
+\sum_{i}\left(h_{i}^{(t)}-h_{i}^{(t-1)}\right)^{2}<\varepsilon \\
+\sum_{i}\left(a_{i}^{(t)}-a_{i}^{(t-1)}\right)^{2}<\varepsilon
+\end{array}
+$$
+
+$\mathbf{a}$ is updated (in 2 steps)
+$$
+a=A^{T}(A a)=\left(A^{T} A\right) a
+$$
+$h$ is updated (in 2 steps):
+$$
+h=A\left(A^{T} h\right)=\left(A A^{T}\right) h
+$$
+
+> **Repeated Matrix Powering**
+
+### Existence and Uniqueness
+
+$$
+\begin{array}{ll}
+\mathrm{h}=\lambda \mathrm{A} \mathrm{a} & \lambda=1 / \sum h_{i} \\
+\mathrm{a}=\mu \mathrm{A}^{\top} \mathrm{h} & \mu=1 / \sum a_{i} \\
+\mathrm{~h}=\lambda \mu \mathrm{A} \mathrm{A}^{\top} \mathrm{h} & \\
+\mathrm{a}=\lambda \mu \mathrm{A}^{\top} \mathrm{A} \mathrm{a}
+\end{array}
+$$
+Under reasonable assumptions about $\mathbf{A}$, HITS converges to vectors $h^{*}$ and $a^{*}:$
+- $\mathrm{h}^{*}$ is the principal eigenvector of matrix $\mathrm{A} \mathrm{A}^{\mathrm{T}}$
+- $\mathrm{a}^{*}$ is the principal eigenvector of matrix $\mathrm{A}^{\top} \mathrm{A}$
+
+
+### Remark
+
+![](./img/04-06-10-33-22.png)
+
+- PageRank and HITS are two solutions to the same problem:
+  - What is the value of an in-link from u to v?
+  - In the PageRank model, the value of the link depends on the links into u
+  - In the HITS model, it also depends on the value of the other links out of u
+- The destinies of PageRank and HITS post-1998 were very different
+
+> HITS is a little bit less efficient, and we actually don't need two scores
 
 ## Web Spam
+
+**Spamming**:
+Any deliberate action to boost a web page’s position in search engine results, incommensurate with page’s real value
+
+**Spam**: Web pages that are the result of spamming 
+- Approximately 10-15% of web pages are spam 
+
+**Early search engines:**
+- Crawl the Web
+- Index pages by the words they contained
+- Respond to search queries (lists of words) with the pages containing those words
+
+**First Spammers: Term Spam**
+
+**Google’s Solution to Term Spam**
+- PageRank as a tool to measure the “importance” of Web pages
+
+**Upgraded Spammers** Spam farming
+- Spam farms were developed to concentrate PageRank on a single page
+- Link spam:
+  - Creating link structures that  boost PageRank of a particular  page
+
+
+### Link Spamming Analysis
+
+
+Three kinds of web pages from a spammer’s point of view
+
+Inaccessible pages
+
+Accessible pages
+- e.g., blog comments pages
+- spammer can post links to his pages
+
+Owned pages
+- Completely controlled by spammer
+- May span multiple domain names
+
+- Spammer's goal:
+  - Maximize the PageRank of target page $t$
+- Technique:
+  - Get as many links from accessible pages as possible to target page $t$
+  - Construct "link farm" to get PageRank multiplier effect
+
+![](./img/04-06-11-02-36.png)
+
+- x: PageRank contributed by accessible pages
+- y: PageRank of target page $t$ Rank of each "farm" page $=\frac{\beta y}{M}+\frac{1-\beta}{N}$
+$$
+y=x+\beta M\left[\frac{\beta y}{M}+\frac{1-\beta}{N}\right]+\frac{1-\beta}{N}
+$$
+$$
+=x+\beta^{2} y+\frac{\beta(1-\beta) M}{N}+\frac{1-\beta}{N}
+$$
+Very small; ignore Now we solve for $y$
+$$
+y=\frac{x}{1-\beta^{2}}+c \frac{M}{N} \quad \text { where } c=\frac{\beta}{1+\beta}
+$$
+
+$y=\frac{x}{1-\beta^{2}}+c \frac{M}{N} \quad$ where $c=\frac{\beta}{1+\beta}$
+- For $\beta=0.85,1 /\left(1-\beta^{2}\right)=3.6$
+- Multiplier effect for acquired PageRank
+- By making $M$ large, we can make $y$ as large as we want
+
+We only need to let our M be 3.6x of the accessible pages, we can make the page rank as large as we want.
+
+### Solution: TrustRank
+
+- Detection and blacklisting of structures that look like spam farms
+  - Leads to another war – hiding and detecting spam farms
+- TrustRank = topic-specific PageRank with a teleport set of trusted pages
+  - Example: .edu domains, similar domains for non-US schools
+
+#### Idea
+
+- Basic principle: Approximate isolation
+- It is rare for a "good" page to point to a "bad" (spam) page
+- Sample a set of seed pages from the web
+- Have an oracle (human) to identify the good pages and the spam pages in the seed set
+- Expensive task, so we must make seed set as small as possible
+
+#### Solution 1: Trust Propagation
+
+- Call the subset of seed pages that are identified as **trusted pages**
+- Perform a topic-specific PageRank with **teleport set** $=$ **trusted pages**
+  - Propagate trust through links:
+    - Each page gets a trust value between 0 and 1
+
+Idea: Use a threshold value and mark all pages below the trust threshold as spam
+
+- Set trust of each trusted page to 1
+- Suppose trust of page $\mathbf{p}$ is $\mathbf{t}_{p}$
+  - Page $p$ has a set of out-links $0_{p}$
+- For each $\mathbf{q} \in \mathbf{o}_{p}, \mathbf{p}$ confers the trust to $\mathbf{q}$
+  - $\beta t_{p} / l_{p} \mid$ for $0<\beta<1$
+- **Trust is additive**: Trust of $p$ is the sum of the trust conferred on $p$ by all its in-linked pages
+- Note similarity to Topic-Specific PageRank
+  - Within a scaling factor, **TrustRank = PageRank** with trusted pages as teleport set
+
+#### How to pick seed set?
+
+(1) PageRank:
+- Pick the top k pages by PageRank
+- Theory is that you can’t get a bad page’s rank really high
+
+(2) Use trusted domains whose membership is controlled, like .edu, .mil, .gov
+
+
+#### Solution 2: Spam Mass Estimation
+
+**View**: What fraction of a page’s PageRank comes from spam pages?
+- $r_{p}=$ PageRank of page $p$
+- $r_{p}^{+}=$ PageRank of $p$ with teleport into trusted pages only
+
+$$
+\mathbf{r}_{\mathbf{p}}^{-}=\mathbf{r}_{\mathbf{p}}-\mathbf{r}_{\mathbf{p}}^{+}
+$$
+Spam mass of $p=\frac{r_{p}^{-}}{r_{p}}$
+- Pages with high spam mass are spam.
