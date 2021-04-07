@@ -286,6 +286,7 @@ $U_{sender} = \frac{L/R}{RTT+L/R} = \frac{0.008ms}{2\times 15ms + 0.008ms} = 0.0
 
 ![](./img/03-31-11-01-55.png)
 
+:::
 
 ### Pipelined Protocols
 
