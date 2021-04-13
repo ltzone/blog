@@ -210,3 +210,157 @@ TCP 3-way handshake
 
 > Why timed wait ?
 > ![](./img/04-07-11-40-50.png)
+
+
+## Principles of congestion control
+
+> Unlike flow control which aims to avoid overflow on receiver's buffer. Congenstion control avoid the **network** from being  overwhelmed
+
+- manifestations:
+  - lost packets (buffer overflow at routers)
+  - long delays (queueing in router buffers)
+- a top-10 problem!
+
+
+### Causes/Costs of Congestion Control
+
+#### Scenario I: large queuing delay
+
+- two senders, two receivers
+- one router, infinite buffers
+- output link capacity: R
+- no retransmission
+- Assume two hosts have same $\lambda_{in}$
+
+![](./img/04-13-08-09-53.png)
+
+> Router becomes the bottleneck, causing large delay when all the output link capacity is used up
+
+![](./img/04-13-08-10-03.png)
+
+#### Scenario II: decreasing throughput
+
+- one router, finite buffers
+- sender retransmission of timed-out packet
+  - transport-layer input includes retransmissions 
+    $\lambda'_{in}=\lambda_{in}$
+
+![](./img/04-13-08-17-56.png)
+
+> $\lambda_{out}$ no longer grows linearly to $\lambda'_{in}$
+> - For receiver's application, it only needs one packet
+> - Premature Timeout causes redundant packet to be transmitted, wasting bandwidth
+
+- packets can be lost, dropped at router due to full buffers
+- sender times out prematurely, sending two copies, both of which are delivered
+
+![](./img/04-13-08-18-51.png)
+
+**“costs” of congestion**:
+- more work (retrans) for given “goodput” *i.e. good $\lambda_{out}$*
+- unneeded retransmissions: link carries multiple copies of pkt
+  - decreasing goodput
+
+#### Scenario III: affect other links
+- four senders
+- multihop paths
+- timeout/retransmit
+
+![](./img/04-13-08-21-11.png)
+
+As red $\lambda'_{in}$ increases, all arriving blue pkts at upper queue are dropped, blue throughput $\rightarrow$ 0
+
+Since the blue pkts are dropped anyway, its throughput allocated by the left switcher is wasted!
+
+![](./img/04-13-08-23-49.png)
+
+another “cost” of congestion:
+- when packet dropped, any “upstream transmission capacity used for that packet was wasted!
+
+
+## TCP Congestion Control
+
+**A GENERAL approach**: sender increases transmission rate (window size), probing for usable bandwidth, until loss occurs
+- **additive increase**: increase `cwnd`(congestion window) by 1 MSS every RTT until loss detected
+- **multiplicative decrease**: cut `cwnd` in half after loss
+
+![](./img/04-13-08-29-56.png)
+
+### Details
+
+- sender limits transmission:
+  
+  `LastByteSent - LastByteAcked <= cwnd`
+  > For flow control, RHS will also be restricted by flow control, `min(rwnd,cwnd)`
+- cwnd is dynamic, function of perceived network congestion
+- which gives an approximate estimation of TCP sending rate:
+  
+  roughly: send `cwnd` bytes, wait RTT for ACKS, then send more bytes
+
+  `rate ~ cwnd/RTT` bytes/sec
+
+
+### FSM of TCP Congestion Control
+
+- **Slow Start**: initialize congestion window, duplicate the windows every RTT
+- **Congestion Avoidance**: When duplicate to a certain extent, congestion window now grows linearly every one RTT.
+- When timeout happens at **Slow Start/Congestion Avoidance**, the sending rate will always be reduced to 1 and return to **Slow Start** state again
+- Recall that three duplicate ACKs are obtained, retransmission should be taken. into the **Fast Recovery** state. This state will not immediately reduce `cwnd` to 1, but half the `cwnd`, we don't need to begin from 1 (Not implemented in all TCP, e.g. Tahoe reduce to 1)
+
+
+TCP treats two indicators differently, considers timeout a more serious indicator of traffic in the network than a single lost packet 
+
+![](./img/04-13-09-54-16.png)
+
+
+#### Reacting to Loss
+
+
+- loss indicated by timeout:
+  - `cwnd` set to 1 MSS;
+  - begins slow start again until `cwnd` *reaches threshold*, then grows linearly
+- loss indicated by 3 duplicate ACKs:
+  - TCP RENO 
+    - dup ACKs indicate network capable of delivering some segments
+    - `cwnd` is cut in half window and added in 3 MSS, then grows linearly
+    > In e.g. below, 9 = 12 / 2 + 3 
+  - TCP Tahoe
+    - always sets cwnd to 1 (timeout or 3 duplicate acks)
+
+![](./img/04-13-09-08-32.png)
+
+
+
+### TCP Throughput
+
+- avg. TCP thruput as function of window size, RTT? 
+  - ignore slow start, assume always data to send
+- W: window size (measured in bytes) where loss occurs 
+  - avg. window size (# in-flight bytes) is 3⁄4 W
+  - avg. thruput is 3/4W per RTT
+
+![](./img/04-13-09-31-03.png)
+
+### Fairness of TCP
+
+fairness goal: if K TCP sessions share same bottleneck link of bandwidth R, each should have average rate of R/K
+
+two competing sessions:
+- additive increase gives slope of 1, as throughout increases
+- multiplicative decrease decreases throughput proportionally
+
+![](./img/04-13-09-31-27.png)
+
+**Fairness and UDP**
+- multimedia apps often do not use TCP
+  - do not want rate throttled by congestion control
+- instead use UDP:
+  - send audio/video at constant rate, tolerate packet loss
+
+
+**Fairness, parallel TCP connections**
+- application can open multiple parallel connections between two hosts
+- web browsers do this
+- e.g., link of rate R with 9 existing connections:
+- new app asks for 1 TCP, gets rate R/10
+- new app ask for 11 TCPs, gets R/2
