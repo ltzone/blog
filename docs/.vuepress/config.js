@@ -6,12 +6,12 @@ module.exports = {
 		'/': {
 			lang: 'en-US',
 			title: 'LTZone',
-			description: "Tony's Blog"
+			description: "Tony's Wiki"
 		},
 		'/zh/': {
 			lang: 'zh-CN',
 			title: 'LTZone',
-			description: "Tony's Blog",
+			description: "Tony's Wiki",
 			selectText: '切换语言',
 		},
 	},
