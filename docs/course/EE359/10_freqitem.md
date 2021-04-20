@@ -253,9 +253,9 @@ FP-tree: a **compressed** representation of database. It retains the itemset **a
 
 2. Then we consider I4, generates a single-node conditional FP-tree, `<I2: 2>,` and derives one frequent pattern, `{I2, I4: 2}`.
 
-3. I3’s conditional pattern base: `{{I2, I1: 2}, {I2: 2}, {I1: 2}}`
+3. I3’s conditional pattern base: `{ {I2, I1: 2}, {I2: 2}, {I1: 2} }`
    - Conditional FP-tree has two branches: `<I2: 4, I1: 2>` and `<I1: 2>`
-   - Frequent patterns `{{I2, I3: 4}, {I1, I3: 4}, {I2, I1, I3: 2}}`
+   - Frequent patterns `{ {I2, I3: 4}, {I1, I3: 4}, {I2, I1, I3: 2}}`
 
 ![](./img/04-20-11-24-38.png)
 
@@ -346,6 +346,7 @@ How to reduce cost of set operation?
   $$
   - `<1` negatively related
   - `>1` positively related
+  - `=1` independent
 
 
 
