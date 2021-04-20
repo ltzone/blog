@@ -59,4 +59,17 @@ lang: en-US
 
 ## Fill in Missing Data
 
+- Fill in a constant(e.g. Mean Value)
+- Fill in estimated values (e.g. Regression)
+
+
 ## Quantize Data
+
+- Map continuous values to binary values (2bins)
+- Map continuous values to discrete calues (more than 2 bins) (closest discrete value)
+  ![](./img/04-19-09-38-07.png)
+- Map $x$ to its closest codebook
+- Map $x$ to multiple concatenations of closet codebook
+
+
+
