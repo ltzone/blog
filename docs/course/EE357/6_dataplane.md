@@ -188,3 +188,194 @@ priority scheduling: send highest priority queued packet
 
 ### IP datagram format
 
+![](./img/04-21-10-04-03.png)
+
+> how much overhead uptill now?
+> - 20 bytes of TCP
+> - 20 bytes of IP
+> - =40bytes+app layer overhead
+
+### IP fragmentation, reassembly
+
+**Challenges**. network links have MTU (max.transfer size) - largest possible link-level frame
+- different link types, different MTUs
+
+large IP datagram divided (“fragmented”) within net
+- one datagram becomes several datagrams
+- “reassembled” only at final destination
+- IP header bits used to identify, order related fragments
+
+![](./img/04-21-10-07-50.png)
+
+### IP addressing
+
+- **IP address**: 32-bit identifier for host, router **interface**
+  ::: tip
+
+  To be strict, it is the **interface** not the host/router itself, because a router may have multiple interfaces (e.g. WiFi, physical link)
+
+  :::
+
+- **interface**: connection between host/router and physical link
+  - router’s typically have multiple interfaces
+  - host typically has one or two interfaces (e.g., wired Ethernet, wireless 802.11)
+- **IP addresses associated with each interface**
+  
+  how are interfaces actually connected will be talked about in later chapters (Ethernet switches/ WiFi base stations)
+
+#### Subnets
+
+- IP address:
+  - subnet part - high order bits
+  - host part - low order bits
+- what’s a subnet ?
+  - device interfaces with same subnet part of IP address
+  - can physically reach each other **without intervening router**
+  > 子网中的设备可以不通过路由器互相通信
+- recipe
+  - to determine the subnets, detach each interface from its host or router, creating islands of isolated networks
+  - each isolated network is called a subnet
+  > **subnet mask** 子网掩码
+  > - e.g. `223.1.3.0/24` 前24位属于一个子网
+
+> We can count subnets by cutting the network by routers
+> 
+> ![](./img/04-21-10-26-30.png)
+
+
+
+#### CIDR: Classless InterDomain Routing
+
+> Typically, we have A/B/C class IP, with subnet mask 8/16/24
+
+- **CIDR: Classless InterDomain Routing**
+  - subnet portion of address of arbitrary length *(<32)*
+  - address format: a.b.c.d/x, where x is # bits in subnet portion of address
+
+![](./img/04-21-10-27-23.png)
+
+
+#### DHCP: Dynamic Host Configuration Protocol
+
+> Q: How does a host get IP address?
+
+> An **application layer protocol**, but deal with stuffs for Network Layer
+
+- hard-coded by system admin in a file
+  - Windows: control-panel->network->configuration- >tcp/ip->properties
+  - UNIX: /etc/rc.config
+- Advanced: **DHCP: Dynamic Host Configuration Protocol:** dynamically get address from a server 
+  - “plug-and-play”
+
+***
+
+**goal**: allow host to dynamically obtain its IP address from network server when it joins network
+- can renew its lease on address in use
+- allows reuse of addresses (only hold address while connected/“on”)
+- support for mobile users who want to join network (more shortly)
+
+
+**DHCP overview**:
+- host broadcasts “DHCP discover” msg (optional)
+- DHCP server responds with “DHCP offer” msg (optional) 
+- host requests IP address: “DHCP request” msg
+- DHCP server sends address: “DHCP ack” msg
+
+![]./(img/04-21-10-42-22.png)
+
+DHCP can return more than just allocated IP address on subnet:
+- address of first-hop router for client
+- name and IP address of DNS sever
+- network mask (indicating network versus host portion of address)
+
+
+***
+
+#### ISP + ICANN: last step to get address
+
+- Q: how does network get subnet part of IP addr?
+  - A: gets allocated portion of its provider ISP’s address space
+
+- how does an ISP get block of addresses?
+  - ICANN: Internet Corporation for Assigned
+  - Names and Numbers http://www.icann.org/ 
+    - allocates addresses
+    - manages DNS
+    - assigns domain names, resolves disputes
+
+
+
+### NAT: network address translation
+
+
+> Before IPv6 came into use, motivation for NAT
+
+![](./img/04-21-11-01-24.png)
+
+- **motivation**: local network uses just one IP address as far as outside world is concerned:
+  - range of addresses not needed from ISP: just one IP address for all devices
+  - can change addresses of devices in local network without notifying outside world
+  - can change ISP without changing addresses of devices in local network
+  - devices inside local net not explicitly addressable, visible by outside world (a security plus)
+
+
+#### Implementation
+
+NAT router must:
+- **outgoing datagrams**: *replace* `(source IP address, port #)` of every outgoing datagram to `(NAT IP address, new port #)` 
+  - ... remote clients/servers will respond using (NAT IP address, new port #) as destination addr
+  > For all data ?
+- **remember** **(in NAT translation table)** every `(source IP address, port #)` to `(NAT IP address, new port #)` translation pair
+- **incoming datagrams**: replace `(NAT IP address, new port #)` in dest fields of every incoming datagram with corresponding `(source IP address, port #)` stored in NAT table
+
+
+#### Remark
+
+- 16-bit port-number field:
+  - 60,000 simultaneous connections with a single LAN-side address! 
+- NAT is controversial:
+  - routers should only process up to layer 3
+  > What about IP address in application layer?
+  - address shortage should be solved by IPv6
+  - violates end-to-end argument
+  - NAT possibility must be taken into account by app designers, e.g., P2P applications
+  - NAT traversal: what if client wants to connect to server behind NAT?
+
+
+### IPv6
+
+
+#### Motivation
+
+- **initial motivation**: 32-bit address space soon to be completely allocated.
+- additional motivation:
+  - header format helps speed processing/forwarding 
+  - header changes to facilitate QoS
+- IPv6 datagram format:
+  - **fixed-length 40 byte header**
+  - **no fragmentation** allowed
+  - **priority**: identify priority among datagrams in 
+  - **flow flow Label**: identify datagrams in same “flow.” (*However, concept of“flow” not well defined*). 
+  - **next header**: identify upper layer protocol for data
+
+
+![](./img/04-21-11-17-15.png)
+
+
+- Other changes from IPv4
+  - **No checksum**: removed entirely to reduce processing time at each hop
+  - options: allowed, but outside of header, indicated by “Next Header” field
+  - ICMPv6: new version of ICMP
+    - additional message types, e.g. “Packet Too Big” • multicast group management functions
+
+#### Transition from IPv4 to IPv6
+
+- not all routers can be upgraded simultaneously
+  - no “flag days”
+  - how will network operate with mixed IPv4 and IPv6 routers?
+- tunneling: IPv6 datagram carried as payload in IPv4 datagram among IPv4 routers
+
+![](./img/04-21-11-21-14.png)
+
+
+![](./img/04-21-11-27-30.png)
