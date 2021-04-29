@@ -1,5 +1,5 @@
 ---
-title: 8 - Data Visualization
+title: 8 Data Visualization
 date: 2021-04-22 10:06:22
 tags: 
 - Data Science

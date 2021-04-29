@@ -1,5 +1,5 @@
 ---
-title: 9 - Local Descriptor
+title: 9 Local Descriptor
 date: 2021-04-22 10:28:24
 tags: 
 - Data Science
@@ -116,5 +116,5 @@ $$
 
 - BOW (0-order information): $[\gamma(1) ; \gamma(2) ; \ldots ; \gamma(K)] \quad K$ -dim
 - VLAD (1-order information): $\quad\left[\mathcal{F}_{u, 1}, \mathcal{F}_{\sigma, 2} ; \ldots ; \mathcal{F}_{\sigma, K}\right] \quad K d$ -dim
-- Fisher vector:(1-order + 2-order information) $\left[\mathcal{F}_{\boldsymbol{\mu}, 1}, \mathcal{F}_{\sigma, 1} \mathcal{F}_{\mu, 2}, \mathcal{F}_{\sigma, 2} ; \ldots ; \mathcal{F}_{\mu, K}, \mathcal{F}_{\sigma, K}\right] 2 K d$ -dim
+- Fisher vector:(1-order + 2-order information) $\left[\mathcal{F}_{\mathbf{\mu}, 1}, \mathcal{F}_{\sigma, 1} \mathcal{F}_{\mu, 2}, \mathcal{F}_{\sigma, 2} ; \ldots ; \mathcal{F}_{\mu, K}, \mathcal{F}_{\sigma, K}\right] 2 K d$ -dim
 - Super vector (0-order + 1-order information) may suffice
