@@ -11,6 +11,20 @@ sidebar: true
 lang: en-US
 ---
 
+![](../../course/EE359/img/05-06-08-05-10.png)
+
+- Basic idea: 
+  - use a random algorithm that provides deniable possibility to ensure privacy
+
+- Measure: 
+  - max divergence (defined as log probability ratio)
+
+- Basic Mechanisms:
+  - Randomized response (by throwing a coin)
+  - Laplace
+  - Gaussian
+  - Exponential
+
 
 <!-- more -->
 
@@ -211,13 +225,14 @@ $$
   Let $\mathcal{M}$ be a randomized alg. that is $(\varepsilon, \delta)$ -differentially private. Let be an arbitrary randomized mapping. Then $f \circ \mathcal{M}$ is $(\varepsilon, \delta)-$ differentially private
 
   Proof: for any pair of neighboring databases $\mathrm{x}, \mathrm{y}$, and fix any event $S \subseteq R^{\prime} .$ Let $T=\{r \in R: f(r) \in S\} .$ We have
-    $$
-    \begin{aligned}
-    \mathrm{Pr}[f(\mathcal{M}(x)) \in S] &=\mathrm{Pr}[\mathcal{M}(x) \in T] \\
-    & \leq \exp (\epsilon) \mathrm{Pr}[\mathcal{M}(y) \in T]+\delta \\
-    &=\exp (\epsilon) \mathrm{Pr}[f(\mathcal{M}(y)) \in S]+\delta
-    \end{aligned}
-    $$
+
+  $$
+  \begin{aligned}
+  \mathrm{Pr}[f(\mathcal{M}(x)) \in S] &=\mathrm{Pr}[\mathcal{M}(x) \in T] \\
+  & \leq \exp (\epsilon) \mathrm{Pr}[\mathcal{M}(y) \in T]+\delta \\
+  &=\exp (\epsilon) \mathrm{Pr}[f(\mathcal{M}(y)) \in S]+\delta
+  \end{aligned}
+  $$
 
 2. Composition:
    - The composition of two $(\varepsilon, 0)$ -differentially private mechanisms is $(2 \varepsilon, 0)$ -differentially private
@@ -238,8 +253,13 @@ $$
   3. If **heads**, then flip a second coin and report “Yes” if heads and “No” if tails
 - The above mechanism is ($\ln 3, 0)$-differentially private
   ![](./img/04-27-11-34-17.png)
+  > all the ratio in the probability space leads to 3, so that max of all ratios is also 3
 
 Strategies like these are called **Randomized Response**
+
+
+## Illustration of Global Sensitivity: Laplace Mechanism
+
 
 ### Global Sensitivity
 
@@ -252,6 +272,174 @@ Strategies like these are called **Randomized Response**
 > Is a differentially-private approximation to f(D)
 
 
-#### Illustration of Global Sensitivity: Laplace Mechanism
+Suppose we are Counting queries “How many elements in the database satisfy
+Property P?” and that the randomeness of the algorithm comes from Laplace distribution
+
+l1-sensitivity of counting query f:
+$$
+\Delta f=\max _{x, y \in \mathbb{N}^{|\mathcal{X}|} \|x-y\|_{1}=1}\|f(x)-f(y)\|_{1}=1
+$$
+
+> because at most one sample may change, 
 
 > The sensitivity of f gives an upper bound on **how much we must perturb** output to preserve privacy (最多可能要付出的代价)
+
+::: theorem Laplace Disribution
+
+Laplace Distribution with scale b is the distribution with PDF:
+
+$$
+\mathrm{Lap}(x \mid b)=\frac{1}{2 b} \exp \left(-\frac{|x|}{b}\right)
+$$
+
+![](./img/05-06-08-14-47.png)
+
+> We use Laplace distribution to add a noise to the output of $f$.
+>
+> as long as the mean of the distr is zero, it will not cause bias
+:::
+
+
+Given query f, Laplace mechanism is defined as:
+
+$$
+M(x, f(\cdot), \varepsilon)=f(x)+Y
+$$
+
+where $Y$ is a random variable drawn from $\mathrm{Lap}(\Delta f / \varepsilon)$
+
+**Theorem**. The above mechanism is $(\varepsilon, 0)$ -differentially private
+
+**Proof**: Let $\mathrm{px}$ denote the $\mathrm{PDF}$ of $\mathrm{M}(\mathrm{x})$ and $\mathrm{p}_{\mathrm{y}}$ denote the PDF of $\mathcal{M}(\mathrm{y})$.
+
+at some arbitrary point $\mathrm{z}$ :
+$$
+\begin{array}{ll}
+\frac{p_{x}(z)}{p_{y}(z)}=\frac{\exp \left(-\frac{\epsilon|f(x)-z|}{\Delta f}\right)}{\exp \left(-\frac{\epsilon|f(y)-z|}{\Delta f}\right)}&=\exp \left(\frac{\epsilon(|f(x)-z|-|f(y)-z|)}{\Delta f}\right) (def Of Laplace)\\
+&\leq \exp \left(\frac{\epsilon|f(x)-f(y)|}{\Delta f}\right) (Triangle)\\
+ & \leq \exp (\epsilon) (def Of GS)
+\end{array}
+$$
+
+
+### Accuracy Loss
+
+> Critical Question: how to avoid the case where we gives large noise
+
+- How much noise do we introduce in Laplace mechanism?
+
+- Let query f map databases to k numbers. $y = M(x, f(\cdot), \epsilon) = f(x) + Y$.
+For $\delta \in (0, 1]$:
+
+$$
+\begin{aligned}
+\mathrm{Pr}\left[\|f(x)-y\|_{\infty} \geq \ln \left(\frac{k}{\delta}\right) \cdot\left(\frac{\Delta f}{\varepsilon}\right)\right] &=\mathrm{Pr}\left[\max _{i \in \mid k]}\left|Y_{i}\right| \geq \ln \left(\frac{k}{\delta}\right) \cdot\left(\frac{\Delta f}{\varepsilon}\right)\right] \\
+& \leq k \cdot \mathrm{Pr}\left[\left|Y_{i}\right| \geq \ln \left(\frac{k}{\delta}\right) \cdot\left(\frac{\Delta f}{\varepsilon}\right)\right] \\
+&=k \cdot\left(\frac{\delta}{k}\right) \\
+&=\delta
+\end{aligned}
+$$
+
+> By Markov inequality: If Y~Lap(b), then Pr[ |Y| >= t·b ] = exp(-t)
+
+
+> We restrict a range of $\ln \left(\frac{k}{\delta}\right) \cdot\left(\frac{\Delta f}{\varepsilon}\right)$, we see that the probability of large accuracy loss is bounded by a constant $\delta$, for higher accuracy, we can simply take $k$ larger numbers
+
+### Example
+
+- We wish to calculate which first names, from a list of 10,000 potential names, were the most common
+- Query $f: N^{|X|} \rightarrow R^{10000}$
+- Sensitivity $\Delta f=1$, since every person can only have at most one first name
+- Calculate the frequency of all 10,000 names with $(1,0)$ -differential privacy
+- With probability $95 \%$, no estimate will be off by more than an additive error of $\ln (10000 / .05) \approx 12.2$
+  > in other words, $> 5 \%$ probability that the difference of the masked query result and the true result is larger than $12.2$
+
+
+## Another strategy:  Gaussian Mechanism
+
+Global Sensitivity of $f$ is $\Delta f=\max _{\mathrm{dist}\left(D, D^{\prime}\right)=1} \| f(D)-f\left(D^{\prime}\right)\|$
+
+Output $M(D)+Z$ where
+$$
+Z \sim \frac{\Delta f}{\epsilon} \mathcal{N}(0,2 \ln (1.25 / \delta))
+$$
+
+We can prove that  this is $(\epsilon, \delta)$-differentially private
+
+
+## Exponential Mechanism
+
+> Before we are adding noise to the dataset, but some data can be very vulnerable to noises, example:
+
+- We wish to choose the “best” response but adding noise directly to the computed quantity can destroy its value
+  - Suppose we have an abundant supply of goods and 4 bidders: A,B,C,D, where A,B,C each bid $1.00 and D bids $3.01. What is the optimal price? At $3.01 the revenue is $3.01, at $3.00 the revenue is $3.00, but at $3.02 the revenue is 0!
+
+- **Solution**. Exponential mechanism is defined w.r.t. **utility** function, mapping outputs to utility scores
+
+- We only care about the sensitivity of u:
+  $$
+  \Delta u \equiv \max _{r \in \mathcal{R}} \max _{x, y:\|x-y\|_{1} \leq 1}|u(x, r)-u(y, {r})|
+  $$
+  where r is possible output
+- Exponential mechanism: outputs $r \in R$ with prob. proportional to
+  $$
+  \exp \left(\frac{\varepsilon u(x, r)}{2 \Delta u}\right)
+  $$
+
+**Theorem**. Exponential mechanism preserves $(\varepsilon, 0)$ -differential privacy
+**Proof**: The privacy loss is
+$$
+\begin{array}{l}
+\ln \frac{\mathrm{Pr}\left[\mathcal{M}_{E}(x, u, \mathcal{R})=r\right]}{\mathrm{Pr}\left[\mathcal{M}_{E}(y, u, \mathcal{R})=r\right]}= \\
+\left.\ln \left(\frac{\exp (\varepsilon u(x, r) / \Delta u)}{\exp (\varepsilon u(y, r) / \Delta u)}\right)=\varepsilon[u(x, r)-u(y, r)] / \Delta u\right) \leq \varepsilon
+\end{array}
+$$
+
+
+
+**Application**. Develop on sensitive dataset for specific tasks:
+
+- Given function f(w, D), Sensitive Data D
+- Find differentially private approximation to (e.g. $w^{*}$ can be considered as max-log-likelihood) 
+  $$
+  w^{*}={\mathrm{argmax}}_{w} f(w, D)
+  $$
+- Example: $\mathrm{f}(\mathrm{w}, \mathrm{D})=$ accuracy of classifier $\mathrm{w}$ on dataset $\mathrm{D}$
+
+
+- Suppose for any w,
+  $$
+  \left|f(w, D)-f\left(w, D^{\prime}\right)\right| \leq S
+  $$
+- when D and D' differ in I record. Sample w from
+  $$
+  p(w) \propto e^{\epsilon f(w, D) / 2 S}
+  $$
+  > note we use $\propto$ instead of $=$, needs normalizing
+- for $\epsilon$ -differential privacy.
+
+
+![](./img/05-06-08-45-39.png)
+
+> idea somehow works like "softmax"
+
+
+### Example: Parameter Tuning
+
+Given validation data D, k classifiers w $1, \ldots$, Wk, privately find the classifier with highest accuracy on D
+Here, $f(w, D)=$ classification accuracy of $w$ on $D$. For any $w$, any $D$ and D' that differ by one record
+$$
+\left|f(w, D)-f\left(w, D^{\prime}\right)\right| \leq \frac{1}{|D|}
+$$
+So, the exponential mechanism outputs $w_{i}$ with prob:
+$$
+\operatorname{Pr}\left(w_{i}\right) \propto e^{\epsilon|D| f\left(w_{i}, D\right) / 2}
+$$
+
+
+
+> For larger size of $D$, we have a "steeper" distribution of $w$, with smaller $\epsilon$ (privacy level), "steeper" distribution of $w$
+
+### Compositions
+
+omitted
