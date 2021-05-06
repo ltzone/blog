@@ -1,5 +1,5 @@
 ---
-autoNext: 1_intro
+autoNext: 01_intro
 ---
 
 # Data Science
