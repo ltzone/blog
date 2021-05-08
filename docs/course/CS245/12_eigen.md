@@ -45,9 +45,29 @@ $(M-\lambda I)x = 0$ has non-zero solutions for $x$ iff $det(M-\lambda I) = 0$, 
 ## Application
 
 
-### Application 1:
+### Application 1: Priciple Component Analysis
 
-TODO
+Maximum variance direction: when $\mathbf{X}$ is decentralized
+$$
+\begin{array}{c}
+\frac{1}{n} \sum_{i=1}^{n}\left(\mathbf{v}^{T} \mathbf{x}_{i}\right)^{2}=\frac{1}{n} \mathbf{v}^{T} \mathbf{X} \mathbf{X}^{T} \mathbf{v} \\
+\max _{\mathbf{v}} \quad \mathbf{v}^{T} \mathbf{X} \mathbf{X}^{T} \mathbf{v}
+\end{array}
+$$
+s.t. $\mathbf{v}^{T} \mathbf{v}=1$
+Lagrangian form:
+$$
+\mathcal{L}_{\mathbf{v}}=\mathbf{v}^{T} \mathbf{X} \mathbf{x}^{T} \mathbf{v}+\lambda\left(1-\mathbf{v}^{T} \mathbf{v}\right)
+$$
+$$
+\begin{array}{c}
+\frac{\partial \mathcal{L}_{\mathrm{V}}}{\partial \mathbf{v}}=\mathbf{X X}^{T} \mathbf{v}-\lambda \mathbf{v}=0 \\
+\mathbf{X X T}_{\mathbf{V}}=\lambda \mathbf{v}
+\end{array}
+$$
+Eigen decomposition
+
+
 
 ### Application 2: Canonical Correlation Analysis
 
