@@ -115,8 +115,8 @@ $$
 \mathbf{0} & \sum_{i} \mathbf{x}_{i} \mathbf{y}_{i}^{T} \\
 \sum_{i} \mathbf{y}_{i} \mathbf{x}_{i}^{T} & \mathbf{0}
 \end{array}\right]\left[\begin{array}{l}
-\boldsymbol{\alpha} \\
-\boldsymbol{\beta}
+\mathbf{\alpha} \\
+\mathbf{\beta}
 \end{array}\right]=2 \lambda\left[\begin{array}{l}
 \alpha \\
 \beta

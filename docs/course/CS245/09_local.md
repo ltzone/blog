@@ -54,7 +54,9 @@ When we have chosen a most similarity codebook, we calculate the difference of t
 ![](./img/04-22-11-13-41.png)
 
 Locally - Local descriptors
+
 Aggregated - minus codebook + aggregate
+
 One order -
 
 The final encoding is a **concatenation** of all codebooks (still 1-order)
