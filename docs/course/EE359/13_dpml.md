@@ -74,17 +74,17 @@ $$
 #### Input/Output Perturbation
 
 
-|  Input Perturbation     | Local Privacy      | Output Perturbation      |  
-|  ---  |  ---  |  ---  | 
+|  Input Perturbation     | Local Privacy      | Output Perturbation      |
+|  ---  |  ---  |  ---  |
 | add noise to the input data      |  data contributors sanitize data before collection (variant of input pert.) e.g. perturb at user host then collect    | Compute the minimizer and add noise      |       |
 |  ![](./img/05-06-09-14-27.png)     |  ![](./img/05-06-09-15-24.png)     |   ![](./img/05-06-09-17-43.png)    |
-| easy to implement, results in reusable sanitized dataset      | Classical technique: randomized response      |  Does not require re-engineering baseline algorithms     |      
-|       |  Interactive variant can be minimax optimal    |  Difficulty: Noise depends on the sensitivity of the argmin (we don't know!)  |      
+| easy to implement, results in reusable sanitized dataset      | Classical technique: randomized response      |  Does not require re-engineering baseline algorithms     |
+|       |  Interactive variant can be minimax optimal    |  Difficulty: Noise depends on the sensitivity of the argmin (we don't know!)  |
 
 #### Objective Perturbation
 
  ![](./img/05-06-09-18-42.png)
- 
+
 $$
 J(\mathbf{w})=\frac{1}{n} \sum_{i=1}^{n} \ell\left(\mathbf{w},\left(\mathbf{x}_{i}, y_{i}\right)\right)+\lambda R(\mathbf{w})
 $$
@@ -214,3 +214,150 @@ An exampling trick can be ***Randomly Sampling Amplifies Privacy***
 - Keeping gradient estimates unbiased will help ensure convergence
 - Standard approach for variance reduction/stability (minibatching) can help with performance
 - Random subsampling of the data can amplify privacy guarantees
+
+
+## Privacy Risk Accounting
+
+> Intuition, access the training data once or twice leads to different level of privacy. How to measure?
+
+Consider the following model
+
+![](./img/05-11-10-07-05.png)
+
+**Recall**. **Post processing invariance**: risk does not increase if you don’t touch the data again (i.e. corss the privacy bar)
+- more complex algorithms have multiple stages  $\Rightarrow$ all stages have to guarantee DP
+>   e.g., for SGD, every update of data derivative will require accessing the private data set again.
+- need a way to do **privacy accounting**: what is the loss over time/ multiple queries?
+
+
+
+
+
+### Privacy Allocation across Stages
+
+Basic composition: privacy loss is additive:
+- Apply R algorithms with $\left(\epsilon_{i}, \delta_{i}\right): i=1,2, \ldots, R$
+- Total privacy loss:
+$$
+\left(\sum_{i=1}^{R} \epsilon_{i}, \sum_{i=1}^{R} \delta_{i}\right)
+$$
+- Worst-case analysis: each result exposes the worst privacy risk
+
+![image-20210511101351667](./img/image-20210511101351667.png)
+
+- Compositions means we have a **privacy budget**
+- How should we allocate privacy risk across different stages of a pipeline?
+  - Noisy features + accurate training? 
+  - Clean features + sloppy training?
+- It’s application dependent! Still an open question...
+
+
+
+### Privacy Loss as a Random Variable
+
+Recall $\epsilon$ and $\delta$
+
+![](./img/05-11-10-16-55.png)
+
+![](./img/05-11-10-17-07.png)
+
+- Actual privacy loss is a random variable that depends on D:
+
+  $$
+  Z_{D, D^{\prime}}=\log \frac{p(A(D)=t)}{p\left(A\left(D^{\prime}\right)=t\right)} \text { w.p. } p(A(D)=t)
+  $$
+
+
+- Bounding the max loss over (D,D’) is still a random variable
+- Sequentially computing functions on private data is like sequentially sampling independent privacy losses
+- Concentration of measure shows that the loss is much closer to its expectation
+
+#### Strong Composition Bounds
+
+![](./img/05-11-10-36-12.png)
+
+#### Moments Accountant
+
+![](./img/05-11-10-23-09.png)
+
+> Now we introduce a detailed accounting method by Google
+
+- Basic Idea: Directly calculate parameters (ε,δ) from composing a sequence of mechanisms
+- More efficient (**and tight**) than composition theorems
+
+![](./img/05-11-10-22-03.png)
+
+> Why Gaussian is linear? because we are taking the $\log$, $\log\frac{e^{-\frac{(t-y)^2 }{ \sigma^2}}}{e^{-\frac{(t-y')^2 }{ \sigma^2}}}$
+
+
+Three steps:
+1. (**Stepwise Moments**)Calculate moment generating functions for A1, A2, ... 
+   ![](img/05-11-10-24-55.png)
+
+   Define: Stepwise Moment at time $t$ of $A_{t}$ at any $s:$
+
+   $$
+   \alpha_{A_{t}}(s)=\sup _{D, D^{\prime}} \log \mathbb{E}\left[e^{s Z_{D, D^{\prime}}} \right]
+   $$
+
+   where D and D' differ by one record
+
+
+2. Compose
+   ![](./img/05-11-10-25-37.png)
+
+   Theorem: Suppose $A=\left(A_{1}, \ldots, A_{T}\right) .$ For any s:
+   $$
+   \alpha_{A}(s) \leq \sum_{t=1}^{T} \alpha_{A_{t}}(s)
+   $$
+3. Calculate final privacy parameters
+   ![](./img/05-11-10-25-55.png)
+
+   Theorem: For any $\varepsilon$, mechanism $\mathrm{A}$ is $(\varepsilon, \delta)$ -DP for
+   $$
+   \delta=\min _{s} \exp \left(\alpha_{A}(s)-s \epsilon\right)
+   $$
+   Use theorem to find best $\varepsilon$ for a given $\delta$ from closed form or by searching over $\mathrm{s}_{1}, \mathrm{s}_{2}, \ldots, \mathrm{Sk}$
+
+
+### Deep Learning with Differential Privacy
+
+> Incorporate privacy accounting into DL network. Privacy Accounting along the process
+
+![](./img/05-11-10-28-55.png)
+
+
+![](./img/05-11-10-29-07.png)
+
+
+### Effectiveness of DP Deep Learning
+
+> Tradeoff between privacy (needs to add noise) and accuracy
+> 
+> even with efficient moment accounting method, the accuracy is still vulnerable to noises
+> 
+> Open problem
+
+![](./img/05-11-10-30-11.png)
+
+- Empirical results on MNIST and CIFAR:
+  - Training and test error come close to baseline non-private deep learning methods
+
+
+### When is DP Practical? 
+
+- Differential privacy is best suited for understanding **population-level** statistics and structure:
+
+  - Inferences about the population should not depend strongly on individuals
+
+  - **Large sample sizes** usually mean lower sensitivity and less noise
+
+- To build and analyze systems we have to leverage post-processing invariance and composition properties
+
+### Differential Privacy in Practice
+
+- Google: Rappor for tracking statistics in Chrome
+- Apple: various iPhone usage statistics
+- Census: 2020 US Census
+- mostly focused on count and average statistics 
+  > (simple application for the moment, more work to be done)
