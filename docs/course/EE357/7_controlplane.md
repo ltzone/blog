@@ -150,6 +150,8 @@ Solution in the Internet: **administrative autonomy**
 
 aggregate routers into regions known as **“autonomous systems” (AS) (a.k.a. “domains”)**
 
+> Internet keeps routers in various autonomies - "network of networks"
+
 - intra-AS routing
   - routing among hosts, routers in same AS (“network”)
   - all routers in AS must run same **intra-domain protocol**
@@ -164,6 +166,16 @@ aggregate routers into regions known as **“autonomous systems” (AS) (a.k.a. 
 
 > We focus on Intra-routing in this section
 > many intro-AS routing protocols availble, we only introduce OSPF
+
+> The design of a forwarding table of a single router involves both intra-AS and inter-AS routing!
+
+Typical Inter-AS algorithms:
+
+- RIP: Routing Information Protocol
+
+- OSPF: Open Shortest Path First
+
+- IGRP: Interior Gateway Routing Protocol
 
 
 
@@ -180,6 +192,7 @@ aggregate routers into regions known as **“autonomous systems” (AS) (a.k.a. 
   - link state: for each attached link
 
 ### OSPF “advanced” features
+
 - security: all OSPF messages authenticated (to prevent malicious intrusion)
 - **multiple** same-cost **paths** allowed (only one path in RIP)
 - integrated uni- and **multi-cast** support:
@@ -191,8 +204,10 @@ aggregate routers into regions known as **“autonomous systems” (AS) (a.k.a. 
   >
   >![](./img/04-28-11-28-20.png)
 
-
 ### Hierarchical OSPF
+
+> Basic idea: divide the autonomous domain again into sub domains
+
 - **two-level hierarchy**: local area, backbone.
   - link-state advertisements only in area
   - each nodes has detailed area topology; only know direction (shortest path) to nets in other areas.
@@ -200,16 +215,30 @@ aggregate routers into regions known as **“autonomous systems” (AS) (a.k.a. 
 - **backbone routers**: run OSPF routing limited to backbone.
 - **boundary routers**: connect to other AS’es.
 
+## Internet inter-AS routing
 
-## Internet inter-AS routing: BGP
+### Inter-AS Tasks
+
+
+
+![image-20210512100922564](./img/7_controlplane/image-20210512100922564.png)
+
+![image-20210512100936238](./img/7_controlplane/image-20210512100936238.png)
+
+
+
+### BGP
 
 - **BGP (Border Gateway Protocol)**: the de facto inter-domain routing protocol
+  
   - “glue that holds the Internet together” 
+  
 - BGP provides each AS a means to:
-  - **eBGP**: obtain subnet reachability information from neighboring ASes
-  - **iBGP**: propagate reachability information to all AS- nternal routers.
+  - **eBGP**: obtain _subnet reachability_ information from neighboring ASes
+  - **iBGP**: propagate reachability information to *all AS-Internal routers*.
   - determine “good” routes to other networks based on reachability information and **policy**
   > Recall, in primitive routers, we only care about cost, but for inter-AS, policy matters a lot!
+  
 - allows subnet to advertise its existence to rest of Internet: **“I am here”**
 
 ![](./img/04-28-11-36-35.png)
@@ -220,6 +249,8 @@ aggregate routers into regions known as **“autonomous systems” (AS) (a.k.a. 
   - advertising **paths** to different destination network prefixes (BGP is a “path vector” protocol)
 - when AS3 gateway router 3a advertises path **AS3,X** to AS2 gateway router 2c:
   - AS3 **promises** to AS2 it will forward datagrams towards X
+  
+    > So BGP is also referred to as **Path Vector Protocol**
 
 ![](./img/04-28-11-38-11.png)
 
@@ -229,8 +260,175 @@ aggregate routers into regions known as **“autonomous systems” (AS) (a.k.a. 
   - prefix + attributes = “route”
 - two important attributes:
   - `AS-PATH`: list of ASes through which prefix advertisement has passed
+  
   - `NEXT-HOP`: IP address of the router interface that begins the AS-PATH
+  
+    > For simplicity, we won't write out `NEXT-HOP` explicitly in the following examples, but just rememeber that we will store the IP address of the first element in the `AS-PATH` vector for every path attribute
 - Policy-based routing:
-  - gateway receiving route advertisement uses **import policy** to accept/decline path (e.g., never route through AS Y).
-  - AS policy also determines whether to **advertise** path to other neighboring ASes
+  - gateway receiving route advertisement uses **import policy** to *accept/decline path* (e.g., never route through AS Y, maybe it charges a lot ... ).
+  - AS policy also determines *whether to* **advertise** path to other neighboring ASes
   > determined by AS's own policy
+
+### A running Example
+
+![image-20210512103359709](./img/7_controlplane/image-20210512103359709.png)
+
+Determined by policy,
+
+- AS2 router 2c receives path advertisement AS3,X (via eBGP) from AS3 router 3a
+
+- Based on AS2 policy, AS2 router 2c accepts path AS3,X, propagates (via iBGP) to all AS2 routers
+
+- Based on AS2 policy, AS2 router 2a advertises (via eBGP) path AS2, AS3, X to AS1 router 1c
+
+![image-20210512103412346](./img/7_controlplane/image-20210512103412346.png)
+
+gateway router **may learn about multiple paths** to destination: 
+
+- AS1 gateway router 1c learns path *AS2,AS3,X* from 2a
+
+- AS1 gateway router 1c learns path *AS3,X* from 3a
+
+- Based on policy, AS1 gateway router 1c chooses path *AS3,X, and advertises path within AS1* *via iBGP*
+
+
+
+### Forwarding Table
+
+`(dest, interface)` for every router.
+
+![image-20210512104039715](./img/7_controlplane/image-20210512104039715.png)
+
+
+
+- `1d`: OSPF intra-domain routing: to get to 1c, forward over outgoing local interface 1
+
+- `1a`: OSPF intra-domain routing: to get to 1c, forward over outgoing local interface 2
+
+### BGP Route Selection
+
+router may learn about more than one route to destination AS, selects route based on:
+
+> Generally, for multiple paths, the selection process will eliminate paths until only one path is left
+
+1. local preference value attribute: policy decision
+2. shortest AS-PATH
+3. closest NEXT-HOP router: hot potato routing
+4. additional criteria
+
+::: tip Hot Potato Routing
+
+![image-20210512104142337](./img/7_controlplane/image-20210512104142337.png)
+
+Given a net work with OSPF link weights, 2d chooses `2a` to reach `X`  (i.e. table entry `X`, `2a`), 
+
+even though more AS hops to `X`: don’t worry about inter-domain cost!
+
+:::
+
+
+
+### Achieving Policy via Advertisements
+
+![image-20210512105633278](./img/7_controlplane/image-20210512105633278.png)
+
+**Policy Setting:** Suppose an ISP only wants to route traffic to/from its customer networks (does not want to carry transit traffic between other ISPs)
+
+- A advertises path Aw to B and to C 
+
+- B ***chooses not to advertise*** BAw to C:
+
+  > w does not pay B, B would not like to get trafficed by B, B can define its propagate policy
+
+  - B gets no “revenue” for routing CBAw, since none of C, A, w are B’s customers
+  - C does not learn about CBAw path
+
+- C will route CAw (not using B) to get to w
+
+> Policy matters a lot, in eliminating long and inefficient paths
+
+- X is *dual-homed:* attached to two networks B and C
+
+- *policy to enforce:* X does not want to route from B to C via X 
+
+  > The client itself can define policy to advertise
+
+  - ..so X will not advertise to B a route to C
+
+### Discussion: Why different Intra-, Inter-AS routing ?
+
+- *policy:*
+
+  - inter-AS: admin wants control over how its traffic routed, who routes through its net.
+  - intra-AS: single admin, so no policy decisions needed
+
+-  *scale:*
+
+  - hierarchical routing saves table size, reduced update traffic
+
+    > With OSPF hierachial structure, we can always divide a too large AS into two sub ASs and use inter-AS routing. 
+
+- *performance:*
+  - intra-AS: can focus on performance (i.e. prefer fast transmission)
+  - inter-AS: policy may dominate over performance
+
+
+
+## SDN control plane
+
+Omitted, the genral idea is to import a remote controler.
+
+![image-20210512110553240](./img/7_controlplane/image-20210512110553240.png)
+
+
+
+## ICMP: Internet Control Message Control
+
+- used by hosts & routers to communicate network- level information
+  - error reporting: unreachable host, network, port, protocol
+  - echo request/reply (used by ping)
+- network-layer **“above” IP**:
+  - ICMP msgs carried in IP datagrams
+
+- ICMP message: type, code plus first 8 bytes of IP datagram causing error
+
+<img src="./img/7_controlplane/image-20210512110848577.png" alt="image-20210512110848577" style="zoom:50%;" />
+
+
+
+## Network Management and SNMP
+
+**Motivation.** autonomous systems (aka “network”): 1000s of interacting hardware/software components, 
+
+**network managements** involves many aspects, software or hardware, implementation or deployment, test or monitor, ...
+
+> How to implement the realtime, quality and efficient control?
+
+
+
+Typical infrastructure for network management: ***managed devices*** contain ***managed* *objects*** whose data is gathered into a ***Management Information Base (MIB)***
+
+### SNMP protocol
+
+Two ways to convey MIB info, commands:
+
+![image-20210512111405933](./img/7_controlplane/image-20210512111405933.png)
+
+> Request/Response mode requires managing entity to periodically request status from the managed device
+>
+> Trap mode, for emergency contingency, the managed device can actively raise trap message to the managing entity
+
+The SNMP messages have two formats. details omitted.
+
+
+
+## Summary
+
+- approaches to network control plane
+  - per-router control (traditional)
+  - logically centralized control (software defined networking)
+- traditional routing algorithms
+  - implementation in Internet: **OSPF, BGP**
+- SDN controllers
+- Internet Control Message Protocol 
+- network management
