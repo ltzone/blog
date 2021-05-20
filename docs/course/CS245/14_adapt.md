@@ -395,16 +395,138 @@ general idea: Use the best model to do domain adaptation
 
 ### Deep network + traditional idea
 
+> Zeng, Xingyu, et al. "Deep learning of scene-specific classifier for pedestrian detection." European Conference on Computer Vision. Springer, Cham, 2014.
+
+![image-20210520100358645](./img/14_adapt/image-20210520100358645.png)
+
+Use **reconstruction loss** to guide the classifier to assign larger weights $e^{-\lambda ||x_i^s  - \tilde{x_i^s}||^2}$  to the important source domain samples
+
+> Reconstruction is very useful. Recall that we can train an auto-encoder to minimize the reconstruction loss and detect outliers
+
+***
+
+> Long, Mingsheng, et al. "Learning transferable features with deep adaptation networks." arXiv preprint arXiv:1502.02791(2015).
+
+![image-20210520100758554](./img/14_adapt/image-20210520100758554.png)
+
+Idea: divide the last layers into two branches, (source domain + target output), for labeled source domain, train it based on labels. For target branch, use some additional constraints. Also use (Multiple-Kernel) MMD loss to ensure that the trained source domain is close to target domain.
+
+***
+
+> Deep CORAL , Sun, Baochen, and Kate Saenko. "Deep coral: Correlation alignment for deep domain adaptation." ECCV, 2016.
+
+![image-20210520101038660](./img/14_adapt/image-20210520101038660.png)
+
+Idea: use the CORAL loss in deep learning (shared features + diversed feature)
+
+> MMD - first order distance, CORAL - second order distance
+
+***
+
+> Domain Separation Networks, Bousmalis, Konstantinos, et al. "Domain separation networks." NIPS, 2016.
+
+Use Shared/Private Src/Tgt encoder and decoder
+
+![image-20210520101408589](./img/14_adapt/image-20210520101408589.png)
+
+Idea: the classifier should always use domain-independent features to train.
+
 ### Batch normalization based
+
+> For domain adpatation problems, batch normalization layer should be carefully designed
+
+#### Z-Score Normalization
+
+![image-20210520101859905](./img/14_adapt/image-20210520101859905.png)
+
+To resolve the discrepency between different dimensions/features
+
+Batch normalization works like Z-score, but operates on batches
+
+#### Domain Adaptive Batch Normalization
+
+> Cariucci, Fabio Maria, et al. "Autodial: Automatic domain alignment layers." ICCV, 2017.
+
+For normal CNN, since little gap exists in train/test set, BN layer can be directly used
+
+However, for domain adaptive problems, since the network will record the moving average of the training data and directly use them for the testing set, it will cause error.
+
+A direct idea is to also record testing avg and sqr-err when testing the dataset( $\epsilon$ is used to avoid div-0).
+
+![image-20210520102227869](./img/14_adapt/image-20210520102227869.png)
+
+ Another idea is to insert values with $\alpha$ and $1-\alpha$ to coordinate between the BNs on two domains.  $q_{st}$ can be considered as $\mu$ or $\sigma$. 
+
+![image-20210520102011231](./img/14_adapt/image-20210520102011231.png)
+
+
+
+> By enforcing the low entropy loss, we ensure that the target  domain can perform classification instead of distribute the samples uniformly
 
 ### Adversarial learning
 
+**Idea: Not only classify categories (category classifier) but also classify domains(domain classifier)**
 
+> Tzeng, Eric, et al. "Simultaneous deep transfer across domains and tasks." ICCV, 2015.
 
+![image-20210520103217141](./img/14_adapt/image-20210520103217141.png)
 
+- domain classifier loss - ensure that the model can distinguish between the source domain and target domain
 
+- domain confusion loss - but on the other hand, when generating the feature, we should not rely on domain-specific features. We need to confuse them (**adversial**)
 
+  > Adversarial loss can always be considered as an equivalence to the distance (e.g. KLD) of the distributions of two domains
 
+***
+
+> Ganin, Yaroslav, and Victor Lempitsky. "Unsupervised domain adaptation by backpropagation." arXiv preprint arXiv:1409.7495 (2014).
+
+![image-20210520103547889](./img/14_adapt/image-20210520103547889.png)
+
+> Similar idea, category classifier + domain classifier, The domain loss needs adversarial back propagation (gradient reversal layer, avoid alternating optimization, simplify training process, some theories about gradient reversal layer are also proposed in this paper). 
 
 ## GAN Era
 
+> ![image-20210520103827987](./img/14_adapt/image-20210520103827987.png)
+>
+> by lifting the idea from feature-level adversarial to image-level, GAN outperforms many models (e.g. VAE) in generating images tasks 
+
+![image-20210520104122598](./img/14_adapt/image-20210520104122598.png)
+
+### Conditional GAN
+
+if the input is not a vector but an image (conditional information)
+
+![image-20210520104458963](./img/14_adapt/image-20210520104458963.png)
+
+> Two concrete application of GAN
+
+### Paired GAN - pix2pix
+
+The first two losses are same as the conditional GAN, the last term is the reconstruction error of $y$ and $G(X)$. (l1-loss makes the picture more sharp)
+
+Note, the input image come in pairs (given a photo, it has its corresponding cartoon).
+
+![image-20210520105858520](./img/14_adapt/image-20210520105858520.png)
+
+The discriminator is also changed by taking $y$ into consideration. When we train the discriminator, we not only have the generated image but also the input image, so that the discriminator is stronger. 
+
+>  (**Trick: Conditional Discriminator**, when the discriminator of GAN can't work well, it may help if we introduce the conditional information)
+
+Training process: train D and G alternatingly
+
+Application:
+
+![image-20210520110132343](./img/14_adapt/image-20210520110132343.png)
+
+### Unpaired GAN
+
+![image-20210520110636568](./img/14_adapt/image-20210520110636568.png)
+
+Idea, for an image of X, transform it using G, although we don't know which Y it falls in, but we know that F(G(X)) should still be X
+
+![image-20210520110814274](./img/14_adapt/image-20210520110814274.png)
+
+![image-20210520110914763](./img/14_adapt/image-20210520110914763.png)
+
+loss = 1 generator (reconstruction loss) + 2 discriminators
