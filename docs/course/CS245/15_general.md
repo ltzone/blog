@@ -79,7 +79,7 @@ $z_{m k}:$ the probability that $m$ -th sample belongs to the $k$ -th latent dom
 **Goal** max sum of | mean of $k$ -th latent domain - mean of $k^{\prime}$ -th latent domain |
 $$
 \begin{array}{ll}
-\max _{z_{m k}} & \sum_{k \neq k^{\prime}} \mid \frac{1}{\mathrm{M}_{k}} \sum_{m} \phi\left(\mathbf{x}_{m}\right) z_{m k}-\frac{1}{{\mathrm{M}_{k}^{\prime}}} \sum_{m} \phi\left(\mathbf{x}_{m}\right) z_{m k} \mid ^ 2 \\
+\max _{z_{m k}} & \sum_{k \neq k^{\prime} } \mid \frac{1}{\mathrm{M}_{k}} \sum_{m} \phi\left(\mathbf{x}_{m}\right) z_{m k}-\frac{1}{ {\mathrm{M}_{k}^{\prime}}} \sum_{m} \phi\left(\mathbf{x}_{m}\right) z_{m k} \mid ^ 2 \\
 \text { s.t. } & \sum_{k=1}^{K} z_{m k}=1, \quad \forall m, \\
 & \frac{1}{\mathrm{M}_{k}} \sum_{m=1}^{\mathrm{M}} z_{m k} y_{m c}=\frac{1}{\mathrm{M}} \sum_{m=1}^{\mathrm{M}} y_{m c}, \quad \forall c, \forall k
 \end{array}
