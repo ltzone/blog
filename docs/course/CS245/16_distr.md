@@ -69,9 +69,9 @@ $$
 
 ### Gaussian Mixture Model
 
-GMM parameters: $\boldsymbol{\theta}=\left\{\pi_{1}, \mu_{1}, \sigma_{1} ; \pi_{2}, \mu_{2}, \sigma_{2} ; \ldots ; \pi_{K}, \mu_{K}, \sigma_{K}\right\}$
+GMM parameters: $\mathbf{\theta}=\left\{\pi_{1}, \mu_{1}, \sigma_{1} ; \pi_{2}, \mu_{2}, \sigma_{2} ; \ldots ; \pi_{K}, \mu_{K}, \sigma_{K}\right\}$
 $$
-p\left(x_{1}, x_{2}, \ldots, x_{N} \mid \boldsymbol{\theta}\right)=\prod_{i=1}^{N} p\left(x_{i} \mid \boldsymbol{\theta}\right), in\ which\ p\left(x_{i} \mid \boldsymbol{\theta}\right)=\sum_{k=1}^{K} p\left(x_{i} \mid \boldsymbol{\theta}_{k}\right) p\left(\boldsymbol{\theta}_{k}\right) =\sum_{k=1}^{K} p\left(x_{i} \mid \mu_{k}, \sigma_{k}\right) \pi_{k}
+p\left(x_{1}, x_{2}, \ldots, x_{N} \mid \mathbf{\theta}\right)=\prod_{i=1}^{N} p\left(x_{i} \mid \mathbf{\theta}\right), in\ which\ p\left(x_{i} \mid \mathbf{\theta}\right)=\sum_{k=1}^{K} p\left(x_{i} \mid \mathbf{\theta}_{k}\right) p\left(\mathbf{\theta}_{k}\right) =\sum_{k=1}^{K} p\left(x_{i} \mid \mu_{k}, \sigma_{k}\right) \pi_{k}
 $$
 Hidden variable $\gamma_{i}(k):$ the probability that the $i$ -th sample belongs to the $k$ -th Gaussian model
 Due to hidden variable, we use EM algorithm to estimate $\gamma_{i}(k)$ and $\theta=\left\{\pi_{1}, \mu_{1}, \sigma_{1} ; \pi_{2}, \mu_{2}, \sigma_{2} ; \ldots ; \pi_{K}, \mu_{K}, \sigma_{K}\right\}$
@@ -144,3 +144,63 @@ A concave function can always find an envelop by locating a few points, we can t
 ![image-20210524093453232](./img/16_distr/image-20210524093453232.png)
 
 ### Importance Sampling
+
+> Sometimes, we do not need sample $x \sim p$,
+> just need expectation $\mathbb{E}_{x \sim p}[f(x)]$
+
+$$
+\begin{aligned}
+\int f(x) p(x) d x &=\int f(x) \frac{p(x)}{q(x)} q(x) d x \\
+& \approx \frac{1}{S} \sum_{s=1}^{S} f\left(x^{s}\right) \frac{p\left(x^{s}\right)}{q\left(x^{s}\right)}
+\end{aligned}
+$$
+$\mathbb{E}[f(x)]$ with $x \sim p$ can be calculated as the weighted $\mathbb{E}\left[f\left(x^{s}\right)\right]$ with $x^{s} \sim q$
+
+> $\frac{p(x^s)}{q(x^s)}$ is the weight
+
+### Markov Chain Monte Carlo (MCMC)
+
+> For previous methods, we need to make strong assumptions about $p$ or find a envelop, which is challenging for general purposes
+
+**Goal**: Draw approximate correlated samples from a target distribution p(x) 
+
+**MCMC**: Performs a **biased** random walk to explore the distribution 
+
+![image-20210527100818016](./img/16_distr/image-20210527100818016.png)
+
+#### Example1: Metropolis-Hastings Algorithm (unit-variate)
+
+Goal: $p(x)$
+1. Initialize
+   1. Pick an initial state $x_{0}$
+   2. Set $t=0$
+2. Iterate
+   1. Generate: randomly generate a candidate state $x^{\prime}$ according to $g\left(x^{\prime} \mid x_{t}\right)$
+   2. Calculate the acceptance probability $A\left(x^{\prime}, x_{t}\right)=\min \left(1, \frac{p\left(x^{\prime}\right)}{p\left(x_{t}\right)} \frac{g\left(x_{t} \mid x^{\prime}\right)}{g\left(x^{\prime} \mid x_{t}\right)}\right)$
+   3. generate a uniform random number $u \in[0,1]$, if $u \leq A\left(x^{\prime}, x_{t}\right), x_{t+1}=x^{\prime}$, otherwise $x_{t+1}=x_{t}$
+   4. $t=t+1$
+
+
+
+#### Example2: Gibbs Sampling
+
+Goal: $p(\mathbf{x}) \quad$ the $i$ -th sample $\mathbf{x}_{i}=\left(x_{i}^{1}, x_{i}^{2}, \ldots, x_{i}^{d}\right)$
+
+![image-20210527101754706](./img/16_distr/image-20210527101754706.png)
+
+Goal: $p(\mathbf{x}) \quad$ the $i$ -th sample $\mathbf{x}_{i}=\left(x_{i}^{1}, x_{i}^{2}, \ldots, x_{i}^{d}\right)$
+1. Initialize
+   1. Pick an initial state $\mathbf{x}_{0}=\left(x_{0}^{1}, x_{0}^{2}, \ldots, x_{0}^{d}\right)$
+   2. Set $t=0$
+2. Iterate
+   1. $\mathrm{j}=\bmod (\mathrm{t}, \mathrm{d})$
+   2. randomly generate $x_{t+1}^{j}$ according to $p\left(x^{j} \mid x_{t}^{1}, \ldots, x_{t}^{j-1}, x_{t}^{j+1}, \ldots, x_{t}^{d}\right)$
+   3. $\mathbf{x}_{t+1}=\left(x_{t}^{1}, \ldots, x_{t}^{j-1}, x_{t+1}^{j}, x_{t}^{j+1}, \ldots, x_{t}^{d}\right)$
+   4. $t=t+1$
+
+> Generate samples B from samples A (s.t. B ~ A) (Any generative model falls into either one of the two frameworks)
+>
+> Method 1. Auto regression A to a data distribution X and sample B from X
+>
+> Method 2. Bypass the "distribution", e.g. by training a GAN to generate sample B
+
