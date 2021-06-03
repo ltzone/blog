@@ -416,3 +416,7 @@ even worse than slotted Aloha.
 
 - better performance than ALOHA: and simple, cheap, decentralized!
 
+> CSMA/CD: collision detection
+>
+> CSMA/CA: collision avoidance (not mentioned in lecture, on textbook, suitable for mobile networks)
+
