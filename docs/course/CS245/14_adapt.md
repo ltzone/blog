@@ -109,12 +109,12 @@ $$
 
 The last transformation is based on the "shift invariance" property of trace.
 
-$$\begin{equation}
+$$
 \begin{array}{cl}
 \min _{\mathbf{W}} & \mathrm{tr}\left(\mathbf{W}^{T} \mathbf{K L K} \mathbf{W}\right) \\
 \text { s.t. } & \mathbf{W}^{T} \mathbf{W}=\mathbf{I} .
 \end{array}
-\end{equation}$$
+$$
 
 $$
 \begin{array}{cl}
@@ -214,12 +214,12 @@ $$
 \begin{aligned}
 & \min _{\mathbf{A}}\left\|\hat{\mathbf{C}}_{s}-\mathbf{C}_{t}\right\|_{F}^{2} \\
 =& \min _{\mathbf{A}}\left\|\mathbf{A}^{T} \mathbf{C}_{s} \mathbf{A}-\mathbf{C}_{t}\right\|_{F}^{2} \\
-\mathbf{C}_{s} &=\mathbf{U}_{s} \boldsymbol{\Sigma}_{s} \mathbf{U}_{s}^{T} \quad \mathbf{C}_{t}=\mathbf{U}_{t} \mathbf{\Sigma}_{t} \mathbf{U}_{t}^{T}
+\mathbf{C}_{s} &=\mathbf{U}_{s} \mathbf{\Sigma}_{s} \mathbf{U}_{s}^{T} \quad \mathbf{C}_{t}=\mathbf{U}_{t} \mathbf{\Sigma}_{t} \mathbf{U}_{t}^{T}
 \end{aligned}
 $$
 > since $C_s$ and $C_t$ are cov matrix, they are symmetric, we can SVD them into above form
 
-The optimal solution $\mathbf{A}^{*}=\mathbf{U}_{s} \boldsymbol{\Sigma}_{s}^{-\frac{1}{2}} \mathbf{U}_{s}^{T} \mathbf{U}_{t}[1: r] \boldsymbol{\Sigma}_{t}[1: r]^{\frac{1}{2}} \mathbf{U}_{t}[1: r]^{T}$
+The optimal solution $\mathbf{A}^{*}=\mathbf{U}_{s} \mathbf{\Sigma}_{s}^{-\frac{1}{2}} \mathbf{U}_{s}^{T} \mathbf{U}_{t}[1: r] \mathbf{\Sigma}_{t}[1: r]^{\frac{1}{2}} \mathbf{U}_{t}[1: r]^{T}$
 $$
 r=\min \left(\mathrm{rank}\left(\mathbf{C}_{s}\right), \mathrm{rank}\left(\mathbf{C}_{t}\right)\right)
 $$

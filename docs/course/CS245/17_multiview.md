@@ -41,7 +41,7 @@ Recall, first decentralize, and then learn a projection to maximize the correlat
 SVM single-view:
 $$
 \begin{aligned}
-\min _{\mathbf{w}, b, \xi_{i}} & & \frac{1}{2}\|\mathbf{w}\|^{2}+C \sum_{i=1}^{N} \xi_{i} & \\
+\min _{\mathbf{w}, b, \xi_{i} } & & \frac{1}{2}\|\mathbf{w}\|^{2}+C \sum_{i=1}^{N} \xi_{i} & \\
 \text { s.t. } & & y_{i}\left(\mathbf{w}^{T} \mathbf{x}_{i}+b\right) \geq 1-\xi_{i}, \quad \forall i, \\
 & & \xi_{i} \geq 0, \quad \forall i .
 \end{aligned}
@@ -88,7 +88,7 @@ s.t. $\quad y_{i} \mathbf{w}^{T} \mathbf{x}_{i} \geq 1, \quad \forall i .$
 Now we assign different weights on different views
 $$
 \begin{aligned}
-\text { MKL } \min _{\mathbf{w}^{v}, \mathbf{d}} & \frac{1}{2} \sum_{v=1}^{V} \frac{\left\|\mathbf{w}^{v}\right\|^{2}}{ {d}^{v} } \\
+\text { MKL } \min _{\mathbf{w}^{v}, \mathbf{d} } & \frac{1}{2} \sum_{v=1}^{V} \frac{\left\|\mathbf{w}^{v}\right\|^{2} }{ {d}^{v} } \\
 \text { s.t. } \quad & y_{i} \sum_{v=1}^{V} \mathbf{w}^{v T} \mathbf{x}_{i}^{v} \geq 1, \quad \forall i, \\
 & \mathbf{1}^{T} \mathbf{d}=1, \quad \mathbf{d} \geq \mathbf{0} .
 \end{aligned}
@@ -96,14 +96,14 @@ $$
 Langrange:
 $$
 \begin{array}{c}
-\mathcal{L}_{\mathrm{w}^{v}, \alpha}=\frac{1}{2} \sum_{v} \frac{\left\|\mathbf{w}^{v}\right\|^{2}}{d^{v}}-\sum_{i} \alpha_{i}\left(y_{i} \sum_{v} \mathbf{w}^{v T} \mathbf{x}_{i}^{v}-1\right) \\
-\frac{\partial \mathcal{L}_{\mathbf{w}} v, \alpha}{\partial \mathbf{w}^{v}}=0 \Longrightarrow \mathbf{w}^{v}=d^{v} \mathbf{X}^{v}(\mathbf{\alpha} \circ \mathbf{y})
+\mathcal{L}_{\mathrm{w}^{v}, \alpha}=\frac{1}{2} \sum_{v} \frac{\left\|\mathbf{w}^{v}\right\|^{2} }{d^{v} }-\sum_{i} \alpha_{i}\left(y_{i} \sum_{v} \mathbf{w}^{v T} \mathbf{x}_{i}^{v}-1\right) \\
+\frac{\partial \mathcal{L}_{\mathbf{w} } v, \alpha}{\partial \mathbf{w}^{v} }=0 \Longrightarrow \mathbf{w}^{v}=d^{v} \mathbf{X}^{v}(\mathbf{\alpha} \circ \mathbf{y})
 \end{array}
 $$
  Dual form: 
 $$
 \begin{aligned}
- \min _{\mathbf{d}} \max _{\mathbf{\alpha}} &-\frac{1}{2} \sum_{v=1}^{V} d^{v} \mathbf{\alpha}^{T}\left(\mathbf{K}^{v} \circ\left(\mathbf{y} \mathbf{y}^{T}\right)\right) \mathbf{\alpha}+\mathbf{1}^{T} \mathbf{\alpha} \\
+ \min _{\mathbf{d} } \max _{\mathbf{\alpha} } &-\frac{1}{2} \sum_{v=1}^{V} d^{v} \mathbf{\alpha}^{T}\left(\mathbf{K}^{v} \circ\left(\mathbf{y} \mathbf{y}^{T}\right)\right) \mathbf{\alpha}+\mathbf{1}^{T} \mathbf{\alpha} \\
 \text { s.t. } & \mathbf{\alpha} \geq \mathbf{0}, \\
 & \mathbf{1}^{T} \mathbf{d}=1, \quad \mathbf{d} \geq \mathbf{0}
 \end{aligned}
@@ -116,18 +116,18 @@ Solution: Update $\mathrm{d}$ and $\alpha$ alternatingly.
 1. Update $\alpha$ : Quadratic Programming (QP) problem
 $$
 \begin{array}{ll}
-\max _{\mathbf{\alpha}} & -\frac{1}{2} \mathbf{\alpha}^{T}\left[\sum_{v=1}^{V} d^{v}\left(\mathbf{K}^{v} \circ\left(\mathbf{y} \mathbf{y}^{T} \right)\right] \mathbf{\alpha}+\mathbf{1}^{T} \mathbf{\alpha}\right. \\
+\max _{\mathbf{\alpha} } & -\frac{1}{2} \mathbf{\alpha}^{T}\left[\sum_{v=1}^{V} d^{v}\left(\mathbf{K}^{v} \circ\left(\mathbf{y} \mathbf{y}^{T} \right)\right] \mathbf{\alpha}+\mathbf{1}^{T} \mathbf{\alpha}\right. \\
 \text { s.t. } & \mathbf{\alpha} \geq \mathbf{0} .
 \end{array}
 $$
 2. Update d: close-form solution
 
 $$
-\mathcal{L}_{w^{v}, d}=\frac{1}{2} \sum_{v} \frac{\left\|\mathbf{w}^{v}\right\|^{2}}{d^{v}}+\lambda\left(1^{T} \mathbf{d}-1\right)
+\mathcal{L}_{w^{v}, d}=\frac{1}{2} \sum_{v} \frac{\left\|\mathbf{w}^{v}\right\|^{2} }{d^{v} }+\lambda\left(1^{T} \mathbf{d}-1\right)
 $$
 
 $$
-\frac{\partial \mathcal{L}_{\mathbf{w}^{v}, \mathrm{~d}}}{\partial d^{0}}=0 \Longrightarrow d^{v}=\frac{\left\|\mathbf{w}^{v}\right\|}{\sqrt{2 \lambda}}
+\frac{\partial \mathcal{L}_{\mathbf{w}^{v}, \mathrm{~d} } }{\partial d^{0} }=0 \Longrightarrow d^{v}=\frac{\left\|\mathbf{w}^{v}\right\|}{\sqrt{2 \lambda} }
 $$
 
 $$
@@ -208,7 +208,7 @@ Testing stage: $\mathbf{w}^{a T} \mathbf{x}_{i}^{a}+b^{a}$
 
 > use priviledged view information to simulate slack variable
 
-![image-20210531082409063](img/17_multiview/image-20210531082409063.png)
+![image-20210531082409063](./img/17_multiview/image-20210531082409063.png)
 
 ![image-20210531082438528](./img/17_multiview/image-20210531082438528.png)
 
@@ -236,7 +236,7 @@ In practice, concatenate $\alpha$ and $\beta$, then optimize QP, feasible
 
 > so that our prediction can be smoother
 
-![image-20210531084137258](img/17_multiview/image-20210531084137258.png)
+![image-20210531084137258](./img/17_multiview/image-20210531084137258.png)
 
 > 期末考试：左推右
 
